@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Bivariate Analysis | Introduction to Data Analysis with R</title>
+  <meta name="description" content="7 Bivariate Analysis | Introduction to Data Analysis with R" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Bivariate Analysis | Introduction to Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Bivariate Analysis | Introduction to Data Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Federico Roscioli" />
+
+
+<meta name="date" content="2023-10-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="hypothesis-testing.html"/>
+<link rel="next" href="multivariate-analysis.html"/>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="installation.html"><a href="installation.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
+<li class="chapter" data-level="1.2" data-path="installation.html"><a href="installation.html#visualization-suggestions"><i class="fa fa-check"></i><b>1.2</b> Visualization suggestions</a></li>
+<li class="chapter" data-level="1.3" data-path="installation.html"><a href="installation.html#the-workspace"><i class="fa fa-check"></i><b>1.3</b> The workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="a-b-c.html"><a href="a-b-c.html"><i class="fa fa-check"></i><b>2</b> A, B, C</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="a-b-c.html"><a href="a-b-c.html#the-first-code"><i class="fa fa-check"></i><b>2.1</b> The first code</a></li>
+<li class="chapter" data-level="2.2" data-path="a-b-c.html"><a href="a-b-c.html#indexing"><i class="fa fa-check"></i><b>2.2</b> Indexing</a></li>
+<li class="chapter" data-level="2.3" data-path="a-b-c.html"><a href="a-b-c.html#the-first-function"><i class="fa fa-check"></i><b>2.3</b> The first function</a></li>
+<li class="chapter" data-level="2.4" data-path="a-b-c.html"><a href="a-b-c.html#dataset-exploration"><i class="fa fa-check"></i><b>2.4</b> Dataset Exploration</a></li>
+<li class="chapter" data-level="2.5" data-path="a-b-c.html"><a href="a-b-c.html#subsetting"><i class="fa fa-check"></i><b>2.5</b> Subsetting</a></li>
+<li class="chapter" data-level="2.6" data-path="a-b-c.html"><a href="a-b-c.html#importing-and-exporting-data"><i class="fa fa-check"></i><b>2.6</b> Importing and exporting data</a></li>
+<li class="chapter" data-level="2.7" data-path="a-b-c.html"><a href="a-b-c.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>3</b> Data Cleaning</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-cleaning.html"><a href="data-cleaning.html#variable-names"><i class="fa fa-check"></i><b>3.1</b> Variable Names</a></li>
+<li class="chapter" data-level="3.2" data-path="data-cleaning.html"><a href="data-cleaning.html#variable-types"><i class="fa fa-check"></i><b>3.2</b> Variable Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleaning.html"><a href="data-cleaning.html#factor-variables"><i class="fa fa-check"></i><b>3.2.1</b> Factor variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleaning.html"><a href="data-cleaning.html#dates-and-times"><i class="fa fa-check"></i><b>3.2.2</b> Dates and times</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleaning.html"><a href="data-cleaning.html#row-names"><i class="fa fa-check"></i><b>3.3</b> Row Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html"><i class="fa fa-check"></i><b>4</b> Advanced Data Manipulation and Plotting</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#ifelse"><i class="fa fa-check"></i><b>4.1</b> Ifelse</a></li>
+<li class="chapter" data-level="4.2" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#the-apply-family"><i class="fa fa-check"></i><b>4.2</b> The Apply family</a></li>
+<li class="chapter" data-level="4.3" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#dplyr"><i class="fa fa-check"></i><b>4.3</b> Dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#merging-datasets"><i class="fa fa-check"></i><b>4.4</b> Merging datasets</a></li>
+<li class="chapter" data-level="4.5" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#melting-vs-transposing"><i class="fa fa-check"></i><b>4.5</b> Melting vs Transposing</a></li>
+<li class="chapter" data-level="4.6" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
+<li class="chapter" data-level="4.7" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#variability-measures"><i class="fa fa-check"></i><b>5.2</b> Variability Measures</a></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#inequality-measures"><i class="fa fa-check"></i><b>5.3</b> Inequality Measures</a></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#data-visualization"><i class="fa fa-check"></i><b>5.4</b> Data visualization</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#scaling-data"><i class="fa fa-check"></i><b>5.5</b> Scaling data</a></li>
+<li class="chapter" data-level="5.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#probability-sampling"><i class="fa fa-check"></i><b>5.6</b> Probability Sampling</a></li>
+<li class="chapter" data-level="5.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-2"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#probability-distributions"><i class="fa fa-check"></i><b>6.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#shapiro-wilk-test"><i class="fa fa-check"></i><b>6.2</b> Shapiro-Wilk Test</a></li>
+<li class="chapter" data-level="6.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#one-sample-t-test"><i class="fa fa-check"></i><b>6.3</b> One-Sample T-Test</a></li>
+<li class="chapter" data-level="6.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>6.4</b> Unpaired Two Sample T-Test</a></li>
+<li class="chapter" data-level="6.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>6.5</b> Mann Whitney U Test</a></li>
+<li class="chapter" data-level="6.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paired-sample-t-test"><i class="fa fa-check"></i><b>6.6</b> Paired Sample T-Test</a></li>
+<li class="chapter" data-level="6.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html"><i class="fa fa-check"></i><b>7</b> Bivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#correlation"><i class="fa fa-check"></i><b>7.1</b> Correlation</a></li>
+<li class="chapter" data-level="7.2" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#logistic-regressions"><i class="fa fa-check"></i><b>7.3</b> Logistic Regressions</a></li>
+<li class="chapter" data-level="7.4" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html"><i class="fa fa-check"></i><b>8</b> Multivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>8.1</b> Cluster Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#hierarchical-clustering"><i class="fa fa-check"></i><b>8.1.1</b> Hierarchical Clustering</a></li>
+<li class="chapter" data-level="8.1.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>8.1.2</b> K-Means clustering</a></li>
+<li class="chapter" data-level="8.1.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#the-silhouette-plot"><i class="fa fa-check"></i><b>8.1.3</b> The silhouette plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#heatmap"><i class="fa fa-check"></i><b>8.2</b> Heatmap</a></li>
+<li class="chapter" data-level="8.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#principal-component-analysis"><i class="fa fa-check"></i><b>8.3</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#classification-and-regression-trees"><i class="fa fa-check"></i><b>8.4</b> Classification And Regression Trees</a></li>
+<li class="chapter" data-level="8.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#composite-indicators"><i class="fa fa-check"></i><b>8.5</b> Composite Indicators</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.1</b> Mazziotta-Pareto Index</a></li>
+<li class="chapter" data-level="8.5.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#adjusted-mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted Mazziotta-Pareto Index</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
+<li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+
+<div id="bivariate-analysis" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Bivariate Analysis<a href="bivariate-analysis.html#bivariate-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<div id="correlation" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Correlation<a href="bivariate-analysis.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will now point our imaginary boat towards the Relationship Islands.
+When we see one thing vary, we perceive it changing in some regard, as
+the sun setting, the price of goods increasing, or the alternation of
+green and red lights at an intersection. Therefore, when two things
+covary there are two possibilities. One is that the change in the first
+is concomitant with the change in the second, as the change in a child’s
+age covaries with his height. The older, the taller. When higher
+magnitudes on one thing occur along with higher magnitudes on another
+and the lower magnitudes on both also co-occur, then the things vary
+together positively, and we denote this situation as positive
+covariation or <strong>positive correlation</strong>. The second possibility is that
+two things vary inversely or oppositely. That is, the higher magnitudes
+of one thing go along with the lower magnitudes of the other and vice
+versa. Then, we denote this situation as negative covariation or
+<strong>negative correlation</strong>. This seems clear enough, but in order to be
+more systematic about correlation more definition is needed.</p>
+<p>We start with the concept of <strong>covariance</strong>, which represents the
+direction of the linear relationship between two variables. By direction
+we mean if the variables are directly proportional or inversely
+proportional to each other. Thus, if increasing the value of one
+variable we have a positive or a negative impact on the value of the
+other variable. The values of covariance can be any number between the
+two opposite infinities. It’s important to mention that the covariance
+only <u>measures the direction of the relationship between two variables
+and not its magnitude</u>, for which the correlation is used.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="bivariate-analysis.html#cb53-1" tabindex="-1"></a><span class="co"># simple covariance</span></span>
+<span id="cb53-2"><a href="bivariate-analysis.html#cb53-2" tabindex="-1"></a><span class="fu">cov</span>(mtcars<span class="sc">$</span>hp, mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<p>In probability theory and statistics, <strong>correlation</strong>, also called
+correlation coefficient, indicates the strength and direction of a
+linear relationship between two random variables <span class="citation">(<a href="#ref-davis2021">Davis 2021</a>; <a href="#ref-madhavan2019">Madhavan 2019</a>; <a href="#ref-wilson2014">Wilson 2014</a>)</span>. In general statistical usage, correlation
+or co-relation refers to the departure of two variables from
+independence. In this broad sense there are several coefficients,
+measuring the degree of correlation, adapted to the nature of data. The
+best known is the <strong>Pearson</strong> product-moment correlation coefficient
+(<span class="math inline">\(\rho\)</span>), which is used for linearly related variables and is obtained
+by dividing the covariance of the two variables (<span class="math inline">\(\sigma_{xy}\)</span>) by the
+product of their standard deviations (Equation <a href="bivariate-analysis.html#eq:pears">(7.1)</a>.
+<span class="math display" id="eq:pears">\[
+\begin{equation}
+\rho=\frac{\sigma_{xy}}{\sigma_x*\sigma_y}
+\tag{7.1}
+\end{equation}
+\]</span></p>
+<p>A second measure is the <strong>Spearman</strong>’s rank correlation coefficient
+(<span class="math inline">\(\rho_{R(x),R(y)}\)</span>) which is a nonparametric measure of rank
+correlation defined as the Pearson correlation coefficient between rank
+variables (Equation <a href="bivariate-analysis.html#eq:spear">(7.2)</a>).</p>
+<p><span class="math display" id="eq:spear">\[
+\begin{equation}
+\rho_{R(x),R(y)}=\frac{cov{(R(x),R(y))}}{\sigma_{R(x)}*\sigma_{R(y)}}
+\tag{7.2}
+\end{equation}
+\]</span></p>
+<p>While Pearson’s correlation assesses linear relationships, Spearman’s
+correlation assesses monotonic relationships (whether linear or not). It
+is, thus, fundamental a theoretical assumption taken before choosing the
+right measure. Two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positively correlated if
+when <span class="math inline">\(x\)</span> increases <span class="math inline">\(y\)</span> increases too and when <span class="math inline">\(x\)</span> decreases <span class="math inline">\(y\)</span>
+decreases too. The correlation is instead negative when the variable <span class="math inline">\(x\)</span>
+increases and the variable <span class="math inline">\(y\)</span> decreases and vice-versa. The sign of
+<span class="math inline">\(\rho\)</span> depends only on the covariance (<span class="math inline">\(\sigma_{xy}\)</span>). The correlation
+coefficient varies between -1 (perfect negative linear correlation) and
+1 (perfect positive linear correlation), and if it is equal to zero the
+variables are independent.</p>
+<p>The code below allows you to compute the correlation coefficient between
+two variables, and then a correlation matrix, which is a table showing
+the correlation coefficients between each pair of variables. <em>Note that
+the first line of code suppresses the scientific notation, allowing the
+results of the future calculation to be expressed in decimals even if
+they are really really small (or big) values.</em></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="bivariate-analysis.html#cb54-1" tabindex="-1"></a><span class="co"># suppress scientific notation</span></span>
+<span id="cb54-2"><a href="bivariate-analysis.html#cb54-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span>
+<span id="cb54-3"><a href="bivariate-analysis.html#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="bivariate-analysis.html#cb54-4" tabindex="-1"></a><span class="co"># Correlation coefficients</span></span>
+<span id="cb54-5"><a href="bivariate-analysis.html#cb54-5" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb54-6"><a href="bivariate-analysis.html#cb54-6" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb54-7"><a href="bivariate-analysis.html#cb54-7" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="bivariate-analysis.html#cb54-8" tabindex="-1"></a><span class="co"># Pearson correlation matrix</span></span>
+<span id="cb54-9"><a href="bivariate-analysis.html#cb54-9" tabindex="-1"></a><span class="fu">cor</span>(mtcars)</span></code></pre></div>
+<p>Because a correlation matrix may result dispersive and difficult to
+study, especially when we have a high number of variables, there is the
+possibility to visualize it. In fact, if the variables are correlated,
+the “scatter” points have a trend very known: if the trend is linear the
+correlation is linear.</p>
+<p>The code below provides you with some examples. The function <code>pairs()</code>
+is internal to R and gives us the most basic graph, while the function
+<code>corrplot()</code> belongs to the <code>corrplot</code> package and provides a more
+stylish and customizable graph <span class="citation">(<a href="#ref-wei2021">Wei and Simko 2021</a>)</span>. Finally, the most interesting
+(but advanced) version of a pair plot is offered by the <code>GGally</code> package
+with the function <code>ggpairs()</code><span class="citation">(<a href="#ref-emerson2012">Emerson et al. 2012</a>)</span>. This function allows us to
+draw a correlation matrix that can include whatever kind of value or
+graph we want inside of each cell.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="bivariate-analysis.html#cb55-1" tabindex="-1"></a><span class="co"># basic pair plot</span></span>
+<span id="cb55-2"><a href="bivariate-analysis.html#cb55-2" tabindex="-1"></a><span class="fu">pairs</span>(cars)</span>
+<span id="cb55-3"><a href="bivariate-analysis.html#cb55-3" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="bivariate-analysis.html#cb55-4" tabindex="-1"></a><span class="co"># the corrplot version</span></span>
+<span id="cb55-5"><a href="bivariate-analysis.html#cb55-5" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb55-6"><a href="bivariate-analysis.html#cb55-6" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(cars))</span>
+<span id="cb55-7"><a href="bivariate-analysis.html#cb55-7" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="bivariate-analysis.html#cb55-8" tabindex="-1"></a><span class="co"># the ggally version</span></span>
+<span id="cb55-9"><a href="bivariate-analysis.html#cb55-9" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb55-10"><a href="bivariate-analysis.html#cb55-10" tabindex="-1"></a><span class="fu">ggpairs</span>(cars)</span></code></pre></div>
+<p>The last measure of relationship we will talk about is the <strong>chi-squared
+test</strong> (also known as <span class="math inline">\(\chi^2\)</span> test). This is a hypothesis test
+statistics that comes into play when dealing with contingency tables and
+relatively large sample sizes. In simpler terms, the chi-squared test is
+primarily employed to assess whether there’s a relationship between two
+<u>categorical variables</u> in terms of their impact on the test
+statistic. The purpose of the test is to evaluate how likely the
+observed frequencies would be assuming the null hypothesis (<span class="math inline">\(H_0\)</span>) is
+true. Test statistics that follow a <span class="math inline">\(\chi^2\)</span> distribution occur when the
+observations are independent.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="bivariate-analysis.html#cb56-1" tabindex="-1"></a><span class="co"># H0: The two variables are independent.</span></span>
+<span id="cb56-2"><a href="bivariate-analysis.html#cb56-2" tabindex="-1"></a><span class="co"># H1: The two variables relate to each other.</span></span>
+<span id="cb56-3"><a href="bivariate-analysis.html#cb56-3" tabindex="-1"></a><span class="fu">chisq.test</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
+<p>The code above computes the <span class="math inline">\(\chi^2\)</span> test for the number of cilinders of
+a car and the presence of manual transmission. Since we get a p-Value
+less than the significance level of 0.05, we reject the null hypothesis
+and conclude that the two variables are in fact dependent.</p>
+<p><strong>Cramér’s V</strong> (sometimes referred to as Cramer’s <span class="math inline">\(\phi\)</span>). This is a
+measure of association between two categorical variables (or
+categorical) based on Pearson’s <span class="math inline">\(\chi^2\)</span> statistic and it was published
+by Harald Cramér in 1946. Cramér’s V, gives us a method that can be used
+when we want to study the intercorrelation between two discrete
+variables, and may be used with variables having two or more levels. It
+varies from 0 (corresponding to no association between the variables) to
+1 (complete association) and can reach 1 only when each variable is
+completely determined by the other. Thus <u>it does not tell us the
+direction of the association</u>.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="bivariate-analysis.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb57-2"><a href="bivariate-analysis.html#cb57-2" tabindex="-1"></a><span class="fu">CramerV</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="linear-regression" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Linear Regression<a href="bivariate-analysis.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linear regression examines the relation of a dependent variable
+(response variable) to specified independent variables (explanatory
+variables). The mathematical model of their relationship is the
+regression equation. The dependent variable is modelled as a random
+variable because of uncertainty as to its value, given only the value of
+each independent variable. A regression equation contains estimates of
+one or more hypothesized regression parameters (“constants”). These
+estimates are constructed using data for the variables, such as from a
+sample. The estimates measure the relationship between the dependent
+variable and each of the independent variables. They also allow
+estimating the value of the dependent variable for a given value of each
+respective independent variable.</p>
+<p>Uses of regression include curve fitting, prediction (including
+forecasting of time-series data), modelling of causal relationships, and
+testing scientific hypotheses about relationships between variables.
+However, we must always keep in mind that a <strong>correlation does not imply
+causation</strong>. In fact, the study of causality is as concerned with the
+study of potential causal mechanisms as it is with variation amongst the
+data <span class="citation">(<a href="#ref-Imbens2015">Imbens and Rubin 2015</a>)</span>.</p>
+<p>The difference between correlation and regression is that whether in the
+first <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are on the same level, in the latter one <span class="math inline">\(x\)</span> affect
+<span class="math inline">\(y\)</span>, but not the other way around. This has important theoretical
+implications in the selection of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The general form of a
+<strong>simple linear regression</strong> is <a href="bivariate-analysis.html#eq:slr">(7.3)</a>:</p>
+<p><span class="math display" id="eq:slr">\[
+\begin{equation}
+y=\beta_0+\beta_1x+e
+\tag{7.3}
+\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is the slope, and<span class="math inline">\(e\)</span> is the
+error term, which picks up the unpredictable part of the dependent
+variable <span class="math inline">\(y\)</span>. We will sometimes describe 1.1 by saying that we are
+regressing <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>. The error term <span class="math inline">\(e\)</span> is usually posited to be
+normally distributed. The <span class="math inline">\(x\)</span>’s and <span class="math inline">\(y\)</span>’s are the data quantities from
+the sample or population in question, and <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are
+the unknown parameters (“constants”) to be estimated from the data.
+Estimates for the values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> can be derived by
+the method of <u>ordinary least squares</u>. The method is called
+“least squares”, because estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> minimize
+the sum of squared error estimates for the given data set (Equation <a href="bivariate-analysis.html#eq:rss">(7.4)</a>), thus
+minimizing:</p>
+<p><span class="math display" id="eq:rss">\[
+\begin{equation}
+RSS=e_1^2+e_2^2+...+e_n^2
+\tag{7.4}
+\end{equation}
+\]</span></p>
+<p>The estimates are often denoted by <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span> or
+their corresponding Roman letters. It can be shown that least squares
+estimates are given by
+<span class="math display">\[
+\begin{equation}
+\hat\beta_1=\frac{\sum_{i=1}^N(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^N(x_i-\bar{x})^2} \\
+\hat\beta_0=\bar{y}-\hat\beta_1 \bar{x}
+\end{equation}
+\]</span>
+where <span class="math inline">\(\bar{x}\)</span> is the mean (average) of the <span class="math inline">\(x\)</span> values and <span class="math inline">\(\bar{y}\)</span>
+is the mean of the <span class="math inline">\(y\)</span> values.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
+<img src="_main_files/figure-html/unnamed-chunk-67-1.png" alt="Plot of the residuals from a regression line." width="50%"  />
+<p class="caption">
+Figure 7.1: Plot of the residuals from a regression line.
+</p>
+</div>
+<p>As we said, before building our first regression model, it is important
+to have an idea about the theoretical relationship between the variable
+we want to study. In the case of the dataset <code>cars</code>, we know that speed
+has an impact on the breaking distance of a car (variable dist) from our
+physics studies. We can thus say that dist is our dependent variable
+(<span class="math inline">\(y\)</span>), and speed is our independent variable (<span class="math inline">\(x\)</span>).</p>
+<p>We can fit the model in the following way. Inside the <code>lm()</code> function
+place the dependent variable ~ independent variable, comma the dataset
+in which they are contained. <em>Note that the formula 1.1 in the <code>lm()</code>
+function is written as <code>y ~ x</code>.</em><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> The code chunk below draws a
+summary and the plot of the relationship between the speed of a car and
+the breaking distance.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="bivariate-analysis.html#cb58-1" tabindex="-1"></a><span class="co"># linear regression</span></span>
+<span id="cb58-2"><a href="bivariate-analysis.html#cb58-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb58-3"><a href="bivariate-analysis.html#cb58-3" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb58-4"><a href="bivariate-analysis.html#cb58-4" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="bivariate-analysis.html#cb58-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb58-6"><a href="bivariate-analysis.html#cb58-6" tabindex="-1"></a><span class="fu">ggplot</span>(cars, <span class="fu">aes</span>(dist, speed))<span class="sc">+</span></span>
+<span id="cb58-7"><a href="bivariate-analysis.html#cb58-7" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb58-8"><a href="bivariate-analysis.html#cb58-8" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p>The output of the summary of our regression model (Figure 15) must be
+read in the following way in order to have a brief idea on the model
+that we built. The first step is to look at the Multiple R-squared, this
+number tells us which percentage of the data is explained by the model
+(65.1% in this case), and thus how significant our model is. If the
+model has an appreciable power to explain our data, we then analyze the
+coefficients’ estimates and their significance level. We see here that
+speed has a p-value lower than 0.001 (thus highly significant<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>) and
+that one unit increase in speed means 3.9 units of increase in distance.
+However, there is also a slightly significant intercept, <span class="math inline">\(\beta_0\)</span>,
+which means that there are factors which are not present in the model
+and that could further explain the behavior of our dependent variable.
+From a theoretical perspective this makes sense, in fact, the type of
+tires, the weight of the car, the weather conditions (etc..) are some
+additional factors that are missing in our model and could improve our
+understanding of the phenomenon.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<img src="images/Schermata%202022-07-07%20alle%2017.24.44.png" alt="Linear regression model summary output." width="350"  />
+<p class="caption">
+Figure 7.2: Linear regression model summary output.
+</p>
+</div>
+<p>Whether simple linear regression is a useful approach for predicting a
+response on the basis of one single independent variable, we often have
+more than one independent variable (<span class="math inline">\(x\)</span>) that influence the dependent
+variable (<span class="math inline">\(y\)</span>). Instead of fitting a separate simple linear regression
+model for each <span class="math inline">\(x\)</span>, a better approach is to extend the simple linear
+regression model. We can do this by giving each independent variable
+(<span class="math inline">\(x\)</span>) a separate slope coefficient in a single model. In general,
+suppose that we have <span class="math inline">\(p\)</span> distinct independent variables (<span class="math inline">\(x\)</span>). Then the
+<strong>multiple linear regression model</strong> takes the form <a href="bivariate-analysis.html#eq:mlr">(7.5)</a>:</p>
+<p><span class="math display" id="eq:mlr">\[
+\begin{equation}
+y\approx\beta_0+\beta_1x_1+\beta_2x_2...+\beta_px_p+e
+\tag{7.5}
+\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(x_p\)</span> represents the <span class="math inline">\(p^{th}\)</span> independent variable, and <span class="math inline">\(\beta_p\)</span>
+quantifies the association between that variable and the dependent
+variable <span class="math inline">\(y\)</span>. We interpret <span class="math inline">\(\beta_p\)</span> as the average effect on <span class="math inline">\(y\)</span> of a
+one unit increase in <span class="math inline">\(x_p\)</span>, <u>holding all other independent variables
+fixed</u>. In other words, we will still have the effect of the
+increase of one independent variable (<span class="math inline">\(x\)</span>) over our dependent variable
+(<span class="math inline">\(y\)</span>), but “controlling” for other factors.</p>
+<p>In order to include more independent variables into our model, we use
+the plus sign. The formula in R will then be <code>y ~ x1 + x2 + x3</code>. If we
+want to use all the variables present in our dataset as independent
+variables, the formula in R will be <code>y ~ .</code> where the dot stands for
+“everything else”. Another possibility is to have an interaction term.
+An interaction effect exists when the effect of an independent variable
+on a dependent variable changes, depending on the value(s) of one or
+more other independent variables (i.e. <span class="math inline">\(y=x*z\)</span>). However, interaction
+terms are out of the scope of this manual.</p>
+<p>To make an example, we can use the dataset <code>swiss</code>, which reports Swiss
+fertility and socioeconomic data from the year 1888. Following some
+models with a different number of variables used.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="bivariate-analysis.html#cb59-1" tabindex="-1"></a><span class="co"># multiple linear regression</span></span>
+<span id="cb59-2"><a href="bivariate-analysis.html#cb59-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> ., <span class="at">data =</span> swiss)</span>
+<span id="cb59-3"><a href="bivariate-analysis.html#cb59-3" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb59-4"><a href="bivariate-analysis.html#cb59-4" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="bivariate-analysis.html#cb59-5" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Education <span class="sc">+</span> Agriculture, <span class="at">data =</span> swiss)</span>
+<span id="cb59-6"><a href="bivariate-analysis.html#cb59-6" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span></code></pre></div>
+<p>When we perform multiple linear regression, we are usually interested in
+answering a few important questions in order to reach our goal: find the
+model, with the lower number of independent variables that best explains
+the outcome. The questions are:</p>
+<ol style="list-style-type: decimal">
+<li><p>Is at least one of the <span class="math inline">\(x_1, x_2, . . . ,x_p\)</span> useful in explaining
+the independent variable <span class="math inline">\(y\)</span>?</p></li>
+<li><p>Do all the <span class="math inline">\(x_1, x_2, . . . ,x_p\)</span> help to explain <span class="math inline">\(y\)</span>, or is only a
+subset of them sufficient?</p></li>
+<li><p>How well does the model fit the data?</p></li>
+</ol>
+<p>In order to answer the questions above we need to do a comparative
+analysis between the models. Analysis of Variance (<strong>ANOVA</strong>) consists
+of calculations that provide information about levels of variability
+within a regression model and form a basis for tests of significance. We
+can thus use the function <code>anova()</code> in order to compare multiple
+regression models. When ANOVA is applied in practice, it actually
+becomes a variable selection method: if the full model is significantly
+different (null hypothesis rejected), the variable/s added by the full
+model is/are considered useful for prediction. <em>Statistic textbooks
+generally recommend to test every predictor for significance.</em></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="bivariate-analysis.html#cb60-1" tabindex="-1"></a><span class="co"># ANOVA testing</span></span>
+<span id="cb60-2"><a href="bivariate-analysis.html#cb60-2" tabindex="-1"></a><span class="fu">anova</span>(fit2, fit3)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="logistic-regressions" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Logistic Regressions<a href="bivariate-analysis.html#logistic-regressions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Whether independent variables can be either continuous or categorical,
+if our dependent variable that is logical (1,0 or TRUE,FALSE), we will
+have to run a different kind of regression model: the logistic model (or
+logit model). This model gives us the probability of one event (out of
+two alternatives) taking place by having the log-odds (the logarithm of
+the odds) for the event be a linear combination of one or more
+independent variables.</p>
+<p>Using the <code>glm()</code> function (Generalized Linear Models), and the argument
+<code>family="binomial"</code>, we can fit our logistic regression model.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="bivariate-analysis.html#cb61-1" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">glm</span>(am <span class="sc">~</span> mpg, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>, mtcars)</span>
+<span id="cb61-2"><a href="bivariate-analysis.html#cb61-2" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span></code></pre></div>
+<p>Its output (Figure 17) must be interpreted as follows. An increase in
+miles per gallons (mpg) increases the probability that the car has
+automatic transmission by 31%, and this increase is statistically
+significant (p-value&lt;0.01). In this case we do not have the Multiple
+R-squared to assess the significance of the model, but we will have to
+look at the Residual deviance <strong>tells us how well the response variable
+can be predicted by a model with p predictor variables</strong>. The lower the
+value, the better the model is able to predict the value of the response
+variable.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<img src="images/Schermata%202022-07-07%20alle%2018.49.38.png" alt="Logistic regression model summary output." width="350"  />
+<p class="caption">
+Figure 7.3: Logistic regression model summary output.
+</p>
+</div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="exercises-4" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Exercises<a href="bivariate-analysis.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2021). An
+Introduction to Statistical Learning (Vol. 103). Springer New York.
+<a href="https://www.statlearning.com">Available here</a>. Chapter 3.6 and 3.7
+exercises from 8 to 15.</p></li>
+<li><p><a href="https://federicoroscioli.shinyapps.io/exercises/">R playground</a>,
+section 7 - T-tests and Regressions</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+<h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-davis2021" class="csl-entry">
+Davis, Brittany. 2021. <span>“When Correlation Is Better Than Causation.”</span> <a href="https://towardsdatascience.com/when-correlation-is-better-than-causation-1cbfa2708fbb">https://towardsdatascience.com/when-correlation-is-better-than-causation-1cbfa2708fbb</a>.
+</div>
+<div id="ref-emerson2012" class="csl-entry">
+Emerson, John W., Walton A. Green, Barret Schloerke, Jason Crowley, Dianne Cook, Heike Hofmann, and Hadley Wickham. 2012. <span>“The Generalized Pairs Plot.”</span> <em>Journal of Computational and Graphical Statistics</em> 22 (1): 79–91. <a href="https://doi.org/10.1080/10618600.2012.694762">https://doi.org/10.1080/10618600.2012.694762</a>.
+</div>
+<div id="ref-Imbens2015" class="csl-entry">
+Imbens, Guido W, and Donald B Rubin. 2015. <em>Causal Inference in Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.
+</div>
+<div id="ref-madhavan2019" class="csl-entry">
+Madhavan, Archana. 2019. <span>“Correlation Vs Causation: Understand the Difference for Your Product.”</span> <a href="https://amplitude.com/blog/causation-correlation">https://amplitude.com/blog/causation-correlation</a>.
+</div>
+<div id="ref-wei2021" class="csl-entry">
+Wei, Taiyun, and Viliam Simko. 2021. <span>“An Introduction to Corrplot Package.”</span> <em>The Comprehensive R Archive Network</em>. <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html">https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html</a>.
+</div>
+<div id="ref-wilson2014" class="csl-entry">
+Wilson, Mark. 2014. <span>“Hilarious Graphs Prove That Correlation Isn<span>’</span>t Causation.”</span> <a href="https://www.fastcompany.com/3030529/hilarious-graphs-prove-that-correlation-isnt-causation">https://www.fastcompany.com/3030529/hilarious-graphs-prove-that-correlation-isnt-causation</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>In order to type the symbol ~ (tilde) it is needed a different
+combination of keys according to the operating system and the
+keyboards.<a href="bivariate-analysis.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>For a discussion on the meaning of p-value go back to the previous
+chapter.<a href="bivariate-analysis.html#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hypothesis-testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multivariate-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
