@@ -52,24 +52,24 @@ best known is the **Pearson** product-moment correlation coefficient
 ($\rho$), which is used for linearly related variables and is obtained
 by dividing the covariance of the two variables ($\sigma_{xy}$) by the
 product of their standard deviations (Equation \@ref(eq:pears).
-$$
+
 \begin{equation}
 \rho=\frac{\sigma_{xy}}{\sigma_x*\sigma_y}
 (\#eq:pears)
 \end{equation}
-$$
+
 
 A second measure is the **Spearman**'s rank correlation coefficient
 ($\rho_{R(x),R(y)}$) which is a nonparametric measure of rank
 correlation defined as the Pearson correlation coefficient between rank
 variables (Equation \@ref(eq:spear)).
 
-$$
+
 \begin{equation}
 \rho_{R(x),R(y)}=\frac{cov{(R(x),R(y))}}{\sigma_{R(x)}*\sigma_{R(y)}}
 (\#eq:spear)
 \end{equation}
-$$
+
 
 While Pearson's correlation assesses linear relationships, Spearman's
 correlation assesses monotonic relationships (whether linear or not). It
@@ -204,12 +204,12 @@ $y$, but not the other way around. This has important theoretical
 implications in the selection of $x$ and $y$. The general form of a
 **simple linear regression** is \@ref(eq:slr):
 
-$$
+
 \begin{equation}
 y=\beta_0+\beta_1x+e
 (\#eq:slr)
 \end{equation}
-$$
+
 
 where $\beta_0$ is the intercept, $\beta_1$ is the slope, and$e$ is the
 error term, which picks up the unpredictable part of the dependent
@@ -224,22 +224,22 @@ the method of [ordinary least squares]{.underline}. The method is called
 the sum of squared error estimates for the given data set (Equation \@ref(eq:rss)), thus
 minimizing:
 
-$$
+
 \begin{equation}
 RSS=e_1^2+e_2^2+...+e_n^2
 (\#eq:rss)
 \end{equation}
-$$
+
 
 The estimates are often denoted by $\hat\beta_0$ and $\hat\beta_1$ or
 their corresponding Roman letters. It can be shown that least squares
 estimates are given by 
-$$
+
 \begin{equation}
 \hat\beta_1=\frac{\sum_{i=1}^N(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^N(x_i-\bar{x})^2} \\
 \hat\beta_0=\bar{y}-\hat\beta_1 \bar{x}
 \end{equation}
-$$
+
 where $\bar{x}$ is the mean (average) of the $x$ values and $\bar{y}$
 is the mean of the $y$ values.
 
@@ -320,12 +320,12 @@ regression model. We can do this by giving each independent variable
 suppose that we have $p$ distinct independent variables ($x$). Then the
 **multiple linear regression model** takes the form \@ref(eq:mlr):
 
-$$
+
 \begin{equation}
 y\approx\beta_0+\beta_1x_1+\beta_2x_2...+\beta_px_p+e
 (\#eq:mlr)
 \end{equation}
-$$
+
 
 where $x_p$ represents the $p^{th}$ independent variable, and $\beta_p$
 quantifies the association between that variable and the dependent

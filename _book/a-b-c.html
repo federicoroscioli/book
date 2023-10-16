@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -612,11 +612,8 @@ for their purposes). This method allowed them to avoid remembering what
 was the purpose of each package, but also overcharged their computers
 and often leaded to software crashes and data losses. So, please, avoid
 it!</p>
-<p>Download the <a href="http://www.federicoroscioli.com/wp-content/uploads/2021/02/Wine.csv">wine dataset</a>,
-change the directory below with the folder where you put the downloaded
-file, and try to import it (it is a text based csv file). Try the same
-with the <a href="http://www.federicoroscioli.com/wp-content/uploads/2022/03/Village.xlsx">village dataset</a>,
-be aware that this one is in Excel format.</p>
+<p>Download the <a href="http://www.federicoroscioli.com/wp-content/uploads/2021/02/Wine.csv">wine dataset</a>, change the directory below with the folder where you put the downloaded
+file, and try to import it (it is a text based csv file). Try the same with the <a href="http://www.federicoroscioli.com/wp-content/uploads/2022/03/Village.xlsx">village dataset</a>, be aware that this one is in Excel format.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="a-b-c.html#cb12-1" tabindex="-1"></a><span class="co"># setting the working directory</span></span>
 <span id="cb12-2"><a href="a-b-c.html#cb12-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/federicoroscioli/Desktop&quot;</span>)</span>
 <span id="cb12-3"><a href="a-b-c.html#cb12-3" tabindex="-1"></a><span class="co"># or setting the working directory as the same where the Source file is stored</span></span>
@@ -631,7 +628,7 @@ be aware that this one is in Excel format.</p>
 <p>To end our first chapter we have to talk also about how to save the
 final output of our work. The most common way is to export our dataframe
 as an excel file. In order to do so, we need to use the package
-“xlsx”<span class="citation">(<a href="#ref-dragulescu2020">Dragulescu and Arendt 2020</a>)</span>. <strong>Note that it is always important to set the
+“xlsx” <span class="citation">(<a href="#ref-dragulescu2020">Dragulescu and Arendt 2020</a>)</span>. <strong>Note that it is always important to set the
 working directory in order to tell R where to put our exported file</strong>.
 If we did it at the beginning of our code, there is no need to repeat
 it.</p>
@@ -650,10 +647,8 @@ it.</p>
 <ul>
 <li>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2021). An
 Introduction to Statistical Learning (Vol. 103). Springer New York.
-<a href="https://www.statlearning.com">Available here</a>. Chapter 2.4
-exercises 8, 9, and 10.</li>
-<li><a href="https://federicoroscioli.shinyapps.io/exercises/">R playground</a>, A,
-B, C</li>
+<a href="https://www.statlearning.com">Available here</a>. Chapter 2.4 exercises 8, 9, and 10.</li>
+<li><a href="https://federicoroscioli.shinyapps.io/exercises/">R playground</a>, A, B, C</li>
 </ul>
 <div style="page-break-after: always;"></div>
 
@@ -732,13 +727,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"toc_depth": 1,
+"scroll_highlight": true
 }
 });
 });

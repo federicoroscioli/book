@@ -353,8 +353,7 @@ ggplot(data = melted_people, aes(x = name, y = value, fill = variable)) +
 ```
 
 We are able to personalize almost everything as we like using `ggplot2`.
-The [Ggplot2 Cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
-gives us some of the most important options. I strongly suggest to look
+The [Ggplot2 Cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) gives us some of the most important options. I strongly suggest to look
 also at the [R Graph Gallery](https://www.r-graph-gallery.com) which
 includes advanced graphs that are done using `ggplot2` or similar
 packages, and provides the code for replicating each one of them.

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introduction to Data Analysis with R</title>
+  <meta name="description" content="Introduction to Data Analysis with R" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introduction to Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Federico Roscioli" />
+
+
+<meta name="date" content="2023-10-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="installation.html"/>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="installation.html"><a href="installation.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
+<li class="chapter" data-level="1.2" data-path="installation.html"><a href="installation.html#visualization-suggestions"><i class="fa fa-check"></i><b>1.2</b> Visualization suggestions</a></li>
+<li class="chapter" data-level="1.3" data-path="installation.html"><a href="installation.html#the-workspace"><i class="fa fa-check"></i><b>1.3</b> The workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="a-b-c.html"><a href="a-b-c.html"><i class="fa fa-check"></i><b>2</b> A, B, C</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="a-b-c.html"><a href="a-b-c.html#the-first-code"><i class="fa fa-check"></i><b>2.1</b> The first code</a></li>
+<li class="chapter" data-level="2.2" data-path="a-b-c.html"><a href="a-b-c.html#indexing"><i class="fa fa-check"></i><b>2.2</b> Indexing</a></li>
+<li class="chapter" data-level="2.3" data-path="a-b-c.html"><a href="a-b-c.html#the-first-function"><i class="fa fa-check"></i><b>2.3</b> The first function</a></li>
+<li class="chapter" data-level="2.4" data-path="a-b-c.html"><a href="a-b-c.html#dataset-exploration"><i class="fa fa-check"></i><b>2.4</b> Dataset Exploration</a></li>
+<li class="chapter" data-level="2.5" data-path="a-b-c.html"><a href="a-b-c.html#subsetting"><i class="fa fa-check"></i><b>2.5</b> Subsetting</a></li>
+<li class="chapter" data-level="2.6" data-path="a-b-c.html"><a href="a-b-c.html#importing-and-exporting-data"><i class="fa fa-check"></i><b>2.6</b> Importing and exporting data</a></li>
+<li class="chapter" data-level="2.7" data-path="a-b-c.html"><a href="a-b-c.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>3</b> Data Cleaning</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-cleaning.html"><a href="data-cleaning.html#variable-names"><i class="fa fa-check"></i><b>3.1</b> Variable Names</a></li>
+<li class="chapter" data-level="3.2" data-path="data-cleaning.html"><a href="data-cleaning.html#variable-types"><i class="fa fa-check"></i><b>3.2</b> Variable Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleaning.html"><a href="data-cleaning.html#factor-variables"><i class="fa fa-check"></i><b>3.2.1</b> Factor variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleaning.html"><a href="data-cleaning.html#dates-and-times"><i class="fa fa-check"></i><b>3.2.2</b> Dates and times</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-cleaning.html"><a href="data-cleaning.html#row-names"><i class="fa fa-check"></i><b>3.3</b> Row Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html"><i class="fa fa-check"></i><b>4</b> Advanced Data Manipulation and Plotting</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#ifelse"><i class="fa fa-check"></i><b>4.1</b> Ifelse</a></li>
+<li class="chapter" data-level="4.2" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#the-apply-family"><i class="fa fa-check"></i><b>4.2</b> The Apply family</a></li>
+<li class="chapter" data-level="4.3" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#dplyr"><i class="fa fa-check"></i><b>4.3</b> Dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#merging-datasets"><i class="fa fa-check"></i><b>4.4</b> Merging datasets</a></li>
+<li class="chapter" data-level="4.5" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#melting-vs-transposing"><i class="fa fa-check"></i><b>4.5</b> Melting vs Transposing</a></li>
+<li class="chapter" data-level="4.6" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
+<li class="chapter" data-level="4.7" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#variability-measures"><i class="fa fa-check"></i><b>5.2</b> Variability Measures</a></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#inequality-measures"><i class="fa fa-check"></i><b>5.3</b> Inequality Measures</a></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#data-visualization"><i class="fa fa-check"></i><b>5.4</b> Data visualization</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#scaling-data"><i class="fa fa-check"></i><b>5.5</b> Scaling data</a></li>
+<li class="chapter" data-level="5.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#probability-sampling"><i class="fa fa-check"></i><b>5.6</b> Probability Sampling</a></li>
+<li class="chapter" data-level="5.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-2"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#probability-distributions"><i class="fa fa-check"></i><b>6.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="6.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#shapiro-wilk-test"><i class="fa fa-check"></i><b>6.2</b> Shapiro-Wilk Test</a></li>
+<li class="chapter" data-level="6.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#one-sample-t-test"><i class="fa fa-check"></i><b>6.3</b> One-Sample T-Test</a></li>
+<li class="chapter" data-level="6.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>6.4</b> Unpaired Two Sample T-Test</a></li>
+<li class="chapter" data-level="6.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>6.5</b> Mann Whitney U Test</a></li>
+<li class="chapter" data-level="6.6" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#paired-sample-t-test"><i class="fa fa-check"></i><b>6.6</b> Paired Sample T-Test</a></li>
+<li class="chapter" data-level="6.7" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html"><i class="fa fa-check"></i><b>7</b> Bivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#correlation"><i class="fa fa-check"></i><b>7.1</b> Correlation</a></li>
+<li class="chapter" data-level="7.2" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#logistic-regressions"><i class="fa fa-check"></i><b>7.3</b> Logistic Regressions</a></li>
+<li class="chapter" data-level="7.4" data-path="bivariate-analysis.html"><a href="bivariate-analysis.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html"><i class="fa fa-check"></i><b>8</b> Multivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>8.1</b> Cluster Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#hierarchical-clustering"><i class="fa fa-check"></i><b>8.1.1</b> Hierarchical Clustering</a></li>
+<li class="chapter" data-level="8.1.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#k-means-clustering"><i class="fa fa-check"></i><b>8.1.2</b> K-Means clustering</a></li>
+<li class="chapter" data-level="8.1.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#the-silhouette-plot"><i class="fa fa-check"></i><b>8.1.3</b> The silhouette plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#heatmap"><i class="fa fa-check"></i><b>8.2</b> Heatmap</a></li>
+<li class="chapter" data-level="8.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#principal-component-analysis"><i class="fa fa-check"></i><b>8.3</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#classification-and-regression-trees"><i class="fa fa-check"></i><b>8.4</b> Classification And Regression Trees</a></li>
+<li class="chapter" data-level="8.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#composite-indicators"><i class="fa fa-check"></i><b>8.5</b> Composite Indicators</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.1</b> Mazziotta-Pareto Index</a></li>
+<li class="chapter" data-level="8.5.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#adjusted-mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted Mazziotta-Pareto Index</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
+<li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+
+<div id="header">
+<h1 class="title">Introduction to Data Analysis with R</h1>
+<p class="author"><em>Federico Roscioli</em></p>
+<p class="date"><em>2023-10-16</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This manual is composed by two main sections divided in chapters. The
+first section will introduce the reader to the basic characteristics of
+the software required, its installation and configuration, it will then
+have a linguistic focus, so it aims at teaching how to use R in order to
+visualize, explore, understand, manipulate and create data. It will do
+so in a progressive way, starting from simple computations and ending
+with complex data manipulation and plotting. The second section,
+instead, will be all about applied statistics, from exploratory
+analysis, to the introduction of the normal distribution and its
+implications, to bivariate and multivariate analysis methods, such as
+principal component analysis and classification and regression trees.</p>
+<hr />
+<p>I also created also an ad-hoc <strong>R playground</strong> accessible
+<a href="https://federicoroscioli.shinyapps.io/exercises/">here</a>. The R
+playground allows the student to exercise in order to reinforce her
+knowledge of R and data analysis. Exercises are fundamental in order to
+fix the knowledge acquired in class. The platform is structured in the
+same way as this manual in order to have a linear learning process. I
+finally want to remark that the code I provide is “my best and easiest
+version of the solution”, I hope you will appreciate it. In fact, with
+R, it is possible to do the same thing in 1000 different ways, and by
+looking at the internet you can have a confirmation of it.</p>
+<blockquote>
+<p><em>I want to do something, not learn how to do everything.</em><br />
+John Carroll, “Minimal manual”</p>
+</blockquote>
+<p>The real goal of this manual is not to teach the R language per se, but
+to allow the students to manage the basic concepts in order to be able
+to explore and analyze data using R. After this course the student will
+be capable of clearly understand the R code that someone else wrote and
+customize her own code according to the need. This means having the
+possibility to explore different and more complex solutions for the
+student’s problems by exploring new packages and paving the way to
+become a statistician!</p>
+<p>Many people think of R as a statistics system. I prefer to consider it
+an environment within which statistical techniques are implemented. R
+can be extended (easily) via packages allowing to execute various
+statistical and graphical techniques, including linear and nonlinear
+modeling, classical statistical tests, spatial and time-series analysis,
+classification, clustering, and others.</p>
+<p><strong>If this is your first time coding</strong>, R may be slow and tedious at the
+beginning. You will pass a lot of your time trying to understand why R
+is giving you an error instead of the solution to your problem. <a href="https://stackoverflow.com">Stack
+Overflow</a> and the R Help will become your
+best friends. The software is going to seem to judge your mistakes
+harshly. You will read the word “syntax error” a lot. And you will
+probably grow a kind of hate for the creature that lives inside the
+computer and that does not like you. You will think the creature is
+value judging your code. You will crash the laptop and loose all your
+data… Ok, ok! I’m a bit exaggerating… I don’t want to scare you too
+much, but yes, this is the worst case scenario and many of your
+colleagues already passed through that, and survived!</p>
+<p><img src="images/8psue2xkvn811.jpg" width="100%"  /></p>
+<p>The fact is that, R is a language and, as such, should be practiced as
+much as possible in order to learn it. But R is “only” a coding
+language, so you will not be not able to speak <em>Rish</em> with your friends
+(fortunately!) nor write a letter to your pals. The only option you have
+is to practice it with your computer (also in group if you prefer). All
+the syntax errors you will get do not mean that R thinks you’re bad. It
+is not a judgment of your ability as a statistician. Syntax errors mean
+R is lost and doesn’t have better words to tell you that. Beside the
+fact that it can allow you to do marvelous things, R understands only
+when you talk to him in his language. So, my suggestion when you get an
+error is:</p>
+<ol style="list-style-type: decimal">
+<li><p>Read out loud the error and try to make sense of where the problem
+is (usually R suggest you that).</p></li>
+<li><p>Check carefully your code, there may be a missing comma or a
+misspelled capital letter.</p></li>
+<li><p>Copy paste the error on google and look for answers. This works more
+than what you may think.</p></li>
+<li><p><a href="mailto:info@federicoroscioli.com">Contact me</a>.</p></li>
+</ol>
+<p>The above steps almost always work, but in general I want you to never
+loose your effort. You will figure it out, be sure about it. You only
+need to build some experience first. It is like when you learn to ride a
+bicycle, at the beginning you have to fall a lot, but in the end you
+will love cycling and you will never want to get off your bike.</p>
+<p>As a final wish for you: during my first contact with R, I was “lost”,
+“lost”, “lost”, “lost”, “lost”, “oh wow, I love this!”. And I hope that
+all of you will go through that exact same feeling.</p>
+<p>So, please, <strong>have fun, be curious, and exercise a lot!</strong></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+
+</div>
+
+
+
+<p> </p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"toc_depth": 1,
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -57,12 +57,12 @@ The **arithmetic** **mean** (or **average**) is the most popular and
 well known measure of central tendency. The mean is equal to the sum of
 all values divided by the number of observations (Equation
 \@ref(eq:mean)).
-$$
+
 \begin{equation}
 \bar x = \frac{\sum{x}}{n}
 (\#eq:mean)
 \end{equation}
-$$ 
+ 
 One of its important properties is that it minimizes error in the
 prediction of any value in your data set, given a big enough sample size
 (more details on this property will be discussed in [The Normal
@@ -78,12 +78,12 @@ central location.
 The **geometric mean** is defined as the $n^{th}$ root of the product of
 $n$ values (Equation \@ref(eq:geomean)).
 
-$$
+
 \begin{equation}
 \bar x_{g} = \sqrt[n^{th}]{x_1*x_2*...*x_n}
 (\#eq:geomean)
 \end{equation}
-$$
+
 The geometric mean cannot be used if the values considered are lower
 or equal to zero. It is often used for a set of numbers whose values are
 meant to be multiplied together or are exponential in nature, such as a
@@ -116,12 +116,12 @@ exactly at the center between the minimum and the maximum values
 (Equation \@ref(eq:mv)), regardless of the distribution of the data Thus it is
 sensitive to outliers.
 
-$$
+
 \begin{equation}
 \frac{max-min}{2}
 (\#eq:mv)
 \end{equation}
-$$
+
 
 ------------------------------------------------------------------------
 
@@ -193,24 +193,24 @@ pander(data.frame(distributions = c("a", "b"),
 The **range** is the simplest measure of variability to calculate, and
 one you have probably encountered many times in your life. The range is
 the maximum value minus the minimum value (Equation \@ref(eq:range)). 
-$$
+
 \begin{equation}
 range=max-min
 (\#eq:range)
 \end{equation}
-$$
+
 
 ------------------------------------------------------------------------
 
 The **interquartile range** (IQR) is the range of the central 50% of the
 values in a distribution (Equation \@ref(eq:iqrange)).
 
-$$
+
 \begin{equation}
 IQR=75^{th} percentile - 25^{th} percentile
 (\#eq:iqrange)
 \end{equation}
-$$
+
 
 ------------------------------------------------------------------------
 
@@ -220,12 +220,12 @@ as the measure for referencing to the middle of the distribution, the
 **variance** is defined as the average squared difference of the scores
 from the mean (Equation \@ref(eq:var)).
 
-$$
+
 \begin{equation}
 \sigma^2=\frac{\sum{(X-\bar x)^2}}{N}
 (\#eq:var)
 \end{equation}
-$$
+
 
 ------------------------------------------------------------------------
 
@@ -235,12 +235,12 @@ the distribution is normal or approximately normal (see [The Normal
 Distribution]) because the proportion of the distribution within a given
 number of standard deviations from the mean can be calculated.
 
-$$
+
 \begin{equation}
 \sigma=\sqrt{\sigma^2}
 (\#eq:sd)
 \end{equation}
-$$
+
 
 ------------------------------------------------------------------------
 
@@ -251,12 +251,12 @@ different unit of measures. In fact, the CV is the only variability
 measure (of those mentioned here) that is standardized, thus does not
 depend on its unit of measure.
 
-$$
+
 \begin{equation}
 CV=\frac{\sigma}{\bar{x}}
 (\#eq:cv)
 \end{equation}
-$$
+
 
 ------------------------------------------------------------------------
 
@@ -351,12 +351,12 @@ diagonal) and the Lorenz curve over the total area under the line of
 equality (see Figure 7). Here the formula used to compute the Gini
 coefficient:
 
-$$
+
 \begin{equation}
 G(x)=1-\frac{2}{N-1}\sum^{N-1}_{i=1}{q_i}
 (\#eq:gini)
 \end{equation}
-$$
+
 
 where *N* is the population size, and *q* is the cumulative relative
 income.
@@ -404,12 +404,12 @@ of households to the bottom 40%. It, thus, tells us how many times the
 income of the top 10% of the population is higher than that of the
 bottom 40% (Equation \@ref(eq:palma)).
 
-$$
+
 \begin{equation}
 Palma = \frac {top10}{bottom40}
 (\#eq:palma)
 \end{equation}
-$$
+
 
 The code below computes the Palma Ratio for the $x$ and $z$
 distributions created previously. This has to be done manually, by
@@ -647,12 +647,12 @@ data from their unit of measure such that the features are within a
 specific range (i.e. $0, 1$)(Equation \@ref(eq:MM)). Min-Max scaling is important when we want
 to retain the distance between the data points.
 
-$$
+
 \begin{equation}
 r_{ij}=\frac{x_{ij}-\min_ix_{ij}}{\max_ix_{ij}-\min_ix_{ij}}
 (\#eq:MM)
 \end{equation}
-$$
+
 
 ```{r, eval=F}
 # creating data
@@ -671,12 +671,12 @@ equal observations fall above and below the mean, the mean and the
 median are the same, and there are more observations closer to the mean
 (for more details see [The Normal Distribution]).
 
-$$
+
 \begin{equation}
 z_{ij}=\frac{x_{ij}-\bar x_j}{\sigma_j}
 (\#eq:zscore)
 \end{equation}
-$$
+
 
 The `scale()` function, with default settings, will calculate the mean
 and standard deviation of the entire vector, then normalize each element
@@ -703,12 +703,12 @@ to delete the unit of measure and to keep the relative distance among
 the units. If the denominator is the maximum than we obtain values less
 or equal to 100.
 
-$$
+
 \begin{equation}
 I_{ij}=\frac{x_{ij}}{x^*_{oj}}*100
 (\#eq:in)
 \end{equation}
-$$
+
 
 ```{r, eval=F}
 # creating data
@@ -727,12 +727,12 @@ In the **percentage** transformation the value of each unit is divided
 by the sum of the values (Equation \@ref(eq:perc)). The sum of the normalized
 values are equal to 100.
 
-$$
+
 \begin{equation}
 p_{ij}=\frac{x_{ij}}{\sum^n_{i=1}x_{ij}}*100
 (\#eq:perc)
 \end{equation}
-$$
+
 
 ```{r, eval=F}
 # creating data
@@ -793,12 +793,12 @@ Since we know the sample size ($n$) and the total population ($N$),
 calculating the probability of being included in the sample becomes a
 simple matter of division (Equation \@ref(eq:srs)).
 
-$$
+
 \begin{equation}
 p=\frac{n}{N}*100
 (\#eq:srs)
 \end{equation}
-$$
+
 
 In R we will use the `sample()` function. This function requires us to
 specify the total population to be sampled (i.e. a vector between 1 and

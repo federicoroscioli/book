@@ -701,10 +701,10 @@ Given the matrix $Y=y_{ij}$ with $n$ rows (statistical units) and $m$
 columns (individual indicators), we calculate the normalized matrix \@ref(eq:normmat)
 $Z=z_{ij}$ as follows:
 
-$$
+\begin{equation}
 z_{ij}=100\pm\frac{y_{ij}-M_{y_j}}{S_{y_j}}*10
 (\#eq:normmat)
-$$
+\end{equation}
 
 where $M_{y_j}$ and $S_{y_j}$ are, respectively, the mean and standard
 deviation of the indicator $j$ and the sign $\pm$ is the 'polarity' of
@@ -717,10 +717,11 @@ We then aggregate the normalized data. Denoting with
 $M_{z_i},S_{z_i},cv_{z_i}$, respectively, the mean, standard deviation,
 and coefficient of variation of the normalized values for the unit $i$,
 the composite index is given by \@ref(eq:mpi): 
-$$
+\begin{equation}
 MPI^\pm_i= M_{z_i}*(i+cv^2_{z_i})=M_{z_i}\pm S_{z_i}*cv_{z_i}
 (\#eq:mpi)
-$$ 
+\end{equation}
+
 where the sign $\pm$ depends on the kind of phenomenon to be
 measured. If the composite index is 'increasing' or 'positive', i.e.,
 increasing values of the index correspond to positive variations of the
@@ -793,12 +794,12 @@ Min-Max normalization technique enables us to compare data over time,
 whereas the z-score normalization used in MPI does not. Given the matrix
 $X=\{x_{ij}\}$ with $n$ rows (units) and $m$ columns (indicators), we
 calculate the normalized matrix $R=\{r_{ij}\}$ as follows \@ref(eq:normmat2):
-$$
+\begin{equation}
 r_{ij}=\frac{x_{ij} -\min x_j}{\max x_j - \min x_j} *60+70
 (\#eq:normmat2)
-$$ 
-where
-$x_{ij}$ is the value of the indicator $j$ for the unit $i$ and
+\end{equation}
+
+where $x_{ij}$ is the value of the indicator $j$ for the unit $i$ and
 $\min x_j$ and $\max x_j$ are the 'goalposts' for the indicator $j$. If
 the indicator $j$ has negative polarity, the complement of $(1)$ is
 calculated with respect to $200$. To facilitate the interpretation of
@@ -808,7 +809,7 @@ setting the 'goalposts' is the following. Let $\inf x_j$ and $\sup x_j$
 be the overall minimum and maximum of the indicator $j$ across all units
 and all time periods considered. Denoting with $\text{ref } x_j$ the
 reference value for the indicator $j$, the 'goalposts' are defined as \@ref(eq:goals):
-$$
+
 \begin{equation*}
     \begin{cases}
       \min x_j= \text{ref } x_j - (\sup x_j - \inf x_j)/2\\
@@ -816,20 +817,21 @@ $$
     \end{cases}\
 (\#eq:goals)
 \end{equation*} 
-$$ 
+ 
 The normalized values will fall approximately in the range (70; 130),
 where 100 represents the reference value.
 
 The normalized indicators can then be aggregated. Denoting with
 $M_{r_i}$ and $S_{r_i}$, respectively, the mean and standard deviation
 of the normalized values of the unit $i$, the generalized form of AMPI
-is given by \@ref(eq:ampi): 
-$$ 
+is given by \@ref(eq:ampi):
+
+\begin{equation}
 AMPI_i^{+/-}=M_{r_i} \pm S_{r_i}*cv_i
 (\#eq:ampi)
-$$ 
-where
-$cv_i=\frac{S_{r_i}}{M_{r_i}}$ is the coefficient of variation of the
+\end{equation}
+
+where $cv_i=\frac{S_{r_i}}{M_{r_i}}$ is the coefficient of variation of the
 unit $i$ and the sign $\pm$ depends on the kind of phenomenon to be
 measured. If the composite index is increasing or positive, that is,
 increasing the index values corresponds to positive variations in the
