@@ -25,9 +25,11 @@ looking at the internet you can have a confirmation of it.
 This website is free to use, and is licensed under the GNU General Public
 License 2.0. If you’d like a pdf copy of the book, you can download it [here](https://github.com/federicoroscioli/book/blob/2b55c0f10dac709bf83a6edc26c7175128c34cd3/docs/_main.pdf).
 
-**Author**\
+**Author**
+
 **Federico Roscioli** is a PhD Student in Economics and Finance at the University of Rome Tor Vergata. He has an international experience as a consultant for various International Organizations and Research Institutes and a background as freelance photojournalist. His research interests include: development issues, environmental sustainability, poverty, social protection, food security and nutrition. 
 [www.federicoroscioli.com](https://www.federicoroscioli.com/)
 
-**Acknowledgements**\
+**Acknowledgements**
+
 This book was written following the teachings of Matteo Mazziotta (ISTAT).
