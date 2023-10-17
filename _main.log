@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.16)  17 OCT 2023 08:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.16)  17 OCT 2023 08:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -593,78 +593,78 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \tf@toc=\write5
 \openout5 = `_main.toc'.
 
-[3] [4]
-<images/8psue2xkvn811.jpg, id=352, 1981.4025pt x 1144.275pt>
+[3] [4] [5]
+<images/8psue2xkvn811.jpg, id=356, 1981.4025pt x 1144.275pt>
 File: images/8psue2xkvn811.jpg Graphic file (type jpg)
 <use images/8psue2xkvn811.jpg>
-Package pdftex.def Info: images/8psue2xkvn811.jpg  used on input line 246.
+Package pdftex.def Info: images/8psue2xkvn811.jpg  used on input line 250.
 (pdftex.def)             Requested size: 375.80525pt x 217.03038pt.
-[5] [6 <./images/8psue2xkvn811.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+[6 <./images/8psue2xkvn811.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
 
  []
 
-<images/cran.png, id=372, 1919.17pt x 961.5925pt>
+<images/cran.png, id=368, 1919.17pt x 961.5925pt>
 File: images/cran.png Graphic file (type png)
 <use images/cran.png>
-Package pdftex.def Info: images/cran.png  used on input line 338.
+Package pdftex.def Info: images/cran.png  used on input line 342.
 (pdftex.def)             Requested size: 375.80334pt x 188.29477pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
-[7 <./images/cran.png>]
-<images/rstudio.png, id=388, 1291.82625pt x 964.60374pt>
+<images/rstudio.png, id=385, 1291.82625pt x 964.60374pt>
 File: images/rstudio.png Graphic file (type png)
 <use images/rstudio.png>
-Package pdftex.def Info: images/rstudio.png  used on input line 356.
+Package pdftex.def Info: images/rstudio.png  used on input line 360.
 (pdftex.def)             Requested size: 375.80272pt x 280.61104pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-<images/rstudio2.png, id=389, 1927.2pt x 1084.05pt>
+[8 <./images/cran.png> <./images/rstudio.png>]
+<images/rstudio2.png, id=397, 1927.2pt x 1084.05pt>
 File: images/rstudio2.png Graphic file (type png)
 <use images/rstudio2.png>
-Package pdftex.def Info: images/rstudio2.png  used on input line 374.
+Package pdftex.def Info: images/rstudio2.png  used on input line 378.
 (pdftex.def)             Requested size: 375.7878pt x 211.38063pt.
-[8 <./images/rstudio.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
 
  []
 
-<images/pkg1.png, id=400, 1927.2pt x 1084.05pt>
+<images/pkg1.png, id=399, 1927.2pt x 1084.05pt>
 File: images/pkg1.png Graphic file (type png)
 <use images/pkg1.png>
-Package pdftex.def Info: images/pkg1.png  used on input line 390.
+Package pdftex.def Info: images/pkg1.png  used on input line 394.
 (pdftex.def)             Requested size: 375.7878pt x 211.38063pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
+Underfull \hbox (badness 10000) in paragraph at lines 401--402
 
  []
 
-<images/pkg2.png, id=401, 1927.2pt x 1084.05pt>
+<images/pkg2.png, id=400, 1927.2pt x 1084.05pt>
 File: images/pkg2.png Graphic file (type png)
 <use images/pkg2.png>
-Package pdftex.def Info: images/pkg2.png  used on input line 400.
+Package pdftex.def Info: images/pkg2.png  used on input line 404.
 (pdftex.def)             Requested size: 375.7878pt x 211.38063pt.
 [9{/Users/federico/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <./images/rstudio2.png> <./images/pkg1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 407--408
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
 <images/pkg3.png, id=413, 1927.2pt x 1084.05pt>
 File: images/pkg3.png Graphic file (type png)
 <use images/pkg3.png>
-Package pdftex.def Info: images/pkg3.png  used on input line 410.
+Package pdftex.def Info: images/pkg3.png  used on input line 414.
 (pdftex.def)             Requested size: 375.7878pt x 211.38063pt.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 428.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 432.
 (/Users/federico/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 433--435
+Underfull \hbox (badness 10000) in paragraph at lines 437--439
 
  []
 
@@ -672,47 +672,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 433--435
 <images/workspace.png, id=423, 1927.2pt x 1084.05pt>
 File: images/workspace.png Graphic file (type png)
 <use images/workspace.png>
-Package pdftex.def Info: images/workspace.png  used on input line 460.
+Package pdftex.def Info: images/workspace.png  used on input line 464.
 (pdftex.def)             Requested size: 375.7878pt x 211.38063pt.
 [11 <./images/workspace.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 504.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 508.
 (/Users/federico/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 505.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 509.
 [12] [13{/Users/federico/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] [14] [15{/Users/federico/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}] [16] [17] [18] [19]
-Overfull \hbox (67.28142pt too wide) in paragraph at lines 1066--1074
+Overfull \hbox (67.28142pt too wide) in paragraph at lines 1070--1078
 \T1/lmr/m/n/10 Working with ex-ter-nal code or data, I of-ten see vari-able names or ob-ject names such as $\OML/lmm/m/it/10 X; y; xs; x\OT1/lmr/m/n/10 1\OML/lmm/m/it/10 ; x\OT1/lmr/m/n/10 2\OML/lmm/m/it/10 ; tp; tn; clf; reg; xi; yi; ii$\T1/lmr/m/n/10 .
  []
 
 [20]
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1138.
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1142.
 (/Users/federico/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [21] [22] [23] [24]
 
 LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1382.
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1386.
 
 [25] [26] [27]
 <_main_files/figure-latex/unnamed-chunk-33-1.pdf, id=582, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-33-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-33-1.pdf  used on input line 1642.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-33-1.pdf  used on input line 1646.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-33-2.pdf, id=583, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-33-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-33-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-33-2.pdf  used on input line 1642.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-33-2.pdf  used on input line 1646.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-33-3.pdf, id=584, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-33-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-33-3.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-33-3.pdf  used on input line 1642.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-33-3.pdf  used on input line 1646.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 1642--1642
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 1646--1646
 [][] []
  []
 
@@ -720,21 +720,21 @@ Overfull \hbox (2.22543pt too wide) in paragraph at lines 1642--1642
 <_main_files/figure-latex/unnamed-chunk-34-1.pdf, id=595, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-34-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-34-1.pdf  used on input line 1671.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-34-1.pdf  used on input line 1675.
 (pdftex.def)             Requested size: 375.8238pt x 187.9119pt.
 [29 <./_main_files/figure-latex/unnamed-chunk-33-1.pdf> <./_main_files/figure-latex/unnamed-chunk-33-2.pdf> <./_main_files/figure-latex/unnamed-chunk-33-3.pdf>]
 <_main_files/figure-latex/unnamed-chunk-35-1.pdf, id=627, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-35-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-35-1.pdf  used on input line 1703.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-35-1.pdf  used on input line 1707.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-35-2.pdf, id=628, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-35-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-35-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-35-2.pdf  used on input line 1703.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-35-2.pdf  used on input line 1707.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 1703--1703
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 1707--1707
 [][] [] 
  []
 
@@ -742,21 +742,21 @@ Overfull \hbox (2.22543pt too wide) in paragraph at lines 1703--1703
 <images/Schermata 2022-03-28 alle 10.36.15.png, id=666, 669.50125pt x 432.61626pt>
 File: images/Schermata 2022-03-28 alle 10.36.15.png Graphic file (type png)
 <use images/Schermata 2022-03-28 alle 10.36.15.png>
-Package pdftex.def Info: images/Schermata 2022-03-28 alle 10.36.15.png  used on input line 1794.
+Package pdftex.def Info: images/Schermata 2022-03-28 alle 10.36.15.png  used on input line 1798.
 (pdftex.def)             Requested size: 375.81712pt x 242.84436pt.
 [33 <./images/Schermata 2022-03-28 alle 10.36.15.png>] [34{/Users/federico/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [35]
 <_main_files/figure-latex/unnamed-chunk-39-1.pdf, id=704, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-39-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-39-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-39-1.pdf  used on input line 1986.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-39-1.pdf  used on input line 1990.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-39-2.pdf, id=705, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-39-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-39-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-39-2.pdf  used on input line 1986.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-39-2.pdf  used on input line 1990.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 1986--1986
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 1990--1990
 [][] [] 
  []
 
@@ -764,36 +764,36 @@ Overfull \hbox (2.22543pt too wide) in paragraph at lines 1986--1986
 <images/gini.png, id=745, 307.1475pt x 308.15125pt>
 File: images/gini.png Graphic file (type png)
 <use images/gini.png>
-Package pdftex.def Info: images/gini.png  used on input line 2157.
+Package pdftex.def Info: images/gini.png  used on input line 2161.
 (pdftex.def)             Requested size: 234.87802pt x 235.64558pt.
 [38] [39 <./images/gini.png>] [40]
 <_main_files/figure-latex/fig1-1.pdf, id=773, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig1-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig1-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig1-1.pdf  used on input line 2292.
+Package pdftex.def Info: _main_files/figure-latex/fig1-1.pdf  used on input line 2296.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/fig1-2.pdf, id=774, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig1-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig1-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig1-2.pdf  used on input line 2292.
+Package pdftex.def Info: _main_files/figure-latex/fig1-2.pdf  used on input line 2296.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/fig1-3.pdf, id=775, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig1-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig1-3.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig1-3.pdf  used on input line 2292.
+Package pdftex.def Info: _main_files/figure-latex/fig1-3.pdf  used on input line 2296.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/fig1-4.pdf, id=776, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig1-4.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig1-4.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig1-4.pdf  used on input line 2292.
+Package pdftex.def Info: _main_files/figure-latex/fig1-4.pdf  used on input line 2296.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 2292--2292
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 2296--2296
 [][] []
  []
 
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 2292--2292
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 2296--2296
 [] [] 
  []
 
@@ -801,15 +801,15 @@ Overfull \hbox (2.22543pt too wide) in paragraph at lines 2292--2292
 <_main_files/figure-latex/unnamed-chunk-55-1.pdf, id=866, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-55-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-55-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-55-1.pdf  used on input line 2858.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-55-1.pdf  used on input line 2862.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-55-2.pdf, id=867, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-55-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-55-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-55-2.pdf  used on input line 2858.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-55-2.pdf  used on input line 2862.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 2858--2858
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 2862--2862
 [][] [] 
  []
 
@@ -817,79 +817,79 @@ Overfull \hbox (2.22543pt too wide) in paragraph at lines 2858--2858
 <images/Senza titolo.png, id=894, 656.4525pt x 277.035pt>
 File: images/Senza titolo.png Graphic file (type png)
 <use images/Senza titolo.png>
-Package pdftex.def Info: images/Senza titolo.png  used on input line 2919.
+Package pdftex.def Info: images/Senza titolo.png  used on input line 2923.
 (pdftex.def)             Requested size: 375.8045pt x 158.59639pt.
 [50 <./images/Senza titolo.png>]
 <_main_files/figure-latex/unnamed-chunk-57-1.pdf, id=904, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-57-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-57-1.pdf  used on input line 2941.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-57-1.pdf  used on input line 2945.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 [51 <./_main_files/figure-latex/unnamed-chunk-57-1.pdf>]
 <_main_files/figure-latex/unnamed-chunk-60-1.pdf, id=921, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-60-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-60-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-60-1.pdf  used on input line 3035.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-60-1.pdf  used on input line 3039.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <images/Schermata 2022-03-29 alle 16.14.37.png, id=922, 427.5975pt x 197.73875pt>
 File: images/Schermata 2022-03-29 alle 16.14.37.png Graphic file (type png)
 <use images/Schermata 2022-03-29 alle 16.14.37.png>
-Package pdftex.def Info: images/Schermata 2022-03-29 alle 16.14.37.png  used on input line 3044.
+Package pdftex.def Info: images/Schermata 2022-03-29 alle 16.14.37.png  used on input line 3048.
 (pdftex.def)             Requested size: 234.8727pt x 108.61484pt.
 [52 <./_main_files/figure-latex/unnamed-chunk-60-1.pdf> <./images/Schermata 2022-03-29 alle 16.14.37.png>]
 <_main_files/figure-latex/unnamed-chunk-64-1.pdf, id=939, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-64-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-64-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-64-1.pdf  used on input line 3115.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-64-1.pdf  used on input line 3119.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <images/Schermata 2022-03-29 alle 16.36.10.png, id=940, 545.03625pt x 195.73125pt>
 File: images/Schermata 2022-03-29 alle 16.36.10.png Graphic file (type png)
 <use images/Schermata 2022-03-29 alle 16.36.10.png>
-Package pdftex.def Info: images/Schermata 2022-03-29 alle 16.36.10.png  used on input line 3124.
+Package pdftex.def Info: images/Schermata 2022-03-29 alle 16.36.10.png  used on input line 3128.
 (pdftex.def)             Requested size: 234.87665pt x 84.34796pt.
 [53 <./_main_files/figure-latex/unnamed-chunk-64-1.pdf>] [54 <./images/Schermata 2022-03-29 alle 16.36.10.png>] [55] [56] [57]
 <_main_files/figure-latex/unnamed-chunk-74-1.pdf, id=999, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-74-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-74-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-74-1.pdf  used on input line 3500.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-74-1.pdf  used on input line 3504.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 [58]
 <images/Schermata 2022-07-07 alle 17.24.44.png, id=1011, 450.68375pt x 279.0425pt>
 File: images/Schermata 2022-07-07 alle 17.24.44.png Graphic file (type png)
 <use images/Schermata 2022-07-07 alle 17.24.44.png>
-Package pdftex.def Info: images/Schermata 2022-07-07 alle 17.24.44.png  used on input line 3556.
+Package pdftex.def Info: images/Schermata 2022-07-07 alle 17.24.44.png  used on input line 3560.
 (pdftex.def)             Requested size: 234.87953pt x 145.42651pt.
 [59 <./_main_files/figure-latex/unnamed-chunk-74-1.pdf>] [60 <./images/Schermata 2022-07-07 alle 17.24.44.png>]
 <images/Schermata 2022-07-07 alle 18.49.38.png, id=1037, 470.75874pt x 358.33875pt>
 File: images/Schermata 2022-07-07 alle 18.49.38.png Graphic file (type png)
 <use images/Schermata 2022-07-07 alle 18.49.38.png>
-Package pdftex.def Info: images/Schermata 2022-07-07 alle 18.49.38.png  used on input line 3685.
+Package pdftex.def Info: images/Schermata 2022-07-07 alle 18.49.38.png  used on input line 3689.
 (pdftex.def)             Requested size: 234.87596pt x 178.78618pt.
 [61] [62 <./images/Schermata 2022-07-07 alle 18.49.38.png>] [63]
 <_main_files/figure-latex/fig2-1.pdf, id=1063, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig2-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig2-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig2-1.pdf  used on input line 3843.
+Package pdftex.def Info: _main_files/figure-latex/fig2-1.pdf  used on input line 3847.
 (pdftex.def)             Requested size: 433.63878pt x 216.81938pt.
 [64 <./_main_files/figure-latex/fig2-1.pdf>]
 <_main_files/figure-latex/fig3-1.pdf, id=1076, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig3-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig3-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig3-1.pdf  used on input line 3922.
+Package pdftex.def Info: _main_files/figure-latex/fig3-1.pdf  used on input line 3926.
 (pdftex.def)             Requested size: 375.8238pt x 187.9119pt.
 [65]
 <_main_files/figure-latex/fig4-1.pdf, id=1084, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig4-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig4-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig4-1.pdf  used on input line 3962.
+Package pdftex.def Info: _main_files/figure-latex/fig4-1.pdf  used on input line 3966.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/fig4-2.pdf, id=1085, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/fig4-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/fig4-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/fig4-2.pdf  used on input line 3962.
+Package pdftex.def Info: _main_files/figure-latex/fig4-2.pdf  used on input line 3966.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 3962--3962
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 3966--3966
 [][] [] 
  []
 
@@ -897,47 +897,47 @@ Overfull \hbox (2.22543pt too wide) in paragraph at lines 3962--3962
 <_main_files/figure-latex/unnamed-chunk-81-1.pdf, id=1114, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-81-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-81-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-81-1.pdf  used on input line 4003.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-81-1.pdf  used on input line 4007.
 (pdftex.def)             Requested size: 375.8238pt x 187.9119pt.
 [67 <./_main_files/figure-latex/unnamed-chunk-81-1.pdf>] [68]
 <_main_files/figure-latex/unnamed-chunk-84-1.pdf, id=1140, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-84-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-84-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-84-1.pdf  used on input line 4133.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-84-1.pdf  used on input line 4137.
 (pdftex.def)             Requested size: 375.8238pt x 187.9119pt.
 [69 <./_main_files/figure-latex/unnamed-chunk-84-1.pdf>]
 <_main_files/figure-latex/unnamed-chunk-85-1.pdf, id=1151, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-85-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-85-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-85-1.pdf  used on input line 4180.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-85-1.pdf  used on input line 4184.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-85-2.pdf, id=1152, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-85-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-85-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-85-2.pdf  used on input line 4180.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-85-2.pdf  used on input line 4184.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-85-3.pdf, id=1153, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-85-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-85-3.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-85-3.pdf  used on input line 4180.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-85-3.pdf  used on input line 4184.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 4180--4180
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 4184--4184
 [][] []
  []
 
 <_main_files/figure-latex/unnamed-chunk-86-1.pdf, id=1154, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-86-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-86-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-86-1.pdf  used on input line 4200.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-86-1.pdf  used on input line 4204.
 (pdftex.def)             Requested size: 433.63878pt x 216.81938pt.
 <_main_files/figure-latex/unnamed-chunk-86-2.pdf, id=1155, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-86-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-86-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-86-2.pdf  used on input line 4200.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-86-2.pdf  used on input line 4204.
 (pdftex.def)             Requested size: 433.63878pt x 216.81938pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4200--4200
+Underfull \hbox (badness 10000) in paragraph at lines 4204--4204
 [][]
  []
 
@@ -945,36 +945,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 4200--4200
 <images/classification-tree_ygvats copia.jpg, id=1197, 2228.325pt x 1230.5975pt>
 File: images/classification-tree_ygvats copia.jpg Graphic file (type jpg)
 <use images/classification-tree_ygvats copia.jpg>
-Package pdftex.def Info: images/classification-tree_ygvats copia.jpg  used on input line 4252.
+Package pdftex.def Info: images/classification-tree_ygvats copia.jpg  used on input line 4256.
 (pdftex.def)             Requested size: 375.7841pt x 207.52762pt.
 [72 <./images/classification-tree_ygvats copia.jpg>] [73]
 <_main_files/figure-latex/unnamed-chunk-89-1.pdf, id=1213, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-89-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-89-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-89-1.pdf  used on input line 4374.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-89-1.pdf  used on input line 4378.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 <_main_files/figure-latex/unnamed-chunk-89-2.pdf, id=1214, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-89-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-89-2.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-89-2.pdf  used on input line 4374.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-89-2.pdf  used on input line 4378.
 (pdftex.def)             Requested size: 234.87912pt x 117.43956pt.
 
-Overfull \hbox (2.22543pt too wide) in paragraph at lines 4374--4374
+Overfull \hbox (2.22543pt too wide) in paragraph at lines 4378--4378
 [][] [] 
  []
 
 <_main_files/figure-latex/unnamed-chunk-90-1.pdf, id=1215, 433.62pt x 216.81pt>
 File: _main_files/figure-latex/unnamed-chunk-90-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-90-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-90-1.pdf  used on input line 4379.
+Package pdftex.def Info: _main_files/figure-latex/unnamed-chunk-90-1.pdf  used on input line 4383.
 (pdftex.def)             Requested size: 375.8238pt x 187.9119pt.
 [74 <./_main_files/figure-latex/unnamed-chunk-89-1.pdf> <./_main_files/figure-latex/unnamed-chunk-89-2.pdf> <./_main_files/figure-latex/unnamed-chunk-90-1.pdf>] [75] [76] [77] [78] [79]
-Underfull \hbox (badness 1019) in paragraph at lines 4740--4742
+Underfull \hbox (badness 1019) in paragraph at lines 4744--4746
 []\T1/lmr/m/n/10 Frost, Jim. n.d. ``Nor-mal Dis-tri-bu-tion in Statis-tics.'' [][]$https : / / statisticsbyjim . com / basics / normal -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4767--4769
+Underfull \hbox (badness 10000) in paragraph at lines 4771--4773
 [][]$\T1/lmr/m/n/10 https : / / towardsdatascience . com / data -[] scientists -[] your -[] variable -[] names -[] are -[] awful -[] heres -[] how -[] to -[] ^^\x -[] them -[]
  []
 
