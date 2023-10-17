@@ -23,14 +23,14 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="preface.html"/>
 <link rel="next" href="a-b-c.html"/>
 <script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -242,7 +242,6 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
 <li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
@@ -286,50 +285,50 @@ functions and/or data.</p>
 <li>Download the R installer from <a href="https://cran.r-project.org/">CRAN</a>.<br />
 </li>
 </ol>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold", fig.cap="Select the version of R according to your operating system."} -->
-<!--  knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/cran.png") -->
-<!-- ``` -->
-<pre><code>&lt;!-- ![Select the version of R according to your operating --&gt;
-
-&lt;!-- system.](/Volumes/New/lavori/corso%20R/materiali/cran.png)\ --&gt;</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/cran.png" alt="Select the version of R according to your operating system." width="80%"  />
+<p class="caption">
+Figure 1.1: Select the version of R according to your operating system.
+</p>
+</div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Run the installer keeping the default settings. If you do not have admin rights on your computer, please ask you IT Support to give you full permissions to the R directories. Otherwise you will not be able to install packages afterwards.</p></li>
 <li><p>Download the R-Studio installer from <a href="https://rstudio.com/products/rstudio/download/#download">R-Studio</a>.<br />
 </p></li>
 </ol>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold", fig.cap="Select the version of R-Studio according to your operating system."} -->
-<!--  knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/rstudio.png") -->
-<!-- ``` -->
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="images/rstudio.png" alt="Select the version of R-Studio according to your operating system." width="80%"  />
+<p class="caption">
+Figure 1.2: Select the version of R-Studio according to your operating system.
+</p>
+</div>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Once the installation of R is completed (NOT BEFORE), run the R-Studio installer keeping the default settings.</p></li>
 <li><p>Run R-Studio. It should open an window like the one in the image below.<br />
 </p></li>
 </ol>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold", fig.cap="R-Studio."} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/rstudio2.png") -->
-<!-- ``` -->
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="images/rstudio2.png" alt="R-Studio." width="80%"  />
+<p class="caption">
+Figure 1.3: R-Studio.
+</p>
+</div>
 <ol start="6" style="list-style-type: decimal">
 <li><p>In the left hand window, by the sign “&gt;”, type “4+5” (without the quotes) and hit enter. An output line reading “<span class="math inline">\([1]\)</span> 9” should appear. This means that R and R-Studio are working properly. If this is not successful, please <a href="%5Bmailto:%20info@federicoroscioli.com%5D(mailto:%20info@federicoroscioli.com)%7B.uri%7D">contact me</a>.</p></li>
 <li><p>Go to Tools -&gt; Install Packages and install the packages:“gt”, and “readxl”. See the image below.<br />
 </p></li>
 </ol>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/pkg1.png") -->
-<!-- ``` -->
+<p><img src="images/pkg1.png" width="80%"  style="display: block; margin: auto;" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Check that the packages are installed by typing “library(gt)” (without the quotes) in the prompt and press enter.<br />
 </li>
 </ol>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/pkg2.png") -->
-<!-- ``` -->
+<p><img src="images/pkg2.png" width="80%"  style="display: block; margin: auto;" /></p>
 <ol start="9" style="list-style-type: decimal">
 <li>Finally type “sessioninfo()” (without the quotes) and check that gt has been installed.<br />
 </li>
 </ol>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/pkg3.png") -->
-<!-- ``` -->
+<p><img src="images/pkg3.png" width="80%"  style="display: block; margin: auto;" /></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -360,9 +359,7 @@ Xcode</li>
 </div>
 <div id="the-workspace" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> The workspace<a href="installation.html#the-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/workspace.png") -->
-<!-- ``` -->
+<p><img src="images/workspace.png" width="80%"  style="display: block; margin: auto;" /></p>
 <p>The <strong>source</strong> is a text file with extension .R that can be saved and
 opened from every version of R and R-Studio. This file will allow us to
 run and rerun a bunch of code, modify some details if we made a mistake
@@ -395,7 +392,7 @@ R Core Team. 2022. <span>“R Language Definition.”</span> <a href="https://cr
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preface.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="a-b-c.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

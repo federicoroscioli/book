@@ -137,6 +137,11 @@
 \usepackage{caption}
 \usepackage{ragged2e}
 \usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{Introduction to Data Analysis with R}
+\fancyfoot[C]{www.federicoroscioli.com}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{v. 5.0}
 \usepackage{float}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -156,7 +161,7 @@
 
 \title{Introduction to Data Analysis with R}
 \author{Federico Roscioli}
-\date{2023-10-16}
+\date{2023-10-17}
 
 \begin{document}
 \maketitle
@@ -165,17 +170,13 @@
 
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \tableofcontents
 }
 \pagebreak
 
 ~
 \pagebreak
-
-\hypertarget{preface}{%
-\section*{Preface}\label{preface}}
-\addcontentsline{toc}{section}{Preface}
 
 This manual is composed by two main sections divided in chapters. The
 first section will introduce the reader to the basic characteristics of
@@ -185,7 +186,7 @@ visualize, explore, understand, manipulate and create data. It will do
 so in a progressive way, starting from simple computations and ending
 with complex data manipulation and plotting. The second section,
 instead, will be all about applied statistics, from exploratory
-analysis, to the introduction of the normal distribution and its
+analysis, to the introduction of hypothesis testing and its
 implications, to bivariate and multivariate analysis methods, such as
 principal component analysis and classification and regression trees.
 
@@ -201,6 +202,10 @@ finally want to remark that the code I provide is ``my best and easiest
 version of the solution'', I hope you will appreciate it. In fact, with
 R, it is possible to do the same thing in 1000 different ways, and by
 looking at the internet you can have a confirmation of it.
+
+\hypertarget{preface}{%
+\section*{Preface}\label{preface}}
+\addcontentsline{toc}{section}{Preface}
 
 \justifying
 
@@ -238,7 +243,7 @@ data\ldots{} Ok, ok! I'm a bit exaggerating\ldots{} I don't want to scare you to
 much, but yes, this is the worst case scenario and many of your
 colleagues already passed through that, and survived!
 
-\includegraphics[width=1\linewidth,]{images/8psue2xkvn811}
+\begin{center}\includegraphics[width=0.8\linewidth,]{images/8psue2xkvn811} \end{center}
 
 The fact is that, R is a language and, as such, should be practiced as
 much as possible in order to learn it. But R is ``only'' a coding
@@ -328,11 +333,14 @@ To install the software, follow all the 9 steps below:
   Download the R installer from \href{https://cran.r-project.org/}{CRAN}.\\
 \end{enumerate}
 
-\begin{verbatim}
-<!-- ![Select the version of R according to your operating -->
+\begin{figure}[H]
 
-<!-- system.](/Volumes/New/lavori/corso%20R/materiali/cran.png)\ -->
-\end{verbatim}
+{\centering \includegraphics[width=0.8\linewidth,]{images/cran} 
+
+}
+
+\caption{Select the version of R according to your operating system.}\label{fig:unnamed-chunk-2}
+\end{figure}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -343,6 +351,15 @@ To install the software, follow all the 9 steps below:
   Download the R-Studio installer from \href{https://rstudio.com/products/rstudio/download/\#download}{R-Studio}.\\
 \end{enumerate}
 
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/rstudio} 
+
+}
+
+\caption{Select the version of R-Studio according to your operating system.}\label{fig:unnamed-chunk-3}
+\end{figure}
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
@@ -351,6 +368,15 @@ To install the software, follow all the 9 steps below:
 \item
   Run R-Studio. It should open an window like the one in the image below.\\
 \end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/rstudio2} 
+
+}
+
+\caption{R-Studio.}\label{fig:unnamed-chunk-4}
+\end{figure}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -361,6 +387,8 @@ To install the software, follow all the 9 steps below:
   Go to Tools -\textgreater{} Install Packages and install the packages:``gt'', and ``readxl''. See the image below.\\
 \end{enumerate}
 
+\begin{center}\includegraphics[width=0.8\linewidth,]{images/pkg1} \end{center}
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{7}
@@ -369,6 +397,8 @@ To install the software, follow all the 9 steps below:
   Check that the packages are installed by typing ``library(gt)'' (without the quotes) in the prompt and press enter.\\
 \end{enumerate}
 
+\begin{center}\includegraphics[width=0.8\linewidth,]{images/pkg2} \end{center}
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{8}
@@ -376,6 +406,8 @@ To install the software, follow all the 9 steps below:
 \item
   Finally type ``sessioninfo()'' (without the quotes) and check that gt has been installed.\\
 \end{enumerate}
+
+\begin{center}\includegraphics[width=0.8\linewidth,]{images/pkg3} \end{center}
 
 ~
 
@@ -424,6 +456,8 @@ Personally, I find them really helpful.
 
 \hypertarget{the-workspace}{%
 \subsection{The workspace}\label{the-workspace}}
+
+\begin{center}\includegraphics[width=0.8\linewidth,]{images/workspace} \end{center}
 
 The \textbf{source} is a text file with extension .R that can be saved and
 opened from every version of R and R-Studio. This file will allow us to
@@ -1605,7 +1639,7 @@ my way of working, but you are free to do as you prefer.}
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-26-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-26-2} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-26-3} \caption{From top-left clockwise: Regression line GAM; Linear regression line; Facets.}\label{fig:unnamed-chunk-26}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-33-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-33-2} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-33-3} \caption{From top-left clockwise: Regression line GAM; Linear regression line; Facets.}\label{fig:unnamed-chunk-33}
 \end{figure}
 
 Following an example application of the need for melting data for the
@@ -1633,7 +1667,12 @@ be the paired (specifying \texttt{position\ =\ \textquotesingle{}dodge\textquote
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-27-1} \caption{Paired barchart.}\label{fig:unnamed-chunk-27}
+
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-34-1} 
+
+}
+
+\caption{Paired barchart.}\label{fig:unnamed-chunk-34}
 \end{figure}
 
 We are able to personalize almost everything as we like using \texttt{ggplot2}.
@@ -1661,7 +1700,7 @@ packages, and provides the code for replicating each one of them.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-28-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-28-2} \caption{From top-left clockwise: Labeled scatterplot; Violin plot.}\label{fig:unnamed-chunk-28}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-35-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-35-2} \caption{From top-left clockwise: Labeled scatterplot; Violin plot.}\label{fig:unnamed-chunk-35}
 \end{figure}
 
 Finally, I want to show you what to do if we have some outliers in our
@@ -1751,7 +1790,12 @@ steps from 4 to 6, given that the first two are out of the scope of this
 book and the third has been treated in the previous section.
 
 \begin{figure}[H]
-\includegraphics[width=600px,]{images/Schermata 2022-03-28 alle 10.36.15} \caption{The six steps of data analysis.}\label{fig:unnamed-chunk-30}
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/Schermata 2022-03-28 alle 10.36.15} 
+
+}
+
+\caption{The six steps of data analysis.}\label{fig:unnamed-chunk-37}
 \end{figure}
 
 Exploratory data analysis is usually performed when we have our first
@@ -1939,7 +1983,7 @@ b & 3 & 3 & 3 \\
 \end{longtable}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-32-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-32-2} \caption{From left: Histograms of the samples a and b.}\label{fig:unnamed-chunk-32}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-39-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-39-2} \caption{From left: Histograms of the samples a and b.}\label{fig:unnamed-chunk-39}
 \end{figure}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -2109,7 +2153,12 @@ where \emph{N} is the population size, and \emph{q} is the cumulative relative
 income.
 
 \begin{figure}[H]
-\includegraphics[width=180px,]{images/gini} \caption{Graphical representation of the Gini index.}\label{fig:unnamed-chunk-35}
+
+{\centering \includegraphics[width=0.5\linewidth,]{images/gini} 
+
+}
+
+\caption{Graphical representation of the Gini index.}\label{fig:unnamed-chunk-42}
 \end{figure}
 
 Run the code below and calculate the Gini coefficient for both the x and
@@ -2805,16 +2854,8 @@ histogram. The probability that a random variable assumes a value
 between \(a\) and \(b\) is equal to the area under the density function
 bounded by \(a\) and \(b\) (\protect\hyperlink{ref-damodaran}{Damodaran, n.d.}).
 
-\begin{verbatim}
-## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
-## i Please use `after_stat(density)` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-\end{verbatim}
-
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-48-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-48-2} \caption{From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5.}\label{fig:unnamed-chunk-48}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-55-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-55-2} \caption{From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5.}\label{fig:unnamed-chunk-55}
 \end{figure}
 
 In Figure 9, the shaded area in the graph represents the probability
@@ -2874,7 +2915,12 @@ reason, in statistics, when dealing with large-enough dataset, the
 normal distribution is assumed, even if it is not perfect.
 
 \begin{figure}[H]
-\includegraphics[width=600px,]{images/Senza titolo} \caption{The Empirical Rule.}\label{fig:unnamed-chunk-49}
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/Senza titolo} 
+
+}
+
+\caption{The Empirical Rule.}\label{fig:unnamed-chunk-56}
 \end{figure}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -2891,7 +2937,12 @@ distributions of two elements (the weight of apple and pears), by
 standardizing we can do it (Figure 11).
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-50-1} \caption{The comparison between weight and income standardized.}\label{fig:unnamed-chunk-50}
+
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-57-1} 
+
+}
+
+\caption{The comparison between Apples and Pears standardized.}\label{fig:unnamed-chunk-57}
 \end{figure}
 
 ~
@@ -2980,10 +3031,22 @@ the package \texttt{gginfernece} (\protect\hyperlink{ref-bratsas2020}{Bratsas, F
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-53-1} \caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-53}
+
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-60-1} 
+
+}
+
+\caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-60}
 \end{figure}
 
-\includegraphics[width=350px,]{images/Schermata 2022-03-29 alle 16.14.37}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.5\linewidth,]{images/Schermata 2022-03-29 alle 16.14.37} 
+
+}
+
+\caption{Single Sample T-Test output example.}\label{fig:unnamed-chunk-61}
+\end{figure}
 
 The output of the test in R gives us many information. The most
 important are: the data that we are using (\texttt{mtcars\$mpg}), the t
@@ -3048,10 +3111,22 @@ package \texttt{gginfernece} (\protect\hyperlink{ref-bratsas2020}{Bratsas, Foudo
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-57-1} \caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-57}
+
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-64-1} 
+
+}
+
+\caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-64}
 \end{figure}
 
-\includegraphics[width=400px,]{images/Schermata 2022-03-29 alle 16.36.10}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.5\linewidth,]{images/Schermata 2022-03-29 alle 16.36.10} 
+
+}
+
+\caption{Two sample T-test output example.}\label{fig:unnamed-chunk-65}
+\end{figure}
 
 As for the One-Sample T-Test, R gives us a set of information about the
 test. The most important are: the data that we are using, the t
@@ -3421,7 +3496,12 @@ where \(\bar{x}\) is the mean (average) of the \(x\) values and \(\bar{y}\)
 is the mean of the \(y\) values.
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-67-1} \caption{Plot of the residuals from a regression line.}\label{fig:unnamed-chunk-67}
+
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-74-1} 
+
+}
+
+\caption{Plot of the residuals from a regression line.}\label{fig:unnamed-chunk-74}
 \end{figure}
 
 As we said, before building our first regression model, it is important
@@ -3472,7 +3552,12 @@ additional factors that are missing in our model and could improve our
 understanding of the phenomenon.
 
 \begin{figure}[H]
-\includegraphics[width=350px,]{images/Schermata 2022-07-07 alle 17.24.44} \caption{Linear regression model summary output.}\label{fig:unnamed-chunk-69}
+
+{\centering \includegraphics[width=0.5\linewidth,]{images/Schermata 2022-07-07 alle 17.24.44} 
+
+}
+
+\caption{Linear regression model summary output.}\label{fig:unnamed-chunk-76}
 \end{figure}
 
 Whether simple linear regression is a useful approach for predicting a
@@ -3596,7 +3681,12 @@ value, the better the model is able to predict the value of the response
 variable.
 
 \begin{figure}[H]
-\includegraphics[width=350px,]{images/Schermata 2022-07-07 alle 18.49.38} \caption{Logistic regression model summary output.}\label{fig:unnamed-chunk-73}
+
+{\centering \includegraphics[width=0.5\linewidth,]{images/Schermata 2022-07-07 alle 18.49.38} 
+
+}
+
+\caption{Logistic regression model summary output.}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 ~
@@ -3750,7 +3840,7 @@ assigned (see \protect\hyperlink{row-names}{Row Names})}.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics{_main_files/figure-latex/fig2-1} \caption{Dendogram plot.}\label{fig:fig2}
+\includegraphics[width=1\linewidth,]{_main_files/figure-latex/fig2-1} \caption{Dendogram plot.}\label{fig:fig2}
 \end{figure}
 
 The last line of code adds the rectangles highlighting 3 clusters. The
@@ -3828,7 +3918,12 @@ components.}
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics{_main_files/figure-latex/fig3-1} \caption{K-means clustering.}\label{fig:fig3}
+
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/fig3-1} 
+
+}
+
+\caption{K-means clustering.}\label{fig:fig3}
 \end{figure}
 
 ~
@@ -3904,7 +3999,12 @@ sector. For more advanced Heatmaps, please \href{https://www.datanovia.com/en/le
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics{_main_files/figure-latex/unnamed-chunk-74-1} \caption{Heatmap.}\label{fig:unnamed-chunk-74}
+
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-81-1} 
+
+}
+
+\caption{Heatmap.}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 ~
@@ -4029,7 +4129,12 @@ variability within the data.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-77-1} \caption{Screeplot.}\label{fig:unnamed-chunk-77}
+
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-84-1} 
+
+}
+
+\caption{Screeplot.}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 The final step is to plot the graph of the variables, where positively
@@ -4072,7 +4177,7 @@ plot can be do messy to be analyzed.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-78-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-78-2} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-78-3} \caption{From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables.}\label{fig:unnamed-chunk-78}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-85-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-85-2} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-85-3} \caption{From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables.}\label{fig:unnamed-chunk-85}
 \end{figure}
 
 As a robustness check, and also to better understand what the algorithm
@@ -4092,7 +4197,7 @@ aim of the PCA algorithm.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics{_main_files/figure-latex/unnamed-chunk-79-1} \includegraphics{_main_files/figure-latex/unnamed-chunk-79-2} \caption{From left: Pairs graph before PCA; Pairs graph after PCA.}\label{fig:unnamed-chunk-79}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-86-1} \includegraphics{_main_files/figure-latex/unnamed-chunk-86-2} \caption{From top: Pairs graph before PCA; Pairs graph after PCA.}\label{fig:unnamed-chunk-86}
 \end{figure}
 
 ~
@@ -4143,7 +4248,12 @@ accept the new job offer only if the salary is higher than \$50k, it
 takes less than one hour to commute, and the company offers free coffee.
 
 \begin{figure}[H]
-\includegraphics[width=600px,]{images/classification-tree_ygvats copia} \caption{Classification tree explanation. Source Lee (2018).}\label{fig:unnamed-chunk-80}
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/classification-tree_ygvats copia} 
+
+}
+
+\caption{Classification tree explanation. Source Lee (2018).}\label{fig:unnamed-chunk-87}
 \end{figure}
 
 The main question is when to stop splitting? Clearly, if all of the
@@ -4261,11 +4371,16 @@ the result.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-82-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-82-2} \caption{From left: Complexity vs X-val Relative Error; The automatically pruned CART.}\label{fig:unnamed-chunk-82}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-89-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-89-2} \caption{From left: Complexity vs X-val Relative Error; The automatically pruned CART.}\label{fig:unnamed-chunk-89}
 \end{figure}
 
 \begin{figure}[H]
-\includegraphics{_main_files/figure-latex/unnamed-chunk-83-1} \caption{The manually pruned CART.}\label{fig:unnamed-chunk-83}
+
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-90-1} 
+
+}
+
+\caption{The manually pruned CART.}\label{fig:unnamed-chunk-90}
 \end{figure}
 
 If we want to give an interpretation of the manually pruned tree we can
@@ -4567,11 +4682,6 @@ penality corresponding to the final indicator.
 \end{itemize}
 
 \newpage
-
-\hypertarget{spatial-analysis}{%
-\section{Spatial Analysis}\label{spatial-analysis}}
-
-To be done\ldots{}
 
 \newpage
 

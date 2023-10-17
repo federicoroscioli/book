@@ -23,7 +23,7 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -242,7 +242,6 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
 <li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
@@ -292,20 +291,20 @@ correct some values according to our conditions.</p>
 <p>Within the <code>ifelse()</code> function we are required to specify the
 condition(s), comma, the value to give if the condition(s) is true,
 comma, the value to give if the condition(s) is false.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="advanced-data-manipulation-and-plotting.html#cb19-1" tabindex="-1"></a><span class="co"># creating a new var conditionally</span></span>
-<span id="cb19-2"><a href="advanced-data-manipulation-and-plotting.html#cb19-2" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb19-3"><a href="advanced-data-manipulation-and-plotting.html#cb19-3" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="advanced-data-manipulation-and-plotting.html#cb19-4" tabindex="-1"></a><span class="co"># creating a new var with more conditions</span></span>
-<span id="cb19-5"><a href="advanced-data-manipulation-and-plotting.html#cb19-5" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> mtcars<span class="sc">$</span>cyl <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb19-6"><a href="advanced-data-manipulation-and-plotting.html#cb19-6" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="advanced-data-manipulation-and-plotting.html#cb19-7" tabindex="-1"></a><span class="co"># creating a new var with more and more conditions in nested way</span></span>
-<span id="cb19-8"><a href="advanced-data-manipulation-and-plotting.html#cb19-8" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="dv">100</span>,</span>
-<span id="cb19-9"><a href="advanced-data-manipulation-and-plotting.html#cb19-9" tabindex="-1"></a>                        <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&lt;</span> <span class="dv">17</span>, <span class="dv">10</span> ,</span>
-<span id="cb19-10"><a href="advanced-data-manipulation-and-plotting.html#cb19-10" tabindex="-1"></a>                                <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>cyl <span class="sc">==</span> <span class="dv">6</span>, <span class="cn">NA</span> , mtcars<span class="sc">$</span>mpg )))</span>
-<span id="cb19-11"><a href="advanced-data-manipulation-and-plotting.html#cb19-11" tabindex="-1"></a><span class="co"># correctin a variable</span></span>
-<span id="cb19-12"><a href="advanced-data-manipulation-and-plotting.html#cb19-12" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>cyl<span class="sc">&gt;</span><span class="dv">5</span>, <span class="cn">NA</span>, mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb19-13"><a href="advanced-data-manipulation-and-plotting.html#cb19-13" tabindex="-1"></a><span class="co">#this is the same as</span></span>
-<span id="cb19-14"><a href="advanced-data-manipulation-and-plotting.html#cb19-14" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>cyl<span class="sc">&gt;</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="advanced-data-manipulation-and-plotting.html#cb18-1" tabindex="-1"></a><span class="co"># creating a new var conditionally</span></span>
+<span id="cb18-2"><a href="advanced-data-manipulation-and-plotting.html#cb18-2" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb18-3"><a href="advanced-data-manipulation-and-plotting.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="advanced-data-manipulation-and-plotting.html#cb18-4" tabindex="-1"></a><span class="co"># creating a new var with more conditions</span></span>
+<span id="cb18-5"><a href="advanced-data-manipulation-and-plotting.html#cb18-5" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> mtcars<span class="sc">$</span>cyl <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb18-6"><a href="advanced-data-manipulation-and-plotting.html#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="advanced-data-manipulation-and-plotting.html#cb18-7" tabindex="-1"></a><span class="co"># creating a new var with more and more conditions in nested way</span></span>
+<span id="cb18-8"><a href="advanced-data-manipulation-and-plotting.html#cb18-8" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="dv">100</span>,</span>
+<span id="cb18-9"><a href="advanced-data-manipulation-and-plotting.html#cb18-9" tabindex="-1"></a>                        <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&lt;</span> <span class="dv">17</span>, <span class="dv">10</span> ,</span>
+<span id="cb18-10"><a href="advanced-data-manipulation-and-plotting.html#cb18-10" tabindex="-1"></a>                                <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>cyl <span class="sc">==</span> <span class="dv">6</span>, <span class="cn">NA</span> , mtcars<span class="sc">$</span>mpg )))</span>
+<span id="cb18-11"><a href="advanced-data-manipulation-and-plotting.html#cb18-11" tabindex="-1"></a><span class="co"># correctin a variable</span></span>
+<span id="cb18-12"><a href="advanced-data-manipulation-and-plotting.html#cb18-12" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>cyl<span class="sc">&gt;</span><span class="dv">5</span>, <span class="cn">NA</span>, mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb18-13"><a href="advanced-data-manipulation-and-plotting.html#cb18-13" tabindex="-1"></a><span class="co">#this is the same as</span></span>
+<span id="cb18-14"><a href="advanced-data-manipulation-and-plotting.html#cb18-14" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>cyl<span class="sc">&gt;</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
 <p>In the case in which we have a categorical variable with multiple
 categories (i.e. the color of the car), and/or we want to create dummies
 for multiple categorical variables at once (i.e. the variables: red,
@@ -314,8 +313,8 @@ green, blue, etc), I suggest to use the package
 you can specify multiple columns using <code>c()</code>. The argument
 <code>remove_selected_columns</code> removes the original categorical variable
 after the transformation.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="advanced-data-manipulation-and-plotting.html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(fastDummies)</span>
-<span id="cb20-2"><a href="advanced-data-manipulation-and-plotting.html#cb20-2" tabindex="-1"></a><span class="fu">dummy_cols</span>(mtcars, <span class="at">select_columns =</span> <span class="st">&quot;cyl&quot;</span>, <span class="at">remove_selected_columns =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="advanced-data-manipulation-and-plotting.html#cb19-1" tabindex="-1"></a><span class="fu">library</span>(fastDummies)</span>
+<span id="cb19-2"><a href="advanced-data-manipulation-and-plotting.html#cb19-2" tabindex="-1"></a><span class="fu">dummy_cols</span>(mtcars, <span class="at">select_columns =</span> <span class="st">&quot;cyl&quot;</span>, <span class="at">remove_selected_columns =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -330,22 +329,22 @@ the data! So we can create our own summary of the data.</p>
 <p>Within the <code>apply()</code> function we have to impute the data we want to
 manipulate, comma, if we want it to apply the function row-wise (1) or
 column-wise (2), comma, the function we want to apply to the data.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="advanced-data-manipulation-and-plotting.html#cb21-1" tabindex="-1"></a><span class="do">############## apply</span></span>
-<span id="cb21-2"><a href="advanced-data-manipulation-and-plotting.html#cb21-2" tabindex="-1"></a><span class="co"># calculate the mean per each column</span></span>
-<span id="cb21-3"><a href="advanced-data-manipulation-and-plotting.html#cb21-3" tabindex="-1"></a><span class="fu">apply</span>(mtcars, <span class="dv">2</span>, mean)</span>
-<span id="cb21-4"><a href="advanced-data-manipulation-and-plotting.html#cb21-4" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="advanced-data-manipulation-and-plotting.html#cb21-5" tabindex="-1"></a><span class="co"># filter out rows where the mean of the row is lower than 20</span></span>
-<span id="cb21-6"><a href="advanced-data-manipulation-and-plotting.html#cb21-6" tabindex="-1"></a>mtcars[<span class="sc">-</span><span class="fu">apply</span>(mtcars, <span class="dv">1</span>, mean) <span class="sc">&lt;</span> <span class="dv">20</span>,]</span>
-<span id="cb21-7"><a href="advanced-data-manipulation-and-plotting.html#cb21-7" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="advanced-data-manipulation-and-plotting.html#cb21-8" tabindex="-1"></a><span class="co"># create statistical summary</span></span>
-<span id="cb21-9"><a href="advanced-data-manipulation-and-plotting.html#cb21-9" tabindex="-1"></a>Stat<span class="ot">&lt;-</span><span class="fu">cbind</span>(</span>
-<span id="cb21-10"><a href="advanced-data-manipulation-and-plotting.html#cb21-10" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,mean), </span>
-<span id="cb21-11"><a href="advanced-data-manipulation-and-plotting.html#cb21-11" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,sd),</span>
-<span id="cb21-12"><a href="advanced-data-manipulation-and-plotting.html#cb21-12" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[mtcars<span class="sc">$</span>am<span class="sc">==</span><span class="dv">0</span>,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,mean),</span>
-<span id="cb21-13"><a href="advanced-data-manipulation-and-plotting.html#cb21-13" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[mtcars<span class="sc">$</span>am<span class="sc">==</span><span class="dv">1</span>,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,mean)</span>
-<span id="cb21-14"><a href="advanced-data-manipulation-and-plotting.html#cb21-14" tabindex="-1"></a>)</span>
-<span id="cb21-15"><a href="advanced-data-manipulation-and-plotting.html#cb21-15" tabindex="-1"></a><span class="fu">colnames</span>(Stat)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;s.d.&quot;</span>, <span class="st">&quot;Mean Automatic&quot;</span>, <span class="st">&quot;Mean Manual&quot;</span>)</span>
-<span id="cb21-16"><a href="advanced-data-manipulation-and-plotting.html#cb21-16" tabindex="-1"></a><span class="fu">round</span>(Stat,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="advanced-data-manipulation-and-plotting.html#cb20-1" tabindex="-1"></a><span class="do">############## apply</span></span>
+<span id="cb20-2"><a href="advanced-data-manipulation-and-plotting.html#cb20-2" tabindex="-1"></a><span class="co"># calculate the mean per each column</span></span>
+<span id="cb20-3"><a href="advanced-data-manipulation-and-plotting.html#cb20-3" tabindex="-1"></a><span class="fu">apply</span>(mtcars, <span class="dv">2</span>, mean)</span>
+<span id="cb20-4"><a href="advanced-data-manipulation-and-plotting.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="advanced-data-manipulation-and-plotting.html#cb20-5" tabindex="-1"></a><span class="co"># filter out rows where the mean of the row is lower than 20</span></span>
+<span id="cb20-6"><a href="advanced-data-manipulation-and-plotting.html#cb20-6" tabindex="-1"></a>mtcars[<span class="sc">-</span><span class="fu">apply</span>(mtcars, <span class="dv">1</span>, mean) <span class="sc">&lt;</span> <span class="dv">20</span>,]</span>
+<span id="cb20-7"><a href="advanced-data-manipulation-and-plotting.html#cb20-7" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="advanced-data-manipulation-and-plotting.html#cb20-8" tabindex="-1"></a><span class="co"># create statistical summary</span></span>
+<span id="cb20-9"><a href="advanced-data-manipulation-and-plotting.html#cb20-9" tabindex="-1"></a>Stat<span class="ot">&lt;-</span><span class="fu">cbind</span>(</span>
+<span id="cb20-10"><a href="advanced-data-manipulation-and-plotting.html#cb20-10" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,mean), </span>
+<span id="cb20-11"><a href="advanced-data-manipulation-and-plotting.html#cb20-11" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,sd),</span>
+<span id="cb20-12"><a href="advanced-data-manipulation-and-plotting.html#cb20-12" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[mtcars<span class="sc">$</span>am<span class="sc">==</span><span class="dv">0</span>,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,mean),</span>
+<span id="cb20-13"><a href="advanced-data-manipulation-and-plotting.html#cb20-13" tabindex="-1"></a>  <span class="fu">apply</span>(mtcars[mtcars<span class="sc">$</span>am<span class="sc">==</span><span class="dv">1</span>,<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;disp&quot;</span>, <span class="st">&quot;hp&quot;</span>,<span class="st">&quot;drat&quot;</span>)],<span class="dv">2</span>,mean)</span>
+<span id="cb20-14"><a href="advanced-data-manipulation-and-plotting.html#cb20-14" tabindex="-1"></a>)</span>
+<span id="cb20-15"><a href="advanced-data-manipulation-and-plotting.html#cb20-15" tabindex="-1"></a><span class="fu">colnames</span>(Stat)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;s.d.&quot;</span>, <span class="st">&quot;Mean Automatic&quot;</span>, <span class="st">&quot;Mean Manual&quot;</span>)</span>
+<span id="cb20-16"><a href="advanced-data-manipulation-and-plotting.html#cb20-16" tabindex="-1"></a><span class="fu">round</span>(Stat,<span class="dv">2</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -369,27 +368,27 @@ select only some columns from the original data; finally for each
 species, we compute the number of characters and their average mass, and
 we filter only the groups with more than one character and an average
 mass above 50.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="advanced-data-manipulation-and-plotting.html#cb22-1" tabindex="-1"></a><span class="co"># loading the package and data</span></span>
-<span id="cb22-2"><a href="advanced-data-manipulation-and-plotting.html#cb22-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb22-3"><a href="advanced-data-manipulation-and-plotting.html#cb22-3" tabindex="-1"></a><span class="fu">data</span>(starwars)</span>
-<span id="cb22-4"><a href="advanced-data-manipulation-and-plotting.html#cb22-4" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="advanced-data-manipulation-and-plotting.html#cb22-5" tabindex="-1"></a><span class="co"># subsetting by skin color</span></span>
-<span id="cb22-6"><a href="advanced-data-manipulation-and-plotting.html#cb22-6" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb22-7"><a href="advanced-data-manipulation-and-plotting.html#cb22-7" tabindex="-1"></a>        <span class="fu">filter</span>(skin_color<span class="sc">==</span><span class="st">&quot;light&quot;</span>)</span>
-<span id="cb22-8"><a href="advanced-data-manipulation-and-plotting.html#cb22-8" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="advanced-data-manipulation-and-plotting.html#cb22-9" tabindex="-1"></a><span class="co"># creating a new variable and subsetting some columns</span></span>
-<span id="cb22-10"><a href="advanced-data-manipulation-and-plotting.html#cb22-10" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb22-11"><a href="advanced-data-manipulation-and-plotting.html#cb22-11" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">bmi =</span> mass<span class="sc">/</span>((height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-12"><a href="advanced-data-manipulation-and-plotting.html#cb22-12" tabindex="-1"></a>        <span class="fu">select</span>(name<span class="sc">:</span>mass, bmi)</span>
-<span id="cb22-13"><a href="advanced-data-manipulation-and-plotting.html#cb22-13" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="advanced-data-manipulation-and-plotting.html#cb22-14" tabindex="-1"></a><span class="co"># creating a new dataset, summarizing the data grouped by species and filtering</span></span>
-<span id="cb22-15"><a href="advanced-data-manipulation-and-plotting.html#cb22-15" tabindex="-1"></a><span class="co"># the most interesting information</span></span>
-<span id="cb22-16"><a href="advanced-data-manipulation-and-plotting.html#cb22-16" tabindex="-1"></a>prova <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
-<span id="cb22-17"><a href="advanced-data-manipulation-and-plotting.html#cb22-17" tabindex="-1"></a>        <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb22-18"><a href="advanced-data-manipulation-and-plotting.html#cb22-18" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
-<span id="cb22-19"><a href="advanced-data-manipulation-and-plotting.html#cb22-19" tabindex="-1"></a>                  <span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-20"><a href="advanced-data-manipulation-and-plotting.html#cb22-20" tabindex="-1"></a>        <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>, </span>
-<span id="cb22-21"><a href="advanced-data-manipulation-and-plotting.html#cb22-21" tabindex="-1"></a>               mass <span class="sc">&gt;</span> <span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="advanced-data-manipulation-and-plotting.html#cb21-1" tabindex="-1"></a><span class="co"># loading the package and data</span></span>
+<span id="cb21-2"><a href="advanced-data-manipulation-and-plotting.html#cb21-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb21-3"><a href="advanced-data-manipulation-and-plotting.html#cb21-3" tabindex="-1"></a><span class="fu">data</span>(starwars)</span>
+<span id="cb21-4"><a href="advanced-data-manipulation-and-plotting.html#cb21-4" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="advanced-data-manipulation-and-plotting.html#cb21-5" tabindex="-1"></a><span class="co"># subsetting by skin color</span></span>
+<span id="cb21-6"><a href="advanced-data-manipulation-and-plotting.html#cb21-6" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb21-7"><a href="advanced-data-manipulation-and-plotting.html#cb21-7" tabindex="-1"></a>        <span class="fu">filter</span>(skin_color<span class="sc">==</span><span class="st">&quot;light&quot;</span>)</span>
+<span id="cb21-8"><a href="advanced-data-manipulation-and-plotting.html#cb21-8" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="advanced-data-manipulation-and-plotting.html#cb21-9" tabindex="-1"></a><span class="co"># creating a new variable and subsetting some columns</span></span>
+<span id="cb21-10"><a href="advanced-data-manipulation-and-plotting.html#cb21-10" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb21-11"><a href="advanced-data-manipulation-and-plotting.html#cb21-11" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">bmi =</span> mass<span class="sc">/</span>((height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-12"><a href="advanced-data-manipulation-and-plotting.html#cb21-12" tabindex="-1"></a>        <span class="fu">select</span>(name<span class="sc">:</span>mass, bmi)</span>
+<span id="cb21-13"><a href="advanced-data-manipulation-and-plotting.html#cb21-13" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="advanced-data-manipulation-and-plotting.html#cb21-14" tabindex="-1"></a><span class="co"># creating a new dataset, summarizing the data grouped by species and filtering</span></span>
+<span id="cb21-15"><a href="advanced-data-manipulation-and-plotting.html#cb21-15" tabindex="-1"></a><span class="co"># the most interesting information</span></span>
+<span id="cb21-16"><a href="advanced-data-manipulation-and-plotting.html#cb21-16" tabindex="-1"></a>prova <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
+<span id="cb21-17"><a href="advanced-data-manipulation-and-plotting.html#cb21-17" tabindex="-1"></a>        <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb21-18"><a href="advanced-data-manipulation-and-plotting.html#cb21-18" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb21-19"><a href="advanced-data-manipulation-and-plotting.html#cb21-19" tabindex="-1"></a>                  <span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-20"><a href="advanced-data-manipulation-and-plotting.html#cb21-20" tabindex="-1"></a>        <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>, </span>
+<span id="cb21-21"><a href="advanced-data-manipulation-and-plotting.html#cb21-21" tabindex="-1"></a>               mass <span class="sc">&gt;</span> <span class="dv">50</span>)</span></code></pre></div>
 <p>So, using <code>dplyr</code>, with one command, we can ask R to group the data by a
 categorical variable (<code>group_by()</code>), subset the data according to our
 conditions (<code>filter()</code>), select only few variables to be retrieved
@@ -426,17 +425,17 @@ a dataset with <span class="math inline">\(m*n\)</span> number of rows.</p></li>
 <p>Within the <code>merge()</code> function we are asked to specify the dataset <span class="math inline">\(x\)</span>,
 comma the dataset $y$, comma, the name of the <span class="math inline">\(id\)</span> variable, comma,
 additional arguments depending on which merge we are interested in.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="advanced-data-manipulation-and-plotting.html#cb23-1" tabindex="-1"></a><span class="co">#Outer join: </span></span>
-<span id="cb23-2"><a href="advanced-data-manipulation-and-plotting.html#cb23-2" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-3"><a href="advanced-data-manipulation-and-plotting.html#cb23-3" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="advanced-data-manipulation-and-plotting.html#cb23-4" tabindex="-1"></a><span class="co">#Left outer: </span></span>
-<span id="cb23-5"><a href="advanced-data-manipulation-and-plotting.html#cb23-5" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-6"><a href="advanced-data-manipulation-and-plotting.html#cb23-6" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="advanced-data-manipulation-and-plotting.html#cb23-7" tabindex="-1"></a><span class="co">#Right outer: </span></span>
-<span id="cb23-8"><a href="advanced-data-manipulation-and-plotting.html#cb23-8" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all.y =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-9"><a href="advanced-data-manipulation-and-plotting.html#cb23-9" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="advanced-data-manipulation-and-plotting.html#cb23-10" tabindex="-1"></a><span class="co">#Cross join: </span></span>
-<span id="cb23-11"><a href="advanced-data-manipulation-and-plotting.html#cb23-11" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="advanced-data-manipulation-and-plotting.html#cb22-1" tabindex="-1"></a><span class="co">#Outer join: </span></span>
+<span id="cb22-2"><a href="advanced-data-manipulation-and-plotting.html#cb22-2" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-3"><a href="advanced-data-manipulation-and-plotting.html#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="advanced-data-manipulation-and-plotting.html#cb22-4" tabindex="-1"></a><span class="co">#Left outer: </span></span>
+<span id="cb22-5"><a href="advanced-data-manipulation-and-plotting.html#cb22-5" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-6"><a href="advanced-data-manipulation-and-plotting.html#cb22-6" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="advanced-data-manipulation-and-plotting.html#cb22-7" tabindex="-1"></a><span class="co">#Right outer: </span></span>
+<span id="cb22-8"><a href="advanced-data-manipulation-and-plotting.html#cb22-8" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all.y =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-9"><a href="advanced-data-manipulation-and-plotting.html#cb22-9" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="advanced-data-manipulation-and-plotting.html#cb22-10" tabindex="-1"></a><span class="co">#Cross join: </span></span>
+<span id="cb22-11"><a href="advanced-data-manipulation-and-plotting.html#cb22-11" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -461,21 +460,21 @@ belongs to the package <code>reshape2</code><span class="citation">(<a href="#re
 The <code>melt()</code> function requires us to specify the data we want to melt,
 comma, the name of the variable(s) we want to retain as they are. We
 will see in the following chapter how to use melted data.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="advanced-data-manipulation-and-plotting.html#cb24-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb24-2"><a href="advanced-data-manipulation-and-plotting.html#cb24-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
-<span id="cb24-3"><a href="advanced-data-manipulation-and-plotting.html#cb24-3" tabindex="-1"></a>                     <span class="at">surname =</span> <span class="fu">c</span>(<span class="st">&quot;Wilson&quot;</span>, <span class="st">&quot;Jones&quot;</span>, <span class="st">&quot;Smith&quot;</span>),</span>
-<span id="cb24-4"><a href="advanced-data-manipulation-and-plotting.html#cb24-4" tabindex="-1"></a>                     <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">46</span>),</span>
-<span id="cb24-5"><a href="advanced-data-manipulation-and-plotting.html#cb24-5" tabindex="-1"></a>                     <span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">95</span>, <span class="dv">110</span>))</span>
-<span id="cb24-6"><a href="advanced-data-manipulation-and-plotting.html#cb24-6" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="advanced-data-manipulation-and-plotting.html#cb24-7" tabindex="-1"></a><span class="co"># transpose</span></span>
-<span id="cb24-8"><a href="advanced-data-manipulation-and-plotting.html#cb24-8" tabindex="-1"></a><span class="fu">t</span>(people)</span>
-<span id="cb24-9"><a href="advanced-data-manipulation-and-plotting.html#cb24-9" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="advanced-data-manipulation-and-plotting.html#cb24-10" tabindex="-1"></a><span class="co"># melt</span></span>
-<span id="cb24-11"><a href="advanced-data-manipulation-and-plotting.html#cb24-11" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb24-12"><a href="advanced-data-manipulation-and-plotting.html#cb24-12" tabindex="-1"></a><span class="fu">melt</span>(people, <span class="at">id =</span> <span class="st">&quot;name&quot;</span>)</span>
-<span id="cb24-13"><a href="advanced-data-manipulation-and-plotting.html#cb24-13" tabindex="-1"></a></span>
-<span id="cb24-14"><a href="advanced-data-manipulation-and-plotting.html#cb24-14" tabindex="-1"></a><span class="co"># for two id variables</span></span>
-<span id="cb24-15"><a href="advanced-data-manipulation-and-plotting.html#cb24-15" tabindex="-1"></a><span class="fu">melt</span>(people, <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;surname&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="advanced-data-manipulation-and-plotting.html#cb23-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb23-2"><a href="advanced-data-manipulation-and-plotting.html#cb23-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
+<span id="cb23-3"><a href="advanced-data-manipulation-and-plotting.html#cb23-3" tabindex="-1"></a>                     <span class="at">surname =</span> <span class="fu">c</span>(<span class="st">&quot;Wilson&quot;</span>, <span class="st">&quot;Jones&quot;</span>, <span class="st">&quot;Smith&quot;</span>),</span>
+<span id="cb23-4"><a href="advanced-data-manipulation-and-plotting.html#cb23-4" tabindex="-1"></a>                     <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">46</span>),</span>
+<span id="cb23-5"><a href="advanced-data-manipulation-and-plotting.html#cb23-5" tabindex="-1"></a>                     <span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">95</span>, <span class="dv">110</span>))</span>
+<span id="cb23-6"><a href="advanced-data-manipulation-and-plotting.html#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="advanced-data-manipulation-and-plotting.html#cb23-7" tabindex="-1"></a><span class="co"># transpose</span></span>
+<span id="cb23-8"><a href="advanced-data-manipulation-and-plotting.html#cb23-8" tabindex="-1"></a><span class="fu">t</span>(people)</span>
+<span id="cb23-9"><a href="advanced-data-manipulation-and-plotting.html#cb23-9" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="advanced-data-manipulation-and-plotting.html#cb23-10" tabindex="-1"></a><span class="co"># melt</span></span>
+<span id="cb23-11"><a href="advanced-data-manipulation-and-plotting.html#cb23-11" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb23-12"><a href="advanced-data-manipulation-and-plotting.html#cb23-12" tabindex="-1"></a><span class="fu">melt</span>(people, <span class="at">id =</span> <span class="st">&quot;name&quot;</span>)</span>
+<span id="cb23-13"><a href="advanced-data-manipulation-and-plotting.html#cb23-13" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="advanced-data-manipulation-and-plotting.html#cb23-14" tabindex="-1"></a><span class="co"># for two id variables</span></span>
+<span id="cb23-15"><a href="advanced-data-manipulation-and-plotting.html#cb23-15" tabindex="-1"></a><span class="fu">melt</span>(people, <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;surname&quot;</span>))</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -499,40 +498,40 @@ scatter plot, <code>geom_smooth()</code> for a regression line, <code>geom_bar()
 <code>geom_col()</code> for a bar chart, just to mention a few of them (for a
 description of the meaning of the above mentioned graph refer to the
 <a href="exploratory-data-analysis.html#data-visualization">Data visualization</a> chapter).</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="advanced-data-manipulation-and-plotting.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb25-2"><a href="advanced-data-manipulation-and-plotting.html#cb25-2" tabindex="-1"></a><span class="co"># No Plot Yet!</span></span>
-<span id="cb25-3"><a href="advanced-data-manipulation-and-plotting.html#cb25-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp))</span>
-<span id="cb25-4"><a href="advanced-data-manipulation-and-plotting.html#cb25-4" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="advanced-data-manipulation-and-plotting.html#cb25-5" tabindex="-1"></a><span class="co"># First scatterplot</span></span>
-<span id="cb25-6"><a href="advanced-data-manipulation-and-plotting.html#cb25-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
-<span id="cb25-7"><a href="advanced-data-manipulation-and-plotting.html#cb25-7" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb25-8"><a href="advanced-data-manipulation-and-plotting.html#cb25-8" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="advanced-data-manipulation-and-plotting.html#cb25-9" tabindex="-1"></a><span class="co"># we can assign our graph to an object</span></span>
-<span id="cb25-10"><a href="advanced-data-manipulation-and-plotting.html#cb25-10" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
-<span id="cb25-11"><a href="advanced-data-manipulation-and-plotting.html#cb25-11" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="advanced-data-manipulation-and-plotting.html#cb24-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-2"><a href="advanced-data-manipulation-and-plotting.html#cb24-2" tabindex="-1"></a><span class="co"># No Plot Yet!</span></span>
+<span id="cb24-3"><a href="advanced-data-manipulation-and-plotting.html#cb24-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp))</span>
+<span id="cb24-4"><a href="advanced-data-manipulation-and-plotting.html#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="advanced-data-manipulation-and-plotting.html#cb24-5" tabindex="-1"></a><span class="co"># First scatterplot</span></span>
+<span id="cb24-6"><a href="advanced-data-manipulation-and-plotting.html#cb24-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
+<span id="cb24-7"><a href="advanced-data-manipulation-and-plotting.html#cb24-7" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb24-8"><a href="advanced-data-manipulation-and-plotting.html#cb24-8" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="advanced-data-manipulation-and-plotting.html#cb24-9" tabindex="-1"></a><span class="co"># we can assign our graph to an object</span></span>
+<span id="cb24-10"><a href="advanced-data-manipulation-and-plotting.html#cb24-10" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
+<span id="cb24-11"><a href="advanced-data-manipulation-and-plotting.html#cb24-11" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p>We can add more and more layers to the graph, and personalize all the
 things we want. The code below generates two types of regression lines
 (more details in [<a href="bivariate-analysis.html#linear-regression">Linear Regression</a>]), and divides data in plots
 according to a variable (<code>facets_grid()</code>). <em>As you can see, I tend not
 to assign my plot to an object, unless it is strictly necessary. This is
 my way of working, but you are free to do as you prefer.</em></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="advanced-data-manipulation-and-plotting.html#cb26-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb26-2"><a href="advanced-data-manipulation-and-plotting.html#cb26-2" tabindex="-1"></a><span class="co"># Adding More Layers: regression line</span></span>
-<span id="cb26-3"><a href="advanced-data-manipulation-and-plotting.html#cb26-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
-<span id="cb26-4"><a href="advanced-data-manipulation-and-plotting.html#cb26-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb26-5"><a href="advanced-data-manipulation-and-plotting.html#cb26-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="co"># Generalized additive models</span></span>
-<span id="cb26-6"><a href="advanced-data-manipulation-and-plotting.html#cb26-6" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="advanced-data-manipulation-and-plotting.html#cb26-7" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
-<span id="cb26-8"><a href="advanced-data-manipulation-and-plotting.html#cb26-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb26-9"><a href="advanced-data-manipulation-and-plotting.html#cb26-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="co">#linear regression</span></span>
-<span id="cb26-10"><a href="advanced-data-manipulation-and-plotting.html#cb26-10" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="advanced-data-manipulation-and-plotting.html#cb26-11" tabindex="-1"></a><span class="co"># Adding More Layers: Facets</span></span>
-<span id="cb26-12"><a href="advanced-data-manipulation-and-plotting.html#cb26-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
-<span id="cb26-13"><a href="advanced-data-manipulation-and-plotting.html#cb26-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb26-14"><a href="advanced-data-manipulation-and-plotting.html#cb26-14" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb26-15"><a href="advanced-data-manipulation-and-plotting.html#cb26-15" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> cyl)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
-<img src="_main_files/figure-html/unnamed-chunk-26-1.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-26-2.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-26-3.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  />
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="advanced-data-manipulation-and-plotting.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb25-2"><a href="advanced-data-manipulation-and-plotting.html#cb25-2" tabindex="-1"></a><span class="co"># Adding More Layers: regression line</span></span>
+<span id="cb25-3"><a href="advanced-data-manipulation-and-plotting.html#cb25-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
+<span id="cb25-4"><a href="advanced-data-manipulation-and-plotting.html#cb25-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb25-5"><a href="advanced-data-manipulation-and-plotting.html#cb25-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="co"># Generalized additive models</span></span>
+<span id="cb25-6"><a href="advanced-data-manipulation-and-plotting.html#cb25-6" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="advanced-data-manipulation-and-plotting.html#cb25-7" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
+<span id="cb25-8"><a href="advanced-data-manipulation-and-plotting.html#cb25-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb25-9"><a href="advanced-data-manipulation-and-plotting.html#cb25-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="co">#linear regression</span></span>
+<span id="cb25-10"><a href="advanced-data-manipulation-and-plotting.html#cb25-10" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="advanced-data-manipulation-and-plotting.html#cb25-11" tabindex="-1"></a><span class="co"># Adding More Layers: Facets</span></span>
+<span id="cb25-12"><a href="advanced-data-manipulation-and-plotting.html#cb25-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
+<span id="cb25-13"><a href="advanced-data-manipulation-and-plotting.html#cb25-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb25-14"><a href="advanced-data-manipulation-and-plotting.html#cb25-14" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb25-15"><a href="advanced-data-manipulation-and-plotting.html#cb25-15" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> cyl)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
+<img src="_main_files/figure-html/unnamed-chunk-33-1.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-33-2.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-33-3.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  />
 <p class="caption">
 Figure 4.1: From top-left clockwise: Regression line GAM; Linear regression line; Facets.
 </p>
@@ -542,21 +541,21 @@ scope of plotting multidimensional phenomenons. In this case, we have a
 dataset with some students and we want to plot their scores, but we want
 to be able to clearly see a trend for each one of them? A solution could
 be the paired (specifying <code>position = 'dodge'</code>) bar chart below.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="advanced-data-manipulation-and-plotting.html#cb27-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb27-2"><a href="advanced-data-manipulation-and-plotting.html#cb27-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
-<span id="cb27-3"><a href="advanced-data-manipulation-and-plotting.html#cb27-3" tabindex="-1"></a>                     <span class="at">surname =</span> <span class="fu">c</span>(<span class="st">&quot;Wilson&quot;</span>, <span class="st">&quot;Jones&quot;</span>, <span class="st">&quot;Smith&quot;</span>),</span>
-<span id="cb27-4"><a href="advanced-data-manipulation-and-plotting.html#cb27-4" tabindex="-1"></a>                     <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">46</span>),</span>
-<span id="cb27-5"><a href="advanced-data-manipulation-and-plotting.html#cb27-5" tabindex="-1"></a>                     <span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">95</span>, <span class="dv">110</span>))</span>
-<span id="cb27-6"><a href="advanced-data-manipulation-and-plotting.html#cb27-6" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="advanced-data-manipulation-and-plotting.html#cb27-7" tabindex="-1"></a><span class="co"># melting data</span></span>
-<span id="cb27-8"><a href="advanced-data-manipulation-and-plotting.html#cb27-8" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb27-9"><a href="advanced-data-manipulation-and-plotting.html#cb27-9" tabindex="-1"></a>melted_people <span class="ot">&lt;-</span> <span class="fu">melt</span>(people, <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;surname&quot;</span>))</span>
-<span id="cb27-10"><a href="advanced-data-manipulation-and-plotting.html#cb27-10" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="advanced-data-manipulation-and-plotting.html#cb27-11" tabindex="-1"></a><span class="co"># plotting</span></span>
-<span id="cb27-12"><a href="advanced-data-manipulation-and-plotting.html#cb27-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> melted_people, <span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value, <span class="at">fill =</span> variable)) <span class="sc">+</span></span>
-<span id="cb27-13"><a href="advanced-data-manipulation-and-plotting.html#cb27-13" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
-<img src="_main_files/figure-html/unnamed-chunk-27-1.png" alt="Paired barchart." width="50%"  />
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="advanced-data-manipulation-and-plotting.html#cb26-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb26-2"><a href="advanced-data-manipulation-and-plotting.html#cb26-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
+<span id="cb26-3"><a href="advanced-data-manipulation-and-plotting.html#cb26-3" tabindex="-1"></a>                     <span class="at">surname =</span> <span class="fu">c</span>(<span class="st">&quot;Wilson&quot;</span>, <span class="st">&quot;Jones&quot;</span>, <span class="st">&quot;Smith&quot;</span>),</span>
+<span id="cb26-4"><a href="advanced-data-manipulation-and-plotting.html#cb26-4" tabindex="-1"></a>                     <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">46</span>),</span>
+<span id="cb26-5"><a href="advanced-data-manipulation-and-plotting.html#cb26-5" tabindex="-1"></a>                     <span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">95</span>, <span class="dv">110</span>))</span>
+<span id="cb26-6"><a href="advanced-data-manipulation-and-plotting.html#cb26-6" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="advanced-data-manipulation-and-plotting.html#cb26-7" tabindex="-1"></a><span class="co"># melting data</span></span>
+<span id="cb26-8"><a href="advanced-data-manipulation-and-plotting.html#cb26-8" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb26-9"><a href="advanced-data-manipulation-and-plotting.html#cb26-9" tabindex="-1"></a>melted_people <span class="ot">&lt;-</span> <span class="fu">melt</span>(people, <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;surname&quot;</span>))</span>
+<span id="cb26-10"><a href="advanced-data-manipulation-and-plotting.html#cb26-10" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="advanced-data-manipulation-and-plotting.html#cb26-11" tabindex="-1"></a><span class="co"># plotting</span></span>
+<span id="cb26-12"><a href="advanced-data-manipulation-and-plotting.html#cb26-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> melted_people, <span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value, <span class="at">fill =</span> variable)) <span class="sc">+</span></span>
+<span id="cb26-13"><a href="advanced-data-manipulation-and-plotting.html#cb26-13" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
+<img src="_main_files/figure-html/unnamed-chunk-34-1.png" alt="Paired barchart." width="80%"  />
 <p class="caption">
 Figure 4.2: Paired barchart.
 </p>
@@ -566,21 +565,21 @@ The <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.p
 also at the <a href="https://www.r-graph-gallery.com">R Graph Gallery</a> which
 includes advanced graphs that are done using <code>ggplot2</code> or similar
 packages, and provides the code for replicating each one of them.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="advanced-data-manipulation-and-plotting.html#cb28-1" tabindex="-1"></a><span class="co"># labeled points</span></span>
-<span id="cb28-2"><a href="advanced-data-manipulation-and-plotting.html#cb28-2" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg, <span class="at">size =</span> wt)) <span class="sc">+</span></span>
-<span id="cb28-3"><a href="advanced-data-manipulation-and-plotting.html#cb28-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(cyl)), <span class="at">alpha=</span>.<span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb28-4"><a href="advanced-data-manipulation-and-plotting.html#cb28-4" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">row.names</span>(mtcars)), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">nudge_y =</span> <span class="sc">-</span>.<span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb28-5"><a href="advanced-data-manipulation-and-plotting.html#cb28-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">&quot;Times&quot;</span>)</span>
-<span id="cb28-6"><a href="advanced-data-manipulation-and-plotting.html#cb28-6" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="advanced-data-manipulation-and-plotting.html#cb28-7" tabindex="-1"></a><span class="co"># Violin plot</span></span>
-<span id="cb28-8"><a href="advanced-data-manipulation-and-plotting.html#cb28-8" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;InsectSprays&quot;</span>)</span>
-<span id="cb28-9"><a href="advanced-data-manipulation-and-plotting.html#cb28-9" tabindex="-1"></a><span class="fu">ggplot</span>(InsectSprays, <span class="fu">aes</span>(spray, count, <span class="at">fill=</span>spray)) <span class="sc">+</span></span>
-<span id="cb28-10"><a href="advanced-data-manipulation-and-plotting.html#cb28-10" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb28-11"><a href="advanced-data-manipulation-and-plotting.html#cb28-11" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Type of spray&quot;</span>) <span class="sc">+</span></span>
-<span id="cb28-12"><a href="advanced-data-manipulation-and-plotting.html#cb28-12" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Insect count&quot;</span>) <span class="sc">+</span></span>
-<span id="cb28-13"><a href="advanced-data-manipulation-and-plotting.html#cb28-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
-<img src="_main_files/figure-html/unnamed-chunk-28-1.png" alt="From top-left clockwise: Labeled scatterplot; Violin plot." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-28-2.png" alt="From top-left clockwise: Labeled scatterplot; Violin plot." width="50%"  />
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="advanced-data-manipulation-and-plotting.html#cb27-1" tabindex="-1"></a><span class="co"># labeled points</span></span>
+<span id="cb27-2"><a href="advanced-data-manipulation-and-plotting.html#cb27-2" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg, <span class="at">size =</span> wt)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="advanced-data-manipulation-and-plotting.html#cb27-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(cyl)), <span class="at">alpha=</span>.<span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="advanced-data-manipulation-and-plotting.html#cb27-4" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">row.names</span>(mtcars)), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">nudge_y =</span> <span class="sc">-</span>.<span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="advanced-data-manipulation-and-plotting.html#cb27-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">&quot;Times&quot;</span>)</span>
+<span id="cb27-6"><a href="advanced-data-manipulation-and-plotting.html#cb27-6" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="advanced-data-manipulation-and-plotting.html#cb27-7" tabindex="-1"></a><span class="co"># Violin plot</span></span>
+<span id="cb27-8"><a href="advanced-data-manipulation-and-plotting.html#cb27-8" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;InsectSprays&quot;</span>)</span>
+<span id="cb27-9"><a href="advanced-data-manipulation-and-plotting.html#cb27-9" tabindex="-1"></a><span class="fu">ggplot</span>(InsectSprays, <span class="fu">aes</span>(spray, count, <span class="at">fill=</span>spray)) <span class="sc">+</span></span>
+<span id="cb27-10"><a href="advanced-data-manipulation-and-plotting.html#cb27-10" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">colour=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-11"><a href="advanced-data-manipulation-and-plotting.html#cb27-11" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Type of spray&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="advanced-data-manipulation-and-plotting.html#cb27-12" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Insect count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="advanced-data-manipulation-and-plotting.html#cb27-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-35"></span>
+<img src="_main_files/figure-html/unnamed-chunk-35-1.png" alt="From top-left clockwise: Labeled scatterplot; Violin plot." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-35-2.png" alt="From top-left clockwise: Labeled scatterplot; Violin plot." width="50%"  />
 <p class="caption">
 Figure 4.3: From top-left clockwise: Labeled scatterplot; Violin plot.
 </p>
@@ -590,24 +589,24 @@ data, but we need to plot the main trend excluding them. Below some
 different versions of ggplot code that put a limit to the y axes (but it
 could be done for the x axes too using <code>xlim()</code> instead of <code>ylim()</code>).
 Try the code and see the difference.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="advanced-data-manipulation-and-plotting.html#cb29-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb29-2"><a href="advanced-data-manipulation-and-plotting.html#cb29-2" tabindex="-1"></a>testdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, </span>
-<span id="cb29-3"><a href="advanced-data-manipulation-and-plotting.html#cb29-3" tabindex="-1"></a>                      <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
-<span id="cb29-4"><a href="advanced-data-manipulation-and-plotting.html#cb29-4" tabindex="-1"></a>testdat[<span class="dv">20</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Outlier!</span></span>
-<span id="cb29-5"><a href="advanced-data-manipulation-and-plotting.html#cb29-5" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="advanced-data-manipulation-and-plotting.html#cb29-6" tabindex="-1"></a><span class="co"># normal plot</span></span>
-<span id="cb29-7"><a href="advanced-data-manipulation-and-plotting.html#cb29-7" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
-<span id="cb29-8"><a href="advanced-data-manipulation-and-plotting.html#cb29-8" tabindex="-1"></a>        <span class="fu">geom_line</span>()</span>
-<span id="cb29-9"><a href="advanced-data-manipulation-and-plotting.html#cb29-9" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="advanced-data-manipulation-and-plotting.html#cb29-10" tabindex="-1"></a><span class="co"># excluding the values outside the ylim range</span></span>
-<span id="cb29-11"><a href="advanced-data-manipulation-and-plotting.html#cb29-11" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
-<span id="cb29-12"><a href="advanced-data-manipulation-and-plotting.html#cb29-12" tabindex="-1"></a>        <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb29-13"><a href="advanced-data-manipulation-and-plotting.html#cb29-13" tabindex="-1"></a>        <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb29-14"><a href="advanced-data-manipulation-and-plotting.html#cb29-14" tabindex="-1"></a></span>
-<span id="cb29-15"><a href="advanced-data-manipulation-and-plotting.html#cb29-15" tabindex="-1"></a><span class="co"># zooming in a portion of the graph</span></span>
-<span id="cb29-16"><a href="advanced-data-manipulation-and-plotting.html#cb29-16" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
-<span id="cb29-17"><a href="advanced-data-manipulation-and-plotting.html#cb29-17" tabindex="-1"></a>        <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb29-18"><a href="advanced-data-manipulation-and-plotting.html#cb29-18" tabindex="-1"></a>        <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="advanced-data-manipulation-and-plotting.html#cb28-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb28-2"><a href="advanced-data-manipulation-and-plotting.html#cb28-2" tabindex="-1"></a>testdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, </span>
+<span id="cb28-3"><a href="advanced-data-manipulation-and-plotting.html#cb28-3" tabindex="-1"></a>                      <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb28-4"><a href="advanced-data-manipulation-and-plotting.html#cb28-4" tabindex="-1"></a>testdat[<span class="dv">20</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Outlier!</span></span>
+<span id="cb28-5"><a href="advanced-data-manipulation-and-plotting.html#cb28-5" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="advanced-data-manipulation-and-plotting.html#cb28-6" tabindex="-1"></a><span class="co"># normal plot</span></span>
+<span id="cb28-7"><a href="advanced-data-manipulation-and-plotting.html#cb28-7" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
+<span id="cb28-8"><a href="advanced-data-manipulation-and-plotting.html#cb28-8" tabindex="-1"></a>        <span class="fu">geom_line</span>()</span>
+<span id="cb28-9"><a href="advanced-data-manipulation-and-plotting.html#cb28-9" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="advanced-data-manipulation-and-plotting.html#cb28-10" tabindex="-1"></a><span class="co"># excluding the values outside the ylim range</span></span>
+<span id="cb28-11"><a href="advanced-data-manipulation-and-plotting.html#cb28-11" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
+<span id="cb28-12"><a href="advanced-data-manipulation-and-plotting.html#cb28-12" tabindex="-1"></a>        <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb28-13"><a href="advanced-data-manipulation-and-plotting.html#cb28-13" tabindex="-1"></a>        <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb28-14"><a href="advanced-data-manipulation-and-plotting.html#cb28-14" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="advanced-data-manipulation-and-plotting.html#cb28-15" tabindex="-1"></a><span class="co"># zooming in a portion of the graph</span></span>
+<span id="cb28-16"><a href="advanced-data-manipulation-and-plotting.html#cb28-16" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
+<span id="cb28-17"><a href="advanced-data-manipulation-and-plotting.html#cb28-17" tabindex="-1"></a>        <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb28-18"><a href="advanced-data-manipulation-and-plotting.html#cb28-18" tabindex="-1"></a>        <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>

@@ -23,7 +23,7 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -242,7 +242,6 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
 <li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
@@ -379,8 +378,8 @@ different scientific context, and we will follow these conventions.</p>
 using R. My suggestion, when working with really small numbers (such as
 the p-values), is to suppress the scientific notation in order to have a
 clearer sense of the coefficient scale. Use the following code.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="hypothesis-testing.html#cb44-1" tabindex="-1"></a><span class="co">#suppress scientific notation</span></span>
-<span id="cb44-2"><a href="hypothesis-testing.html#cb44-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="hypothesis-testing.html#cb43-1" tabindex="-1"></a><span class="co">#suppress scientific notation</span></span>
+<span id="cb43-2"><a href="hypothesis-testing.html#cb43-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <div id="probability-distributions" class="section level2 hasAnchor" number="6.1">
@@ -403,13 +402,8 @@ abbreviated pdf. Basically, this function represents the outline of the
 histogram. The probability that a random variable assumes a value
 between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is equal to the area under the density function
 bounded by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> <span class="citation">(<a href="#ref-damodaran">Damodaran, n.d.</a>)</span>.</p>
-<pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
-## ℹ Please use `after_stat(density)` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
-<img src="_main_files/figure-html/unnamed-chunk-48-1.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-48-2.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
+<img src="_main_files/figure-html/unnamed-chunk-55-1.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-55-2.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  />
 <p class="caption">
 Figure 6.1: From left: A density distribution as outline of the hisogram; The probability that the random variable <span class="math inline">\(X\)</span> is higher than or equal to 1.5.
 </p>
@@ -458,8 +452,8 @@ describes the percentage of the data that fall within specific numbers
 of standard deviations from the mean for bell-shaped curves. For this
 reason, in statistics, when dealing with large-enough dataset, the
 normal distribution is assumed, even if it is not perfect.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-49"></span>
-<img src="images/Senza%20titolo.png" alt="The Empirical Rule." width="600"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<img src="images/Senza%20titolo.png" alt="The Empirical Rule." width="80%"  />
 <p class="caption">
 Figure 6.2: The Empirical Rule.
 </p>
@@ -475,10 +469,10 @@ distribution is also the result of the z-score standardization process
 (see <a href="exploratory-data-analysis.html#scaling-data">Scaling data</a>)<span class="citation">(<a href="#ref-frost">Frost, n.d.</a>)</span>. So, if we have to compare the means of the
 distributions of two elements (the weight of apple and pears), by
 standardizing we can do it (Figure 11).</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
-<img src="_main_files/figure-html/unnamed-chunk-50-1.png" alt="The comparison between weight and income standardized." width="50%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<img src="_main_files/figure-html/unnamed-chunk-57-1.png" alt="The comparison between Apples and Pears standardized." width="50%"  />
 <p class="caption">
-Figure 6.3: The comparison between weight and income standardized.
+Figure 6.3: The comparison between Apples and Pears standardized.
 </p>
 </div>
 <p> </p>
@@ -501,11 +495,11 @@ inference and, instead of using a T-Test, we will have to use a Wilcoxon
 Rank Sum test or Mann-Whitney test.</p>
 <p>In order to perform a Shapiro-Wilk Test in R, we need to use the
 following code.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="hypothesis-testing.html#cb46-1" tabindex="-1"></a><span class="co"># Shapiro Test of normality</span></span>
-<span id="cb46-2"><a href="hypothesis-testing.html#cb46-2" tabindex="-1"></a><span class="co"># H0: the variable is normally distributed</span></span>
-<span id="cb46-3"><a href="hypothesis-testing.html#cb46-3" tabindex="-1"></a><span class="co"># Ha: the variable is not normally distributed</span></span>
-<span id="cb46-4"><a href="hypothesis-testing.html#cb46-4" tabindex="-1"></a><span class="fu">shapiro.test</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb46-5"><a href="hypothesis-testing.html#cb46-5" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="hypothesis-testing.html#cb44-1" tabindex="-1"></a><span class="co"># Shapiro Test of normality</span></span>
+<span id="cb44-2"><a href="hypothesis-testing.html#cb44-2" tabindex="-1"></a><span class="co"># H0: the variable is normally distributed</span></span>
+<span id="cb44-3"><a href="hypothesis-testing.html#cb44-3" tabindex="-1"></a><span class="co"># Ha: the variable is not normally distributed</span></span>
+<span id="cb44-4"><a href="hypothesis-testing.html#cb44-4" tabindex="-1"></a><span class="fu">shapiro.test</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb44-5"><a href="hypothesis-testing.html#cb44-5" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
 <p> </p>
 <p> </p>
 </div>
@@ -531,23 +525,28 @@ gallon, we want to test if the cars’ consumption is on average lower
 than 22 miles per gallon (<span class="math inline">\(H_a\)</span>). And this is in fact true, because we
 retrieve a significant p-value (&lt;0.05), thus we reject <span class="math inline">\(H_0\)</span>. By using
 the package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas2020">Bratsas, Foudouli, and Koupidis 2020</a>)</span>, we can also plot this test.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="hypothesis-testing.html#cb47-1" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb47-2"><a href="hypothesis-testing.html#cb47-2" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="hypothesis-testing.html#cb47-3" tabindex="-1"></a><span class="co"># H0: cars consumption is on average 22 mpg or higher</span></span>
-<span id="cb47-4"><a href="hypothesis-testing.html#cb47-4" tabindex="-1"></a><span class="co"># Ha: cars consumption is on average lower than 22 mpg</span></span>
-<span id="cb47-5"><a href="hypothesis-testing.html#cb47-5" tabindex="-1"></a><span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span>
-<span id="cb47-6"><a href="hypothesis-testing.html#cb47-6" tabindex="-1"></a><span class="co">#We reject H0. The average car consumption is significantly lower than 22 mpg.</span></span>
-<span id="cb47-7"><a href="hypothesis-testing.html#cb47-7" tabindex="-1"></a></span>
-<span id="cb47-8"><a href="hypothesis-testing.html#cb47-8" tabindex="-1"></a><span class="co"># plot the t-test </span></span>
-<span id="cb47-9"><a href="hypothesis-testing.html#cb47-9" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
-<span id="cb47-10"><a href="hypothesis-testing.html#cb47-10" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-53"></span>
-<img src="_main_files/figure-html/unnamed-chunk-53-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="hypothesis-testing.html#cb45-1" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb45-2"><a href="hypothesis-testing.html#cb45-2" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="hypothesis-testing.html#cb45-3" tabindex="-1"></a><span class="co"># H0: cars consumption is on average 22 mpg or higher</span></span>
+<span id="cb45-4"><a href="hypothesis-testing.html#cb45-4" tabindex="-1"></a><span class="co"># Ha: cars consumption is on average lower than 22 mpg</span></span>
+<span id="cb45-5"><a href="hypothesis-testing.html#cb45-5" tabindex="-1"></a><span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span>
+<span id="cb45-6"><a href="hypothesis-testing.html#cb45-6" tabindex="-1"></a><span class="co">#We reject H0. The average car consumption is significantly lower than 22 mpg.</span></span>
+<span id="cb45-7"><a href="hypothesis-testing.html#cb45-7" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="hypothesis-testing.html#cb45-8" tabindex="-1"></a><span class="co"># plot the t-test </span></span>
+<span id="cb45-9"><a href="hypothesis-testing.html#cb45-9" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
+<span id="cb45-10"><a href="hypothesis-testing.html#cb45-10" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
+<img src="_main_files/figure-html/unnamed-chunk-60-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
 <p class="caption">
 Figure 6.4: Single Sample T-Test as plotted by gginference package.
 </p>
 </div>
-<p><img src="images/Schermata%202022-03-29%20alle%2016.14.37.png" width="350"  /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
+<img src="images/Schermata%202022-03-29%20alle%2016.14.37.png" alt="Single Sample T-Test output example." width="50%"  />
+<p class="caption">
+Figure 6.5: Single Sample T-Test output example.
+</p>
+</div>
 <p>The output of the test in R gives us many information. The most
 important are: the data that we are using (<code>mtcars$mpg</code>), the t
 statistics (if it is lower than 2, we have a significant p-value), the
@@ -571,12 +570,12 @@ groups in order to have an idea. And we see that the difference between
 the two groups is only 0.69. Note, that we set the seed because we
 generate our data randomly from an Normal distribution using the
 function <code>rnorm()</code>.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="hypothesis-testing.html#cb48-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb48-2"><a href="hypothesis-testing.html#cb48-2" tabindex="-1"></a>income_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">20</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
-<span id="cb48-3"><a href="hypothesis-testing.html#cb48-3" tabindex="-1"></a>income_b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="fl">18.8</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
-<span id="cb48-4"><a href="hypothesis-testing.html#cb48-4" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="hypothesis-testing.html#cb48-5" tabindex="-1"></a><span class="fu">boxplot</span>(income_a, income_b)</span>
-<span id="cb48-6"><a href="hypothesis-testing.html#cb48-6" tabindex="-1"></a><span class="fu">mean</span>(income_a)<span class="sc">-</span><span class="fu">mean</span>(income_b)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="hypothesis-testing.html#cb46-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb46-2"><a href="hypothesis-testing.html#cb46-2" tabindex="-1"></a>income_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">20</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
+<span id="cb46-3"><a href="hypothesis-testing.html#cb46-3" tabindex="-1"></a>income_b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="fl">18.8</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb46-4"><a href="hypothesis-testing.html#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="hypothesis-testing.html#cb46-5" tabindex="-1"></a><span class="fu">boxplot</span>(income_a, income_b)</span>
+<span id="cb46-6"><a href="hypothesis-testing.html#cb46-6" tabindex="-1"></a><span class="fu">mean</span>(income_a)<span class="sc">-</span><span class="fu">mean</span>(income_b)</span></code></pre></div>
 <p>Before proceeding with the test, we should verify the assumption of
 normality by doing a Shapiro-Wilk Test as explained before. However, as
 the data are normally distributed by construction, we will skip this
@@ -585,21 +584,26 @@ step.</p>
 T-Test. The R function is the same as for the One-Sample T-Test, but
 specifying different arguments. We can again plot our test using the
 package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas2020">Bratsas, Foudouli, and Koupidis 2020</a>)</span>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="hypothesis-testing.html#cb49-1" tabindex="-1"></a><span class="co"># H0: the two groups have the same income on average</span></span>
-<span id="cb49-2"><a href="hypothesis-testing.html#cb49-2" tabindex="-1"></a><span class="co"># Ha: the two groups have the different income on average</span></span>
-<span id="cb49-3"><a href="hypothesis-testing.html#cb49-3" tabindex="-1"></a><span class="fu">t.test</span>(income_a, income_b) <span class="co"># reject H0</span></span>
-<span id="cb49-4"><a href="hypothesis-testing.html#cb49-4" tabindex="-1"></a><span class="co"># We accept Ha. There is a SIGNIFICANT mean income difference (0.67)</span></span>
-<span id="cb49-5"><a href="hypothesis-testing.html#cb49-5" tabindex="-1"></a><span class="co"># between the two groups.</span></span>
-<span id="cb49-6"><a href="hypothesis-testing.html#cb49-6" tabindex="-1"></a></span>
-<span id="cb49-7"><a href="hypothesis-testing.html#cb49-7" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
-<span id="cb49-8"><a href="hypothesis-testing.html#cb49-8" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(income_a, income_b))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
-<img src="_main_files/figure-html/unnamed-chunk-57-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="hypothesis-testing.html#cb47-1" tabindex="-1"></a><span class="co"># H0: the two groups have the same income on average</span></span>
+<span id="cb47-2"><a href="hypothesis-testing.html#cb47-2" tabindex="-1"></a><span class="co"># Ha: the two groups have the different income on average</span></span>
+<span id="cb47-3"><a href="hypothesis-testing.html#cb47-3" tabindex="-1"></a><span class="fu">t.test</span>(income_a, income_b) <span class="co"># reject H0</span></span>
+<span id="cb47-4"><a href="hypothesis-testing.html#cb47-4" tabindex="-1"></a><span class="co"># We accept Ha. There is a SIGNIFICANT mean income difference (0.67)</span></span>
+<span id="cb47-5"><a href="hypothesis-testing.html#cb47-5" tabindex="-1"></a><span class="co"># between the two groups.</span></span>
+<span id="cb47-6"><a href="hypothesis-testing.html#cb47-6" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="hypothesis-testing.html#cb47-7" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
+<span id="cb47-8"><a href="hypothesis-testing.html#cb47-8" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(income_a, income_b))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
+<img src="_main_files/figure-html/unnamed-chunk-64-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
 <p class="caption">
-Figure 6.5: Single Sample T-Test as plotted by gginference package.
+Figure 6.6: Single Sample T-Test as plotted by gginference package.
 </p>
 </div>
-<p><img src="images/Schermata%202022-03-29%20alle%2016.36.10.png" width="400"  /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<img src="images/Schermata%202022-03-29%20alle%2016.36.10.png" alt="Two sample T-test output example." width="50%"  />
+<p class="caption">
+Figure 6.7: Two sample T-test output example.
+</p>
+</div>
 <p>As for the One-Sample T-Test, R gives us a set of information about the
 test. The most important are: the data that we are using, the t
 statistics (if it is lower than 2, we have a significant p-value), the
@@ -617,14 +621,14 @@ create a table with the average difference and the p-value of both
 tests. <em>Note that the t-test formula is written in a different way than
 in the code chunk above, however the meaning of the two expressions is
 the same.</em></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="hypothesis-testing.html#cb50-1" tabindex="-1"></a><span class="co"># create a table</span></span>
-<span id="cb50-2"><a href="hypothesis-testing.html#cb50-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
-<span id="cb50-3"><a href="hypothesis-testing.html#cb50-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">t.test</span>(wt <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
-<span id="cb50-4"><a href="hypothesis-testing.html#cb50-4" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="hypothesis-testing.html#cb50-5" tabindex="-1"></a>taboft <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;coef&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;difference&quot;</span>, <span class="st">&quot;p-value&quot;</span>),</span>
-<span id="cb50-6"><a href="hypothesis-testing.html#cb50-6" tabindex="-1"></a>                     <span class="st">&quot;mpg&quot;</span><span class="ot">=</span> <span class="fu">c</span>(t<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>t<span class="sc">$</span>estimate[<span class="dv">2</span>], t<span class="sc">$</span>p.value),</span>
-<span id="cb50-7"><a href="hypothesis-testing.html#cb50-7" tabindex="-1"></a>                     <span class="st">&quot;wt&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(s<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>s<span class="sc">$</span>estimate[<span class="dv">2</span>], s<span class="sc">$</span>p.value))</span>
-<span id="cb50-8"><a href="hypothesis-testing.html#cb50-8" tabindex="-1"></a>taboft</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="hypothesis-testing.html#cb48-1" tabindex="-1"></a><span class="co"># create a table</span></span>
+<span id="cb48-2"><a href="hypothesis-testing.html#cb48-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
+<span id="cb48-3"><a href="hypothesis-testing.html#cb48-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">t.test</span>(wt <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
+<span id="cb48-4"><a href="hypothesis-testing.html#cb48-4" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="hypothesis-testing.html#cb48-5" tabindex="-1"></a>taboft <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;coef&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;difference&quot;</span>, <span class="st">&quot;p-value&quot;</span>),</span>
+<span id="cb48-6"><a href="hypothesis-testing.html#cb48-6" tabindex="-1"></a>                     <span class="st">&quot;mpg&quot;</span><span class="ot">=</span> <span class="fu">c</span>(t<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>t<span class="sc">$</span>estimate[<span class="dv">2</span>], t<span class="sc">$</span>p.value),</span>
+<span id="cb48-7"><a href="hypothesis-testing.html#cb48-7" tabindex="-1"></a>                     <span class="st">&quot;wt&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(s<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>s<span class="sc">$</span>estimate[<span class="dv">2</span>], s<span class="sc">$</span>p.value))</span>
+<span id="cb48-8"><a href="hypothesis-testing.html#cb48-8" tabindex="-1"></a>taboft</span></code></pre></div>
 <p> </p>
 <p> </p>
 </div>
@@ -646,7 +650,7 @@ two samples into one combined sample, keeping track of which sample each
 observation comes from, and then ranking lowest to highest.</p>
 <p>In order to run it, the only thing we need to change is the name of the
 formula of the test, as written in the code below.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="hypothesis-testing.html#cb51-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(mpg.at, mpg.mt)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="hypothesis-testing.html#cb49-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(mpg.at, mpg.mt)</span></code></pre></div>
 <p> </p>
 <p> </p>
 </div>
@@ -668,18 +672,18 @@ Shapiro-Wilk Test on them in order to verify the normality of the data
 distribution. Finally, we can run the proper Paired Sample T-Test on our
 data (or a Paired Mann Whitney U Test, if data are not normally
 distributed).</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="hypothesis-testing.html#cb52-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;before&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">200.1</span>, <span class="fl">190.9</span>, <span class="fl">192.7</span>, <span class="dv">213</span>, <span class="fl">241.4</span>, <span class="fl">196.9</span>, </span>
-<span id="cb52-2"><a href="hypothesis-testing.html#cb52-2" tabindex="-1"></a>                              <span class="fl">172.2</span>, <span class="fl">185.5</span>, <span class="fl">205.2</span>, <span class="fl">193.7</span>),</span>
-<span id="cb52-3"><a href="hypothesis-testing.html#cb52-3" tabindex="-1"></a>                 <span class="st">&quot;after&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">392.9</span>, <span class="fl">393.2</span>, <span class="fl">345.1</span>, <span class="dv">393</span>, <span class="dv">434</span>, <span class="fl">427.9</span>, <span class="dv">422</span>, </span>
-<span id="cb52-4"><a href="hypothesis-testing.html#cb52-4" tabindex="-1"></a>                             <span class="fl">383.9</span>, <span class="fl">392.3</span>, <span class="fl">352.2</span>))</span>
-<span id="cb52-5"><a href="hypothesis-testing.html#cb52-5" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="hypothesis-testing.html#cb52-6" tabindex="-1"></a><span class="co"># compute the difference</span></span>
-<span id="cb52-7"><a href="hypothesis-testing.html#cb52-7" tabindex="-1"></a>df<span class="sc">$</span>difference <span class="ot">&lt;-</span> df<span class="sc">$</span>before <span class="sc">-</span> df<span class="sc">$</span>after</span>
-<span id="cb52-8"><a href="hypothesis-testing.html#cb52-8" tabindex="-1"></a><span class="co"># H0: the variables are normally distributed</span></span>
-<span id="cb52-9"><a href="hypothesis-testing.html#cb52-9" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>difference) <span class="co"># accept H0</span></span>
-<span id="cb52-10"><a href="hypothesis-testing.html#cb52-10" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>difference)</span>
-<span id="cb52-11"><a href="hypothesis-testing.html#cb52-11" tabindex="-1"></a></span>
-<span id="cb52-12"><a href="hypothesis-testing.html#cb52-12" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>before, df<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="hypothesis-testing.html#cb50-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;before&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">200.1</span>, <span class="fl">190.9</span>, <span class="fl">192.7</span>, <span class="dv">213</span>, <span class="fl">241.4</span>, <span class="fl">196.9</span>, </span>
+<span id="cb50-2"><a href="hypothesis-testing.html#cb50-2" tabindex="-1"></a>                              <span class="fl">172.2</span>, <span class="fl">185.5</span>, <span class="fl">205.2</span>, <span class="fl">193.7</span>),</span>
+<span id="cb50-3"><a href="hypothesis-testing.html#cb50-3" tabindex="-1"></a>                 <span class="st">&quot;after&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">392.9</span>, <span class="fl">393.2</span>, <span class="fl">345.1</span>, <span class="dv">393</span>, <span class="dv">434</span>, <span class="fl">427.9</span>, <span class="dv">422</span>, </span>
+<span id="cb50-4"><a href="hypothesis-testing.html#cb50-4" tabindex="-1"></a>                             <span class="fl">383.9</span>, <span class="fl">392.3</span>, <span class="fl">352.2</span>))</span>
+<span id="cb50-5"><a href="hypothesis-testing.html#cb50-5" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="hypothesis-testing.html#cb50-6" tabindex="-1"></a><span class="co"># compute the difference</span></span>
+<span id="cb50-7"><a href="hypothesis-testing.html#cb50-7" tabindex="-1"></a>df<span class="sc">$</span>difference <span class="ot">&lt;-</span> df<span class="sc">$</span>before <span class="sc">-</span> df<span class="sc">$</span>after</span>
+<span id="cb50-8"><a href="hypothesis-testing.html#cb50-8" tabindex="-1"></a><span class="co"># H0: the variables are normally distributed</span></span>
+<span id="cb50-9"><a href="hypothesis-testing.html#cb50-9" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>difference) <span class="co"># accept H0</span></span>
+<span id="cb50-10"><a href="hypothesis-testing.html#cb50-10" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>difference)</span>
+<span id="cb50-11"><a href="hypothesis-testing.html#cb50-11" tabindex="-1"></a></span>
+<span id="cb50-12"><a href="hypothesis-testing.html#cb50-12" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>before, df<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>

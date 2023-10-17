@@ -34,7 +34,7 @@ data... Ok, ok! I'm a bit exaggerating... I don't want to scare you too
 much, but yes, this is the worst case scenario and many of your
 colleagues already passed through that, and survived!
 
-```{r, echo=F, out.width="100%", fig.show="hold"}
+```{r, echo=F, out.width="80%", fig.align="center", fig.show="hold"}
 knitr::include_graphics("images/8psue2xkvn811.jpg")
 ```
 
@@ -114,54 +114,49 @@ To install the software, follow all the 9 steps below:
 
 1.  Download the R installer from [CRAN](https://cran.r-project.org/).\
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold", fig.cap="Select the version of R according to your operating system."} -->
-<!--  knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/cran.png") -->
-<!-- ``` -->
-
-
-    <!-- ![Select the version of R according to your operating -->
-
-    <!-- system.](/Volumes/New/lavori/corso%20R/materiali/cran.png)\ -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold", fig.cap="Select the version of R according to your operating system."}
+ knitr::include_graphics("images/cran.png")
+```
 
 2.  Run the installer keeping the default settings. If you do not have admin rights on your computer, please ask you IT Support to give you full permissions to the R directories. Otherwise you will not be able to install packages afterwards.
 
 3.  Download the R-Studio installer from [R-Studio](https://rstudio.com/products/rstudio/download/#download).\
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold", fig.cap="Select the version of R-Studio according to your operating system."} -->
-<!--  knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/rstudio.png") -->
-<!-- ``` -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold", fig.cap="Select the version of R-Studio according to your operating system."}
+ knitr::include_graphics("images/rstudio.png")
+```
 
 
 4.  Once the installation of R is completed (NOT BEFORE), run the R-Studio installer keeping the default settings.
 
 5.  Run R-Studio. It should open an window like the one in the image below.\
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold", fig.cap="R-Studio."} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/rstudio2.png") -->
-<!-- ``` -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold", fig.cap="R-Studio."}
+knitr::include_graphics("images/rstudio2.png")
+```
 
 
 6.  In the left hand window, by the sign "\>", type "4+5" (without the quotes) and hit enter. An output line reading "$[1]$ 9" should appear. This means that R and R-Studio are working properly. If this is not successful, please [contact me]([mailto:%20info\@federicoroscioli.com](mailto:%20info@federicoroscioli.com){.uri}).
 
 7.  Go to Tools -\> Install Packages and install the packages:"gt", and "readxl". See the image below.\
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/pkg1.png") -->
-<!-- ``` -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold"}
+knitr::include_graphics("images/pkg1.png")
+```
 
 
 8.  Check that the packages are installed by typing "library(gt)" (without the quotes) in the prompt and press enter.\
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/pkg2.png") -->
-<!-- ``` -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold"}
+knitr::include_graphics("images/pkg2.png")
+```
 
 
 9.  Finally type "sessioninfo()" (without the quotes) and check that gt has been installed.\
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/pkg3.png") -->
-<!-- ``` -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold"}
+knitr::include_graphics("images/pkg3.png")
+```
 
  
 
@@ -197,9 +192,9 @@ Personally, I find them really helpful.
 
 ## The workspace
 
-<!-- ```{r, echo=F, out.width="100%", fig.show="hold"} -->
-<!-- knitr::include_graphics("/Volumes/New/lavori/corso R/materiali/workspace.png") -->
-<!-- ``` -->
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold"}
+knitr::include_graphics("images/workspace.png")
+```
 
 The **source** is a text file with extension .R that can be saved and
 opened from every version of R and R-Studio. This file will allow us to

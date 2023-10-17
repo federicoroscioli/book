@@ -336,7 +336,7 @@ dataset with some students and we want to plot their scores, but we want
 to be able to clearly see a trend for each one of them? A solution could
 be the paired (specifying `position = 'dodge'`) bar chart below.
 
-```{r, out.width=c('50%', '50%'), fig.show='hold', fig.cap="Paired barchart."}
+```{r, out.width='80%',fig.align="center", fig.show='hold', fig.cap="Paired barchart."}
 # creating data
 people <- data.frame(name = c("Mary", "Mike", "Greg"),
                      surname = c("Wilson", "Jones", "Smith"),

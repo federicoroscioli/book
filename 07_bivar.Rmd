@@ -243,7 +243,7 @@ estimates are given by
 where $\bar{x}$ is the mean (average) of the $x$ values and $\bar{y}$
 is the mean of the $y$ values.
 
-```{r, echo=F, warning=F, out.width=c('50%'), fig.show='hold', fig.cap="Plot of the residuals from a regression line."}
+```{r, echo=F, warning=F, out.width='50%', fig.align="center", fig.show='hold', fig.cap="Plot of the residuals from a regression line."}
 d <- cars
 fit <- lm(dist ~ speed, data = cars)
 d$predicted <- predict(fit)   # Save the predicted values
@@ -306,7 +306,7 @@ understanding of the phenomenon.
 [^7]: For a discussion on the meaning of p-value go back to the previous
     chapter.
 
-```{r, echo=F, out.width=350, fig.show="hold", fig.cap="Linear regression model summary output."}
+```{r, echo=F, out.width="50%",fig.align="center", fig.show="hold", fig.cap="Linear regression model summary output."}
 knitr::include_graphics("images/Schermata 2022-07-07 alle 17.24.44.png")
 ```
 
@@ -421,7 +421,7 @@ can be predicted by a model with p predictor variables**. The lower the
 value, the better the model is able to predict the value of the response
 variable.
 
-```{r, echo=F, out.width=350, fig.show="hold", fig.cap="Logistic regression model summary output."}
+```{r, echo=F, out.width="50%",fig.align="center", fig.show="hold", fig.cap="Logistic regression model summary output."}
 knitr::include_graphics("images/Schermata 2022-07-07 alle 18.49.38.png")
 ```
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -242,7 +242,6 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
 <li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
@@ -295,8 +294,8 @@ other variable. The values of covariance can be any number between the
 two opposite infinities. It’s important to mention that the covariance
 only <u>measures the direction of the relationship between two variables
 and not its magnitude</u>, for which the correlation is used.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="bivariate-analysis.html#cb53-1" tabindex="-1"></a><span class="co"># simple covariance</span></span>
-<span id="cb53-2"><a href="bivariate-analysis.html#cb53-2" tabindex="-1"></a><span class="fu">cov</span>(mtcars<span class="sc">$</span>hp, mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="bivariate-analysis.html#cb51-1" tabindex="-1"></a><span class="co"># simple covariance</span></span>
+<span id="cb51-2"><a href="bivariate-analysis.html#cb51-2" tabindex="-1"></a><span class="fu">cov</span>(mtcars<span class="sc">$</span>hp, mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
 <p>In probability theory and statistics, <strong>correlation</strong>, also called
 correlation coefficient, indicates the strength and direction of a
 linear relationship between two random variables <span class="citation">(<a href="#ref-davis2021">Davis 2021</a>; <a href="#ref-madhavan2019">Madhavan 2019</a>; <a href="#ref-wilson2014">Wilson 2014</a>)</span>. In general statistical usage, correlation
@@ -306,23 +305,19 @@ measuring the degree of correlation, adapted to the nature of data. The
 best known is the <strong>Pearson</strong> product-moment correlation coefficient
 (<span class="math inline">\(\rho\)</span>), which is used for linearly related variables and is obtained
 by dividing the covariance of the two variables (<span class="math inline">\(\sigma_{xy}\)</span>) by the
-product of their standard deviations (Equation <a href="bivariate-analysis.html#eq:pears">(7.1)</a>.
-<span class="math display" id="eq:pears">\[
-\begin{equation}
+product of their standard deviations (Equation <a href="bivariate-analysis.html#eq:pears">(7.1)</a>.</p>
+<p><span class="math display" id="eq:pears">\[\begin{equation}
 \rho=\frac{\sigma_{xy}}{\sigma_x*\sigma_y}
 \tag{7.1}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>A second measure is the <strong>Spearman</strong>’s rank correlation coefficient
 (<span class="math inline">\(\rho_{R(x),R(y)}\)</span>) which is a nonparametric measure of rank
 correlation defined as the Pearson correlation coefficient between rank
 variables (Equation <a href="bivariate-analysis.html#eq:spear">(7.2)</a>).</p>
-<p><span class="math display" id="eq:spear">\[
-\begin{equation}
+<p><span class="math display" id="eq:spear">\[\begin{equation}
 \rho_{R(x),R(y)}=\frac{cov{(R(x),R(y))}}{\sigma_{R(x)}*\sigma_{R(y)}}
 \tag{7.2}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>While Pearson’s correlation assesses linear relationships, Spearman’s
 correlation assesses monotonic relationships (whether linear or not). It
 is, thus, fundamental a theoretical assumption taken before choosing the
@@ -340,15 +335,15 @@ the correlation coefficients between each pair of variables. <em>Note that
 the first line of code suppresses the scientific notation, allowing the
 results of the future calculation to be expressed in decimals even if
 they are really really small (or big) values.</em></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="bivariate-analysis.html#cb54-1" tabindex="-1"></a><span class="co"># suppress scientific notation</span></span>
-<span id="cb54-2"><a href="bivariate-analysis.html#cb54-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span>
-<span id="cb54-3"><a href="bivariate-analysis.html#cb54-3" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="bivariate-analysis.html#cb54-4" tabindex="-1"></a><span class="co"># Correlation coefficients</span></span>
-<span id="cb54-5"><a href="bivariate-analysis.html#cb54-5" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb54-6"><a href="bivariate-analysis.html#cb54-6" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
-<span id="cb54-7"><a href="bivariate-analysis.html#cb54-7" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="bivariate-analysis.html#cb54-8" tabindex="-1"></a><span class="co"># Pearson correlation matrix</span></span>
-<span id="cb54-9"><a href="bivariate-analysis.html#cb54-9" tabindex="-1"></a><span class="fu">cor</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="bivariate-analysis.html#cb52-1" tabindex="-1"></a><span class="co"># suppress scientific notation</span></span>
+<span id="cb52-2"><a href="bivariate-analysis.html#cb52-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span>
+<span id="cb52-3"><a href="bivariate-analysis.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="bivariate-analysis.html#cb52-4" tabindex="-1"></a><span class="co"># Correlation coefficients</span></span>
+<span id="cb52-5"><a href="bivariate-analysis.html#cb52-5" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb52-6"><a href="bivariate-analysis.html#cb52-6" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
+<span id="cb52-7"><a href="bivariate-analysis.html#cb52-7" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="bivariate-analysis.html#cb52-8" tabindex="-1"></a><span class="co"># Pearson correlation matrix</span></span>
+<span id="cb52-9"><a href="bivariate-analysis.html#cb52-9" tabindex="-1"></a><span class="fu">cor</span>(mtcars)</span></code></pre></div>
 <p>Because a correlation matrix may result dispersive and difficult to
 study, especially when we have a high number of variables, there is the
 possibility to visualize it. In fact, if the variables are correlated,
@@ -362,16 +357,16 @@ stylish and customizable graph <span class="citation">(<a href="#ref-wei2021">We
 with the function <code>ggpairs()</code><span class="citation">(<a href="#ref-emerson2012">Emerson et al. 2012</a>)</span>. This function allows us to
 draw a correlation matrix that can include whatever kind of value or
 graph we want inside of each cell.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="bivariate-analysis.html#cb55-1" tabindex="-1"></a><span class="co"># basic pair plot</span></span>
-<span id="cb55-2"><a href="bivariate-analysis.html#cb55-2" tabindex="-1"></a><span class="fu">pairs</span>(cars)</span>
-<span id="cb55-3"><a href="bivariate-analysis.html#cb55-3" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="bivariate-analysis.html#cb55-4" tabindex="-1"></a><span class="co"># the corrplot version</span></span>
-<span id="cb55-5"><a href="bivariate-analysis.html#cb55-5" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb55-6"><a href="bivariate-analysis.html#cb55-6" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(cars))</span>
-<span id="cb55-7"><a href="bivariate-analysis.html#cb55-7" tabindex="-1"></a></span>
-<span id="cb55-8"><a href="bivariate-analysis.html#cb55-8" tabindex="-1"></a><span class="co"># the ggally version</span></span>
-<span id="cb55-9"><a href="bivariate-analysis.html#cb55-9" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb55-10"><a href="bivariate-analysis.html#cb55-10" tabindex="-1"></a><span class="fu">ggpairs</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="bivariate-analysis.html#cb53-1" tabindex="-1"></a><span class="co"># basic pair plot</span></span>
+<span id="cb53-2"><a href="bivariate-analysis.html#cb53-2" tabindex="-1"></a><span class="fu">pairs</span>(cars)</span>
+<span id="cb53-3"><a href="bivariate-analysis.html#cb53-3" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="bivariate-analysis.html#cb53-4" tabindex="-1"></a><span class="co"># the corrplot version</span></span>
+<span id="cb53-5"><a href="bivariate-analysis.html#cb53-5" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb53-6"><a href="bivariate-analysis.html#cb53-6" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(cars))</span>
+<span id="cb53-7"><a href="bivariate-analysis.html#cb53-7" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="bivariate-analysis.html#cb53-8" tabindex="-1"></a><span class="co"># the ggally version</span></span>
+<span id="cb53-9"><a href="bivariate-analysis.html#cb53-9" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb53-10"><a href="bivariate-analysis.html#cb53-10" tabindex="-1"></a><span class="fu">ggpairs</span>(cars)</span></code></pre></div>
 <p>The last measure of relationship we will talk about is the <strong>chi-squared
 test</strong> (also known as <span class="math inline">\(\chi^2\)</span> test). This is a hypothesis test
 statistics that comes into play when dealing with contingency tables and
@@ -382,9 +377,9 @@ statistic. The purpose of the test is to evaluate how likely the
 observed frequencies would be assuming the null hypothesis (<span class="math inline">\(H_0\)</span>) is
 true. Test statistics that follow a <span class="math inline">\(\chi^2\)</span> distribution occur when the
 observations are independent.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="bivariate-analysis.html#cb56-1" tabindex="-1"></a><span class="co"># H0: The two variables are independent.</span></span>
-<span id="cb56-2"><a href="bivariate-analysis.html#cb56-2" tabindex="-1"></a><span class="co"># H1: The two variables relate to each other.</span></span>
-<span id="cb56-3"><a href="bivariate-analysis.html#cb56-3" tabindex="-1"></a><span class="fu">chisq.test</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="bivariate-analysis.html#cb54-1" tabindex="-1"></a><span class="co"># H0: The two variables are independent.</span></span>
+<span id="cb54-2"><a href="bivariate-analysis.html#cb54-2" tabindex="-1"></a><span class="co"># H1: The two variables relate to each other.</span></span>
+<span id="cb54-3"><a href="bivariate-analysis.html#cb54-3" tabindex="-1"></a><span class="fu">chisq.test</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
 <p>The code above computes the <span class="math inline">\(\chi^2\)</span> test for the number of cilinders of
 a car and the presence of manual transmission. Since we get a p-Value
 less than the significance level of 0.05, we reject the null hypothesis
@@ -399,8 +394,8 @@ varies from 0 (corresponding to no association between the variables) to
 1 (complete association) and can reach 1 only when each variable is
 completely determined by the other. Thus <u>it does not tell us the
 direction of the association</u>.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="bivariate-analysis.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb57-2"><a href="bivariate-analysis.html#cb57-2" tabindex="-1"></a><span class="fu">CramerV</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="bivariate-analysis.html#cb55-1" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb55-2"><a href="bivariate-analysis.html#cb55-2" tabindex="-1"></a><span class="fu">CramerV</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -431,12 +426,10 @@ first <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)
 <span class="math inline">\(y\)</span>, but not the other way around. This has important theoretical
 implications in the selection of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The general form of a
 <strong>simple linear regression</strong> is <a href="bivariate-analysis.html#eq:slr">(7.3)</a>:</p>
-<p><span class="math display" id="eq:slr">\[
-\begin{equation}
+<p><span class="math display" id="eq:slr">\[\begin{equation}
 y=\beta_0+\beta_1x+e
 \tag{7.3}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is the slope, and<span class="math inline">\(e\)</span> is the
 error term, which picks up the unpredictable part of the dependent
 variable <span class="math inline">\(y\)</span>. We will sometimes describe 1.1 by saying that we are
@@ -449,25 +442,21 @@ the method of <u>ordinary least squares</u>. The method is called
 “least squares”, because estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> minimize
 the sum of squared error estimates for the given data set (Equation <a href="bivariate-analysis.html#eq:rss">(7.4)</a>), thus
 minimizing:</p>
-<p><span class="math display" id="eq:rss">\[
-\begin{equation}
+<p><span class="math display" id="eq:rss">\[\begin{equation}
 RSS=e_1^2+e_2^2+...+e_n^2
 \tag{7.4}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>The estimates are often denoted by <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span> or
 their corresponding Roman letters. It can be shown that least squares
-estimates are given by
-<span class="math display">\[
-\begin{equation}
+estimates are given by</p>
+<p><span class="math display">\[\begin{equation}
 \hat\beta_1=\frac{\sum_{i=1}^N(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^N(x_i-\bar{x})^2} \\
 \hat\beta_0=\bar{y}-\hat\beta_1 \bar{x}
-\end{equation}
-\]</span>
-where <span class="math inline">\(\bar{x}\)</span> is the mean (average) of the <span class="math inline">\(x\)</span> values and <span class="math inline">\(\bar{y}\)</span>
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\bar{x}\)</span> is the mean (average) of the <span class="math inline">\(x\)</span> values and <span class="math inline">\(\bar{y}\)</span>
 is the mean of the <span class="math inline">\(y\)</span> values.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
-<img src="_main_files/figure-html/unnamed-chunk-67-1.png" alt="Plot of the residuals from a regression line." width="50%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<img src="_main_files/figure-html/unnamed-chunk-74-1.png" alt="Plot of the residuals from a regression line." width="50%"  />
 <p class="caption">
 Figure 7.1: Plot of the residuals from a regression line.
 </p>
@@ -484,14 +473,14 @@ in which they are contained. <em>Note that the formula 1.1 in the <code>lm()</co
 function is written as <code>y ~ x</code>.</em><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> The code chunk below draws a
 summary and the plot of the relationship between the speed of a car and
 the breaking distance.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="bivariate-analysis.html#cb58-1" tabindex="-1"></a><span class="co"># linear regression</span></span>
-<span id="cb58-2"><a href="bivariate-analysis.html#cb58-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb58-3"><a href="bivariate-analysis.html#cb58-3" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
-<span id="cb58-4"><a href="bivariate-analysis.html#cb58-4" tabindex="-1"></a></span>
-<span id="cb58-5"><a href="bivariate-analysis.html#cb58-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb58-6"><a href="bivariate-analysis.html#cb58-6" tabindex="-1"></a><span class="fu">ggplot</span>(cars, <span class="fu">aes</span>(dist, speed))<span class="sc">+</span></span>
-<span id="cb58-7"><a href="bivariate-analysis.html#cb58-7" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb58-8"><a href="bivariate-analysis.html#cb58-8" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="bivariate-analysis.html#cb56-1" tabindex="-1"></a><span class="co"># linear regression</span></span>
+<span id="cb56-2"><a href="bivariate-analysis.html#cb56-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb56-3"><a href="bivariate-analysis.html#cb56-3" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb56-4"><a href="bivariate-analysis.html#cb56-4" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="bivariate-analysis.html#cb56-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb56-6"><a href="bivariate-analysis.html#cb56-6" tabindex="-1"></a><span class="fu">ggplot</span>(cars, <span class="fu">aes</span>(dist, speed))<span class="sc">+</span></span>
+<span id="cb56-7"><a href="bivariate-analysis.html#cb56-7" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb56-8"><a href="bivariate-analysis.html#cb56-8" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <p>The output of the summary of our regression model (Figure 15) must be
 read in the following way in order to have a brief idea on the model
 that we built. The first step is to look at the Multiple R-squared, this
@@ -508,8 +497,8 @@ From a theoretical perspective this makes sense, in fact, the type of
 tires, the weight of the car, the weather conditions (etc..) are some
 additional factors that are missing in our model and could improve our
 understanding of the phenomenon.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
-<img src="images/Schermata%202022-07-07%20alle%2017.24.44.png" alt="Linear regression model summary output." width="350"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<img src="images/Schermata%202022-07-07%20alle%2017.24.44.png" alt="Linear regression model summary output." width="50%"  />
 <p class="caption">
 Figure 7.2: Linear regression model summary output.
 </p>
@@ -523,12 +512,10 @@ regression model. We can do this by giving each independent variable
 (<span class="math inline">\(x\)</span>) a separate slope coefficient in a single model. In general,
 suppose that we have <span class="math inline">\(p\)</span> distinct independent variables (<span class="math inline">\(x\)</span>). Then the
 <strong>multiple linear regression model</strong> takes the form <a href="bivariate-analysis.html#eq:mlr">(7.5)</a>:</p>
-<p><span class="math display" id="eq:mlr">\[
-\begin{equation}
+<p><span class="math display" id="eq:mlr">\[\begin{equation}
 y\approx\beta_0+\beta_1x_1+\beta_2x_2...+\beta_px_p+e
 \tag{7.5}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(x_p\)</span> represents the <span class="math inline">\(p^{th}\)</span> independent variable, and <span class="math inline">\(\beta_p\)</span>
 quantifies the association between that variable and the dependent
 variable <span class="math inline">\(y\)</span>. We interpret <span class="math inline">\(\beta_p\)</span> as the average effect on <span class="math inline">\(y\)</span> of a
@@ -548,12 +535,12 @@ terms are out of the scope of this manual.</p>
 <p>To make an example, we can use the dataset <code>swiss</code>, which reports Swiss
 fertility and socioeconomic data from the year 1888. Following some
 models with a different number of variables used.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="bivariate-analysis.html#cb59-1" tabindex="-1"></a><span class="co"># multiple linear regression</span></span>
-<span id="cb59-2"><a href="bivariate-analysis.html#cb59-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> ., <span class="at">data =</span> swiss)</span>
-<span id="cb59-3"><a href="bivariate-analysis.html#cb59-3" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
-<span id="cb59-4"><a href="bivariate-analysis.html#cb59-4" tabindex="-1"></a></span>
-<span id="cb59-5"><a href="bivariate-analysis.html#cb59-5" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Education <span class="sc">+</span> Agriculture, <span class="at">data =</span> swiss)</span>
-<span id="cb59-6"><a href="bivariate-analysis.html#cb59-6" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="bivariate-analysis.html#cb57-1" tabindex="-1"></a><span class="co"># multiple linear regression</span></span>
+<span id="cb57-2"><a href="bivariate-analysis.html#cb57-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> ., <span class="at">data =</span> swiss)</span>
+<span id="cb57-3"><a href="bivariate-analysis.html#cb57-3" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb57-4"><a href="bivariate-analysis.html#cb57-4" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="bivariate-analysis.html#cb57-5" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Education <span class="sc">+</span> Agriculture, <span class="at">data =</span> swiss)</span>
+<span id="cb57-6"><a href="bivariate-analysis.html#cb57-6" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span></code></pre></div>
 <p>When we perform multiple linear regression, we are usually interested in
 answering a few important questions in order to reach our goal: find the
 model, with the lower number of independent variables that best explains
@@ -575,8 +562,8 @@ becomes a variable selection method: if the full model is significantly
 different (null hypothesis rejected), the variable/s added by the full
 model is/are considered useful for prediction. <em>Statistic textbooks
 generally recommend to test every predictor for significance.</em></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="bivariate-analysis.html#cb60-1" tabindex="-1"></a><span class="co"># ANOVA testing</span></span>
-<span id="cb60-2"><a href="bivariate-analysis.html#cb60-2" tabindex="-1"></a><span class="fu">anova</span>(fit2, fit3)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="bivariate-analysis.html#cb58-1" tabindex="-1"></a><span class="co"># ANOVA testing</span></span>
+<span id="cb58-2"><a href="bivariate-analysis.html#cb58-2" tabindex="-1"></a><span class="fu">anova</span>(fit2, fit3)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -592,8 +579,8 @@ the odds) for the event be a linear combination of one or more
 independent variables.</p>
 <p>Using the <code>glm()</code> function (Generalized Linear Models), and the argument
 <code>family="binomial"</code>, we can fit our logistic regression model.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="bivariate-analysis.html#cb61-1" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">glm</span>(am <span class="sc">~</span> mpg, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>, mtcars)</span>
-<span id="cb61-2"><a href="bivariate-analysis.html#cb61-2" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="bivariate-analysis.html#cb59-1" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">glm</span>(am <span class="sc">~</span> mpg, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>, mtcars)</span>
+<span id="cb59-2"><a href="bivariate-analysis.html#cb59-2" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span></code></pre></div>
 <p>Its output (Figure 17) must be interpreted as follows. An increase in
 miles per gallons (mpg) increases the probability that the car has
 automatic transmission by 31%, and this increase is statistically
@@ -603,8 +590,8 @@ look at the Residual deviance <strong>tells us how well the response variable
 can be predicted by a model with p predictor variables</strong>. The lower the
 value, the better the model is able to predict the value of the response
 variable.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
-<img src="images/Schermata%202022-07-07%20alle%2018.49.38.png" alt="Logistic regression model summary output." width="350"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<img src="images/Schermata%202022-07-07%20alle%2018.49.38.png" alt="Logistic regression model summary output." width="50%"  />
 <p class="caption">
 Figure 7.3: Logistic regression model summary output.
 </p>

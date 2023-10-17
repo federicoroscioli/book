@@ -20,7 +20,7 @@ Following the six steps of data analysis. This section explores the
 steps from 4 to 6, given that the first two are out of the scope of this
 book and the third has been treated in the previous section.
 
-```{r, echo=F, out.width=600, fig.show="hold", fig.cap="The six steps of data analysis."}
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold", fig.cap="The six steps of data analysis."}
 knitr::include_graphics("images/Schermata 2022-03-28 alle 10.36.15.png")
 ```
 
@@ -361,7 +361,7 @@ G(x)=1-\frac{2}{N-1}\sum^{N-1}_{i=1}{q_i}
 where *N* is the population size, and *q* is the cumulative relative
 income.
 
-```{r, echo=F, out.width=180, fig.show="hold", fig.cap="Graphical representation of the Gini index."}
+```{r, echo=F, out.width="50%", fig.show="hold", fig.align = 'center', fig.cap="Graphical representation of the Gini index."}
 knitr::include_graphics("images/gini.png")
 ```
 

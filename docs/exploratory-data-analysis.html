@@ -23,7 +23,7 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -242,7 +242,6 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
 <li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
@@ -274,8 +273,8 @@ application and interpretation.</p>
 <p>Following the six steps of data analysis. This section explores the
 steps from 4 to 6, given that the first two are out of the scope of this
 book and the third has been treated in the previous section.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
-<img src="images/Schermata%202022-03-28%20alle%2010.36.15.png" alt="The six steps of data analysis." width="600"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
+<img src="images/Schermata%202022-03-28%20alle%2010.36.15.png" alt="The six steps of data analysis." width="80%"  />
 <p class="caption">
 Figure 5.1: The six steps of data analysis.
 </p>
@@ -321,13 +320,11 @@ central location.</p>
 <hr />
 <p>The <strong>geometric mean</strong> is defined as the <span class="math inline">\(n^{th}\)</span> root of the product of
 <span class="math inline">\(n\)</span> values (Equation <a href="exploratory-data-analysis.html#eq:geomean">(5.2)</a>).</p>
-<p><span class="math display" id="eq:geomean">\[
-\begin{equation}
+<p><span class="math display" id="eq:geomean">\[\begin{equation}
 \bar x_{g} = \sqrt[n^{th}]{x_1*x_2*...*x_n}
 \tag{5.2}
-\end{equation}
-\]</span>
-The geometric mean cannot be used if the values considered are lower
+\end{equation}\]</span></p>
+<p>The geometric mean cannot be used if the values considered are lower
 or equal to zero. It is often used for a set of numbers whose values are
 meant to be multiplied together or are exponential in nature, such as a
 set of growth figures: values of the human population, or interest rates
@@ -352,12 +349,10 @@ common mark is far away from the rest of the data.</p>
 exactly at the center between the minimum and the maximum values
 (Equation <a href="exploratory-data-analysis.html#eq:mv">(5.3)</a>), regardless of the distribution of the data Thus it is
 sensitive to outliers.</p>
-<p><span class="math display" id="eq:mv">\[
-\begin{equation}
+<p><span class="math display" id="eq:mv">\[\begin{equation}
 \frac{max-min}{2}
 \tag{5.3}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <hr />
 <p>The function <code>summary()</code> gives us a brief overview of the minimum,
 maximum, first and third quantile, median and mean of each variable, or
@@ -368,25 +363,25 @@ geometric mean (there is not a dedicated function for it), median, mode
 (the function from <code>DescTools</code> allows us to retrieve also multi-modal
 values)<span class="citation">(<a href="#ref-signorelli2021">Signorelli 2021</a>)</span>, and middle value. For more options about all
 the functions below, please, look in the help.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="exploratory-data-analysis.html#cb30-1" tabindex="-1"></a><span class="co"># to do statistical summaries of the whole dataset or of a single variable</span></span>
-<span id="cb30-2"><a href="exploratory-data-analysis.html#cb30-2" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span>
-<span id="cb30-3"><a href="exploratory-data-analysis.html#cb30-3" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>cyl)</span>
-<span id="cb30-4"><a href="exploratory-data-analysis.html#cb30-4" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="exploratory-data-analysis.html#cb30-5" tabindex="-1"></a><span class="co"># arithmetic mean</span></span>
-<span id="cb30-6"><a href="exploratory-data-analysis.html#cb30-6" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb30-7"><a href="exploratory-data-analysis.html#cb30-7" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="exploratory-data-analysis.html#cb30-8" tabindex="-1"></a><span class="co"># geometric mean</span></span>
-<span id="cb30-9"><a href="exploratory-data-analysis.html#cb30-9" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(mtcars<span class="sc">$</span>mpg)))  </span>
-<span id="cb30-10"><a href="exploratory-data-analysis.html#cb30-10" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="exploratory-data-analysis.html#cb30-11" tabindex="-1"></a><span class="co"># median</span></span>
-<span id="cb30-12"><a href="exploratory-data-analysis.html#cb30-12" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb30-13"><a href="exploratory-data-analysis.html#cb30-13" tabindex="-1"></a></span>
-<span id="cb30-14"><a href="exploratory-data-analysis.html#cb30-14" tabindex="-1"></a><span class="co"># mode</span></span>
-<span id="cb30-15"><a href="exploratory-data-analysis.html#cb30-15" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb30-16"><a href="exploratory-data-analysis.html#cb30-16" tabindex="-1"></a><span class="fu">Mode</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb30-17"><a href="exploratory-data-analysis.html#cb30-17" tabindex="-1"></a></span>
-<span id="cb30-18"><a href="exploratory-data-analysis.html#cb30-18" tabindex="-1"></a><span class="co">#middle value</span></span>
-<span id="cb30-19"><a href="exploratory-data-analysis.html#cb30-19" tabindex="-1"></a>(<span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)<span class="sc">-</span><span class="fu">min</span>(mtcars<span class="sc">$</span>mpg))<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="exploratory-data-analysis.html#cb29-1" tabindex="-1"></a><span class="co"># to do statistical summaries of the whole dataset or of a single variable</span></span>
+<span id="cb29-2"><a href="exploratory-data-analysis.html#cb29-2" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span>
+<span id="cb29-3"><a href="exploratory-data-analysis.html#cb29-3" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb29-4"><a href="exploratory-data-analysis.html#cb29-4" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="exploratory-data-analysis.html#cb29-5" tabindex="-1"></a><span class="co"># arithmetic mean</span></span>
+<span id="cb29-6"><a href="exploratory-data-analysis.html#cb29-6" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb29-7"><a href="exploratory-data-analysis.html#cb29-7" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="exploratory-data-analysis.html#cb29-8" tabindex="-1"></a><span class="co"># geometric mean</span></span>
+<span id="cb29-9"><a href="exploratory-data-analysis.html#cb29-9" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(mtcars<span class="sc">$</span>mpg)))  </span>
+<span id="cb29-10"><a href="exploratory-data-analysis.html#cb29-10" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="exploratory-data-analysis.html#cb29-11" tabindex="-1"></a><span class="co"># median</span></span>
+<span id="cb29-12"><a href="exploratory-data-analysis.html#cb29-12" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb29-13"><a href="exploratory-data-analysis.html#cb29-13" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="exploratory-data-analysis.html#cb29-14" tabindex="-1"></a><span class="co"># mode</span></span>
+<span id="cb29-15"><a href="exploratory-data-analysis.html#cb29-15" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb29-16"><a href="exploratory-data-analysis.html#cb29-16" tabindex="-1"></a><span class="fu">Mode</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb29-17"><a href="exploratory-data-analysis.html#cb29-17" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="exploratory-data-analysis.html#cb29-18" tabindex="-1"></a><span class="co">#middle value</span></span>
+<span id="cb29-19"><a href="exploratory-data-analysis.html#cb29-19" tabindex="-1"></a>(<span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)<span class="sc">-</span><span class="fu">min</span>(mtcars<span class="sc">$</span>mpg))<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -430,8 +425,8 @@ considering only them would lead to mistaken evaluations.</p>
 </tr>
 </tbody>
 </table>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
-<img src="_main_files/figure-html/unnamed-chunk-32-1.png" alt="From left: Histograms of the samples a and b." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-32-2.png" alt="From left: Histograms of the samples a and b." width="50%"  />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
+<img src="_main_files/figure-html/unnamed-chunk-39-1.png" alt="From left: Histograms of the samples a and b." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-39-2.png" alt="From left: Histograms of the samples a and b." width="50%"  />
 <p class="caption">
 Figure 5.2: From left: Histograms of the samples a and b.
 </p>
@@ -439,46 +434,38 @@ Figure 5.2: From left: Histograms of the samples a and b.
 <hr />
 <p>The <strong>range</strong> is the simplest measure of variability to calculate, and
 one you have probably encountered many times in your life. The range is
-the maximum value minus the minimum value (Equation <a href="exploratory-data-analysis.html#eq:range">(5.4)</a>).
-<span class="math display" id="eq:range">\[
-\begin{equation}
+the maximum value minus the minimum value (Equation <a href="exploratory-data-analysis.html#eq:range">(5.4)</a>).</p>
+<p><span class="math display" id="eq:range">\[\begin{equation}
 range=max-min
 \tag{5.4}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <hr />
 <p>The <strong>interquartile range</strong> (IQR) is the range of the central 50% of the
 values in a distribution (Equation <a href="exploratory-data-analysis.html#eq:iqrange">(5.5)</a>).</p>
-<p><span class="math display" id="eq:iqrange">\[
-\begin{equation}
+<p><span class="math display" id="eq:iqrange">\[\begin{equation}
 IQR=75^{th} percentile - 25^{th} percentile
 \tag{5.5}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <hr />
 <p>But variability can also be defined in terms of how close the values in
 the distribution are to the middle of the distribution. Using the mean
 as the measure for referencing to the middle of the distribution, the
 <strong>variance</strong> is defined as the average squared difference of the scores
 from the mean (Equation <a href="exploratory-data-analysis.html#eq:var">(5.6)</a>).</p>
-<p><span class="math display" id="eq:var">\[
-\begin{equation}
+<p><span class="math display" id="eq:var">\[\begin{equation}
 \sigma^2=\frac{\sum{(X-\bar x)^2}}{N}
 \tag{5.6}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <hr />
 <p>The <strong>standard deviation</strong> is simply the square root of the variance
 (Equation <a href="exploratory-data-analysis.html#eq:sd">(5.7)</a>). It is an especially useful measure of variability when
 the distribution is normal or approximately normal (see [The Normal
 Distribution]) because the proportion of the distribution within a given
 number of standard deviations from the mean can be calculated.</p>
-<p><span class="math display" id="eq:sd">\[
-\begin{equation}
+<p><span class="math display" id="eq:sd">\[\begin{equation}
 \sigma=\sqrt{\sigma^2}
 \tag{5.7}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <hr />
 <p>The <strong>coefficient of variation</strong> (CV) represents the ratio of the
 standard deviation to the mean (Equation <a href="exploratory-data-analysis.html#eq:cv">(5.8)</a>), and it is a useful
@@ -486,54 +473,52 @@ statistic for comparing the degree of variation of data relative to
 different unit of measures. In fact, the CV is the only variability
 measure (of those mentioned here) that is standardized, thus does not
 depend on its unit of measure.</p>
-<p><span class="math display" id="eq:cv">\[
-\begin{equation}
+<p><span class="math display" id="eq:cv">\[\begin{equation}
 CV=\frac{\sigma}{\bar{x}}
 \tag{5.8}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <hr />
 <p>The following code computes the above mentioned variability measures for
 the consumption variable of the mtcars dataset. In the last lines you
 can find also the code to compile a frequency table with the function
 <code>table()</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="exploratory-data-analysis.html#cb31-1" tabindex="-1"></a><span class="co"># range</span></span>
-<span id="cb31-2"><a href="exploratory-data-analysis.html#cb31-2" tabindex="-1"></a><span class="fu">max</span>(mtcars<span class="sc">$</span>mpg) <span class="sc">-</span> <span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb31-3"><a href="exploratory-data-analysis.html#cb31-3" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="exploratory-data-analysis.html#cb31-4" tabindex="-1"></a><span class="co"># quantile distribution</span></span>
-<span id="cb31-5"><a href="exploratory-data-analysis.html#cb31-5" tabindex="-1"></a><span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb31-6"><a href="exploratory-data-analysis.html#cb31-6" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="exploratory-data-analysis.html#cb31-7" tabindex="-1"></a><span class="co"># interquantile range</span></span>
-<span id="cb31-8"><a href="exploratory-data-analysis.html#cb31-8" tabindex="-1"></a><span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg, <span class="at">probs =</span> .<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg, <span class="at">probs =</span> .<span class="dv">25</span>)</span>
-<span id="cb31-9"><a href="exploratory-data-analysis.html#cb31-9" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="exploratory-data-analysis.html#cb31-10" tabindex="-1"></a><span class="co"># variance</span></span>
-<span id="cb31-11"><a href="exploratory-data-analysis.html#cb31-11" tabindex="-1"></a><span class="fu">var</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb31-12"><a href="exploratory-data-analysis.html#cb31-12" tabindex="-1"></a></span>
-<span id="cb31-13"><a href="exploratory-data-analysis.html#cb31-13" tabindex="-1"></a><span class="co"># standard deviation</span></span>
-<span id="cb31-14"><a href="exploratory-data-analysis.html#cb31-14" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb31-15"><a href="exploratory-data-analysis.html#cb31-15" tabindex="-1"></a></span>
-<span id="cb31-16"><a href="exploratory-data-analysis.html#cb31-16" tabindex="-1"></a><span class="co"># coefficent of variation</span></span>
-<span id="cb31-17"><a href="exploratory-data-analysis.html#cb31-17" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)<span class="sc">/</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb31-18"><a href="exploratory-data-analysis.html#cb31-18" tabindex="-1"></a></span>
-<span id="cb31-19"><a href="exploratory-data-analysis.html#cb31-19" tabindex="-1"></a><span class="co"># frequency tables</span></span>
-<span id="cb31-20"><a href="exploratory-data-analysis.html#cb31-20" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
-<span id="cb31-21"><a href="exploratory-data-analysis.html#cb31-21" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="exploratory-data-analysis.html#cb30-1" tabindex="-1"></a><span class="co"># range</span></span>
+<span id="cb30-2"><a href="exploratory-data-analysis.html#cb30-2" tabindex="-1"></a><span class="fu">max</span>(mtcars<span class="sc">$</span>mpg) <span class="sc">-</span> <span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-3"><a href="exploratory-data-analysis.html#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="exploratory-data-analysis.html#cb30-4" tabindex="-1"></a><span class="co"># quantile distribution</span></span>
+<span id="cb30-5"><a href="exploratory-data-analysis.html#cb30-5" tabindex="-1"></a><span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-6"><a href="exploratory-data-analysis.html#cb30-6" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="exploratory-data-analysis.html#cb30-7" tabindex="-1"></a><span class="co"># interquantile range</span></span>
+<span id="cb30-8"><a href="exploratory-data-analysis.html#cb30-8" tabindex="-1"></a><span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg, <span class="at">probs =</span> .<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg, <span class="at">probs =</span> .<span class="dv">25</span>)</span>
+<span id="cb30-9"><a href="exploratory-data-analysis.html#cb30-9" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="exploratory-data-analysis.html#cb30-10" tabindex="-1"></a><span class="co"># variance</span></span>
+<span id="cb30-11"><a href="exploratory-data-analysis.html#cb30-11" tabindex="-1"></a><span class="fu">var</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-12"><a href="exploratory-data-analysis.html#cb30-12" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="exploratory-data-analysis.html#cb30-13" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb30-14"><a href="exploratory-data-analysis.html#cb30-14" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-15"><a href="exploratory-data-analysis.html#cb30-15" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="exploratory-data-analysis.html#cb30-16" tabindex="-1"></a><span class="co"># coefficent of variation</span></span>
+<span id="cb30-17"><a href="exploratory-data-analysis.html#cb30-17" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)<span class="sc">/</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-18"><a href="exploratory-data-analysis.html#cb30-18" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="exploratory-data-analysis.html#cb30-19" tabindex="-1"></a><span class="co"># frequency tables</span></span>
+<span id="cb30-20"><a href="exploratory-data-analysis.html#cb30-20" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb30-21"><a href="exploratory-data-analysis.html#cb30-21" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
 <p>Below a simple code that allows to create a dataframe, which is also a
 way to create a summary table. The <code>data.frame()</code> function has to be
 filled column wise, specifying the column/variable name and then the
 content. You can play with it in order to create a personalized table.
 The <code>stargazer()</code> function, instead presents the same statistics as the
 <code>summary()</code> function, but in a cooler style <span class="citation">(<a href="#ref-torres-reyna2014">Torres-Reyna 2014</a>; <a href="#ref-hlavac2022">Hlavac 2022</a>)</span>.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" tabindex="-1"></a><span class="co"># create a table storing your values</span></span>
-<span id="cb32-2"><a href="exploratory-data-analysis.html#cb32-2" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">obs =</span> <span class="fu">c</span>(<span class="st">&quot;Miles per Gallon&quot;</span>, <span class="st">&quot;Number of Cylinders&quot;</span>),</span>
-<span id="cb32-3"><a href="exploratory-data-analysis.html#cb32-3" tabindex="-1"></a>           <span class="at">mean =</span> <span class="fu">c</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">mean</span>(mtcars<span class="sc">$</span>cyl)),</span>
-<span id="cb32-4"><a href="exploratory-data-analysis.html#cb32-4" tabindex="-1"></a>           <span class="at">median =</span> <span class="fu">c</span>(<span class="fu">median</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">median</span>(mtcars<span class="sc">$</span>cyl)),</span>
-<span id="cb32-5"><a href="exploratory-data-analysis.html#cb32-5" tabindex="-1"></a>           <span class="at">sd =</span> <span class="fu">c</span>(<span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">sd</span>(mtcars<span class="sc">$</span>cyl))</span>
-<span id="cb32-6"><a href="exploratory-data-analysis.html#cb32-6" tabindex="-1"></a>           )</span>
-<span id="cb32-7"><a href="exploratory-data-analysis.html#cb32-7" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="exploratory-data-analysis.html#cb32-8" tabindex="-1"></a><span class="co"># create a table storing basic summary statistics</span></span>
-<span id="cb32-9"><a href="exploratory-data-analysis.html#cb32-9" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
-<span id="cb32-10"><a href="exploratory-data-analysis.html#cb32-10" tabindex="-1"></a><span class="fu">stargazer</span>(mtcars, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>, <span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="exploratory-data-analysis.html#cb31-1" tabindex="-1"></a><span class="co"># create a table storing your values</span></span>
+<span id="cb31-2"><a href="exploratory-data-analysis.html#cb31-2" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">obs =</span> <span class="fu">c</span>(<span class="st">&quot;Miles per Gallon&quot;</span>, <span class="st">&quot;Number of Cylinders&quot;</span>),</span>
+<span id="cb31-3"><a href="exploratory-data-analysis.html#cb31-3" tabindex="-1"></a>           <span class="at">mean =</span> <span class="fu">c</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">mean</span>(mtcars<span class="sc">$</span>cyl)),</span>
+<span id="cb31-4"><a href="exploratory-data-analysis.html#cb31-4" tabindex="-1"></a>           <span class="at">median =</span> <span class="fu">c</span>(<span class="fu">median</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">median</span>(mtcars<span class="sc">$</span>cyl)),</span>
+<span id="cb31-5"><a href="exploratory-data-analysis.html#cb31-5" tabindex="-1"></a>           <span class="at">sd =</span> <span class="fu">c</span>(<span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">sd</span>(mtcars<span class="sc">$</span>cyl))</span>
+<span id="cb31-6"><a href="exploratory-data-analysis.html#cb31-6" tabindex="-1"></a>           )</span>
+<span id="cb31-7"><a href="exploratory-data-analysis.html#cb31-7" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="exploratory-data-analysis.html#cb31-8" tabindex="-1"></a><span class="co"># create a table storing basic summary statistics</span></span>
+<span id="cb31-9"><a href="exploratory-data-analysis.html#cb31-9" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb31-10"><a href="exploratory-data-analysis.html#cb31-10" tabindex="-1"></a><span class="fu">stargazer</span>(mtcars, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>, <span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -568,16 +553,14 @@ ratio of the area that lies between the line of perfect equality (the
 diagonal) and the Lorenz curve over the total area under the line of
 equality (see Figure 7). Here the formula used to compute the Gini
 coefficient:</p>
-<p><span class="math display" id="eq:gini">\[
-\begin{equation}
+<p><span class="math display" id="eq:gini">\[\begin{equation}
 G(x)=1-\frac{2}{N-1}\sum^{N-1}_{i=1}{q_i}
 \tag{5.9}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>where <em>N</em> is the population size, and <em>q</em> is the cumulative relative
 income.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-35"></span>
-<img src="images/gini.png" alt="Graphical representation of the Gini index." width="180"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<img src="images/gini.png" alt="Graphical representation of the Gini index." width="50%"  />
 <p class="caption">
 Figure 5.3: Graphical representation of the Gini index.
 </p>
@@ -588,19 +571,19 @@ y objects. You can either use the function from the package <code>DescTools</cod
 <span class="citation">(<a href="#ref-iacus2020">Iacus and Masarotto 2020</a>)</span> (remember that R is case-sensitive!). Did you expect this
 value of Gini?</p>
 <p>Try to understand how the function <code>rep()</code> works using the help.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="exploratory-data-analysis.html#cb33-1" tabindex="-1"></a><span class="co"># generate vector (of incomes)</span></span>
-<span id="cb33-2"><a href="exploratory-data-analysis.html#cb33-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">541</span>, <span class="dv">1463</span>, <span class="dv">2445</span>, <span class="dv">3438</span>, <span class="dv">4437</span>, <span class="dv">5401</span>, <span class="dv">6392</span>, <span class="dv">8304</span>, <span class="dv">11904</span>, <span class="dv">22261</span>)</span>
-<span id="cb33-3"><a href="exploratory-data-analysis.html#cb33-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1000</span>, <span class="dv">10</span>))</span>
-<span id="cb33-4"><a href="exploratory-data-analysis.html#cb33-4" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">541</span>, <span class="dv">1463</span>, <span class="dv">2445</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">11904</span>, <span class="dv">22261</span>)</span>
-<span id="cb33-5"><a href="exploratory-data-analysis.html#cb33-5" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="exploratory-data-analysis.html#cb33-6" tabindex="-1"></a><span class="co"># compute Gini coefficient</span></span>
-<span id="cb33-7"><a href="exploratory-data-analysis.html#cb33-7" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb33-8"><a href="exploratory-data-analysis.html#cb33-8" tabindex="-1"></a><span class="fu">Gini</span>(x)</span>
-<span id="cb33-9"><a href="exploratory-data-analysis.html#cb33-9" tabindex="-1"></a><span class="fu">Gini</span>(y)</span>
-<span id="cb33-10"><a href="exploratory-data-analysis.html#cb33-10" tabindex="-1"></a><span class="fu">Gini</span>(z)</span>
-<span id="cb33-11"><a href="exploratory-data-analysis.html#cb33-11" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb33-12"><a href="exploratory-data-analysis.html#cb33-12" tabindex="-1"></a><span class="fu">library</span>(labstatR)</span>
-<span id="cb33-13"><a href="exploratory-data-analysis.html#cb33-13" tabindex="-1"></a><span class="fu">gini</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" tabindex="-1"></a><span class="co"># generate vector (of incomes)</span></span>
+<span id="cb32-2"><a href="exploratory-data-analysis.html#cb32-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">541</span>, <span class="dv">1463</span>, <span class="dv">2445</span>, <span class="dv">3438</span>, <span class="dv">4437</span>, <span class="dv">5401</span>, <span class="dv">6392</span>, <span class="dv">8304</span>, <span class="dv">11904</span>, <span class="dv">22261</span>)</span>
+<span id="cb32-3"><a href="exploratory-data-analysis.html#cb32-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1000</span>, <span class="dv">10</span>))</span>
+<span id="cb32-4"><a href="exploratory-data-analysis.html#cb32-4" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">541</span>, <span class="dv">1463</span>, <span class="dv">2445</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">11904</span>, <span class="dv">22261</span>)</span>
+<span id="cb32-5"><a href="exploratory-data-analysis.html#cb32-5" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="exploratory-data-analysis.html#cb32-6" tabindex="-1"></a><span class="co"># compute Gini coefficient</span></span>
+<span id="cb32-7"><a href="exploratory-data-analysis.html#cb32-7" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb32-8"><a href="exploratory-data-analysis.html#cb32-8" tabindex="-1"></a><span class="fu">Gini</span>(x)</span>
+<span id="cb32-9"><a href="exploratory-data-analysis.html#cb32-9" tabindex="-1"></a><span class="fu">Gini</span>(y)</span>
+<span id="cb32-10"><a href="exploratory-data-analysis.html#cb32-10" tabindex="-1"></a><span class="fu">Gini</span>(z)</span>
+<span id="cb32-11"><a href="exploratory-data-analysis.html#cb32-11" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb32-12"><a href="exploratory-data-analysis.html#cb32-12" tabindex="-1"></a><span class="fu">library</span>(labstatR)</span>
+<span id="cb32-13"><a href="exploratory-data-analysis.html#cb32-13" tabindex="-1"></a><span class="fu">gini</span>(x)</span></code></pre></div>
 <p>As mentioned, the Gini Index is nowadays a recognized standard,
 nevertheless it has some limitations. In fact, Gini is more sensitive to
 changes in the middle of the distribution, than to the tails. In
@@ -613,39 +596,37 @@ specifically, it is the ratio of national income shares of the top 10%
 of households to the bottom 40%. It, thus, tells us how many times the
 income of the top 10% of the population is higher than that of the
 bottom 40% (Equation <a href="exploratory-data-analysis.html#eq:palma">(5.10)</a>).</p>
-<p><span class="math display" id="eq:palma">\[
-\begin{equation}
+<p><span class="math display" id="eq:palma">\[\begin{equation}
 Palma = \frac {top10}{bottom40}
 \tag{5.10}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>The code below computes the Palma Ratio for the <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span>
 distributions created previously. This has to be done manually, by
 computing the top 10% income and the bottom 40% income with the
 cumulative frequencies computed by the function <code>gini()</code> of the package
 <code>labstatR</code> <span class="citation">(<a href="#ref-iacus2020">Iacus and Masarotto 2020</a>)</span>. Confront the Gini Index and the Palma Ratio, do
 you find different results? Why?</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" tabindex="-1"></a><span class="fu">library</span>(labstatR)</span>
-<span id="cb34-2"><a href="exploratory-data-analysis.html#cb34-2" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
-<span id="cb34-3"><a href="exploratory-data-analysis.html#cb34-3" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">gini</span>(x)<span class="sc">$</span>Q</span>
-<span id="cb34-4"><a href="exploratory-data-analysis.html#cb34-4" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="exploratory-data-analysis.html#cb34-5" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
-<span id="cb34-6"><a href="exploratory-data-analysis.html#cb34-6" tabindex="-1"></a>(<span class="fu">quantile</span>(q, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
-<span id="cb34-7"><a href="exploratory-data-analysis.html#cb34-7" tabindex="-1"></a>  <span class="fu">quantile</span>(q, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span>
-<span id="cb34-8"><a href="exploratory-data-analysis.html#cb34-8" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="exploratory-data-analysis.html#cb34-9" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
-<span id="cb34-10"><a href="exploratory-data-analysis.html#cb34-10" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="fu">gini</span>(y)<span class="sc">$</span>Q</span>
-<span id="cb34-11"><a href="exploratory-data-analysis.html#cb34-11" tabindex="-1"></a></span>
-<span id="cb34-12"><a href="exploratory-data-analysis.html#cb34-12" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
-<span id="cb34-13"><a href="exploratory-data-analysis.html#cb34-13" tabindex="-1"></a>(<span class="fu">quantile</span>(q2, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q2, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
-<span id="cb34-14"><a href="exploratory-data-analysis.html#cb34-14" tabindex="-1"></a>  <span class="fu">quantile</span>(q2, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span>
-<span id="cb34-15"><a href="exploratory-data-analysis.html#cb34-15" tabindex="-1"></a></span>
-<span id="cb34-16"><a href="exploratory-data-analysis.html#cb34-16" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
-<span id="cb34-17"><a href="exploratory-data-analysis.html#cb34-17" tabindex="-1"></a>q3 <span class="ot">&lt;-</span> <span class="fu">gini</span>(z)<span class="sc">$</span>Q</span>
-<span id="cb34-18"><a href="exploratory-data-analysis.html#cb34-18" tabindex="-1"></a></span>
-<span id="cb34-19"><a href="exploratory-data-analysis.html#cb34-19" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
-<span id="cb34-20"><a href="exploratory-data-analysis.html#cb34-20" tabindex="-1"></a>(<span class="fu">quantile</span>(q3, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q3, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
-<span id="cb34-21"><a href="exploratory-data-analysis.html#cb34-21" tabindex="-1"></a>  <span class="fu">quantile</span>(q3, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="exploratory-data-analysis.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(labstatR)</span>
+<span id="cb33-2"><a href="exploratory-data-analysis.html#cb33-2" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
+<span id="cb33-3"><a href="exploratory-data-analysis.html#cb33-3" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">gini</span>(x)<span class="sc">$</span>Q</span>
+<span id="cb33-4"><a href="exploratory-data-analysis.html#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="exploratory-data-analysis.html#cb33-5" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
+<span id="cb33-6"><a href="exploratory-data-analysis.html#cb33-6" tabindex="-1"></a>(<span class="fu">quantile</span>(q, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
+<span id="cb33-7"><a href="exploratory-data-analysis.html#cb33-7" tabindex="-1"></a>  <span class="fu">quantile</span>(q, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span>
+<span id="cb33-8"><a href="exploratory-data-analysis.html#cb33-8" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="exploratory-data-analysis.html#cb33-9" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
+<span id="cb33-10"><a href="exploratory-data-analysis.html#cb33-10" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="fu">gini</span>(y)<span class="sc">$</span>Q</span>
+<span id="cb33-11"><a href="exploratory-data-analysis.html#cb33-11" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="exploratory-data-analysis.html#cb33-12" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
+<span id="cb33-13"><a href="exploratory-data-analysis.html#cb33-13" tabindex="-1"></a>(<span class="fu">quantile</span>(q2, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q2, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
+<span id="cb33-14"><a href="exploratory-data-analysis.html#cb33-14" tabindex="-1"></a>  <span class="fu">quantile</span>(q2, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span>
+<span id="cb33-15"><a href="exploratory-data-analysis.html#cb33-15" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="exploratory-data-analysis.html#cb33-16" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
+<span id="cb33-17"><a href="exploratory-data-analysis.html#cb33-17" tabindex="-1"></a>q3 <span class="ot">&lt;-</span> <span class="fu">gini</span>(z)<span class="sc">$</span>Q</span>
+<span id="cb33-18"><a href="exploratory-data-analysis.html#cb33-18" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="exploratory-data-analysis.html#cb33-19" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
+<span id="cb33-20"><a href="exploratory-data-analysis.html#cb33-20" tabindex="-1"></a>(<span class="fu">quantile</span>(q3, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q3, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
+<span id="cb33-21"><a href="exploratory-data-analysis.html#cb33-21" tabindex="-1"></a>  <span class="fu">quantile</span>(q3, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -712,41 +693,41 @@ variables</a>). Moreover, we specified the <span class="math inline">\(x\)</span
 the <code>xlab</code> and <code>ylab</code> arguments.</p>
 <p>Try the code, personalize it, and check in the help for supplementary
 options.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="exploratory-data-analysis.html#cb35-1" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb35-2"><a href="exploratory-data-analysis.html#cb35-2" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb35-3"><a href="exploratory-data-analysis.html#cb35-3" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="exploratory-data-analysis.html#cb35-4" tabindex="-1"></a><span class="co"># density plot</span></span>
-<span id="cb35-5"><a href="exploratory-data-analysis.html#cb35-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(mtcars<span class="sc">$</span>mpg), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
-<span id="cb35-6"><a href="exploratory-data-analysis.html#cb35-6" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="exploratory-data-analysis.html#cb35-7" tabindex="-1"></a><span class="co"># scatterplot of cyl vs hp</span></span>
-<span id="cb35-8"><a href="exploratory-data-analysis.html#cb35-8" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>hp)</span>
-<span id="cb35-9"><a href="exploratory-data-analysis.html#cb35-9" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="exploratory-data-analysis.html#cb35-10" tabindex="-1"></a><span class="co"># why do we get an error here?</span></span>
-<span id="cb35-11"><a href="exploratory-data-analysis.html#cb35-11" tabindex="-1"></a><span class="fu">plot</span>(mpg, hp)</span>
-<span id="cb35-12"><a href="exploratory-data-analysis.html#cb35-12" tabindex="-1"></a></span>
-<span id="cb35-13"><a href="exploratory-data-analysis.html#cb35-13" tabindex="-1"></a><span class="co"># stylish scatterplot</span></span>
-<span id="cb35-14"><a href="exploratory-data-analysis.html#cb35-14" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>hp,</span>
-<span id="cb35-15"><a href="exploratory-data-analysis.html#cb35-15" tabindex="-1"></a>     mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb35-16"><a href="exploratory-data-analysis.html#cb35-16" tabindex="-1"></a>     <span class="co"># adding titles and axes names</span></span>
-<span id="cb35-17"><a href="exploratory-data-analysis.html#cb35-17" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Miles per Gallon&quot;</span>,</span>
-<span id="cb35-18"><a href="exploratory-data-analysis.html#cb35-18" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Horse Power&quot;</span>,</span>
-<span id="cb35-19"><a href="exploratory-data-analysis.html#cb35-19" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Is consumption related to Horse Power?&quot;</span>)</span>
-<span id="cb35-20"><a href="exploratory-data-analysis.html#cb35-20" tabindex="-1"></a></span>
-<span id="cb35-21"><a href="exploratory-data-analysis.html#cb35-21" tabindex="-1"></a><span class="co"># adding a regression line on the scatterplot</span></span>
-<span id="cb35-22"><a href="exploratory-data-analysis.html#cb35-22" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb35-23"><a href="exploratory-data-analysis.html#cb35-23" tabindex="-1"></a></span>
-<span id="cb35-24"><a href="exploratory-data-analysis.html#cb35-24" tabindex="-1"></a><span class="co"># subset automatic cars consumption</span></span>
-<span id="cb35-25"><a href="exploratory-data-analysis.html#cb35-25" tabindex="-1"></a>mpg.at <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">0</span>]</span>
-<span id="cb35-26"><a href="exploratory-data-analysis.html#cb35-26" tabindex="-1"></a><span class="co"># and manual cars consumption</span></span>
-<span id="cb35-27"><a href="exploratory-data-analysis.html#cb35-27" tabindex="-1"></a>mpg.mt <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>]</span>
-<span id="cb35-28"><a href="exploratory-data-analysis.html#cb35-28" tabindex="-1"></a></span>
-<span id="cb35-29"><a href="exploratory-data-analysis.html#cb35-29" tabindex="-1"></a><span class="co"># boxplot</span></span>
-<span id="cb35-30"><a href="exploratory-data-analysis.html#cb35-30" tabindex="-1"></a><span class="fu">boxplot</span>(mpg.mt, mpg.at)</span>
-<span id="cb35-31"><a href="exploratory-data-analysis.html#cb35-31" tabindex="-1"></a></span>
-<span id="cb35-32"><a href="exploratory-data-analysis.html#cb35-32" tabindex="-1"></a><span class="co"># boxplot with a categorical variable</span></span>
-<span id="cb35-33"><a href="exploratory-data-analysis.html#cb35-33" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl), mtcars<span class="sc">$</span>hp, </span>
-<span id="cb35-34"><a href="exploratory-data-analysis.html#cb35-34" tabindex="-1"></a>     <span class="co"># adding axes names</span></span>
-<span id="cb35-35"><a href="exploratory-data-analysis.html#cb35-35" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Cylinders&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Horse Power&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb34-2"><a href="exploratory-data-analysis.html#cb34-2" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb34-3"><a href="exploratory-data-analysis.html#cb34-3" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="exploratory-data-analysis.html#cb34-4" tabindex="-1"></a><span class="co"># density plot</span></span>
+<span id="cb34-5"><a href="exploratory-data-analysis.html#cb34-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(mtcars<span class="sc">$</span>mpg), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb34-6"><a href="exploratory-data-analysis.html#cb34-6" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="exploratory-data-analysis.html#cb34-7" tabindex="-1"></a><span class="co"># scatterplot of cyl vs hp</span></span>
+<span id="cb34-8"><a href="exploratory-data-analysis.html#cb34-8" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>hp)</span>
+<span id="cb34-9"><a href="exploratory-data-analysis.html#cb34-9" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="exploratory-data-analysis.html#cb34-10" tabindex="-1"></a><span class="co"># why do we get an error here?</span></span>
+<span id="cb34-11"><a href="exploratory-data-analysis.html#cb34-11" tabindex="-1"></a><span class="fu">plot</span>(mpg, hp)</span>
+<span id="cb34-12"><a href="exploratory-data-analysis.html#cb34-12" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="exploratory-data-analysis.html#cb34-13" tabindex="-1"></a><span class="co"># stylish scatterplot</span></span>
+<span id="cb34-14"><a href="exploratory-data-analysis.html#cb34-14" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>hp,</span>
+<span id="cb34-15"><a href="exploratory-data-analysis.html#cb34-15" tabindex="-1"></a>     mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb34-16"><a href="exploratory-data-analysis.html#cb34-16" tabindex="-1"></a>     <span class="co"># adding titles and axes names</span></span>
+<span id="cb34-17"><a href="exploratory-data-analysis.html#cb34-17" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Miles per Gallon&quot;</span>,</span>
+<span id="cb34-18"><a href="exploratory-data-analysis.html#cb34-18" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Horse Power&quot;</span>,</span>
+<span id="cb34-19"><a href="exploratory-data-analysis.html#cb34-19" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Is consumption related to Horse Power?&quot;</span>)</span>
+<span id="cb34-20"><a href="exploratory-data-analysis.html#cb34-20" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="exploratory-data-analysis.html#cb34-21" tabindex="-1"></a><span class="co"># adding a regression line on the scatterplot</span></span>
+<span id="cb34-22"><a href="exploratory-data-analysis.html#cb34-22" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb34-23"><a href="exploratory-data-analysis.html#cb34-23" tabindex="-1"></a></span>
+<span id="cb34-24"><a href="exploratory-data-analysis.html#cb34-24" tabindex="-1"></a><span class="co"># subset automatic cars consumption</span></span>
+<span id="cb34-25"><a href="exploratory-data-analysis.html#cb34-25" tabindex="-1"></a>mpg.at <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">0</span>]</span>
+<span id="cb34-26"><a href="exploratory-data-analysis.html#cb34-26" tabindex="-1"></a><span class="co"># and manual cars consumption</span></span>
+<span id="cb34-27"><a href="exploratory-data-analysis.html#cb34-27" tabindex="-1"></a>mpg.mt <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb34-28"><a href="exploratory-data-analysis.html#cb34-28" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="exploratory-data-analysis.html#cb34-29" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb34-30"><a href="exploratory-data-analysis.html#cb34-30" tabindex="-1"></a><span class="fu">boxplot</span>(mpg.mt, mpg.at)</span>
+<span id="cb34-31"><a href="exploratory-data-analysis.html#cb34-31" tabindex="-1"></a></span>
+<span id="cb34-32"><a href="exploratory-data-analysis.html#cb34-32" tabindex="-1"></a><span class="co"># boxplot with a categorical variable</span></span>
+<span id="cb34-33"><a href="exploratory-data-analysis.html#cb34-33" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl), mtcars<span class="sc">$</span>hp, </span>
+<span id="cb34-34"><a href="exploratory-data-analysis.html#cb34-34" tabindex="-1"></a>     <span class="co"># adding axes names</span></span>
+<span id="cb34-35"><a href="exploratory-data-analysis.html#cb34-35" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Cylinders&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Horse Power&quot;</span>)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -766,17 +747,17 @@ larger than the smallest numbers. As an example, often exponential
 growth curves are displayed on a log scale, otherwise they would
 increase too quickly to fit within a small graph and allow a complete
 analysis of its variation. R has the function <code>log()</code>to do that.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="exploratory-data-analysis.html#cb36-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb36-2"><a href="exploratory-data-analysis.html#cb36-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">100</span>,<span class="dv">4000</span>,<span class="dv">7</span>,<span class="dv">1000</span>,<span class="dv">350000</span>,<span class="dv">25000</span>)</span>
-<span id="cb36-3"><a href="exploratory-data-analysis.html#cb36-3" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="exploratory-data-analysis.html#cb36-4" tabindex="-1"></a><span class="co"># plotting data</span></span>
-<span id="cb36-5"><a href="exploratory-data-analysis.html#cb36-5" tabindex="-1"></a><span class="fu">plot</span>(x)</span>
-<span id="cb36-6"><a href="exploratory-data-analysis.html#cb36-6" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="exploratory-data-analysis.html#cb36-7" tabindex="-1"></a><span class="co"># log scaling</span></span>
-<span id="cb36-8"><a href="exploratory-data-analysis.html#cb36-8" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
-<span id="cb36-9"><a href="exploratory-data-analysis.html#cb36-9" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="exploratory-data-analysis.html#cb36-10" tabindex="-1"></a><span class="co"># plotting scaled data</span></span>
-<span id="cb36-11"><a href="exploratory-data-analysis.html#cb36-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(scaled_x))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="exploratory-data-analysis.html#cb35-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb35-2"><a href="exploratory-data-analysis.html#cb35-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">100</span>,<span class="dv">4000</span>,<span class="dv">7</span>,<span class="dv">1000</span>,<span class="dv">350000</span>,<span class="dv">25000</span>)</span>
+<span id="cb35-3"><a href="exploratory-data-analysis.html#cb35-3" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="exploratory-data-analysis.html#cb35-4" tabindex="-1"></a><span class="co"># plotting data</span></span>
+<span id="cb35-5"><a href="exploratory-data-analysis.html#cb35-5" tabindex="-1"></a><span class="fu">plot</span>(x)</span>
+<span id="cb35-6"><a href="exploratory-data-analysis.html#cb35-6" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="exploratory-data-analysis.html#cb35-7" tabindex="-1"></a><span class="co"># log scaling</span></span>
+<span id="cb35-8"><a href="exploratory-data-analysis.html#cb35-8" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb35-9"><a href="exploratory-data-analysis.html#cb35-9" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="exploratory-data-analysis.html#cb35-10" tabindex="-1"></a><span class="co"># plotting scaled data</span></span>
+<span id="cb35-11"><a href="exploratory-data-analysis.html#cb35-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(scaled_x))</span></code></pre></div>
 <hr />
 <p><strong>Ranking</strong> replaces the value assumed by each unit, with the order
 number (rank) by which the unit is placed on the list according to a
@@ -789,27 +770,25 @@ relative distance between the different units.</p>
 the rank of the values in the vector that was evaluated such that the
 lowest value would have a rank of 1 and the second-lowest value would
 have a rank of 2.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="exploratory-data-analysis.html#cb37-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb37-2"><a href="exploratory-data-analysis.html#cb37-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
-<span id="cb37-3"><a href="exploratory-data-analysis.html#cb37-3" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="exploratory-data-analysis.html#cb37-4" tabindex="-1"></a><span class="co"># scale ranking data</span></span>
-<span id="cb37-5"><a href="exploratory-data-analysis.html#cb37-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">rank</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="exploratory-data-analysis.html#cb36-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb36-2"><a href="exploratory-data-analysis.html#cb36-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb36-3"><a href="exploratory-data-analysis.html#cb36-3" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="exploratory-data-analysis.html#cb36-4" tabindex="-1"></a><span class="co"># scale ranking data</span></span>
+<span id="cb36-5"><a href="exploratory-data-analysis.html#cb36-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">rank</span>(x)</span></code></pre></div>
 <hr />
 <p>Relative indices with respect to the range (<strong>Min-Max</strong>) purifies the
 data from their unit of measure such that the features are within a
 specific range (i.e. <span class="math inline">\(0, 1\)</span>)(Equation <a href="exploratory-data-analysis.html#eq:MM">(5.11)</a>). Min-Max scaling is important when we want
 to retain the distance between the data points.</p>
-<p><span class="math display" id="eq:MM">\[
-\begin{equation}
+<p><span class="math display" id="eq:MM">\[\begin{equation}
 r_{ij}=\frac{x_{ij}-\min_ix_{ij}}{\max_ix_{ij}-\min_ix_{ij}}
 \tag{5.11}
-\end{equation}
-\]</span></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb38-2"><a href="exploratory-data-analysis.html#cb38-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
-<span id="cb38-3"><a href="exploratory-data-analysis.html#cb38-3" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="exploratory-data-analysis.html#cb38-4" tabindex="-1"></a><span class="co"># min-max scaling data</span></span>
-<span id="cb38-5"><a href="exploratory-data-analysis.html#cb38-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> (x<span class="sc">-</span><span class="fu">min</span>(x))<span class="sc">/</span>(<span class="fu">max</span>(x)<span class="sc">-</span><span class="fu">min</span>(x))</span></code></pre></div>
+\end{equation}\]</span></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="exploratory-data-analysis.html#cb37-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb37-2"><a href="exploratory-data-analysis.html#cb37-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb37-3"><a href="exploratory-data-analysis.html#cb37-3" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="exploratory-data-analysis.html#cb37-4" tabindex="-1"></a><span class="co"># min-max scaling data</span></span>
+<span id="cb37-5"><a href="exploratory-data-analysis.html#cb37-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> (x<span class="sc">-</span><span class="fu">min</span>(x))<span class="sc">/</span>(<span class="fu">max</span>(x)<span class="sc">-</span><span class="fu">min</span>(x))</span></code></pre></div>
 <hr />
 <p>The point of <strong>z-score standardization</strong> is to change your data so that
 it can be described as a normal distribution (Equation <a href="exploratory-data-analysis.html#eq:zscore">(5.12)</a>). Normal distribution, or
@@ -817,24 +796,22 @@ Gaussian distribution, is a specific statistical distribution where
 equal observations fall above and below the mean, the mean and the
 median are the same, and there are more observations closer to the mean
 (for more details see [The Normal Distribution]).</p>
-<p><span class="math display" id="eq:zscore">\[
-\begin{equation}
+<p><span class="math display" id="eq:zscore">\[\begin{equation}
 z_{ij}=\frac{x_{ij}-\bar x_j}{\sigma_j}
 \tag{5.12}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>The <code>scale()</code> function, with default settings, will calculate the mean
 and standard deviation of the entire vector, then normalize each element
 by those values by subtracting the mean and dividing by the standard
 deviation (equation 5.6). The resulting distribution will have mean
 equal to 0 and standard deviation equal to 1.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb39-2"><a href="exploratory-data-analysis.html#cb39-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
-<span id="cb39-3"><a href="exploratory-data-analysis.html#cb39-3" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="exploratory-data-analysis.html#cb39-4" tabindex="-1"></a><span class="co"># z-score scaling data</span></span>
-<span id="cb39-5"><a href="exploratory-data-analysis.html#cb39-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">scale</span>(x)</span>
-<span id="cb39-6"><a href="exploratory-data-analysis.html#cb39-6" tabindex="-1"></a><span class="fu">mean</span>(scaled_x)</span>
-<span id="cb39-7"><a href="exploratory-data-analysis.html#cb39-7" tabindex="-1"></a><span class="fu">sd</span>(scaled_x)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb38-2"><a href="exploratory-data-analysis.html#cb38-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb38-3"><a href="exploratory-data-analysis.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="exploratory-data-analysis.html#cb38-4" tabindex="-1"></a><span class="co"># z-score scaling data</span></span>
+<span id="cb38-5"><a href="exploratory-data-analysis.html#cb38-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">scale</span>(x)</span>
+<span id="cb38-6"><a href="exploratory-data-analysis.html#cb38-6" tabindex="-1"></a><span class="fu">mean</span>(scaled_x)</span>
+<span id="cb38-7"><a href="exploratory-data-analysis.html#cb38-7" tabindex="-1"></a><span class="fu">sd</span>(scaled_x)</span></code></pre></div>
 <hr />
 <p>In <strong>index numbers</strong>, the value assumed by each unit is divided by a
 reference value belonging to the same distribution or calculated on it
@@ -842,35 +819,31 @@ reference value belonging to the same distribution or calculated on it
 to delete the unit of measure and to keep the relative distance among
 the units. If the denominator is the maximum than we obtain values less
 or equal to 100.</p>
-<p><span class="math display" id="eq:in">\[
-\begin{equation}
+<p><span class="math display" id="eq:in">\[\begin{equation}
 I_{ij}=\frac{x_{ij}}{x^*_{oj}}*100
 \tag{5.13}
-\end{equation}
-\]</span></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="exploratory-data-analysis.html#cb40-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb40-2"><a href="exploratory-data-analysis.html#cb40-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
-<span id="cb40-3"><a href="exploratory-data-analysis.html#cb40-3" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="exploratory-data-analysis.html#cb40-4" tabindex="-1"></a><span class="co"># indexing with mean</span></span>
-<span id="cb40-5"><a href="exploratory-data-analysis.html#cb40-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">mean</span>(x)</span>
-<span id="cb40-6"><a href="exploratory-data-analysis.html#cb40-6" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="exploratory-data-analysis.html#cb40-7" tabindex="-1"></a><span class="co"># indexing with maximum</span></span>
-<span id="cb40-8"><a href="exploratory-data-analysis.html#cb40-8" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">max</span>(x)</span></code></pre></div>
+\end{equation}\]</span></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb39-2"><a href="exploratory-data-analysis.html#cb39-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb39-3"><a href="exploratory-data-analysis.html#cb39-3" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="exploratory-data-analysis.html#cb39-4" tabindex="-1"></a><span class="co"># indexing with mean</span></span>
+<span id="cb39-5"><a href="exploratory-data-analysis.html#cb39-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">mean</span>(x)</span>
+<span id="cb39-6"><a href="exploratory-data-analysis.html#cb39-6" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="exploratory-data-analysis.html#cb39-7" tabindex="-1"></a><span class="co"># indexing with maximum</span></span>
+<span id="cb39-8"><a href="exploratory-data-analysis.html#cb39-8" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">max</span>(x)</span></code></pre></div>
 <hr />
 <p>In the <strong>percentage</strong> transformation the value of each unit is divided
 by the sum of the values (Equation <a href="exploratory-data-analysis.html#eq:perc">(5.14)</a>). The sum of the normalized
 values are equal to 100.</p>
-<p><span class="math display" id="eq:perc">\[
-\begin{equation}
+<p><span class="math display" id="eq:perc">\[\begin{equation}
 p_{ij}=\frac{x_{ij}}{\sum^n_{i=1}x_{ij}}*100
 \tag{5.14}
-\end{equation}
-\]</span></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" tabindex="-1"></a><span class="co"># creating data</span></span>
-<span id="cb41-2"><a href="exploratory-data-analysis.html#cb41-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
-<span id="cb41-3"><a href="exploratory-data-analysis.html#cb41-3" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="exploratory-data-analysis.html#cb41-4" tabindex="-1"></a><span class="co"># percentage indexing</span></span>
-<span id="cb41-5"><a href="exploratory-data-analysis.html#cb41-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">sum</span>(x)</span></code></pre></div>
+\end{equation}\]</span></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="exploratory-data-analysis.html#cb40-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb40-2"><a href="exploratory-data-analysis.html#cb40-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb40-3"><a href="exploratory-data-analysis.html#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="exploratory-data-analysis.html#cb40-4" tabindex="-1"></a><span class="co"># percentage indexing</span></span>
+<span id="cb40-5"><a href="exploratory-data-analysis.html#cb40-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">sum</span>(x)</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -914,12 +887,10 @@ since the sample may be geographically spread out across the population.</p>
 Since we know the sample size (<span class="math inline">\(n\)</span>) and the total population (<span class="math inline">\(N\)</span>),
 calculating the probability of being included in the sample becomes a
 simple matter of division (Equation <a href="exploratory-data-analysis.html#eq:srs">(5.15)</a>).</p>
-<p><span class="math display" id="eq:srs">\[
-\begin{equation}
+<p><span class="math display" id="eq:srs">\[\begin{equation}
 p=\frac{n}{N}*100
 \tag{5.15}
-\end{equation}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>In R we will use the <code>sample()</code> function. This function requires us to
 specify the total population to be sampled (i.e. a vector between 1 and
 1 million), comma, the sample size we are interested in, comma, if we
@@ -947,19 +918,19 @@ dataset). You can run just the sample function first to see the
 resulting vector (<code>sample(1:32, 4, replace=FALSE)</code>), after this run the
 whole line (<code>samp_data &lt;- mtcars[sample(1:32, 4, replace=FALSE),]</code>). The
 code subsets the mtcars lines randomly sampled.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="exploratory-data-analysis.html#cb42-1" tabindex="-1"></a><span class="co"># random sampling 4 numbers out of the series from 1 to 32</span></span>
-<span id="cb42-2"><a href="exploratory-data-analysis.html#cb42-2" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
-<span id="cb42-3"><a href="exploratory-data-analysis.html#cb42-3" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="exploratory-data-analysis.html#cb42-4" tabindex="-1"></a><span class="co"># set seed allows us to reproduce the random operations we do locally</span></span>
-<span id="cb42-5"><a href="exploratory-data-analysis.html#cb42-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb42-6"><a href="exploratory-data-analysis.html#cb42-6" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
-<span id="cb42-7"><a href="exploratory-data-analysis.html#cb42-7" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="exploratory-data-analysis.html#cb42-8" tabindex="-1"></a><span class="co"># specifying the Random Number Generator version, allows everyone to have the same sample. </span></span>
-<span id="cb42-9"><a href="exploratory-data-analysis.html#cb42-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>, <span class="at">kind =</span> <span class="st">&quot;Mersenne-Twister&quot;</span>, <span class="at">normal.kind =</span>  <span class="st">&quot;Inversion&quot;</span>)</span>
-<span id="cb42-10"><a href="exploratory-data-analysis.html#cb42-10" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="exploratory-data-analysis.html#cb42-11" tabindex="-1"></a><span class="co"># sampling the random observations selected</span></span>
-<span id="cb42-12"><a href="exploratory-data-analysis.html#cb42-12" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb42-13"><a href="exploratory-data-analysis.html#cb42-13" tabindex="-1"></a>samp_data <span class="ot">&lt;-</span> mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" tabindex="-1"></a><span class="co"># random sampling 4 numbers out of the series from 1 to 32</span></span>
+<span id="cb41-2"><a href="exploratory-data-analysis.html#cb41-2" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb41-3"><a href="exploratory-data-analysis.html#cb41-3" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="exploratory-data-analysis.html#cb41-4" tabindex="-1"></a><span class="co"># set seed allows us to reproduce the random operations we do locally</span></span>
+<span id="cb41-5"><a href="exploratory-data-analysis.html#cb41-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb41-6"><a href="exploratory-data-analysis.html#cb41-6" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb41-7"><a href="exploratory-data-analysis.html#cb41-7" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="exploratory-data-analysis.html#cb41-8" tabindex="-1"></a><span class="co"># specifying the Random Number Generator version, allows everyone to have the same sample. </span></span>
+<span id="cb41-9"><a href="exploratory-data-analysis.html#cb41-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>, <span class="at">kind =</span> <span class="st">&quot;Mersenne-Twister&quot;</span>, <span class="at">normal.kind =</span>  <span class="st">&quot;Inversion&quot;</span>)</span>
+<span id="cb41-10"><a href="exploratory-data-analysis.html#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="exploratory-data-analysis.html#cb41-11" tabindex="-1"></a><span class="co"># sampling the random observations selected</span></span>
+<span id="cb41-12"><a href="exploratory-data-analysis.html#cb41-12" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb41-13"><a href="exploratory-data-analysis.html#cb41-13" tabindex="-1"></a>samp_data <span class="ot">&lt;-</span> mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>),]</span></code></pre></div>
 <hr />
 <p>In <strong>stratified sampling</strong>, the population is divided into homogeneous,
 mutually exclusive groups called strata, and then independent samples
@@ -995,22 +966,22 @@ Wars dataset. Using the <code>Dplyr</code> package <span class="citation">(<a hr
 stratify the data by one variable (eye color), and sample randomly 40%
 of the available population in each stratum (function <code>sample_frac()</code>),
 or 2 observations per stratum (function <code>sample_n()</code>).</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="exploratory-data-analysis.html#cb43-1" tabindex="-1"></a><span class="co"># loading the package and data</span></span>
-<span id="cb43-2"><a href="exploratory-data-analysis.html#cb43-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb43-3"><a href="exploratory-data-analysis.html#cb43-3" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="exploratory-data-analysis.html#cb43-4" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb43-5"><a href="exploratory-data-analysis.html#cb43-5" tabindex="-1"></a>        <span class="co"># stratifying by eye color</span></span>
-<span id="cb43-6"><a href="exploratory-data-analysis.html#cb43-6" tabindex="-1"></a>        <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb43-7"><a href="exploratory-data-analysis.html#cb43-7" tabindex="-1"></a>        <span class="co"># setting the sample size</span></span>
-<span id="cb43-8"><a href="exploratory-data-analysis.html#cb43-8" tabindex="-1"></a>        <span class="fu">sample_frac</span>(.<span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-9"><a href="exploratory-data-analysis.html#cb43-9" tabindex="-1"></a>        ungroup</span>
-<span id="cb43-10"><a href="exploratory-data-analysis.html#cb43-10" tabindex="-1"></a></span>
-<span id="cb43-11"><a href="exploratory-data-analysis.html#cb43-11" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb43-12"><a href="exploratory-data-analysis.html#cb43-12" tabindex="-1"></a>        <span class="co"># stratifying by eye color</span></span>
-<span id="cb43-13"><a href="exploratory-data-analysis.html#cb43-13" tabindex="-1"></a>        <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb43-14"><a href="exploratory-data-analysis.html#cb43-14" tabindex="-1"></a>        <span class="co"># setting the sample size</span></span>
-<span id="cb43-15"><a href="exploratory-data-analysis.html#cb43-15" tabindex="-1"></a>        <span class="fu">sample_n</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-16"><a href="exploratory-data-analysis.html#cb43-16" tabindex="-1"></a>        ungroup</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="exploratory-data-analysis.html#cb42-1" tabindex="-1"></a><span class="co"># loading the package and data</span></span>
+<span id="cb42-2"><a href="exploratory-data-analysis.html#cb42-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb42-3"><a href="exploratory-data-analysis.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="exploratory-data-analysis.html#cb42-4" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="exploratory-data-analysis.html#cb42-5" tabindex="-1"></a>        <span class="co"># stratifying by eye color</span></span>
+<span id="cb42-6"><a href="exploratory-data-analysis.html#cb42-6" tabindex="-1"></a>        <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb42-7"><a href="exploratory-data-analysis.html#cb42-7" tabindex="-1"></a>        <span class="co"># setting the sample size</span></span>
+<span id="cb42-8"><a href="exploratory-data-analysis.html#cb42-8" tabindex="-1"></a>        <span class="fu">sample_frac</span>(.<span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a href="exploratory-data-analysis.html#cb42-9" tabindex="-1"></a>        ungroup</span>
+<span id="cb42-10"><a href="exploratory-data-analysis.html#cb42-10" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="exploratory-data-analysis.html#cb42-11" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb42-12"><a href="exploratory-data-analysis.html#cb42-12" tabindex="-1"></a>        <span class="co"># stratifying by eye color</span></span>
+<span id="cb42-13"><a href="exploratory-data-analysis.html#cb42-13" tabindex="-1"></a>        <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb42-14"><a href="exploratory-data-analysis.html#cb42-14" tabindex="-1"></a>        <span class="co"># setting the sample size</span></span>
+<span id="cb42-15"><a href="exploratory-data-analysis.html#cb42-15" tabindex="-1"></a>        <span class="fu">sample_n</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-16"><a href="exploratory-data-analysis.html#cb42-16" tabindex="-1"></a>        ungroup</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>

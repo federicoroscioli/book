@@ -111,7 +111,7 @@ specifying the method for complete linkage. Finally we plot the
 dendogram. *It is important that each row of the dataset has a name
 assigned (see [Row Names])*.
 
-```{r fig2,  fig.show='hold', fig.cap="Dendogram plot."}
+```{r fig2, out.width="100%", fig.show='hold', fig.cap="Dendogram plot."}
 # Euclidean distance
 dist <- dist(swiss, method="euclidean")
 # Hierarchical Clustering with hclust
@@ -176,7 +176,7 @@ clusters from K-means the function automatically reduces the
 dimensionality of the data via PCA and selects the first two
 components.*
 
-```{r fig3, fig.show='hold', fig.cap="K-means clustering."}
+```{r fig3, out.width="80%", fig.align="center", fig.show='hold', fig.cap="K-means clustering."}
 # calculate the k-means for the preferred number of clusters
 kc <- kmeans(swiss, centers=3)
 library(factoextra) 
@@ -239,7 +239,7 @@ In the heatmap you can see that V. of Geneve is a proper outlier in
 terms of Education and share of people involved in the agricultural
 sector. For more advanced Heatmaps, please [visit this link.](https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/)
 
-```{r, fig.show='hold', fig.cap="Heatmap."}
+```{r, fig.show='hold',out.width="80%", fig.align="center", fig.cap="Heatmap."}
 #heatmap
 dataMatrix <- as.matrix(swiss)
 heatmap(dataMatrix, cexCol=.8)
@@ -349,7 +349,7 @@ summary(pca_swiss)
 fviz_eig(pca_swiss)
 ```
 
-```{r, echo=F, warning=F, out.width=c('50%', '50%'), fig.show='hold', fig.cap="Screeplot.", message=F}
+```{r, echo=F, warning=F, out.width='80%', fig.align="center", fig.show='hold', fig.cap="Screeplot.", message=F}
 library(factoextra)
 #running the PCA
 pca_swiss <- prcomp(swiss, scale = TRUE)
@@ -402,7 +402,7 @@ looking at the pairs plot. In the pair graph after the PCA we expect to
 see no relationship between all the principal component, as this is the
 aim of the PCA algorithm.
 
-```{r,  fig.show='hold', fig.cap="From left: Pairs graph before PCA; Pairs graph after PCA.", message=F}
+```{r,  fig.show='hold', fig.cap="From top: Pairs graph before PCA; Pairs graph after PCA.", message=F}
 # Pairs before PCA
 pairs(swiss, panel=panel.smooth, col="#6da7a7")
 
@@ -457,7 +457,7 @@ depend on the variables included in our data. In this case we will
 accept the new job offer only if the salary is higher than \$50k, it
 takes less than one hour to commute, and the company offers free coffee.
 
-```{r, echo=F, out.width=600, fig.show="hold", fig.cap="Classification tree explanation. Source Lee (2018)."}
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold", fig.cap="Classification tree explanation. Source Lee (2018)."}
 knitr::include_graphics("images/classification-tree_ygvats copia.jpg")
 ```
 
@@ -611,11 +611,11 @@ plotcp(fit)
 fit3 <- prune.rpart(fit, cp=0.094)
 
 # plotting the tree
-fancyRpartPlot(fit3, caption = "Classification Tree for Titanic pruned automatically")
+fancyRpartPlot(fit3)
 ```
 
-```{r, echo=F, fig.show='hold', fig.cap="The manually pruned CART.", message=F}
-fancyRpartPlot(fit2, caption = "Classification Tree for Titanic pruned manually")
+```{r, echo=F, fig.show='hold', out.width="80%", fig.align="center", fig.cap="The manually pruned CART.", message=F}
+fancyRpartPlot(fit2)
 ```
 
 If we want to give an interpretation of the manually pruned tree we can
@@ -910,9 +910,9 @@ penality corresponding to the final indicator.
 
 \newpage
 
-# Spatial Analysis
+<!-- # Spatial Analysis -->
 
-To be done...
+<!-- To be done... -->
 
 \newpage
 

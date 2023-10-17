@@ -23,7 +23,7 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,7 +158,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Section 1 - The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
@@ -242,7 +242,6 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spatial-analysis.html"><a href="spatial-analysis.html"><i class="fa fa-check"></i><b>9</b> Spatial Analysis</a></li>
 <li class="chapter" data-level="" data-path="final-remarks.html"><a href="final-remarks.html"><i class="fa fa-check"></i>Final Remarks</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
@@ -336,11 +335,11 @@ process.</strong></p></li>
 code. Basically the function <code>colnames()</code> retrieves the names of the
 variables as a character vector and we can change it as we have seen in
 <a href="a-b-c.html#indexing">Indexing</a>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-cleaning.html#cb14-1" tabindex="-1"></a><span class="co"># retreiving variable names</span></span>
-<span id="cb14-2"><a href="data-cleaning.html#cb14-2" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)</span>
-<span id="cb14-3"><a href="data-cleaning.html#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="data-cleaning.html#cb14-4" tabindex="-1"></a><span class="co"># changing the name of the variable mpg to consumption</span></span>
-<span id="cb14-5"><a href="data-cleaning.html#cb14-5" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;consumption&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-cleaning.html#cb13-1" tabindex="-1"></a><span class="co"># retreiving variable names</span></span>
+<span id="cb13-2"><a href="data-cleaning.html#cb13-2" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)</span>
+<span id="cb13-3"><a href="data-cleaning.html#cb13-3" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="data-cleaning.html#cb13-4" tabindex="-1"></a><span class="co"># changing the name of the variable mpg to consumption</span></span>
+<span id="cb13-5"><a href="data-cleaning.html#cb13-5" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;consumption&quot;</span></span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -363,20 +362,20 @@ explore it via <code>summary()</code> and/or <code>table()</code>, find the erro
 it. Finally we will need to tell R which is the right type for that
 variable, if we don’t get any error, it means that we fixed it (look at
 the example below).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-cleaning.html#cb15-1" tabindex="-1"></a><span class="co"># creating an age vector</span></span>
-<span id="cb15-2"><a href="data-cleaning.html#cb15-2" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">12</span>, <span class="st">&quot;didn&#39;t answer&quot;</span>, <span class="dv">30</span>)</span>
-<span id="cb15-3"><a href="data-cleaning.html#cb15-3" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="data-cleaning.html#cb15-4" tabindex="-1"></a><span class="co"># we need it numeric, but it is character (chr)</span></span>
-<span id="cb15-5"><a href="data-cleaning.html#cb15-5" tabindex="-1"></a><span class="fu">str</span>(age)</span>
-<span id="cb15-6"><a href="data-cleaning.html#cb15-6" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="data-cleaning.html#cb15-7" tabindex="-1"></a><span class="co"># we find the problem: there is a comment!</span></span>
-<span id="cb15-8"><a href="data-cleaning.html#cb15-8" tabindex="-1"></a><span class="fu">table</span>(age)</span>
-<span id="cb15-9"><a href="data-cleaning.html#cb15-9" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="data-cleaning.html#cb15-10" tabindex="-1"></a><span class="co"># we change the value where there was the comment and input a missing value</span></span>
-<span id="cb15-11"><a href="data-cleaning.html#cb15-11" tabindex="-1"></a>age[age<span class="sc">==</span><span class="st">&quot;didn&#39;t answer&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb15-12"><a href="data-cleaning.html#cb15-12" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="data-cleaning.html#cb15-13" tabindex="-1"></a><span class="co"># we change the vector type to numeric</span></span>
-<span id="cb15-14"><a href="data-cleaning.html#cb15-14" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(age)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-cleaning.html#cb14-1" tabindex="-1"></a><span class="co"># creating an age vector</span></span>
+<span id="cb14-2"><a href="data-cleaning.html#cb14-2" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">12</span>, <span class="st">&quot;didn&#39;t answer&quot;</span>, <span class="dv">30</span>)</span>
+<span id="cb14-3"><a href="data-cleaning.html#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="data-cleaning.html#cb14-4" tabindex="-1"></a><span class="co"># we need it numeric, but it is character (chr)</span></span>
+<span id="cb14-5"><a href="data-cleaning.html#cb14-5" tabindex="-1"></a><span class="fu">str</span>(age)</span>
+<span id="cb14-6"><a href="data-cleaning.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="data-cleaning.html#cb14-7" tabindex="-1"></a><span class="co"># we find the problem: there is a comment!</span></span>
+<span id="cb14-8"><a href="data-cleaning.html#cb14-8" tabindex="-1"></a><span class="fu">table</span>(age)</span>
+<span id="cb14-9"><a href="data-cleaning.html#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="data-cleaning.html#cb14-10" tabindex="-1"></a><span class="co"># we change the value where there was the comment and input a missing value</span></span>
+<span id="cb14-11"><a href="data-cleaning.html#cb14-11" tabindex="-1"></a>age[age<span class="sc">==</span><span class="st">&quot;didn&#39;t answer&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb14-12"><a href="data-cleaning.html#cb14-12" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="data-cleaning.html#cb14-13" tabindex="-1"></a><span class="co"># we change the vector type to numeric</span></span>
+<span id="cb14-14"><a href="data-cleaning.html#cb14-14" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(age)</span></code></pre></div>
 <p>Remember that all data types in R have an apposite function that
 converts the data to its type. To list the most used: <code>as.character()</code>,
 <code>as.numeric()</code>, <code>as.factor()</code>, <code>as.data.frame()</code>, etc…</p>
@@ -399,19 +398,19 @@ specifies the levels. By comparing the summary of the variables, we see
 immediately how differently R behaves when it is dealing with a factor
 as compared to a character variable. The <code>relevel()</code> function reorders
 the variable as we want.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-cleaning.html#cb16-1" tabindex="-1"></a>yesno <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>), <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb16-2"><a href="data-cleaning.html#cb16-2" tabindex="-1"></a><span class="fu">str</span>(yesno)</span>
-<span id="cb16-3"><a href="data-cleaning.html#cb16-3" tabindex="-1"></a><span class="fu">summary</span>(yesno)</span>
-<span id="cb16-4"><a href="data-cleaning.html#cb16-4" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="data-cleaning.html#cb16-5" tabindex="-1"></a><span class="co"># transform the variable in factor</span></span>
-<span id="cb16-6"><a href="data-cleaning.html#cb16-6" tabindex="-1"></a>yesnofac <span class="ot">=</span> <span class="fu">factor</span>(yesno, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
-<span id="cb16-7"><a href="data-cleaning.html#cb16-7" tabindex="-1"></a><span class="fu">str</span>(yesnofac)</span>
-<span id="cb16-8"><a href="data-cleaning.html#cb16-8" tabindex="-1"></a><span class="fu">summary</span>(yesnofac)</span>
-<span id="cb16-9"><a href="data-cleaning.html#cb16-9" tabindex="-1"></a><span class="fu">levels</span>(yesnofac)</span>
-<span id="cb16-10"><a href="data-cleaning.html#cb16-10" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="data-cleaning.html#cb16-11" tabindex="-1"></a><span class="co"># relevel the variable</span></span>
-<span id="cb16-12"><a href="data-cleaning.html#cb16-12" tabindex="-1"></a><span class="fu">relevel</span>(yesnofac, <span class="at">ref=</span><span class="st">&quot;no&quot;</span>)</span>
-<span id="cb16-13"><a href="data-cleaning.html#cb16-13" tabindex="-1"></a><span class="fu">as.numeric</span>(yesnofac)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-cleaning.html#cb15-1" tabindex="-1"></a>yesno <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>), <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="data-cleaning.html#cb15-2" tabindex="-1"></a><span class="fu">str</span>(yesno)</span>
+<span id="cb15-3"><a href="data-cleaning.html#cb15-3" tabindex="-1"></a><span class="fu">summary</span>(yesno)</span>
+<span id="cb15-4"><a href="data-cleaning.html#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="data-cleaning.html#cb15-5" tabindex="-1"></a><span class="co"># transform the variable in factor</span></span>
+<span id="cb15-6"><a href="data-cleaning.html#cb15-6" tabindex="-1"></a>yesnofac <span class="ot">=</span> <span class="fu">factor</span>(yesno, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
+<span id="cb15-7"><a href="data-cleaning.html#cb15-7" tabindex="-1"></a><span class="fu">str</span>(yesnofac)</span>
+<span id="cb15-8"><a href="data-cleaning.html#cb15-8" tabindex="-1"></a><span class="fu">summary</span>(yesnofac)</span>
+<span id="cb15-9"><a href="data-cleaning.html#cb15-9" tabindex="-1"></a><span class="fu">levels</span>(yesnofac)</span>
+<span id="cb15-10"><a href="data-cleaning.html#cb15-10" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="data-cleaning.html#cb15-11" tabindex="-1"></a><span class="co"># relevel the variable</span></span>
+<span id="cb15-12"><a href="data-cleaning.html#cb15-12" tabindex="-1"></a><span class="fu">relevel</span>(yesnofac, <span class="at">ref=</span><span class="st">&quot;no&quot;</span>)</span>
+<span id="cb15-13"><a href="data-cleaning.html#cb15-13" tabindex="-1"></a><span class="fu">as.numeric</span>(yesnofac)</span></code></pre></div>
 <p> </p>
 <p> </p>
 </div>
@@ -428,22 +427,22 @@ transforms a numeric or character variables containing year, month, and
 day into a date variable. Note that the <code>lubridate()</code> package has a long
 list of functions according to the format of the date needed (check the
 <a href="https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf">Lubridate cheatsheet</a>).</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-cleaning.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb17-2"><a href="data-cleaning.html#cb17-2" tabindex="-1"></a><span class="co"># today&#39;s date</span></span>
-<span id="cb17-3"><a href="data-cleaning.html#cb17-3" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb17-4"><a href="data-cleaning.html#cb17-4" tabindex="-1"></a><span class="fu">now</span>()</span>
-<span id="cb17-5"><a href="data-cleaning.html#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="data-cleaning.html#cb17-6" tabindex="-1"></a><span class="co"># creating a numeric vector of dates with year, month and day</span></span>
-<span id="cb17-7"><a href="data-cleaning.html#cb17-7" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20220321</span>, <span class="dv">20220322</span>, <span class="dv">20220320</span>)</span>
-<span id="cb17-8"><a href="data-cleaning.html#cb17-8" tabindex="-1"></a><span class="fu">str</span>(x)</span>
-<span id="cb17-9"><a href="data-cleaning.html#cb17-9" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="data-cleaning.html#cb17-10" tabindex="-1"></a><span class="co"># transforming it in a date type vector </span></span>
-<span id="cb17-11"><a href="data-cleaning.html#cb17-11" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">ymd</span>(x)</span>
-<span id="cb17-12"><a href="data-cleaning.html#cb17-12" tabindex="-1"></a><span class="fu">str</span>(y)</span>
-<span id="cb17-13"><a href="data-cleaning.html#cb17-13" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="data-cleaning.html#cb17-14" tabindex="-1"></a><span class="co"># subtracting 180 days to y and x</span></span>
-<span id="cb17-15"><a href="data-cleaning.html#cb17-15" tabindex="-1"></a>x<span class="dv">-180</span></span>
-<span id="cb17-16"><a href="data-cleaning.html#cb17-16" tabindex="-1"></a>y<span class="dv">-180</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-cleaning.html#cb16-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb16-2"><a href="data-cleaning.html#cb16-2" tabindex="-1"></a><span class="co"># today&#39;s date</span></span>
+<span id="cb16-3"><a href="data-cleaning.html#cb16-3" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb16-4"><a href="data-cleaning.html#cb16-4" tabindex="-1"></a><span class="fu">now</span>()</span>
+<span id="cb16-5"><a href="data-cleaning.html#cb16-5" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="data-cleaning.html#cb16-6" tabindex="-1"></a><span class="co"># creating a numeric vector of dates with year, month and day</span></span>
+<span id="cb16-7"><a href="data-cleaning.html#cb16-7" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20220321</span>, <span class="dv">20220322</span>, <span class="dv">20220320</span>)</span>
+<span id="cb16-8"><a href="data-cleaning.html#cb16-8" tabindex="-1"></a><span class="fu">str</span>(x)</span>
+<span id="cb16-9"><a href="data-cleaning.html#cb16-9" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="data-cleaning.html#cb16-10" tabindex="-1"></a><span class="co"># transforming it in a date type vector </span></span>
+<span id="cb16-11"><a href="data-cleaning.html#cb16-11" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">ymd</span>(x)</span>
+<span id="cb16-12"><a href="data-cleaning.html#cb16-12" tabindex="-1"></a><span class="fu">str</span>(y)</span>
+<span id="cb16-13"><a href="data-cleaning.html#cb16-13" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="data-cleaning.html#cb16-14" tabindex="-1"></a><span class="co"># subtracting 180 days to y and x</span></span>
+<span id="cb16-15"><a href="data-cleaning.html#cb16-15" tabindex="-1"></a>x<span class="dv">-180</span></span>
+<span id="cb16-16"><a href="data-cleaning.html#cb16-16" tabindex="-1"></a>y<span class="dv">-180</span></span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -461,16 +460,16 @@ name of the row.</p>
 the row names and then delete the column itself, in order to have a
 fully numeric dataset. We will use the same dataset we created in
 <a href="a-b-c.html#dataset-exploration">Dataset Exploration</a>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data-cleaning.html#cb18-1" tabindex="-1"></a><span class="co"># creatng the dataset</span></span>
-<span id="cb18-2"><a href="data-cleaning.html#cb18-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
-<span id="cb18-3"><a href="data-cleaning.html#cb18-3" tabindex="-1"></a>                     <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">46</span>),</span>
-<span id="cb18-4"><a href="data-cleaning.html#cb18-4" tabindex="-1"></a>                     <span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">95</span>, <span class="dv">110</span>))</span>
-<span id="cb18-5"><a href="data-cleaning.html#cb18-5" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="data-cleaning.html#cb18-6" tabindex="-1"></a><span class="co"># inputting rownames from the column &quot;name&quot;</span></span>
-<span id="cb18-7"><a href="data-cleaning.html#cb18-7" tabindex="-1"></a><span class="fu">rownames</span>(people) <span class="ot">&lt;-</span> people<span class="sc">$</span>name</span>
-<span id="cb18-8"><a href="data-cleaning.html#cb18-8" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="data-cleaning.html#cb18-9" tabindex="-1"></a><span class="co"># deleting the clumn &quot;name&quot;</span></span>
-<span id="cb18-10"><a href="data-cleaning.html#cb18-10" tabindex="-1"></a>people <span class="ot">&lt;-</span> people[,<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-cleaning.html#cb17-1" tabindex="-1"></a><span class="co"># creatng the dataset</span></span>
+<span id="cb17-2"><a href="data-cleaning.html#cb17-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
+<span id="cb17-3"><a href="data-cleaning.html#cb17-3" tabindex="-1"></a>                     <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">44</span>, <span class="dv">52</span>, <span class="dv">46</span>),</span>
+<span id="cb17-4"><a href="data-cleaning.html#cb17-4" tabindex="-1"></a>                     <span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">95</span>, <span class="dv">110</span>))</span>
+<span id="cb17-5"><a href="data-cleaning.html#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="data-cleaning.html#cb17-6" tabindex="-1"></a><span class="co"># inputting rownames from the column &quot;name&quot;</span></span>
+<span id="cb17-7"><a href="data-cleaning.html#cb17-7" tabindex="-1"></a><span class="fu">rownames</span>(people) <span class="ot">&lt;-</span> people<span class="sc">$</span>name</span>
+<span id="cb17-8"><a href="data-cleaning.html#cb17-8" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="data-cleaning.html#cb17-9" tabindex="-1"></a><span class="co"># deleting the clumn &quot;name&quot;</span></span>
+<span id="cb17-10"><a href="data-cleaning.html#cb17-10" tabindex="-1"></a>people <span class="ot">&lt;-</span> people[,<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
 <p> </p>
 <p> </p>
 <p> </p>

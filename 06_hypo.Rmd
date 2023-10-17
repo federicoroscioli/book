@@ -118,7 +118,7 @@ histogram. The probability that a random variable assumes a value
 between $a$ and $b$ is equal to the area under the density function
 bounded by $a$ and $b$ [@damodaran].
 
-```{r, echo=F, out.width=c('50%', '50%'), fig.show='hold', fig.cap="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5.", message=F, error=F}
+```{r, echo=F, out.width=c('50%', '50%'), fig.show='hold', fig.cap="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5.", message=F, error=F, warning=F}
 library(ggplot2)
 
 ggplot()+
@@ -199,7 +199,7 @@ of standard deviations from the mean for bell-shaped curves. For this
 reason, in statistics, when dealing with large-enough dataset, the
 normal distribution is assumed, even if it is not perfect.
 
-```{r, echo=F, out.width=600, fig.show="hold", fig.cap="The Empirical Rule."}
+```{r, echo=F, out.width="80%",fig.align="center", fig.show="hold", fig.cap="The Empirical Rule."}
 knitr::include_graphics("images/Senza titolo.png")
 ```
 
@@ -217,7 +217,7 @@ distribution is also the result of the z-score standardization process
 distributions of two elements (the weight of apple and pears), by
 standardizing we can do it (Figure 11).
 
-```{r, echo=F, out.width=c('50%', '50%'), fig.show='hold', fig.cap="The comparison between weight and income standardized.", message=F, error=F}
+```{r, echo=F, out.width='50%', fig.align="center", fig.show='hold', fig.cap="The comparison between Apples and Pears standardized.", message=F, error=F}
 library(ggplot2)
 ggplot()+
         geom_density(aes(rnorm(10000)), alpha=.2, fill="#FF6666")+
@@ -304,12 +304,12 @@ library(gginference)
 ggttest(t.test(mtcars$mpg, mu = 22, alternative = "less"))
 ```
 
-```{r, echo=F, out.width=c('50%', '50%'), fig.show='hold', fig.cap="Single Sample T-Test as plotted by gginference package.", message=F, warning=F, error=F}
+```{r, echo=F, out.width='50%', fig.align="center", fig.show='hold', fig.cap="Single Sample T-Test as plotted by gginference package.", message=F, warning=F, error=F}
 library(gginference)
 ggttest(t.test(mtcars$mpg, mu = 22, alternative = "less"))
 ```
 
-```{r, echo=F, out.width=350, fig.show="hold"}
+```{r, echo=F, out.width="50%", fig.align="center", fig.show="hold", fig.cap="Single Sample T-Test output example."}
 knitr::include_graphics("images/Schermata 2022-03-29 alle 16.14.37.png")
 ```
 
@@ -370,7 +370,7 @@ library(gginference)
 ggttest(t.test(income_a, income_b))
 ```
 
-```{r, echo=F, out.width=c('50%', '50%'), fig.show='hold', fig.cap="Single Sample T-Test as plotted by gginference package.", message=F, warning=F, error=F}
+```{r, echo=F, out.width='50%',fig.align="center", fig.show='hold', fig.cap="Single Sample T-Test as plotted by gginference package.", message=F, warning=F, error=F}
 set.seed(1234)
 income_a <- rnorm(100, mean=20, sd=3)
 income_b <- rnorm(100, mean=18.8, sd=1)
@@ -378,7 +378,7 @@ library(gginference)
 ggttest(t.test(income_a, income_b))
 ```
 
-```{r, echo=F, out.width=400, fig.show="hold"}
+```{r, echo=F, out.width="50%",fig.align="center", fig.show="hold",fig.cap="Two sample T-test output example."}
 knitr::include_graphics("images/Schermata 2022-03-29 alle 16.36.10.png")
 ```
 

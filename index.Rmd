@@ -17,6 +17,8 @@ output:
     keep_tex: yes
     toc: true
     extra_dependencies: ["float"]
+    toc_depth: 3
+    number_sections: true
 urlcolor: blue
 editor_options: 
   markdown: 
@@ -28,6 +30,11 @@ header-includes:
 - \usepackage{caption}
 - \usepackage{ragged2e}
 - \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[L]{Introduction to Data Analysis with R}
+- \fancyfoot[C]{www.federicoroscioli.com}
+- \fancyfoot[LE,RO]{\thepage}
+- \fancyfoot[LO,RE]{v. 5.0}
 include-before:
 - '`\newpage{}`{=latex}'
 ---
@@ -41,7 +48,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=3, fig.pos = 'H', out
  
 \pagebreak
 
-<!-- Spatial inference -->
+<!-- Add Spatial inference -->
 
 This manual is composed by two main sections divided in chapters. The
 first section will introduce the reader to the basic characteristics of
@@ -51,7 +58,7 @@ visualize, explore, understand, manipulate and create data. It will do
 so in a progressive way, starting from simple computations and ending
 with complex data manipulation and plotting. The second section,
 instead, will be all about applied statistics, from exploratory
-analysis, to the introduction of the normal distribution and its
+analysis, to the introduction of hypothesis testing and its
 implications, to bivariate and multivariate analysis methods, such as
 principal component analysis and classification and regression trees.
 
