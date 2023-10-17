@@ -361,15 +361,15 @@ with the function <code>ggpairs()</code><span class="citation">(<a href="#ref-em
 draw a correlation matrix that can include whatever kind of value or
 graph we want inside of each cell.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="bivariate-analysis.html#cb53-1" tabindex="-1"></a><span class="co"># basic pair plot</span></span>
-<span id="cb53-2"><a href="bivariate-analysis.html#cb53-2" tabindex="-1"></a><span class="fu">pairs</span>(cars)</span>
+<span id="cb53-2"><a href="bivariate-analysis.html#cb53-2" tabindex="-1"></a><span class="fu">pairs</span>(mtcars)</span>
 <span id="cb53-3"><a href="bivariate-analysis.html#cb53-3" tabindex="-1"></a></span>
 <span id="cb53-4"><a href="bivariate-analysis.html#cb53-4" tabindex="-1"></a><span class="co"># the corrplot version</span></span>
 <span id="cb53-5"><a href="bivariate-analysis.html#cb53-5" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb53-6"><a href="bivariate-analysis.html#cb53-6" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(cars))</span>
+<span id="cb53-6"><a href="bivariate-analysis.html#cb53-6" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(mtcars))</span>
 <span id="cb53-7"><a href="bivariate-analysis.html#cb53-7" tabindex="-1"></a></span>
 <span id="cb53-8"><a href="bivariate-analysis.html#cb53-8" tabindex="-1"></a><span class="co"># the ggally version</span></span>
 <span id="cb53-9"><a href="bivariate-analysis.html#cb53-9" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb53-10"><a href="bivariate-analysis.html#cb53-10" tabindex="-1"></a><span class="fu">ggpairs</span>(cars)</span></code></pre></div>
+<span id="cb53-10"><a href="bivariate-analysis.html#cb53-10" tabindex="-1"></a><span class="fu">ggpairs</span>(mtcars)</span></code></pre></div>
 <p>The last measure of relationship we will talk about is the <strong>chi-squared
 test</strong> (also known as <span class="math inline">\(\chi^2\)</span> test). This is a hypothesis test
 statistics that comes into play when dealing with contingency tables and
@@ -458,8 +458,8 @@ estimates are given by</p>
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(\bar{x}\)</span> is the mean (average) of the <span class="math inline">\(x\)</span> values and <span class="math inline">\(\bar{y}\)</span>
 is the mean of the <span class="math inline">\(y\)</span> values.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
-<img src="_main_files/figure-html/unnamed-chunk-74-1.png" alt="Plot of the residuals from a regression line." width="50%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-70"></span>
+<img src="_main_files/figure-html/unnamed-chunk-70-1.png" alt="Plot of the residuals from a regression line." width="50%"  />
 <p class="caption">
 Figure 7.1: Plot of the residuals from a regression line.
 </p>
@@ -484,7 +484,7 @@ the breaking distance.</p>
 <span id="cb56-6"><a href="bivariate-analysis.html#cb56-6" tabindex="-1"></a><span class="fu">ggplot</span>(cars, <span class="fu">aes</span>(dist, speed))<span class="sc">+</span></span>
 <span id="cb56-7"><a href="bivariate-analysis.html#cb56-7" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb56-8"><a href="bivariate-analysis.html#cb56-8" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p>The output of the summary of our regression model (Figure 15) must be
+<p>The output of the summary of our regression model (Figure <a href="bivariate-analysis.html#fig:lm">7.2</a>) must be
 read in the following way in order to have a brief idea on the model
 that we built. The first step is to look at the Multiple R-squared, this
 number tells us which percentage of the data is explained by the model
@@ -500,7 +500,7 @@ From a theoretical perspective this makes sense, in fact, the type of
 tires, the weight of the car, the weather conditions (etc..) are some
 additional factors that are missing in our model and could improve our
 understanding of the phenomenon.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:lm"></span>
 <img src="images/Schermata%202022-07-07%20alle%2017.24.44.png" alt="Linear regression model summary output." width="50%"  />
 <p class="caption">
 Figure 7.2: Linear regression model summary output.
@@ -583,8 +583,15 @@ independent variables.</p>
 <p>Using the <code>glm()</code> function (Generalized Linear Models), and the argument
 <code>family="binomial"</code>, we can fit our logistic regression model.</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="bivariate-analysis.html#cb59-1" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">glm</span>(am <span class="sc">~</span> mpg, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>, mtcars)</span>
-<span id="cb59-2"><a href="bivariate-analysis.html#cb59-2" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span></code></pre></div>
-<p>Its output (Figure 17) must be interpreted as follows. An increase in
+<span id="cb59-2"><a href="bivariate-analysis.html#cb59-2" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span>
+<span id="cb59-3"><a href="bivariate-analysis.html#cb59-3" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="bivariate-analysis.html#cb59-4" tabindex="-1"></a><span class="co"># plotting the logit model</span></span>
+<span id="cb59-5"><a href="bivariate-analysis.html#cb59-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb59-6"><a href="bivariate-analysis.html#cb59-6" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>am)) <span class="sc">+</span> </span>
+<span id="cb59-7"><a href="bivariate-analysis.html#cb59-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb59-8"><a href="bivariate-analysis.html#cb59-8" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method=</span><span class="st">&quot;glm&quot;</span>, <span class="at">color=</span><span class="st">&quot;green&quot;</span>, <span class="at">se=</span><span class="cn">FALSE</span>, </span>
+<span id="cb59-9"><a href="bivariate-analysis.html#cb59-9" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family=</span>binomial))</span></code></pre></div>
+<p>Its output (Figure <a href="bivariate-analysis.html#fig:logi">7.3</a>) must be interpreted as follows. An increase in
 miles per gallons (mpg) increases the probability that the car has
 automatic transmission by 31%, and this increase is statistically
 significant (p-value&lt;0.01). In this case we do not have the Multiple
@@ -593,7 +600,7 @@ look at the Residual deviance <strong>tells us how well the response variable
 can be predicted by a model with p predictor variables</strong>. The lower the
 value, the better the model is able to predict the value of the response
 variable.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logi"></span>
 <img src="images/Schermata%202022-07-07%20alle%2018.49.38.png" alt="Logistic regression model summary output." width="50%"  />
 <p class="caption">
 Figure 7.3: Logistic regression model summary output.
@@ -696,7 +703,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

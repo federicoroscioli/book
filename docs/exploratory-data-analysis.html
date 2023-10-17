@@ -554,7 +554,7 @@ wealth.</em></p>
 <p>In geometrical terms, the Gini coefficient can be thought of as the
 ratio of the area that lies between the line of perfect equality (the
 diagonal) and the Lorenz curve over the total area under the line of
-equality (see Figure 7). Here the formula used to compute the Gini
+equality (see Figure <a href="exploratory-data-analysis.html#fig:gini">5.3</a>). Here the formula used to compute the Gini
 coefficient:</p>
 <p><span class="math display" id="eq:gini">\[\begin{equation}
 G(x)=1-\frac{2}{N-1}\sum^{N-1}_{i=1}{q_i}
@@ -562,7 +562,7 @@ G(x)=1-\frac{2}{N-1}\sum^{N-1}_{i=1}{q_i}
 \end{equation}\]</span></p>
 <p>where <em>N</em> is the population size, and <em>q</em> is the cumulative relative
 income.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gini"></span>
 <img src="images/gini.png" alt="Graphical representation of the Gini index." width="50%"  />
 <p class="caption">
 Figure 5.3: Graphical representation of the Gini index.
@@ -638,7 +638,7 @@ you find different results? Why?</p>
 <h2><span class="header-section-number">5.4</span> Data visualization<a href="exploratory-data-analysis.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Visualizing data is another way to explore the data, or better, a
 complement to the quantitative exploratory analysis carried out above.
-In fact, as we saw in the example in Figure 6, a simple histogram can
+In fact, as we saw in the example in Figure <a href="exploratory-data-analysis.html#fig:fig1">5.4</a>, a simple histogram can
 tell us whether the arithmetic mean can give us a realistic
 representation of the data, or if more analysis is needed. In this
 section we will not see the beautiful graphs for which R is recognized
@@ -806,7 +806,7 @@ z_{ij}=\frac{x_{ij}-\bar x_j}{\sigma_j}
 <p>The <code>scale()</code> function, with default settings, will calculate the mean
 and standard deviation of the entire vector, then normalize each element
 by those values by subtracting the mean and dividing by the standard
-deviation (equation 5.6). The resulting distribution will have mean
+deviation (Equation <a href="exploratory-data-analysis.html#eq:zscore">(5.12)</a>). The resulting distribution will have mean
 equal to 0 and standard deviation equal to 1.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" tabindex="-1"></a><span class="co"># creating data</span></span>
 <span id="cb38-2"><a href="exploratory-data-analysis.html#cb38-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
@@ -1085,7 +1085,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

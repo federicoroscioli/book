@@ -2118,7 +2118,7 @@ wealth.}
 In geometrical terms, the Gini coefficient can be thought of as the
 ratio of the area that lies between the line of perfect equality (the
 diagonal) and the Lorenz curve over the total area under the line of
-equality (see Figure 7). Here the formula used to compute the Gini
+equality (see Figure \ref{fig:gini}). Here the formula used to compute the Gini
 coefficient:
 
 \begin{equation}
@@ -2135,7 +2135,7 @@ income.
 
 }
 
-\caption{Graphical representation of the Gini index.}\label{fig:unnamed-chunk-42}
+\caption{Graphical representation of the Gini index.}\label{fig:gini}
 \end{figure}
 
 Run the code below and calculate the Gini coefficient for both the x and
@@ -2228,7 +2228,7 @@ you find different results? Why?
 
 Visualizing data is another way to explore the data, or better, a
 complement to the quantitative exploratory analysis carried out above.
-In fact, as we saw in the example in Figure 6, a simple histogram can
+In fact, as we saw in the example in Figure \ref{fig:fig1}, a simple histogram can
 tell us whether the arithmetic mean can give us a realistic
 representation of the data, or if more analysis is needed. In this
 section we will not see the beautiful graphs for which R is recognized
@@ -2440,7 +2440,7 @@ z_{ij}=\frac{x_{ij}-\bar x_j}{\sigma_j}
 The \texttt{scale()} function, with default settings, will calculate the mean
 and standard deviation of the entire vector, then normalize each element
 by those values by subtracting the mean and dividing by the standard
-deviation (equation 5.6). The resulting distribution will have mean
+deviation (Equation \eqref{eq:zscore}). The resulting distribution will have mean
 equal to 0 and standard deviation equal to 1.
 
 \begin{Shaded}
@@ -2833,10 +2833,10 @@ between \(a\) and \(b\) is equal to the area under the density function
 bounded by \(a\) and \(b\) (\protect\hyperlink{ref-damodaran}{Damodaran, n.d.}).
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-55-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-55-2} \caption{From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5.}\label{fig:unnamed-chunk-55}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/pval-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/pval-2} \caption{From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5.}\label{fig:pval}
 \end{figure}
 
-In Figure 9, the shaded area in the graph represents the probability
+In Figure \ref{fig:pval}, the shaded area in the graph represents the probability
 that the random variable \(X\) is higher than or equal to \(1.5\). This is a
 cumulative probability, also called \textbf{p-value} (please, remember this
 definition, as this will be key in order to understand all the remaining
@@ -2848,7 +2848,7 @@ of this chapter). However, the probability that \(X\) is exactly equal to
 The \textbf{normal distribution}, also known as the Gaussian distribution, is
 the most important probability distribution in statistics for
 independent, continuous, random variables. Most people recognize its
-familiar bell-shaped curve in statistical reports (Figure 9).
+familiar bell-shaped curve in statistical reports (Figure \ref{fig:pval}).
 
 \emph{The normal distribution is a continuous probability distribution that
 is symmetrical around its mean, most of the observations cluster around
@@ -2886,7 +2886,7 @@ particularly valuable. In fact, we can use it to determine the
 proportion of the values that fall within a specified number of standard
 deviations from the mean. For example, in a normal distribution, 68\% of
 the observations fall within +/- 1 standard deviation from the mean
-(Figure 10). This property is part of the Empirical Rule, which
+(Figure \ref{fig:rule}). This property is part of the Empirical Rule, which
 describes the percentage of the data that fall within specific numbers
 of standard deviations from the mean for bell-shaped curves. For this
 reason, in statistics, when dealing with large-enough dataset, the
@@ -2898,7 +2898,7 @@ normal distribution is assumed, even if it is not perfect.
 
 }
 
-\caption{The Empirical Rule.}\label{fig:unnamed-chunk-56}
+\caption{The Empirical Rule.}\label{fig:rule}
 \end{figure}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -2912,15 +2912,15 @@ below the mean that a specific observation falls. A standard normal
 distribution is also the result of the z-score standardization process
 (see \protect\hyperlink{scaling-data}{Scaling data})(\protect\hyperlink{ref-frost}{Frost, n.d.}). So, if we have to compare the means of the
 distributions of two elements (the weight of apple and pears), by
-standardizing we can do it (Figure 11).
+standardizing we can do it (Figure \ref{fig:apples}).
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-57-1} 
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/apples-1} 
 
 }
 
-\caption{The comparison between Apples and Pears standardized.}\label{fig:unnamed-chunk-57}
+\caption{The comparison between Apples and Pears standardized.}\label{fig:apples}
 \end{figure}
 
 ~
@@ -3011,11 +3011,11 @@ the package \texttt{gginfernece} (\protect\hyperlink{ref-bratsas2020}{Bratsas, F
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-60-1} 
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-56-1} 
 
 }
 
-\caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-60}
+\caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-56}
 \end{figure}
 
 \begin{figure}[H]
@@ -3024,7 +3024,7 @@ the package \texttt{gginfernece} (\protect\hyperlink{ref-bratsas2020}{Bratsas, F
 
 }
 
-\caption{Single Sample T-Test output example.}\label{fig:unnamed-chunk-61}
+\caption{Single Sample T-Test output example.}\label{fig:unnamed-chunk-57}
 \end{figure}
 
 The output of the test in R gives us many information. The most
@@ -3092,11 +3092,11 @@ package \texttt{gginfernece} (\protect\hyperlink{ref-bratsas2020}{Bratsas, Foudo
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-64-1} 
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-60-1} 
 
 }
 
-\caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-64}
+\caption{Single Sample T-Test as plotted by gginference package.}\label{fig:unnamed-chunk-60}
 \end{figure}
 
 \begin{figure}[H]
@@ -3105,7 +3105,7 @@ package \texttt{gginfernece} (\protect\hyperlink{ref-bratsas2020}{Bratsas, Foudo
 
 }
 
-\caption{Two sample T-test output example.}\label{fig:unnamed-chunk-65}
+\caption{Two sample T-test output example.}\label{fig:unnamed-chunk-61}
 \end{figure}
 
 As for the One-Sample T-Test, R gives us a set of information about the
@@ -3352,15 +3352,15 @@ graph we want inside of each cell.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# basic pair plot}
-\FunctionTok{pairs}\NormalTok{(cars)}
+\FunctionTok{pairs}\NormalTok{(mtcars)}
 
 \CommentTok{\# the corrplot version}
 \FunctionTok{library}\NormalTok{(corrplot)}
-\FunctionTok{corrplot}\NormalTok{(}\FunctionTok{cor}\NormalTok{(cars))}
+\FunctionTok{corrplot}\NormalTok{(}\FunctionTok{cor}\NormalTok{(mtcars))}
 
 \CommentTok{\# the ggally version}
 \FunctionTok{library}\NormalTok{(GGally)}
-\FunctionTok{ggpairs}\NormalTok{(cars)}
+\FunctionTok{ggpairs}\NormalTok{(mtcars)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3479,11 +3479,11 @@ is the mean of the \(y\) values.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-74-1} 
+{\centering \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-70-1} 
 
 }
 
-\caption{Plot of the residuals from a regression line.}\label{fig:unnamed-chunk-74}
+\caption{Plot of the residuals from a regression line.}\label{fig:unnamed-chunk-70}
 \end{figure}
 
 As we said, before building our first regression model, it is important
@@ -3515,7 +3515,7 @@ the breaking distance.
 \end{Highlighting}
 \end{Shaded}
 
-The output of the summary of our regression model (Figure 15) must be
+The output of the summary of our regression model (Figure \ref{fig:lm}) must be
 read in the following way in order to have a brief idea on the model
 that we built. The first step is to look at the Multiple R-squared, this
 number tells us which percentage of the data is explained by the model
@@ -3539,7 +3539,7 @@ understanding of the phenomenon.
 
 }
 
-\caption{Linear regression model summary output.}\label{fig:unnamed-chunk-76}
+\caption{Linear regression model summary output.}\label{fig:lm}
 \end{figure}
 
 Whether simple linear regression is a useful approach for predicting a
@@ -3649,10 +3649,17 @@ Using the \texttt{glm()} function (Generalized Linear Models), and the argument
 \begin{Highlighting}[]
 \NormalTok{fit4 }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(am }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg, }\AttributeTok{family=}\StringTok{"binomial"}\NormalTok{, mtcars)}
 \FunctionTok{summary}\NormalTok{(fit4)}
+
+\CommentTok{\# plotting the logit model}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{mpg, }\AttributeTok{y=}\NormalTok{am)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{stat\_smooth}\NormalTok{(}\AttributeTok{method=}\StringTok{"glm"}\NormalTok{, }\AttributeTok{color=}\StringTok{"green"}\NormalTok{, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{, }
+              \AttributeTok{method.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{family=}\NormalTok{binomial))}
 \end{Highlighting}
 \end{Shaded}
 
-Its output (Figure 17) must be interpreted as follows. An increase in
+Its output (Figure \ref{fig:logi}) must be interpreted as follows. An increase in
 miles per gallons (mpg) increases the probability that the car has
 automatic transmission by 31\%, and this increase is statistically
 significant (p-value\textless0.01). In this case we do not have the Multiple
@@ -3668,7 +3675,7 @@ variable.
 
 }
 
-\caption{Logistic regression model summary output.}\label{fig:unnamed-chunk-80}
+\caption{Logistic regression model summary output.}\label{fig:logi}
 \end{figure}
 
 ~
@@ -3976,11 +3983,11 @@ sector. For more advanced Heatmaps, please \href{https://www.datanovia.com/en/le
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-81-1} 
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-75-1} 
 
 }
 
-\caption{Heatmap.}\label{fig:unnamed-chunk-81}
+\caption{Heatmap.}\label{fig:unnamed-chunk-75}
 \end{figure}
 
 ~
@@ -4106,11 +4113,11 @@ variability within the data.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-84-1} 
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-78-1} 
 
 }
 
-\caption{Screeplot.}\label{fig:unnamed-chunk-84}
+\caption{Screeplot.}\label{fig:unnamed-chunk-78}
 \end{figure}
 
 The final step is to plot the graph of the variables, where positively
@@ -4153,7 +4160,7 @@ plot can be do messy to be analyzed.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-85-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-85-2} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-85-3} \caption{From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables.}\label{fig:unnamed-chunk-85}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-79-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-79-2} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-79-3} \caption{From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables.}\label{fig:unnamed-chunk-79}
 \end{figure}
 
 As a robustness check, and also to better understand what the algorithm
@@ -4173,7 +4180,7 @@ aim of the PCA algorithm.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics{_main_files/figure-latex/unnamed-chunk-86-1} \includegraphics{_main_files/figure-latex/unnamed-chunk-86-2} \caption{From top: Pairs graph before PCA; Pairs graph after PCA.}\label{fig:unnamed-chunk-86}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-80-1} \includegraphics{_main_files/figure-latex/unnamed-chunk-80-2} \caption{From top: Pairs graph before PCA; Pairs graph after PCA.}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 ~
@@ -4229,7 +4236,7 @@ takes less than one hour to commute, and the company offers free coffee.
 
 }
 
-\caption{Classification tree explanation. Source Lee (2018).}\label{fig:unnamed-chunk-87}
+\caption{Classification tree explanation. Source Lee (2018).}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 The main question is when to stop splitting? Clearly, if all of the
@@ -4347,16 +4354,16 @@ the result.
 \end{Shaded}
 
 \begin{figure}[H]
-\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-89-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-89-2} \caption{From left: Complexity vs X-val Relative Error; The automatically pruned CART.}\label{fig:unnamed-chunk-89}
+\includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-83-1} \includegraphics[width=0.5\linewidth,]{_main_files/figure-latex/unnamed-chunk-83-2} \caption{From left: Complexity vs X-val Relative Error; The automatically pruned CART.}\label{fig:unnamed-chunk-83}
 \end{figure}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-90-1} 
+{\centering \includegraphics[width=0.8\linewidth,]{_main_files/figure-latex/unnamed-chunk-84-1} 
 
 }
 
-\caption{The manually pruned CART.}\label{fig:unnamed-chunk-90}
+\caption{The manually pruned CART.}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 If we want to give an interpretation of the manually pruned tree we can

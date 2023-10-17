@@ -406,13 +406,13 @@ abbreviated pdf. Basically, this function represents the outline of the
 histogram. The probability that a random variable assumes a value
 between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is equal to the area under the density function
 bounded by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> <span class="citation">(<a href="#ref-damodaran">Damodaran, n.d.</a>)</span>.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
-<img src="_main_files/figure-html/unnamed-chunk-55-1.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-55-2.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  />
+<div class="figure"><span style="display:block;" id="fig:pval"></span>
+<img src="_main_files/figure-html/pval-1.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  /><img src="_main_files/figure-html/pval-2.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  />
 <p class="caption">
 Figure 6.1: From left: A density distribution as outline of the hisogram; The probability that the random variable <span class="math inline">\(X\)</span> is higher than or equal to 1.5.
 </p>
 </div>
-<p>In Figure 9, the shaded area in the graph represents the probability
+<p>In Figure <a href="hypothesis-testing.html#fig:pval">6.1</a>, the shaded area in the graph represents the probability
 that the random variable <span class="math inline">\(X\)</span> is higher than or equal to <span class="math inline">\(1.5\)</span>. This is a
 cumulative probability, also called <strong>p-value</strong> (please, remember this
 definition, as this will be key in order to understand all the remaining
@@ -422,7 +422,7 @@ of this chapter). However, the probability that <span class="math inline">\(X\)<
 <p>The <strong>normal distribution</strong>, also known as the Gaussian distribution, is
 the most important probability distribution in statistics for
 independent, continuous, random variables. Most people recognize its
-familiar bell-shaped curve in statistical reports (Figure 9).</p>
+familiar bell-shaped curve in statistical reports (Figure <a href="hypothesis-testing.html#fig:pval">6.1</a>).</p>
 <p><em>The normal distribution is a continuous probability distribution that
 is symmetrical around its mean, most of the observations cluster around
 the central peak, and the probabilities for values further away from the
@@ -451,12 +451,12 @@ particularly valuable. In fact, we can use it to determine the
 proportion of the values that fall within a specified number of standard
 deviations from the mean. For example, in a normal distribution, 68% of
 the observations fall within +/- 1 standard deviation from the mean
-(Figure 10). This property is part of the Empirical Rule, which
+(Figure <a href="hypothesis-testing.html#fig:rule">6.2</a>). This property is part of the Empirical Rule, which
 describes the percentage of the data that fall within specific numbers
 of standard deviations from the mean for bell-shaped curves. For this
 reason, in statistics, when dealing with large-enough dataset, the
 normal distribution is assumed, even if it is not perfect.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rule"></span>
 <img src="images/Senza%20titolo.png" alt="The Empirical Rule." width="80%"  />
 <p class="caption">
 Figure 6.2: The Empirical Rule.
@@ -472,9 +472,9 @@ below the mean that a specific observation falls. A standard normal
 distribution is also the result of the z-score standardization process
 (see <a href="exploratory-data-analysis.html#scaling-data">Scaling data</a>)<span class="citation">(<a href="#ref-frost">Frost, n.d.</a>)</span>. So, if we have to compare the means of the
 distributions of two elements (the weight of apple and pears), by
-standardizing we can do it (Figure 11).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
-<img src="_main_files/figure-html/unnamed-chunk-57-1.png" alt="The comparison between Apples and Pears standardized." width="50%"  />
+standardizing we can do it (Figure <a href="hypothesis-testing.html#fig:apples">6.3</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:apples"></span>
+<img src="_main_files/figure-html/apples-1.png" alt="The comparison between Apples and Pears standardized." width="50%"  />
 <p class="caption">
 Figure 6.3: The comparison between Apples and Pears standardized.
 </p>
@@ -540,13 +540,13 @@ the package <code>gginfernece</code> <span class="citation">(<a href="#ref-brats
 <span id="cb45-8"><a href="hypothesis-testing.html#cb45-8" tabindex="-1"></a><span class="co"># plot the t-test </span></span>
 <span id="cb45-9"><a href="hypothesis-testing.html#cb45-9" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
 <span id="cb45-10"><a href="hypothesis-testing.html#cb45-10" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
-<img src="_main_files/figure-html/unnamed-chunk-60-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<img src="_main_files/figure-html/unnamed-chunk-56-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
 <p class="caption">
 Figure 6.4: Single Sample T-Test as plotted by gginference package.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
 <img src="images/Schermata%202022-03-29%20alle%2016.14.37.png" alt="Single Sample T-Test output example." width="50%"  />
 <p class="caption">
 Figure 6.5: Single Sample T-Test output example.
@@ -598,13 +598,13 @@ package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas20
 <span id="cb47-6"><a href="hypothesis-testing.html#cb47-6" tabindex="-1"></a></span>
 <span id="cb47-7"><a href="hypothesis-testing.html#cb47-7" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
 <span id="cb47-8"><a href="hypothesis-testing.html#cb47-8" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(income_a, income_b))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
-<img src="_main_files/figure-html/unnamed-chunk-64-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
+<img src="_main_files/figure-html/unnamed-chunk-60-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
 <p class="caption">
 Figure 6.6: Single Sample T-Test as plotted by gginference package.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
 <img src="images/Schermata%202022-03-29%20alle%2016.36.10.png" alt="Two sample T-test output example." width="50%"  />
 <p class="caption">
 Figure 6.7: Two sample T-test output example.
@@ -771,7 +771,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

@@ -490,8 +490,8 @@ sector. For more advanced Heatmaps, please <a href="https://www.datanovia.com/en
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="multivariate-analysis.html#cb65-1" tabindex="-1"></a><span class="co">#heatmap</span></span>
 <span id="cb65-2"><a href="multivariate-analysis.html#cb65-2" tabindex="-1"></a>dataMatrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(swiss)</span>
 <span id="cb65-3"><a href="multivariate-analysis.html#cb65-3" tabindex="-1"></a><span class="fu">heatmap</span>(dataMatrix, <span class="at">cexCol=</span>.<span class="dv">8</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
-<img src="_main_files/figure-html/unnamed-chunk-81-1.png" alt="Heatmap." width="80%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
+<img src="_main_files/figure-html/unnamed-chunk-75-1.png" alt="Heatmap." width="80%"  />
 <p class="caption">
 Figure 8.4: Heatmap.
 </p>
@@ -585,8 +585,8 @@ variability within the data.</p>
 <span id="cb67-5"><a href="multivariate-analysis.html#cb67-5" tabindex="-1"></a></span>
 <span id="cb67-6"><a href="multivariate-analysis.html#cb67-6" tabindex="-1"></a><span class="co">#visualizing the PCA</span></span>
 <span id="cb67-7"><a href="multivariate-analysis.html#cb67-7" tabindex="-1"></a><span class="fu">fviz_eig</span>(pca_swiss)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
-<img src="_main_files/figure-html/unnamed-chunk-84-1.png" alt="Screeplot." width="80%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
+<img src="_main_files/figure-html/unnamed-chunk-78-1.png" alt="Screeplot." width="80%"  />
 <p class="caption">
 Figure 8.5: Screeplot.
 </p>
@@ -622,8 +622,8 @@ plot can be do messy to be analyzed.</p>
 <span id="cb68-14"><a href="multivariate-analysis.html#cb68-14" tabindex="-1"></a></span>
 <span id="cb68-15"><a href="multivariate-analysis.html#cb68-15" tabindex="-1"></a><span class="co"># Biplot of individuals and variables</span></span>
 <span id="cb68-16"><a href="multivariate-analysis.html#cb68-16" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca_swiss, <span class="at">repel =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
-<img src="_main_files/figure-html/unnamed-chunk-85-1.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-85-2.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-85-3.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
+<img src="_main_files/figure-html/unnamed-chunk-79-1.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-79-2.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-79-3.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  />
 <p class="caption">
 Figure 8.6: From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables.
 </p>
@@ -638,8 +638,8 @@ aim of the PCA algorithm.</p>
 <span id="cb69-3"><a href="multivariate-analysis.html#cb69-3" tabindex="-1"></a></span>
 <span id="cb69-4"><a href="multivariate-analysis.html#cb69-4" tabindex="-1"></a><span class="co"># Pair after PCA</span></span>
 <span id="cb69-5"><a href="multivariate-analysis.html#cb69-5" tabindex="-1"></a><span class="fu">pairs</span>(pca_swiss<span class="sc">$</span>x, <span class="at">panel=</span>panel.smooth, <span class="at">col=</span><span class="st">&quot;#6da7a7&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-86"></span>
-<img src="_main_files/figure-html/unnamed-chunk-86-1.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  /><img src="_main_files/figure-html/unnamed-chunk-86-2.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<img src="_main_files/figure-html/unnamed-chunk-80-1.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  /><img src="_main_files/figure-html/unnamed-chunk-80-2.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  />
 <p class="caption">
 Figure 8.7: From top: Pairs graph before PCA; Pairs graph after PCA.
 </p>
@@ -685,7 +685,7 @@ offers a clear understanding of how a classification tree must be read
 depend on the variables included in our data. In this case we will
 accept the new job offer only if the salary is higher than $50k, it
 takes less than one hour to commute, and the company offers free coffee.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-87"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
 <img src="images/classification-tree_ygvats%20copia.jpg" alt="Classification tree explanation. Source Lee (2018)." width="80%"  />
 <p class="caption">
 Figure 8.8: Classification tree explanation. Source Lee (2018).
@@ -793,14 +793,14 @@ the result.</p>
 <span id="cb70-37"><a href="multivariate-analysis.html#cb70-37" tabindex="-1"></a><span class="co"># plotting the tree</span></span>
 <span id="cb70-38"><a href="multivariate-analysis.html#cb70-38" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(fit2, <span class="at">caption =</span> <span class="st">&quot;Classification Tree for Titanic pruned manually&quot;</span>)</span>
 <span id="cb70-39"><a href="multivariate-analysis.html#cb70-39" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(fit3, <span class="at">caption =</span> <span class="st">&quot;Classification Tree for Titanic pruned automatically&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-89"></span>
-<img src="_main_files/figure-html/unnamed-chunk-89-1.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-89-2.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
+<img src="_main_files/figure-html/unnamed-chunk-83-1.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-83-2.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  />
 <p class="caption">
 Figure 8.9: From left: Complexity vs X-val Relative Error; The automatically pruned CART.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-90"></span>
-<img src="_main_files/figure-html/unnamed-chunk-90-1.png" alt="The manually pruned CART." width="80%"  />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
+<img src="_main_files/figure-html/unnamed-chunk-84-1.png" alt="The manually pruned CART." width="80%"  />
 <p class="caption">
 Figure 8.10: The manually pruned CART.
 </p>
@@ -1145,7 +1145,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
