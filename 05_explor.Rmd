@@ -1,9 +1,6 @@
 
-# (PART) Section 2 - Statistical Analysis {-} 
+# (PART) Statistical Analysis {-} 
 
- 
-
- 
 
 # Exploratory Data Analysis
 
@@ -51,7 +48,7 @@ tendency, but under different conditions, some measures of central
 tendency become more appropriate to use than others [@lane2003;
 @manikandan2011; @laerdstatistics].
 
-------------------------------------------------------------------------
+---
 
 The **arithmetic** **mean** (or **average**) is the most popular and
 well known measure of central tendency. The mean is equal to the sum of
@@ -73,7 +70,7 @@ skewed distributions (i.e., the frequency distribution for our data is
 skewed). In those cases the median would be a better indicator of
 central location.
 
-------------------------------------------------------------------------
+---
 
 The **geometric mean** is defined as the $n^{th}$ root of the product of
 $n$ values (Equation \@ref(eq:geomean)).
@@ -90,7 +87,7 @@ meant to be multiplied together or are exponential in nature, such as a
 set of growth figures: values of the human population, or interest rates
 of a financial investment over time.
 
-------------------------------------------------------------------------
+---
 
 The **median** is the middle score for a set of data that has been
 arranged in order of magnitude. This means, also, that the median is
@@ -98,7 +95,7 @@ equal to the value corresponding to the 50th percentile of he
 distribution. If the number of observations is even, then the median is
 the simple average of the middle two numbers.
 
-------------------------------------------------------------------------
+---
 
 The **mode** is the most frequent score in our data set. On a histogram
 it represents the highest point (we will see more about it later in this
@@ -109,7 +106,7 @@ tri-modal, or multi-modal distributions. Moreover, the mode will not
 provide us with a very good measure of central tendency when the most
 common mark is far away from the rest of the data.
 
-------------------------------------------------------------------------
+---
 
 The **middle value** is a less used measure. It represents the value
 exactly at the center between the minimum and the maximum values
@@ -123,7 +120,7 @@ sensitive to outliers.
 \end{equation}
 
 
-------------------------------------------------------------------------
+---
 
 The function `summary()` gives us a brief overview of the minimum,
 maximum, first and third quantile, median and mean of each variable, or
@@ -188,7 +185,7 @@ pander(data.frame(distributions = c("a", "b"),
            ), caption = "Central tendency measures of the samples a and b.")
 ```
 
-------------------------------------------------------------------------
+---
 
 The **range** is the simplest measure of variability to calculate, and
 one you have probably encountered many times in your life. The range is
@@ -200,7 +197,7 @@ range=max-min
 \end{equation}
 
 
-------------------------------------------------------------------------
+---
 
 The **interquartile range** (IQR) is the range of the central 50% of the
 values in a distribution (Equation \@ref(eq:iqrange)).
@@ -212,7 +209,7 @@ IQR=75^{th} percentile - 25^{th} percentile
 \end{equation}
 
 
-------------------------------------------------------------------------
+---
 
 But variability can also be defined in terms of how close the values in
 the distribution are to the middle of the distribution. Using the mean
@@ -227,7 +224,7 @@ from the mean (Equation \@ref(eq:var)).
 \end{equation}
 
 
-------------------------------------------------------------------------
+---
 
 The **standard deviation** is simply the square root of the variance
 (Equation \@ref(eq:sd)). It is an especially useful measure of variability when
@@ -242,7 +239,7 @@ number of standard deviations from the mean can be calculated.
 \end{equation}
 
 
-------------------------------------------------------------------------
+---
 
 The **coefficient of variation** (CV) represents the ratio of the
 standard deviation to the mean (Equation \@ref(eq:cv)), and it is a useful
@@ -258,7 +255,7 @@ CV=\frac{\sigma}{\bar{x}}
 \end{equation}
 
 
-------------------------------------------------------------------------
+---
 
 The following code computes the above mentioned variability measures for
 the consumption variable of the mtcars dataset. In the last lines you
@@ -330,7 +327,7 @@ a quantitative variable transferable among the population of interest,
 such as income, apples, cars, etc... However, in economics, inequality
 measurements are used also for other items, like carbon emissions.
 
-------------------------------------------------------------------------
+---
 
 The **Gini** coefficient, or Gini Index, is the most widely used measure
 of inequality in policy-related discussions. It is a measure of
@@ -395,7 +392,7 @@ changes in the middle of the distribution, than to the tails. In
 economics, when we study inequality, we are often more interested in the
 tails behavior (namely the top and bottom 10% of the distribution).
 
-------------------------------------------------------------------------
+---
 
 The **Palma Ratio** is a particular specification within a family of
 inequality measures known as inter-decile ratios [@cobham2016]. More
@@ -460,14 +457,14 @@ worldwide (for those I invite you to explore [Ggplot2]), but fast and
 dirty graphs have their potential too, at least for the exploratory
 analysis phase.
 
-------------------------------------------------------------------------
+---
 
 A **histogram** is a plot that allows the inspection of the data for its
 underlying distribution (e.g., normal distribution), outliers, skewness,
 etc. If the bars of the histogram are equally spaced bars, the height of
 the bin reflects the frequency of each value of the distribution.
 
-------------------------------------------------------------------------
+---
 
 A **box plot**, also called a "box and whisker plot", is a way to show
 the spread and centers of a data set. A box plot is a way to show a five
@@ -480,7 +477,7 @@ minimum (the smallest number in the set) and the far top is the maximum
 [(]{.underline}**not the mean!**[)]{.underline} is represented by an
 horizontal bar in the center of the box.
 
-------------------------------------------------------------------------
+---
 
 A **scatter plot** is a bi-dimensional plot in which the dots represent
 values for two different numeric variables in the Cartesian space. The
@@ -592,7 +589,7 @@ statisticians and economists use in order to better use data. Some of
 the most common situations where scaling is required are visualization,
 interpretation, but most of all comparison.
 
-------------------------------------------------------------------------
+---
 
 **Log scaling** is typically used for plotting and regression analysis.
 It is a way of displaying numerical data over a very wide range of
@@ -617,7 +614,7 @@ scaled_x <- log(x)
 plot(log(scaled_x))
 ```
 
-------------------------------------------------------------------------
+---
 
 **Ranking** replaces the value assumed by each unit, with the order
 number (rank) by which the unit is placed on the list according to a
@@ -640,7 +637,7 @@ x = c(5,1,4,7,10,35,25)
 scaled_x <- rank(x)
 ```
 
-------------------------------------------------------------------------
+---
 
 Relative indices with respect to the range (**Min-Max**) purifies the
 data from their unit of measure such that the features are within a
@@ -662,7 +659,7 @@ x = c(5,1,4,7,10,35,25)
 scaled_x <- (x-min(x))/(max(x)-min(x))
 ```
 
-------------------------------------------------------------------------
+---
 
 The point of **z-score standardization** is to change your data so that
 it can be described as a normal distribution (Equation \@ref(eq:zscore)). Normal distribution, or
@@ -694,7 +691,7 @@ mean(scaled_x)
 sd(scaled_x)
 ```
 
-------------------------------------------------------------------------
+---
 
 In **index numbers**, the value assumed by each unit is divided by a
 reference value belonging to the same distribution or calculated on it
@@ -721,7 +718,7 @@ scaled_x <- x/mean(x)
 scaled_x <- x/max(x)
 ```
 
-------------------------------------------------------------------------
+---
 
 In the **percentage** transformation the value of each unit is divided
 by the sum of the values (Equation \@ref(eq:perc)). The sum of the normalized
@@ -757,7 +754,7 @@ Researchers are not interested in the sample itself, but in what can be
 learned from the survey---and how this information can be applied to the
 entire population.
 
-------------------------------------------------------------------------
+---
 
 **Simple Random sampling** is a powerful tool, we can use it to random
 subset data, or generate random distributions with precise
@@ -846,7 +843,7 @@ set.seed(1234)
 samp_data <- mtcars[sample(1:32, 4, replace=FALSE),]
 ```
 
-------------------------------------------------------------------------
+---
 
 In **stratified sampling**, the population is divided into homogeneous,
 mutually exclusive groups called strata, and then independent samples

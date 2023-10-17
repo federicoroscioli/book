@@ -93,8 +93,6 @@ y - x
 
  
 
- 
-
 ## Indexing
 
 The indexing system allows us to select a specific part of our data. To
@@ -158,6 +156,7 @@ instead of a dot before decimals!**
  
 
  
+ 
 
 ## The first function
 
@@ -218,6 +217,7 @@ average for example.**
 
  
 
+ 
  
 
 ## Dataset Exploration

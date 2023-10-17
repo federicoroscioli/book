@@ -146,8 +146,6 @@ converts the data to its type. To list the most used: `as.character()`,
 
  
 
- 
-
 ### Factor variables
 
 In some cases (especially when plotting data), it is important that
@@ -183,8 +181,6 @@ levels(yesnofac)
 relevel(yesnofac, ref="no")
 as.numeric(yesnofac)
 ```
-
- 
 
  
 
@@ -255,9 +251,5 @@ rownames(people) <- people$name
 people <- people[,-1]
 ```
 
- 
-
- 
-
- 
+\newpage
 

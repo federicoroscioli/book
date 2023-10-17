@@ -23,7 +23,6 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,8 +157,13 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#author"><i class="fa fa-check"></i>Author</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation.html"><a href="installation.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
@@ -196,7 +200,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.6" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
 <li class="chapter" data-level="4.7" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
 </ul></li>
-<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="part"><span><b>II Statistical Analysis</b></span></li>
 <li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
@@ -261,7 +265,6 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-
 <div id="hypothesis-testing" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">6</span> Hypothesis Testing<a href="hypothesis-testing.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Hypothesis testing is a vital process in inferential statistics where
@@ -381,7 +384,8 @@ clearer sense of the coefficient scale. Use the following code.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="hypothesis-testing.html#cb43-1" tabindex="-1"></a><span class="co">#suppress scientific notation</span></span>
 <span id="cb43-2"><a href="hypothesis-testing.html#cb43-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span></code></pre></div>
 <p> </p>
-<p> </p>
+<p> 
+ </p>
 <div id="probability-distributions" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Probability Distributions<a href="hypothesis-testing.html#probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>All <strong>probability distributions</strong> can be classified as discrete
@@ -501,7 +505,8 @@ following code.</p>
 <span id="cb44-4"><a href="hypothesis-testing.html#cb44-4" tabindex="-1"></a><span class="fu">shapiro.test</span>(mtcars<span class="sc">$</span>mpg)</span>
 <span id="cb44-5"><a href="hypothesis-testing.html#cb44-5" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
 <p> </p>
-<p> </p>
+<p> 
+ </p>
 </div>
 <div id="one-sample-t-test" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> One-Sample T-Test<a href="hypothesis-testing.html#one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -554,7 +559,8 @@ p-value, the alternative hypothesis (<span class="math inline">\(H_a\)</span>), 
 (so the boundaries of 95% of the possible averages), and the sample
 estimate of the mean.</p>
 <p> </p>
-<p> </p>
+<p> 
+ </p>
 </div>
 <div id="unpaired-two-sample-t-test" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Unpaired Two Sample T-Test<a href="hypothesis-testing.html#unpaired-two-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -630,7 +636,8 @@ the same.</em></p>
 <span id="cb48-7"><a href="hypothesis-testing.html#cb48-7" tabindex="-1"></a>                     <span class="st">&quot;wt&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(s<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>s<span class="sc">$</span>estimate[<span class="dv">2</span>], s<span class="sc">$</span>p.value))</span>
 <span id="cb48-8"><a href="hypothesis-testing.html#cb48-8" tabindex="-1"></a>taboft</span></code></pre></div>
 <p> </p>
-<p> </p>
+<p> 
+ </p>
 </div>
 <div id="mann-whitney-u-test" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> Mann Whitney U Test<a href="hypothesis-testing.html#mann-whitney-u-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -652,7 +659,8 @@ observation comes from, and then ranking lowest to highest.</p>
 formula of the test, as written in the code below.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="hypothesis-testing.html#cb49-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(mpg.at, mpg.mt)</span></code></pre></div>
 <p> </p>
-<p> </p>
+<p> 
+ </p>
 </div>
 <div id="paired-sample-t-test" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> Paired Sample T-Test<a href="hypothesis-testing.html#paired-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -763,7 +771,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

@@ -95,6 +95,7 @@ options(scipen = 9999)
  
 
  
+ 
 
 ## Probability Distributions
 
@@ -153,7 +154,7 @@ definition, as this will be key in order to understand all the remaining
 of this chapter). However, the probability that $X$ is exactly equal to
 $1.5$ would be zero.
 
-------------------------------------------------------------------------
+---
 
 The **normal distribution**, also known as the Gaussian distribution, is
 the most important probability distribution in statistics for
@@ -204,7 +205,7 @@ knitr::include_graphics("images/Senza titolo.png")
 ```
 
 
-------------------------------------------------------------------------
+---
 
 The **standard normal distribution** is a special case of the normal
 distribution where the mean is 0 and the standard deviation is 1. This
@@ -267,6 +268,7 @@ hist(mtcars$mpg)
  
 
  
+ 
 
 ## One-Sample T-Test
 
@@ -322,6 +324,7 @@ estimate of the mean.
 
  
 
+ 
  
 
 ## Unpaired Two Sample T-Test
@@ -415,6 +418,7 @@ taboft
  
 
  
+ 
 
 ## Mann Whitney U Test
 
@@ -445,6 +449,7 @@ wilcox.test(mpg.at, mpg.mt)
 
  
 
+ 
  
 
 ## Paired Sample T-Test

@@ -23,7 +23,6 @@
 <meta name="author" content="Federico Roscioli" />
 
 
-<meta name="date" content="2023-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,8 +157,13 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#author"><i class="fa fa-check"></i>Author</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I The R code</b></span></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation.html"><a href="installation.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
@@ -196,7 +200,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.6" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
 <li class="chapter" data-level="4.7" data-path="advanced-data-manipulation-and-plotting.html"><a href="advanced-data-manipulation-and-plotting.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
 </ul></li>
-<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="part"><span><b>II Statistical Analysis</b></span></li>
 <li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
@@ -261,7 +265,6 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-
 <div id="multivariate-analysis" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">8</span> Multivariate Analysis<a href="multivariate-analysis.html#multivariate-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Often bivariate analysis is not enough, and this is particularly true in
@@ -318,7 +321,6 @@ the right cluster.</p>
 <p>Remember that Clustering has to be performed on <u>continuous scaled
 data</u>. If the variables you want to analyze are categorical,
 you should use scaled dummies.</p>
-<p> </p>
 <p> </p>
 <div id="hierarchical-clustering" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Hierarchical Clustering<a href="multivariate-analysis.html#hierarchical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -398,7 +400,6 @@ space. <em>Transformations may be needed to put samples and variables on
 comparable scales; otherwise, clustering may reflect sample size or be
 dominated by variables with large values.</em></p>
 <p> </p>
-<p> </p>
 </div>
 <div id="k-means-clustering" class="section level3 hasAnchor" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> K-Means clustering<a href="multivariate-analysis.html#k-means-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -434,7 +435,6 @@ components.</em></p>
 Figure 8.2: K-means clustering.
 </p>
 </div>
-<p> </p>
 <p> </p>
 </div>
 <div id="the-silhouette-plot" class="section level3 hasAnchor" number="8.1.3">
@@ -835,9 +835,6 @@ methodologies are out of the scope of this book.</p>
 </div>
 <div id="composite-indicators" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> Composite Indicators<a href="multivariate-analysis.html#composite-indicators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p> </p>
-<p> </p>
-<p> </p>
 <p>A composite indicator is formed when individual indicators are combined
 into a single index, based on an underlying model of the
 multidimensional concept that is being measured. The indicators that
@@ -861,7 +858,6 @@ region is 10 points below the average). The only caveat we can find is
 the lack of a unit of measure for the final indicator and thus the
 impossibility to have a meaningful single value for the world
 aggregation.</p>
-<p> </p>
 <p> </p>
 <div id="mazziotta-pareto-index" class="section level3 hasAnchor" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> Mazziotta-Pareto Index<a href="multivariate-analysis.html#mazziotta-pareto-index" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -937,8 +933,6 @@ and its polarity. We normalize the data using the function
 respect to the phenomeon of interest, and the method to use (see the
 help for the available methods). We finally compute our MPI using the
 function <code>ci_mpi</code> by specifying its penality.</p>
-<p> </p>
-<p> </p>
 <p> </p>
 </div>
 <div id="adjusted-mazziotta-pareto-index" class="section level3 hasAnchor" number="8.5.2">
@@ -1059,7 +1053,6 @@ section 8 - Classification And Regression Trees</p></li>
 <div style="page-break-after: always;"></div>
 <!-- # Spatial Analysis -->
 <!-- To be done... -->
-<div style="page-break-after: always;"></div>
 </div>
 </div>
 <h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1152,7 +1145,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

@@ -1,18 +1,9 @@
-# Preface {.unnumbered}
+# Introduction {.unnumbered}
 
 \justifying
 
 > *I want to do something, not learn how to do everything.*\
 > John Carroll, "Minimal manual"
-
-The real goal of this manual is not to teach the R language per se, but
-to allow the students to manage the basic concepts in order to be able
-to explore and analyze data using R. After this course the student will
-be capable of clearly understand the R code that someone else wrote and
-customize her own code according to the need. This means having the
-possibility to explore different and more complex solutions for the
-student's problems by exploring new packages and paving the way to
-become a statistician!
 
 Many people think of R as a statistics system. I prefer to consider it
 an environment within which statistical techniques are implemented. R
@@ -73,19 +64,25 @@ all of you will go through that exact same feeling.
 
 So, please, **have fun, be curious, and exercise a lot!**
 
- 
+---
 
- 
+This manual is composed by two main sections divided in chapters. The
+first section will introduce the reader to the basic characteristics of
+the software required, its installation and configuration, it will then
+have a linguistic focus, so it aims at teaching how to use R in order to
+visualize, explore, understand, manipulate and create data. It will do
+so in a progressive way, starting from simple computations and ending
+with complex data manipulation and plotting. The second section,
+instead, will be all about applied statistics, from exploratory
+analysis, to the introduction of hypothesis testing and its
+implications, to bivariate and multivariate analysis methods, such as
+principal component analysis and classification and regression trees.
 
- 
 
- 
 
-# (PART) Section 1 - The R code {-} 
+# (PART) The R code {-}
 
- 
 
- 
 
 # Installation
 

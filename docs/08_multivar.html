@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Multivariate Analysis | Introduction to Data Analysis with R</title>
+  <meta name="description" content="8 Multivariate Analysis | Introduction to Data Analysis with R" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Multivariate Analysis | Introduction to Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Multivariate Analysis | Introduction to Data Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Federico Roscioli" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="07_bivar.html"/>
+
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="01_intro.html"><a href="01_intro.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="1" data-path="01_intro.html"><a href="01_intro.html#installation"><i class="fa fa-check"></i><b>1</b> Installation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01_intro.html"><a href="01_intro.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
+<li class="chapter" data-level="1.2" data-path="01_intro.html"><a href="01_intro.html#visualization-suggestions"><i class="fa fa-check"></i><b>1.2</b> Visualization suggestions</a></li>
+<li class="chapter" data-level="1.3" data-path="01_intro.html"><a href="01_intro.html#the-workspace"><i class="fa fa-check"></i><b>1.3</b> The workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02_abc.html"><a href="02_abc.html"><i class="fa fa-check"></i><b>2</b> A, B, C</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02_abc.html"><a href="02_abc.html#the-first-code"><i class="fa fa-check"></i><b>2.1</b> The first code</a></li>
+<li class="chapter" data-level="2.2" data-path="02_abc.html"><a href="02_abc.html#indexing"><i class="fa fa-check"></i><b>2.2</b> Indexing</a></li>
+<li class="chapter" data-level="2.3" data-path="02_abc.html"><a href="02_abc.html#the-first-function"><i class="fa fa-check"></i><b>2.3</b> The first function</a></li>
+<li class="chapter" data-level="2.4" data-path="02_abc.html"><a href="02_abc.html#dataset-exploration"><i class="fa fa-check"></i><b>2.4</b> Dataset Exploration</a></li>
+<li class="chapter" data-level="2.5" data-path="02_abc.html"><a href="02_abc.html#subsetting"><i class="fa fa-check"></i><b>2.5</b> Subsetting</a></li>
+<li class="chapter" data-level="2.6" data-path="02_abc.html"><a href="02_abc.html#importing-and-exporting-data"><i class="fa fa-check"></i><b>2.6</b> Importing and exporting data</a></li>
+<li class="chapter" data-level="2.7" data-path="02_abc.html"><a href="02_abc.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03_dataclean.html"><a href="03_dataclean.html"><i class="fa fa-check"></i><b>3</b> Data Cleaning</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03_dataclean.html"><a href="03_dataclean.html#variable-names"><i class="fa fa-check"></i><b>3.1</b> Variable Names</a></li>
+<li class="chapter" data-level="3.2" data-path="03_dataclean.html"><a href="03_dataclean.html#variable-types"><i class="fa fa-check"></i><b>3.2</b> Variable Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03_dataclean.html"><a href="03_dataclean.html#factor-variables"><i class="fa fa-check"></i><b>3.2.1</b> Factor variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03_dataclean.html"><a href="03_dataclean.html#dates-and-times"><i class="fa fa-check"></i><b>3.2.2</b> Dates and times</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03_dataclean.html"><a href="03_dataclean.html#row-names"><i class="fa fa-check"></i><b>3.3</b> Row Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04_advanced.html"><a href="04_advanced.html"><i class="fa fa-check"></i><b>4</b> Advanced Data Manipulation and Plotting</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04_advanced.html"><a href="04_advanced.html#ifelse"><i class="fa fa-check"></i><b>4.1</b> Ifelse</a></li>
+<li class="chapter" data-level="4.2" data-path="04_advanced.html"><a href="04_advanced.html#the-apply-family"><i class="fa fa-check"></i><b>4.2</b> The Apply family</a></li>
+<li class="chapter" data-level="4.3" data-path="04_advanced.html"><a href="04_advanced.html#dplyr"><i class="fa fa-check"></i><b>4.3</b> Dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="04_advanced.html"><a href="04_advanced.html#merging-datasets"><i class="fa fa-check"></i><b>4.4</b> Merging datasets</a></li>
+<li class="chapter" data-level="4.5" data-path="04_advanced.html"><a href="04_advanced.html#melting-vs-transposing"><i class="fa fa-check"></i><b>4.5</b> Melting vs Transposing</a></li>
+<li class="chapter" data-level="4.6" data-path="04_advanced.html"><a href="04_advanced.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
+<li class="chapter" data-level="4.7" data-path="04_advanced.html"><a href="04_advanced.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="chapter" data-level="5" data-path="05_explor.html"><a href="05_explor.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05_explor.html"><a href="05_explor.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
+<li class="chapter" data-level="5.2" data-path="05_explor.html"><a href="05_explor.html#variability-measures"><i class="fa fa-check"></i><b>5.2</b> Variability Measures</a></li>
+<li class="chapter" data-level="5.3" data-path="05_explor.html"><a href="05_explor.html#inequality-measures"><i class="fa fa-check"></i><b>5.3</b> Inequality Measures</a></li>
+<li class="chapter" data-level="5.4" data-path="05_explor.html"><a href="05_explor.html#data-visualization"><i class="fa fa-check"></i><b>5.4</b> Data visualization</a></li>
+<li class="chapter" data-level="5.5" data-path="05_explor.html"><a href="05_explor.html#scaling-data"><i class="fa fa-check"></i><b>5.5</b> Scaling data</a></li>
+<li class="chapter" data-level="5.6" data-path="05_explor.html"><a href="05_explor.html#probability-sampling"><i class="fa fa-check"></i><b>5.6</b> Probability Sampling</a></li>
+<li class="chapter" data-level="5.7" data-path="05_explor.html"><a href="05_explor.html#exercises-2"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06_hypo.html"><a href="06_hypo.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06_hypo.html"><a href="06_hypo.html#probability-distributions"><i class="fa fa-check"></i><b>6.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="6.2" data-path="06_hypo.html"><a href="06_hypo.html#shapiro-wilk-test"><i class="fa fa-check"></i><b>6.2</b> Shapiro-Wilk Test</a></li>
+<li class="chapter" data-level="6.3" data-path="06_hypo.html"><a href="06_hypo.html#one-sample-t-test"><i class="fa fa-check"></i><b>6.3</b> One-Sample T-Test</a></li>
+<li class="chapter" data-level="6.4" data-path="06_hypo.html"><a href="06_hypo.html#unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>6.4</b> Unpaired Two Sample T-Test</a></li>
+<li class="chapter" data-level="6.5" data-path="06_hypo.html"><a href="06_hypo.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>6.5</b> Mann Whitney U Test</a></li>
+<li class="chapter" data-level="6.6" data-path="06_hypo.html"><a href="06_hypo.html#paired-sample-t-test"><i class="fa fa-check"></i><b>6.6</b> Paired Sample T-Test</a></li>
+<li class="chapter" data-level="6.7" data-path="06_hypo.html"><a href="06_hypo.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="07_bivar.html"><a href="07_bivar.html"><i class="fa fa-check"></i><b>7</b> Bivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07_bivar.html"><a href="07_bivar.html#correlation"><i class="fa fa-check"></i><b>7.1</b> Correlation</a></li>
+<li class="chapter" data-level="7.2" data-path="07_bivar.html"><a href="07_bivar.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="07_bivar.html"><a href="07_bivar.html#logistic-regressions"><i class="fa fa-check"></i><b>7.3</b> Logistic Regressions</a></li>
+<li class="chapter" data-level="7.4" data-path="07_bivar.html"><a href="07_bivar.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="08_multivar.html"><a href="08_multivar.html"><i class="fa fa-check"></i><b>8</b> Multivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="08_multivar.html"><a href="08_multivar.html#cluster-analysis"><i class="fa fa-check"></i><b>8.1</b> Cluster Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="08_multivar.html"><a href="08_multivar.html#hierarchical-clustering"><i class="fa fa-check"></i><b>8.1.1</b> Hierarchical Clustering</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08_multivar.html"><a href="08_multivar.html#k-means-clustering"><i class="fa fa-check"></i><b>8.1.2</b> K-Means clustering</a></li>
+<li class="chapter" data-level="8.1.3" data-path="08_multivar.html"><a href="08_multivar.html#the-silhouette-plot"><i class="fa fa-check"></i><b>8.1.3</b> The silhouette plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="08_multivar.html"><a href="08_multivar.html#heatmap"><i class="fa fa-check"></i><b>8.2</b> Heatmap</a></li>
+<li class="chapter" data-level="8.3" data-path="08_multivar.html"><a href="08_multivar.html#principal-component-analysis"><i class="fa fa-check"></i><b>8.3</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="08_multivar.html"><a href="08_multivar.html#classification-and-regression-trees"><i class="fa fa-check"></i><b>8.4</b> Classification And Regression Trees</a></li>
+<li class="chapter" data-level="8.5" data-path="08_multivar.html"><a href="08_multivar.html#composite-indicators"><i class="fa fa-check"></i><b>8.5</b> Composite Indicators</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="08_multivar.html"><a href="08_multivar.html#mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.1</b> Mazziotta-Pareto Index</a></li>
+<li class="chapter" data-level="8.5.2" data-path="08_multivar.html"><a href="08_multivar.html#adjusted-mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted Mazziotta-Pareto Index</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="08_multivar.html"><a href="08_multivar.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="08_multivar.html"><a href="08_multivar.html#final-remarks"><i class="fa fa-check"></i>Final Remarks</a></li>
+<li class="chapter" data-level="" data-path="08_multivar.html"><a href="08_multivar.html#bibliography"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multivariate-analysis" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Multivariate Analysis<a href="08_multivar.html#multivariate-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Often bivariate analysis is not enough, and this is particularly true in
+this historical period, when data availability is not an issue anymore.
+One of the most common problems instead is how to analyze big (huge)
+dataset. Multivariate analysis methods give us the possibility to
+somehow reduce the dimensionality of the data, allowing a clearer
+understanding of the relationships present in it.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<div id="cluster-analysis" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Cluster Analysis<a href="08_multivar.html#cluster-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cluster analysis is an exploratory data analysis tool for solving
+classification problems. Its objective is to sort observations into
+groups, or clusters, so that the degree of association is strong between
+members of the same cluster and weak between members of different
+clusters. Each cluster thus describes, in terms of the data collected,
+the class to which its members belong; and this description may be
+abstracted through use from the particular to the general class or type.
+Cluster analysis is thus a tool of discovery. It may reveal associations
+and structure in data which, though not previously evident, nevertheless
+are sensible and useful once found. The results of cluster analysis may
+contribute to the definition of a formal classification scheme, such as
+a taxonomy for related animals, insects or plants; or suggest
+statistical models with which to describe populations; or indicate rules
+for assigning new cases to classes for identification and diagnostic
+purposes; or provide measures of definition, size and change in what
+previously were only broad concepts; or find exemplars to represent
+classes. Whatever business you’re in, the chances are that sooner or
+later you will run into a classification problem.</p>
+<p>Cluster analysis includes a broad suite of techniques designed to find
+groups of similar items within a data set. Partitioning methods divide
+the data set into a number of groups predesignated by the user.
+Hierarchical cluster methods produce a hierarchy of clusters from small
+clusters of very similar items to large clusters that include more
+dissimilar items <span class="citation">(<a href="#ref-abdi2010">Abdi and Williams 2010</a>)</span>. Both clustering and PCA seek to simplify
+the data via a small number of summaries, but their mechanisms are
+different: PCA looks to find a low-dimensional representation of the
+observations that explain a good fraction of the variance; clustering
+looks to find homogeneous subgroups among the observations.</p>
+<p>As mentioned, when we cluster the observations of a data set, we seek to
+partition them into distinct groups so that the observations within each
+group are quite similar to each other, while observations in different
+groups are quite different from each other. Of course, to make this
+concrete, we must define what it means for two or more observations to
+be similar or different.</p>
+<p>In order to define the similarity between observations we need a
+“metric”. The Eucludean distance is the most common metric used in
+cluster analysis, but many others exist (see the help in the <code>dist()</code>
+function for more detail). We also need to choose which algorithm we
+want to apply in order for the computer to assign the observations to
+the right cluster.</p>
+<p>Remember that Clustering has to be performed on <u>continuous scaled
+data</u>. If the variables you want to analyze are categorical,
+you should use scaled dummies.</p>
+<p> </p>
+<p> </p>
+<div id="hierarchical-clustering" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Hierarchical Clustering<a href="08_multivar.html#hierarchical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Hierarchical methods usually produce a graphical output known as a
+dendrogram or tree that shows this hierarchical clustering structure.
+Some hierarchical methods are divisive, that progressively divide the
+one large cluster comprising all of the data into two smaller clusters
+and repeat this process until all clusters have been divided. Other
+hierarchical methods are agglomerative and work in the opposite
+direction by first finding the clusters of the most similar items and
+progressively adding less similar items until all items have been
+included into a single large cluster. Hierarchical methods are
+particularly useful in that they are not limited to a predetermined
+number of clusters and can display similarity of samples across a wide
+range of scales.</p>
+<p>Bottom-up or agglomerative clustering is the most common type of
+hierarchical clustering, and refers to the fact that a dendrogram is
+built starting from the leaves and combining clusters up to the trunk.
+As we move up the tree, some leaves begin to fuse into branches. These
+correspond to observations that are similar to each other. As we move
+higher up the tree, branches themselves fuse, either with leaves or
+other branches. The earlier (lower in the tree) fusions occur, the more
+similar the groups of observations are to each other. On the other hand,
+observations that fuse later (near the top of the tree) can be quite
+different. <strong>The height of this fusion, as measured on the vertical
+axis, indicates how different the two observations are.</strong></p>
+<p>Hierarchical clustering allows also to select the method you want to
+apply. <em>Ward’s</em> minimum variance method aims at finding compact,
+spherical clusters. The <em>complete linkage</em> method finds similar
+clusters. The <em>single linkage</em> method (which is closely related to the
+minimal spanning tree) adopts a ‘friends of friends’ clustering
+strategy. The other methods can be regarded as aiming for clusters with
+characteristics somewhere between the single and complete link methods.</p>
+<p>The first step in order to proceed with hierarchical cluster analysis is
+to compute the “distance matrix”, which represents how distance are the
+observations among themselves. For this step, as mentioned before, the
+Euclidean distance is one of the most common metrics used. We then
+properly run the hierarchical cluster analysis (function <code>hclust()</code>)
+specifying the method for complete linkage. Finally we plot the
+dendogram. <em>It is important that each row of the dataset has a name
+assigned (see <a href="03_dataclean.html#row-names">Row Names</a>)</em>.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="08_multivar.html#cb60-1" tabindex="-1"></a><span class="co"># Euclidean distance</span></span>
+<span id="cb60-2"><a href="08_multivar.html#cb60-2" tabindex="-1"></a>dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(swiss, <span class="at">method=</span><span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb60-3"><a href="08_multivar.html#cb60-3" tabindex="-1"></a><span class="co"># Hierarchical Clustering with hclust</span></span>
+<span id="cb60-4"><a href="08_multivar.html#cb60-4" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist, <span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb60-5"><a href="08_multivar.html#cb60-5" tabindex="-1"></a><span class="co"># Plot the result</span></span>
+<span id="cb60-6"><a href="08_multivar.html#cb60-6" tabindex="-1"></a><span class="fu">plot</span>(hc, <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">cex=</span>.<span class="dv">5</span>)</span>
+<span id="cb60-7"><a href="08_multivar.html#cb60-7" tabindex="-1"></a><span class="fu">rect.hclust</span>(hc, <span class="at">k=</span><span class="dv">3</span>, <span class="at">border=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:fig2"></span>
+<img src="_main_files/figure-html/fig2-1.png" alt="Dendogram plot." width="100%"  />
+<p class="caption">
+Figure 8.1: Dendogram plot.
+</p>
+</div>
+<p>The last line of code adds the rectangles highlighting 3 clusters. The
+number of cluster is a personal choice, there is no strict rule about
+how to identify them. The common rule of thumb is to look at the height
+(vertical axes of the dendogram) and cut it where the highest jump
+occurs between the branches. In this case it corresponds to 3 clusters.</p>
+<p>Because of its agglomerative nature, clusters are sensitive to the order
+in which samples join, which can cause samples to join a grouping to
+which it does not actually belong. In other words, if groups are known
+beforehand, those same groupings may not be produced from cluster
+analysis. Cluster analysis is sensitive to both the distance metric
+selected and the criterion for determining the order of clustering.
+Different approaches may yield different results. Consequently, the
+distance metric and clustering criterion should be chosen carefully. The
+results should also be compared to analyses based on different metrics
+and clustering criteria, or to an ordination, to determine the
+robustness of the results.Caution should be used when defining groups
+based on cluster analysis, particularly if long stems are not present.
+Even if the data form a cloud in multivariate space, cluster analysis
+will still form clusters, although they may not be meaningful or natural
+groups. Again, it is generally wise to compare a cluster analysis to an
+ordination to evaluate the distinctness of the groups in multivariate
+space. <em>Transformations may be needed to put samples and variables on
+comparable scales; otherwise, clustering may reflect sample size or be
+dominated by variables with large values.</em></p>
+<p> </p>
+<p> </p>
+</div>
+<div id="k-means-clustering" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> K-Means clustering<a href="08_multivar.html#k-means-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>K-means clustering is a simple and elegant approach for partitioning a
+data set into K distinct, non-overlapping clusters. To perform K-means
+clustering, we must <u>first specify the desired number of clusters
+K</u>; then the K-means algorithm assigns each observation to
+exactly one of the K clusters. The idea behind K-means clustering is
+that a good clustering is one for which the within-cluster variation is
+as small as possible. The K-Means algorithm, in an iteratively way,
+defines a centroid for each cluster, which is a point (imaginary or
+real) at the center of a cluster, and adjusts it until there is no
+possible change anymore. The metric used is the Squared Sum of Euclidean
+distances. <u>The main limitation of K-means is understanding which is the
+right k prior to the analysis</u>. Also, K-means is an
+algorithm that tends to perform well only with spherical clusters, as it
+looks for centroids.</p>
+<p>The function <code>kmeans()</code> allows to run K-Means clustering given the
+preferred number of clusters (centers). The results can be appreciated
+by plotting the clusters using the <code>fviz_cluster()</code> function from the
+package factoextra <span class="citation">(<a href="#ref-kassambara">Kassambara and Mundt, n.d.</a>)</span>. <em>Note that in order to plot the
+clusters from K-means the function automatically reduces the
+dimensionality of the data via PCA and selects the first two
+components.</em></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="08_multivar.html#cb61-1" tabindex="-1"></a><span class="co"># calculate the k-means for the preferred number of clusters</span></span>
+<span id="cb61-2"><a href="08_multivar.html#cb61-2" tabindex="-1"></a>kc <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(swiss, <span class="at">centers=</span><span class="dv">3</span>)</span>
+<span id="cb61-3"><a href="08_multivar.html#cb61-3" tabindex="-1"></a><span class="fu">library</span>(factoextra) </span></code></pre></div>
+<pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="08_multivar.html#cb63-1" tabindex="-1"></a><span class="fu">fviz_cluster</span>(<span class="fu">list</span>(<span class="at">data=</span>swiss, <span class="at">cluster=</span>kc<span class="sc">$</span>cluster))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig3"></span>
+<img src="_main_files/figure-html/fig3-1.png" alt="K-means clustering." width="80%"  />
+<p class="caption">
+Figure 8.2: K-means clustering.
+</p>
+</div>
+<p> </p>
+<p> </p>
+</div>
+<div id="the-silhouette-plot" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> The silhouette plot<a href="08_multivar.html#the-silhouette-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Silhouette analysis can be used to study the separation distance between
+the resulting clusters. This analysis is usually carried out prior to
+any clustering algorithm <span class="citation">(<a href="#ref-syakur2018">Syakur et al. 2018</a>)</span>. In fact, the silhouette plot
+displays a measure of how close each point in one cluster is to points
+in the neighboring clusters and thus provides a way to assess parameters
+like number of clusters visually. This measure has a range of <span class="math inline">\(-1, 1\)</span>.
+The value of <em>k</em> that maximizes the silhouette width is the one
+minimizing the distance within the clusters and maximizing the distance
+between them. However, it is important to remark that <u>the silhouette
+plot analysis provides just a rule of thumb for cluster
+selection</u>.</p>
+<p>In the case of the <code>swiss</code> dataset, the silhouette plot suggests the
+presence of only two clusters both using hierarchical clustering and
+K-Means. As we have seen previously this is not properly true.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="08_multivar.html#cb64-1" tabindex="-1"></a><span class="co">#silhouette method</span></span>
+<span id="cb64-2"><a href="08_multivar.html#cb64-2" tabindex="-1"></a><span class="fu">library</span>(factoextra) </span>
+<span id="cb64-3"><a href="08_multivar.html#cb64-3" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(swiss, <span class="at">FUN =</span> hcut)</span>
+<span id="cb64-4"><a href="08_multivar.html#cb64-4" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(swiss, <span class="at">FUN =</span> kmeans)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:fig4"></span>
+<img src="_main_files/figure-html/fig4-1.png" alt="From left: Hierarchical clustering silhouette plot; K-means clustering silhouette plot." width="50%"  /><img src="_main_files/figure-html/fig4-2.png" alt="From left: Hierarchical clustering silhouette plot; K-means clustering silhouette plot." width="50%"  />
+<p class="caption">
+Figure 8.3: From left: Hierarchical clustering silhouette plot; K-means clustering silhouette plot.
+</p>
+</div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+</div>
+<div id="heatmap" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Heatmap<a href="08_multivar.html#heatmap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A Heatmap is a two-way display of a data matrix in which the individual
+cells are displayed as colored rectangles. The color of a cell is
+proportional to its position along a color gradient. Usually, the
+columns (variables) of the matrix are shown as the columns of the heat
+map and the rows of the matrix are shown as the rows of the heat map, as
+in the example below. The order of the rows is determined by performing
+hierarchical cluster analyses of the rows (it is even possible to
+appreciate the corresponding dendogram on the side of the heatmap). This
+tends to position similar rows together on the plot. The order of the
+columns is determined similarly. Usually, a clustered Heatmap is made on
+variables that have similar scales, such as scores on tests. If the
+variables have different scales, the data matrix must first be scaled
+using a standardization transformation such as z-scores or proportion of
+the range.</p>
+<p>In the heatmap you can see that V. of Geneve is a proper outlier in
+terms of Education and share of people involved in the agricultural
+sector. For more advanced Heatmaps, please <a href="https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/">visit this link.</a></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="08_multivar.html#cb65-1" tabindex="-1"></a><span class="co">#heatmap</span></span>
+<span id="cb65-2"><a href="08_multivar.html#cb65-2" tabindex="-1"></a>dataMatrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(swiss)</span>
+<span id="cb65-3"><a href="08_multivar.html#cb65-3" tabindex="-1"></a><span class="fu">heatmap</span>(dataMatrix, <span class="at">cexCol=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
+<img src="_main_files/figure-html/unnamed-chunk-81-1.png" alt="Heatmap." width="80%"  />
+<p class="caption">
+Figure 8.4: Heatmap.
+</p>
+</div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="principal-component-analysis" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Principal Component Analysis<a href="08_multivar.html#principal-component-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Principal Component Analysis (PCA) is a way of identifying patterns in
+data, and expressing the data in such a way as to highlight their
+similarities and differences <span class="citation">Jolliffe and Cadima (<a href="#ref-jolliffe2016">2016</a>)</span>. Since patterns
+in data can be hard to find in data of high dimension, where the luxury
+of graphical representation is not available, PCA is a powerful tool for
+analysing data. The other main advantage of PCA is that once we have
+found these patterns in the data, we compress the data (ie. by reducing
+the number of dimensions) without much loss of information.</p>
+<p><u>The goal of PCA is to reduce the dimensionality of the data while
+retaining as much as possible of the variation present in the
+dataset.</u></p>
+<p>PCA is:</p>
+<ul>
+<li>a statistical technique used to examine the interrelations among a
+set of variables in order to identify the underlying structure of
+those variables.</li>
+<li>a non-parametric analysis and the answer is unique and independent
+of any hypothesis about data distribution.</li>
+</ul>
+<p>These two properties can be regarded as weaknesses as well as strengths.
+Since the technique is non-parametric, no prior knowledge can be
+incorporated. Moreover, PCA data reduction often incurs a loss of
+information.</p>
+<p>The assumptions of PCA:</p>
+<ol style="list-style-type: decimal">
+<li><u>Linearity</u>. Assumes the data set to be linear
+combinations of the variables.</li>
+<li><u>The importance of mean and covariance</u>. There is no
+guarantee that the directions of maximum variance will contain good
+features for discrimination.</li>
+<li><u>That large variances have important dynamics</u>. Assumes
+that components with larger variance correspond to interesting
+dynamics and lower ones correspond to noise.</li>
+</ol>
+<p>The first principal component can equivalently be defined as a direction
+that maximizes the variance of the projected data. The second will
+represent the direction that maximizes the variance of the projected
+data, given the first component, and thus it will be uncorrelated with
+it. And so on for the other components. Once we have computed the
+principal components, we can plot them against each other in order to
+produce low-dimensional views of the data. More generally, we are
+interested in knowing the proportion of variance explained by each
+principal component and analyse the ones that maximize it.</p>
+<p>It is important to remember that PCA has to be performed on <u>continuous
+scaled data</u>. If the variables we want to analyze are
+categorical, we should use scaled dummies or correspondence analysis.
+Another fundamental aspect is that each row of the dataset must have a
+name assigned to it, otherwise we will not see the names corresponding
+to each observation in the plot. See <a href="05_explor.html#scaling-data">Scaling data</a> and <a href="03_dataclean.html#row-names">Row Names</a> for
+more information on the procedure.</p>
+<p>Using the codes below, we are able to reduce the dimensionality in the
+<code>swiss</code> dataset. This dataset presents only percentage values, thus all
+the variables are already continuous and in the same scale. Moreover,
+each observation (village) has its row named accordingly, so we do not
+need to do any transformation prior to the analysis. One we are sure
+about these two aspect, we can start our analysis by studying the
+correlation between the different variables that compose the dataset. We
+do so because we know the PCA works best when we have correlated
+variables that can be “grouped” within the same principal component by
+the algorithm.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="08_multivar.html#cb66-1" tabindex="-1"></a><span class="co"># Correlation Matrix</span></span>
+<span id="cb66-2"><a href="08_multivar.html#cb66-2" tabindex="-1"></a><span class="fu">cor</span>(swiss)</span></code></pre></div>
+<p>The next step is to properly run the PCA’s algorithm and assign it to an
+object. If the values are not on the same scale, it is better to set the
+argument scale equal to TRUE. This argument sets the PCA to work on the
+correlation matrix, instead of on the covariance matrix, allowing to
+start from values all centered around 0 and with the same scale. The
+object created by <code>prcomp()</code> is a “list”. A list can contain dataframes,
+vectors, variables, etc… In order to explore what is inside of a list
+you can use the <code>$</code> sign or the <code>[]</code> (nested square brackets). The
+summary and the scree plot (command <code>fviz_eig()</code> from the package
+<code>factoextra</code>) are the first thing to look at because they tell us how
+much of the variance is explained by each component <span class="citation">(<a href="#ref-kassambara">Kassambara and Mundt, n.d.</a>)</span>. The
+higher are the first components, the more accurate our PCA will be. In
+this case, the first two components retain 73.1% of the total
+variability within the data.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="08_multivar.html#cb67-1" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb67-2"><a href="08_multivar.html#cb67-2" tabindex="-1"></a><span class="co">#running the PCA</span></span>
+<span id="cb67-3"><a href="08_multivar.html#cb67-3" tabindex="-1"></a>pca_swiss <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(swiss, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb67-4"><a href="08_multivar.html#cb67-4" tabindex="-1"></a><span class="fu">summary</span>(pca_swiss)</span>
+<span id="cb67-5"><a href="08_multivar.html#cb67-5" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="08_multivar.html#cb67-6" tabindex="-1"></a><span class="co">#visualizing the PCA</span></span>
+<span id="cb67-7"><a href="08_multivar.html#cb67-7" tabindex="-1"></a><span class="fu">fviz_eig</span>(pca_swiss)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
+<img src="_main_files/figure-html/unnamed-chunk-84-1.png" alt="Screeplot." width="80%"  />
+<p class="caption">
+Figure 8.5: Screeplot.
+</p>
+</div>
+<p>The final step is to plot the graph of the variables, where positively
+correlated variables point to the same side of the plot, while
+negatively correlated variables point to opposite sides of the graph. We
+can see how Education is positively correlated with the PC2, while
+Fertility and Catholic are negatively correlated with the same dimension
+and thus also with Education. This result confirms what we already saw
+in the correlation matrix above.</p>
+<p>The graph of individuals, instead, tells us how the observations (the
+villages in this case) are related to the components. Thus, we can
+conclude by saying that V. de Geneve has some peculiar characteristics
+as compared with the other villages, in fact it has the highest
+education level and lowest fertility and share of catholic people.</p>
+<p>The biplot overlays the previous two graphs allowing a more immediate
+interpretation. However if we have many variables and observations, this
+plot can be do messy to be analyzed.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="08_multivar.html#cb68-1" tabindex="-1"></a><span class="co"># Graph of variables</span></span>
+<span id="cb68-2"><a href="08_multivar.html#cb68-2" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(</span>
+<span id="cb68-3"><a href="08_multivar.html#cb68-3" tabindex="-1"></a>        pca_swiss,</span>
+<span id="cb68-4"><a href="08_multivar.html#cb68-4" tabindex="-1"></a>        <span class="at">col.var =</span> <span class="st">&quot;contrib&quot;</span>,</span>
+<span id="cb68-5"><a href="08_multivar.html#cb68-5" tabindex="-1"></a>        <span class="at">repel =</span> <span class="cn">TRUE</span>     <span class="co"># Avoid text overlapping</span></span>
+<span id="cb68-6"><a href="08_multivar.html#cb68-6" tabindex="-1"></a>)</span>
+<span id="cb68-7"><a href="08_multivar.html#cb68-7" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="08_multivar.html#cb68-8" tabindex="-1"></a><span class="co"># Graph of individuals</span></span>
+<span id="cb68-9"><a href="08_multivar.html#cb68-9" tabindex="-1"></a><span class="fu">fviz_pca_ind</span>(</span>
+<span id="cb68-10"><a href="08_multivar.html#cb68-10" tabindex="-1"></a>        pca_swiss,</span>
+<span id="cb68-11"><a href="08_multivar.html#cb68-11" tabindex="-1"></a>        <span class="at">col.ind =</span> <span class="st">&quot;cos2&quot;</span>,</span>
+<span id="cb68-12"><a href="08_multivar.html#cb68-12" tabindex="-1"></a>        <span class="at">repel =</span> <span class="cn">TRUE</span></span>
+<span id="cb68-13"><a href="08_multivar.html#cb68-13" tabindex="-1"></a>)</span>
+<span id="cb68-14"><a href="08_multivar.html#cb68-14" tabindex="-1"></a></span>
+<span id="cb68-15"><a href="08_multivar.html#cb68-15" tabindex="-1"></a><span class="co"># Biplot of individuals and variables</span></span>
+<span id="cb68-16"><a href="08_multivar.html#cb68-16" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca_swiss, <span class="at">repel =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
+<img src="_main_files/figure-html/unnamed-chunk-85-1.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-85-2.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-85-3.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  />
+<p class="caption">
+Figure 8.6: From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables.
+</p>
+</div>
+<p>As a robustness check, and also to better understand what the algorithm
+does, we can compare the rotation of the axis before and after the pca
+looking at the pairs plot. In the pair graph after the PCA we expect to
+see no relationship between all the principal component, as this is the
+aim of the PCA algorithm.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="08_multivar.html#cb69-1" tabindex="-1"></a><span class="co"># Pairs before PCA</span></span>
+<span id="cb69-2"><a href="08_multivar.html#cb69-2" tabindex="-1"></a><span class="fu">pairs</span>(swiss, <span class="at">panel=</span>panel.smooth, <span class="at">col=</span><span class="st">&quot;#6da7a7&quot;</span>)</span>
+<span id="cb69-3"><a href="08_multivar.html#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="08_multivar.html#cb69-4" tabindex="-1"></a><span class="co"># Pair after PCA</span></span>
+<span id="cb69-5"><a href="08_multivar.html#cb69-5" tabindex="-1"></a><span class="fu">pairs</span>(pca_swiss<span class="sc">$</span>x, <span class="at">panel=</span>panel.smooth, <span class="at">col=</span><span class="st">&quot;#6da7a7&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-86"></span>
+<img src="_main_files/figure-html/unnamed-chunk-86-1.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  /><img src="_main_files/figure-html/unnamed-chunk-86-2.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  />
+<p class="caption">
+Figure 8.7: From top: Pairs graph before PCA; Pairs graph after PCA.
+</p>
+</div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="classification-and-regression-trees" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Classification And Regression Trees<a href="08_multivar.html#classification-and-regression-trees" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Classification and Regression Trees (CART) are simple and useful methods
+for interpretation that allow to understand the underlying relationship
+between one dependent variable and multiple independent variables
+<span class="citation">Temkin et al. (<a href="#ref-temkin1995">1995</a>)</span>. As compared to multiple linear regression
+analysis, this set of methods does not retrieve the impact of one
+variable on the outcome controlling for a set of other independent
+variables. It instead recursively looks at the most significant
+relationship between a set of variables, subsets the given data
+accordingly, and finally draws a tree. CART are a great tool for
+communicating complex relationships thanks to their visual output,
+however they have generally a poor predicting performance.</p>
+<p>Depending on the dependent variable type it is possible to apply a
+Classification (for discrete variables) or Regression (for continuous
+variables) Tree. In order to build a <strong>regression tree</strong>, the algorithm
+first uses recursive binary splitting to grow a large tree, stopping
+only when each terminal node has fewer than some minimum number of
+observations. Beginning at the top of the tree, it splits the data into
+2 branches, creating a partition of 2 spaces. It then carries out this
+particular split at the top of the tree multiple times and chooses the
+split of the features that minimizes the Residual Sum of Squares (RSS).
+Then it repeats the procedure for each subsequent split. A
+<strong>classification tree</strong>, instead, is built by predicting which
+observation belongs to the most commonly occurring class in the region
+to which it belongs. However, in the classification setting, RSS cannot
+be used as a criterion for making the binary splits. The algorithm then
+uses Classification Error Rate, Gini Index or Cross-Entropy.</p>
+<p>In interpreting the results of a classification tree, you are often
+interested not only in the class prediction corresponding to a
+particular terminal node region, but also in the class proportions among
+the training observations that fall into that region. The image below
+offers a clear understanding of how a classification tree must be read
+<span class="citation">(<a href="#ref-lee2018">J. Lee 2018</a>)</span>. We first state our research question. The answer proposed
+depend on the variables included in our data. In this case we will
+accept the new job offer only if the salary is higher than $50k, it
+takes less than one hour to commute, and the company offers free coffee.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-87"></span>
+<img src="images/classification-tree_ygvats%20copia.jpg" alt="Classification tree explanation. Source Lee (2018)." width="80%"  />
+<p class="caption">
+Figure 8.8: Classification tree explanation. Source Lee (2018).
+</p>
+</div>
+<p>The main question is when to stop splitting? Clearly, if all of the
+elements in a node are of the same class it does not do us much good to
+add another split. Doing so would usually decrease the power of our
+model. This is known as <u>overfitting</u>. As omniscient
+statisticians, we have to be creative with the rules for termination. In
+fact, there is no one-size-fits-all-rule in this case, but the algorithm
+provides a number of parameters that we can set. This process is called
+“pruning”, as if we were pruning a tree to make it smaller and simpler.</p>
+<p><strong>Manual pruning</strong>, is performed starting from fully grown (over-fitted)
+trees and setting parameters such as the minimum number of observations
+that must exist in a node in order for a split to be attempted
+(<code>minsplit</code>), the minimum number of observations in any terminal node
+(<code>minbucket</code>), and the maximum depth of any node of the final tree, with
+the root node counted as depth 0 (<code>maxdepth</code>), just to mention the most
+important ones. There is no rule for setting these parameters, and here
+comes the art of the statistician.</p>
+<p><strong>Automatic pruning</strong>, instead, is done by setting the complexity
+parameter (<code>cp</code>). The complexity parameter is a combination of the size
+of a tree and the ability of the tree to separate the classes of the
+target variable. If the next best split in growing a tree does not
+reduce the tree’s overall complexity by a certain amount, then the
+process is terminated. The complexity parameter by default is set to
+0.01. Setting it to a negative amount ensures that the tree will be
+fully grown. But which is the right value for the complexity parameter?
+Also in this case, there is not a perfect rule. The rule of thumb is to
+set it to zero, and then select the complexity parameter that minimizes
+the level of the cross-validated error rate.</p>
+<p>In our example below, we will use the dataset <code>ptitianic</code>, from the
+package <code>rpart.plot</code>. The dataset provides a list of passengers on board
+fo the famous ship Titanic which sank in the North Atlantic Ocean on 15
+April 1912. It tells us whether the passenger died or survived, the
+passenger class, gender, age, the number of sibling or spouses aboard,
+and the number of parents or children aboard. Our aim is to understand
+which were the factors allowing the passenger to survive.</p>
+<p>The package <code>rpart</code> allows us to run the CART algorithms
+<span class="citation">(<a href="#ref-therneau2022">Therneau and Atkinson 2022</a>)</span>. The <code>rpart()</code> function needs the specification of the
+formula using the same syntax used for multiple linear regressions, the
+source of data, and the method (if <code>y</code> is a survival object, then
+<code>method = "exp"</code>, if <code>y</code> has 2 columns then <code>method = "poisson"</code>, if <code>y</code>
+is categorical then <code>method = "class"</code>, otherwise <code>method = "anova"</code>).
+In the code below, the argument <code>method = "class"</code> is used given that
+the outcome variable is a categorical variable. <em>It is important to set
+the seed before working with rpart if we want to have coherent results,
+as it runs some random sampling.</em></p>
+<p>The <code>fit</code> object is a fully grown tree (<code>cp&lt;0</code>). We then create <code>fit2</code>,
+which is a tree manually pruned by setting the parameters mentioned
+above. Remember that it is not required to set all the parameters, one
+of them could be enough. Finally, <code>fit3</code> is and automatically pruned
+tree. The functions <code>printcp(fit)</code> and <code>plotcp(fit)</code>, allow us to
+visualize the cross-validated error rate of the fully grown tree
+(<code>fit</code>), so that we can select the value for the complexity parameter
+that will minimize that value. In this case, I would pick the “elbow” of
+the graph, thus <code>cp=0.094</code>. In order to apply a new complexity parameter
+to the fully grown tree, either we grow the tree again as done for
+<code>fit</code>, or we use the function <code>prune.rpart()</code>.</p>
+<p>We then plot the tree using <code>fancyRpartPlot()</code> from the package <code>rattle</code>
+<span class="citation">(<a href="#ref-williams2011">Williams 2011</a>)</span>. The graph produced displays the number of the node on
+top of each node, the predicted class (yes or no), the number of
+miss-classified observations, the percentage of observations in the
+predicted class for this node. As we see here, in this case, pruning
+using the automatic method retrieved a poor tree with only one split,
+whether the manually pruned tree is richer and allows us to interpret
+the result.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="08_multivar.html#cb70-1" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb70-2"><a href="08_multivar.html#cb70-2" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb70-3"><a href="08_multivar.html#cb70-3" tabindex="-1"></a><span class="fu">library</span>(rattle)</span>
+<span id="cb70-4"><a href="08_multivar.html#cb70-4" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="08_multivar.html#cb70-5" tabindex="-1"></a><span class="co"># set the seed in order to have replicability of the model</span></span>
+<span id="cb70-6"><a href="08_multivar.html#cb70-6" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>, <span class="at">kind =</span> <span class="st">&quot;Mersenne-Twister&quot;</span>, <span class="at">normal.kind =</span>  <span class="st">&quot;Inversion&quot;</span>)</span>
+<span id="cb70-7"><a href="08_multivar.html#cb70-7" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="08_multivar.html#cb70-8" tabindex="-1"></a><span class="co"># fully grown tree</span></span>
+<span id="cb70-9"><a href="08_multivar.html#cb70-9" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb70-10"><a href="08_multivar.html#cb70-10" tabindex="-1"></a>        <span class="fu">as.factor</span>(survived) <span class="sc">~</span> ., </span>
+<span id="cb70-11"><a href="08_multivar.html#cb70-11" tabindex="-1"></a>        <span class="at">data =</span> ptitanic, </span>
+<span id="cb70-12"><a href="08_multivar.html#cb70-12" tabindex="-1"></a>        <span class="at">method =</span> <span class="st">&quot;class&quot;</span>,</span>
+<span id="cb70-13"><a href="08_multivar.html#cb70-13" tabindex="-1"></a>        <span class="at">cp=</span><span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb70-14"><a href="08_multivar.html#cb70-14" tabindex="-1"></a>)</span>
+<span id="cb70-15"><a href="08_multivar.html#cb70-15" tabindex="-1"></a></span>
+<span id="cb70-16"><a href="08_multivar.html#cb70-16" tabindex="-1"></a><span class="co"># manually pruned tree</span></span>
+<span id="cb70-17"><a href="08_multivar.html#cb70-17" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb70-18"><a href="08_multivar.html#cb70-18" tabindex="-1"></a>        <span class="fu">as.factor</span>(survived) <span class="sc">~</span> ., </span>
+<span id="cb70-19"><a href="08_multivar.html#cb70-19" tabindex="-1"></a>        <span class="at">data =</span> ptitanic, </span>
+<span id="cb70-20"><a href="08_multivar.html#cb70-20" tabindex="-1"></a>        <span class="at">method =</span> <span class="st">&quot;class&quot;</span>,</span>
+<span id="cb70-21"><a href="08_multivar.html#cb70-21" tabindex="-1"></a>        <span class="co"># min. n. of obs. that must exist in a node in order for a split </span></span>
+<span id="cb70-22"><a href="08_multivar.html#cb70-22" tabindex="-1"></a>        <span class="at">minsplit =</span> <span class="dv">2</span>, </span>
+<span id="cb70-23"><a href="08_multivar.html#cb70-23" tabindex="-1"></a>        <span class="co"># the minimum number of observations in any terminal node</span></span>
+<span id="cb70-24"><a href="08_multivar.html#cb70-24" tabindex="-1"></a>        <span class="at">minbucket =</span> <span class="dv">10</span>, </span>
+<span id="cb70-25"><a href="08_multivar.html#cb70-25" tabindex="-1"></a>        <span class="co"># max number of splits</span></span>
+<span id="cb70-26"><a href="08_multivar.html#cb70-26" tabindex="-1"></a>        <span class="at">maxdepth =</span> <span class="dv">5</span></span>
+<span id="cb70-27"><a href="08_multivar.html#cb70-27" tabindex="-1"></a>)</span>
+<span id="cb70-28"><a href="08_multivar.html#cb70-28" tabindex="-1"></a></span>
+<span id="cb70-29"><a href="08_multivar.html#cb70-29" tabindex="-1"></a><span class="co"># automatically pruned tree</span></span>
+<span id="cb70-30"><a href="08_multivar.html#cb70-30" tabindex="-1"></a><span class="co"># printing and plotting the cross-validated error rate</span></span>
+<span id="cb70-31"><a href="08_multivar.html#cb70-31" tabindex="-1"></a><span class="fu">printcp</span>(fit)</span>
+<span id="cb70-32"><a href="08_multivar.html#cb70-32" tabindex="-1"></a><span class="fu">plotcp</span>(fit)</span>
+<span id="cb70-33"><a href="08_multivar.html#cb70-33" tabindex="-1"></a></span>
+<span id="cb70-34"><a href="08_multivar.html#cb70-34" tabindex="-1"></a><span class="co"># pruning the tree accordingly by setting the cp=cpbest</span></span>
+<span id="cb70-35"><a href="08_multivar.html#cb70-35" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">prune.rpart</span>(fit, <span class="at">cp=</span><span class="fl">0.094</span>)</span>
+<span id="cb70-36"><a href="08_multivar.html#cb70-36" tabindex="-1"></a></span>
+<span id="cb70-37"><a href="08_multivar.html#cb70-37" tabindex="-1"></a><span class="co"># plotting the tree</span></span>
+<span id="cb70-38"><a href="08_multivar.html#cb70-38" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(fit2, <span class="at">caption =</span> <span class="st">&quot;Classification Tree for Titanic pruned manually&quot;</span>)</span>
+<span id="cb70-39"><a href="08_multivar.html#cb70-39" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(fit3, <span class="at">caption =</span> <span class="st">&quot;Classification Tree for Titanic pruned automatically&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-89"></span>
+<img src="_main_files/figure-html/unnamed-chunk-89-1.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-89-2.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  />
+<p class="caption">
+Figure 8.9: From left: Complexity vs X-val Relative Error; The automatically pruned CART.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-90"></span>
+<img src="_main_files/figure-html/unnamed-chunk-90-1.png" alt="The manually pruned CART." width="80%"  />
+<p class="caption">
+Figure 8.10: The manually pruned CART.
+</p>
+</div>
+<p>If we want to give an interpretation of the manually pruned tree we can
+say the following. The probability of dying on board of the Titanic were
+about 83% if the passenger was a male, older than 9.5 years old, and
+this happened for 61% of the passengers aboard. On the contrary, there
+were 93% of chances of surviving by being a woman with a passenger class
+different than the 3rd. This statistic applies to 19% of the passengers
+abroad.</p>
+<p>The algorithm for growing a decision tree is an example of recursive
+partitioning. The recursive binary splitting approach is top-down and
+greedy. Top-down because it begins at the top of the tree (at which
+point all observations belong to a single “region”) and then
+successively splits the independent variable’ space; each split is
+indicated via two new branches further down on the tree. It is greedy
+because at each step of the tree-building process, the best split in
+terms of minimum RSS is made at that particular step, rather than
+looking ahead and picking a split that will lead to a better tree in
+some future step. Each node in the tree is grown using the same set of
+rules as its parent node.</p>
+<p>A much more powerful use of CART (but less interpretable) is when we
+have an ensemble of them. An ensemble method is an approach that
+combines many simple “building ensemble block” models (in this case
+trees) in order to obtain a single and potentially very powerful model.
+Some examples are Bagging, Random Forest, or Boosting. However, these
+methodologies are out of the scope of this book.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="composite-indicators" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Composite Indicators<a href="08_multivar.html#composite-indicators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>A composite indicator is formed when individual indicators are combined
+into a single index, based on an underlying model of the
+multidimensional concept that is being measured. The indicators that
+make up a composite indicator are referred to as components or component
+indicators, and their variability represents the implicit weight the
+component has within the final composite indicator <span class="citation">Mazziotta and Pareto (<a href="#ref-mazziotta2020">2020</a>)</span>. One of the most common and advanced methods to build a
+composite indicator is the use of a scoring system, which is a flexible
+and easily interpretable measure <span class="citation">Mazziotta and Pareto (<a href="#ref-mazziotta2020">2020</a>)</span>.
+It can be expressed as a relative or absolute measure, depending on the
+method chosen, and, in both cases, the composite index can be compared
+over time. Some examples are the Mazziotta-Pareto Index (relative
+measure), the Adjusted Mazziotta-Pareto Index (absolute
+measure)<span class="citation">(<a href="#ref-mazziotta2020">Mazziotta and Pareto 2020</a>)</span>, the arithmetic mean of the z-scores (relative
+measure), or the arithmetic mean of Min-Max <span class="citation">(<a href="#ref-joint2008handbook">OECD and JRC 2008</a>)</span>. Scores
+can also be clustered or classified to have a ranking of regions.
+Furthermore, a scoring system allows to use the components in its
+original form, thus keeping the eventual weighting or balancing they
+have. Finally, the reference value facilitates the interpretation of the
+scores (i.e., a score of 90 given an average of 100 means that the
+region is 10 points below the average). The only caveat we can find is
+the lack of a unit of measure for the final indicator and thus the
+impossibility to have a meaningful single value for the world
+aggregation.</p>
+<p> </p>
+<p> </p>
+<div id="mazziotta-pareto-index" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Mazziotta-Pareto Index<a href="08_multivar.html#mazziotta-pareto-index" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Mazziotta–Pareto index (MPI) is a composite index or summarizing a
+set of individual indicators that are assumed to be not fully
+substitutable. It is based on a non-linear function which, starting from
+the arithmetic mean of the normalized indicators, introduces a penalty
+for the units with unbalanced values of the indicators
+<span class="citation">(<a href="#ref-de2011composite">De Muro, Mazziotta, and Pareto 2011</a>)</span>. The MPI is the best solution for static analysis.</p>
+<p>Given the matrix <span class="math inline">\(Y=y_{ij}\)</span> with <span class="math inline">\(n\)</span> rows (statistical units) and <span class="math inline">\(m\)</span>
+columns (individual indicators), we calculate the normalized matrix <a href="08_multivar.html#eq:normmat">(8.1)</a>
+<span class="math inline">\(Z=z_{ij}\)</span> as follows:</p>
+<p><span class="math display" id="eq:normmat">\[\begin{equation}
+z_{ij}=100\pm\frac{y_{ij}-M_{y_j}}{S_{y_j}}*10
+\tag{8.1}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(M_{y_j}\)</span> and <span class="math inline">\(S_{y_j}\)</span> are, respectively, the mean and standard
+deviation of the indicator <span class="math inline">\(j\)</span> and the sign <span class="math inline">\(\pm\)</span> is the ‘polarity’ of
+the indicator <span class="math inline">\(j\)</span>, i.e., the sign of the relation between the indicator
+<span class="math inline">\(j\)</span> and the phenomenon to be measured (<span class="math inline">\(+\)</span> if the individual indicator
+represents a dimension considered positive and <span class="math inline">\(-\)</span> if it represents a
+dimension considered negative).</p>
+<p>We then aggregate the normalized data. Denoting with
+<span class="math inline">\(M_{z_i},S_{z_i},cv_{z_i}\)</span>, respectively, the mean, standard deviation,
+and coefficient of variation of the normalized values for the unit <span class="math inline">\(i\)</span>,
+the composite index is given by <a href="08_multivar.html#eq:mpi">(8.2)</a>:
+<span class="math display" id="eq:mpi">\[\begin{equation}
+MPI^\pm_i= M_{z_i}*(i+cv^2_{z_i})=M_{z_i}\pm S_{z_i}*cv_{z_i}
+\tag{8.2}
+\end{equation}\]</span></p>
+<p>where the sign <span class="math inline">\(\pm\)</span> depends on the kind of phenomenon to be
+measured. If the composite index is ‘increasing’ or ‘positive’, i.e.,
+increasing values of the index correspond to positive variations of the
+phenomenon (e.g., socio-economic development), then <span class="math inline">\(MPI^-\)</span> is used. On
+the contrary, if the composite index is ‘decreasing’ or ‘negative’,
+i.e., increasing values of the index correspond to negative variations
+of the phenomenon (e.g., poverty), then <span class="math inline">\(MPI^+\)</span> is used. In any cases,
+an unbalance among indicators will have a negative effect on the value
+of the index.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="08_multivar.html#cb71-1" tabindex="-1"></a><span class="fu">library</span>(Compind)</span>
+<span id="cb71-2"><a href="08_multivar.html#cb71-2" tabindex="-1"></a><span class="co"># loading data</span></span>
+<span id="cb71-3"><a href="08_multivar.html#cb71-3" tabindex="-1"></a><span class="fu">data</span>(EU_NUTS1)</span>
+<span id="cb71-4"><a href="08_multivar.html#cb71-4" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="08_multivar.html#cb71-5" tabindex="-1"></a><span class="co"># inputting rownames</span></span>
+<span id="cb71-6"><a href="08_multivar.html#cb71-6" tabindex="-1"></a>EU_NUTS1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(EU_NUTS1)</span>
+<span id="cb71-7"><a href="08_multivar.html#cb71-7" tabindex="-1"></a><span class="fu">rownames</span>(EU_NUTS1) <span class="ot">&lt;-</span> EU_NUTS1<span class="sc">$</span>NUTS1</span>
+<span id="cb71-8"><a href="08_multivar.html#cb71-8" tabindex="-1"></a></span>
+<span id="cb71-9"><a href="08_multivar.html#cb71-9" tabindex="-1"></a><span class="co"># Unsustainable Transport Index (NEG)</span></span>
+<span id="cb71-10"><a href="08_multivar.html#cb71-10" tabindex="-1"></a></span>
+<span id="cb71-11"><a href="08_multivar.html#cb71-11" tabindex="-1"></a><span class="co"># Normalization (roads are negative, trains are positive)</span></span>
+<span id="cb71-12"><a href="08_multivar.html#cb71-12" tabindex="-1"></a>data_norm <span class="ot">&lt;-</span> <span class="fu">normalise_ci</span>(EU_NUTS1,<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>),</span>
+<span id="cb71-13"><a href="08_multivar.html#cb71-13" tabindex="-1"></a>                          <span class="co"># roads are negative, railrads positive</span></span>
+<span id="cb71-14"><a href="08_multivar.html#cb71-14" tabindex="-1"></a>                          <span class="at">polarity =</span> <span class="fu">c</span>(<span class="st">&quot;NEG&quot;</span>,<span class="st">&quot;POS&quot;</span>),</span>
+<span id="cb71-15"><a href="08_multivar.html#cb71-15" tabindex="-1"></a>                          <span class="co"># z-score method</span></span>
+<span id="cb71-16"><a href="08_multivar.html#cb71-16" tabindex="-1"></a>                          <span class="at">method =</span> <span class="dv">1</span>)</span>
+<span id="cb71-17"><a href="08_multivar.html#cb71-17" tabindex="-1"></a></span>
+<span id="cb71-18"><a href="08_multivar.html#cb71-18" tabindex="-1"></a><span class="co"># Aggregation using MPI (the index is negative)</span></span>
+<span id="cb71-19"><a href="08_multivar.html#cb71-19" tabindex="-1"></a>CI <span class="ot">&lt;-</span> <span class="fu">ci_mpi</span>(data_norm<span class="sc">$</span>ci_norm, </span>
+<span id="cb71-20"><a href="08_multivar.html#cb71-20" tabindex="-1"></a>             <span class="at">penalty=</span><span class="st">&quot;NEG&quot;</span>)</span>
+<span id="cb71-21"><a href="08_multivar.html#cb71-21" tabindex="-1"></a></span>
+<span id="cb71-22"><a href="08_multivar.html#cb71-22" tabindex="-1"></a><span class="co"># Table containing Top 5 Unsustainable Transport Index</span></span>
+<span id="cb71-23"><a href="08_multivar.html#cb71-23" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">data.frame</span>(<span class="at">AMPI=</span><span class="fu">head</span>(<span class="fu">sort</span>(CI<span class="sc">$</span>ci_mpi_est, <span class="at">decreasing =</span> T),<span class="dv">5</span>)), </span>
+<span id="cb71-24"><a href="08_multivar.html#cb71-24" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Top 5 unsustainable Index&quot;</span>)</span>
+<span id="cb71-25"><a href="08_multivar.html#cb71-25" tabindex="-1"></a></span>
+<span id="cb71-26"><a href="08_multivar.html#cb71-26" tabindex="-1"></a><span class="co"># Table containing Bottom 5 Unsustainable Transport Index (aka most sustainable)</span></span>
+<span id="cb71-27"><a href="08_multivar.html#cb71-27" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">data.frame</span>(<span class="at">AMPI=</span><span class="fu">sort</span>(<span class="fu">tail</span>(<span class="fu">sort</span>(CI<span class="sc">$</span>ci_mpi_est, <span class="at">decreasing =</span> T),<span class="dv">5</span>))), </span>
+<span id="cb71-28"><a href="08_multivar.html#cb71-28" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Bottom 5 unsustainable Index&quot;</span>)</span></code></pre></div>
+<p>In the example above, we usa a dataset present in the same Compind
+package <span class="citation">(<a href="#ref-compind">Fusco, Vidoli, and Sahoo 2018</a>)</span>. We first input the rownames (this is needed to have
+the names of the countries in our final table), we then state the index
+and its polarity. We normalize the data using the function
+<code>normalise_ci</code> selecting the variables of interest, their polarity with
+respect to the phenomeon of interest, and the method to use (see the
+help for the available methods). We finally compute our MPI using the
+function <code>ci_mpi</code> by specifying its penality.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="adjusted-mazziotta-pareto-index" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Adjusted Mazziotta-Pareto Index<a href="08_multivar.html#adjusted-mazziotta-pareto-index" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this study we consider as a composite indicator the Adjusted
+Mazziotta Pareto Index (AMPI) methodology. AMPI is a non-compensatory
+(or partially compensatory) composite index that allows the
+comparability of data between units and over time
+<span class="citation">(<a href="#ref-mazziotta2016generalized">Mazziotta and Pareto 2016</a>)</span>. It is a variant of the MPI, based on a
+rescaling of individual indicators using a Min-Max transformation
+<span class="citation">(<a href="#ref-de2011composite">De Muro, Mazziotta, and Pareto 2011</a>)</span>.</p>
+<p>To apply AMPI, the original indicators are normalized using a Min-Max
+methodology with goalposts. As compared to the most common MPI, the
+Min-Max normalization technique enables us to compare data over time,
+whereas the z-score normalization used in MPI does not. Given the matrix
+<span class="math inline">\(X=\{x_{ij}\}\)</span> with <span class="math inline">\(n\)</span> rows (units) and <span class="math inline">\(m\)</span> columns (indicators), we
+calculate the normalized matrix <span class="math inline">\(R=\{r_{ij}\}\)</span> as follows <a href="08_multivar.html#eq:normmat2">(8.3)</a>:
+<span class="math display" id="eq:normmat2">\[\begin{equation}
+r_{ij}=\frac{x_{ij} -\min x_j}{\max x_j - \min x_j} *60+70
+\tag{8.3}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(x_{ij}\)</span> is the value of the indicator <span class="math inline">\(j\)</span> for the unit <span class="math inline">\(i\)</span> and
+<span class="math inline">\(\min x_j\)</span> and <span class="math inline">\(\max x_j\)</span> are the ‘goalposts’ for the indicator <span class="math inline">\(j\)</span>. If
+the indicator <span class="math inline">\(j\)</span> has negative polarity, the complement of <span class="math inline">\((1)\)</span> is
+calculated with respect to <span class="math inline">\(200\)</span>. To facilitate the interpretation of
+results, the ‘goalposts’ can be fixed so that 100 represents a reference
+value (e.g., the average in a given year). A simple procedure for
+setting the ‘goalposts’ is the following. Let <span class="math inline">\(\inf x_j\)</span> and <span class="math inline">\(\sup x_j\)</span>
+be the overall minimum and maximum of the indicator <span class="math inline">\(j\)</span> across all units
+and all time periods considered. Denoting with <span class="math inline">\(\text{ref } x_j\)</span> the
+reference value for the indicator <span class="math inline">\(j\)</span>, the ‘goalposts’ are defined as <a href="08_multivar.html#eq:goals">(8.4)</a>:</p>
+<p><span class="math display" id="eq:goals">\[\begin{equation*}
+    \begin{cases}
+      \min x_j= \text{ref } x_j - (\sup x_j - \inf x_j)/2\\
+      \max x_j= \text{ref } x_j + (\sup x_j - \inf x_j)/2
+    \end{cases}\
+\tag{8.4}
+\end{equation*}\]</span>\end{equation*}</p>
+<p>The normalized values will fall approximately in the range (70; 130),
+where 100 represents the reference value.</p>
+<p>The normalized indicators can then be aggregated. Denoting with
+<span class="math inline">\(M_{r_i}\)</span> and <span class="math inline">\(S_{r_i}\)</span>, respectively, the mean and standard deviation
+of the normalized values of the unit <span class="math inline">\(i\)</span>, the generalized form of AMPI
+is given by <a href="08_multivar.html#eq:ampi">(8.5)</a>:</p>
+<p><span class="math display" id="eq:ampi">\[\begin{equation}
+AMPI_i^{+/-}=M_{r_i} \pm S_{r_i}*cv_i
+\tag{8.5}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(cv_i=\frac{S_{r_i}}{M_{r_i}}\)</span> is the coefficient of variation of the
+unit <span class="math inline">\(i\)</span> and the sign <span class="math inline">\(\pm\)</span> depends on the kind of phenomenon to be
+measured. If the composite index is increasing or positive, that is,
+increasing the index values corresponds to positive variations in the
+phenomenon (for example, well-being), then <span class="math inline">\(AMPI^-\)</span> is used. Vice versa,
+if the composite index is decreasing or negative, that is, increasing
+index values correspond to negative variations of the phenomenon (e.g.
+waste), then <span class="math inline">\(AMPI^+\)</span> is used. This approach is characterized by the use
+of a function (the product <span class="math inline">\(S_{r_i}*cv_i\)</span>) to penalize units with
+unbalanced values of the normalized indicators. The ‘penalty’ is based
+on the coefficient of variation and is zero if all values are equal. The
+purpose is to favor the units that, mean being equal, have a greater
+balance among the different indicators. Therefore, AMPI is characterized
+by the combination of a ‘mean effect’ (<span class="math inline">\(M_{r_i}\)</span>) and a ‘penalty effect’
+(<span class="math inline">\(S_{r_i}*cv_i\)</span>) where each unit stands in relation to the ‘goalposts’.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="08_multivar.html#cb72-1" tabindex="-1"></a><span class="co"># loading data</span></span>
+<span id="cb72-2"><a href="08_multivar.html#cb72-2" tabindex="-1"></a><span class="fu">data</span>(EU_2020)</span>
+<span id="cb72-3"><a href="08_multivar.html#cb72-3" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="08_multivar.html#cb72-4" tabindex="-1"></a><span class="co"># Sustainable Employment Index (POS)</span></span>
+<span id="cb72-5"><a href="08_multivar.html#cb72-5" tabindex="-1"></a></span>
+<span id="cb72-6"><a href="08_multivar.html#cb72-6" tabindex="-1"></a><span class="co"># subsetting interesting variables</span></span>
+<span id="cb72-7"><a href="08_multivar.html#cb72-7" tabindex="-1"></a>data_test <span class="ot">&lt;-</span> EU_2020[,<span class="fu">c</span>(<span class="st">&quot;geo&quot;</span>,<span class="st">&quot;employ_2010&quot;</span>,<span class="st">&quot;employ_2011&quot;</span>,<span class="st">&quot;finalenergy_2010&quot;</span>,</span>
+<span id="cb72-8"><a href="08_multivar.html#cb72-8" tabindex="-1"></a>                        <span class="st">&quot;finalenergy_2011&quot;</span>)] </span>
+<span id="cb72-9"><a href="08_multivar.html#cb72-9" tabindex="-1"></a></span>
+<span id="cb72-10"><a href="08_multivar.html#cb72-10" tabindex="-1"></a><span class="co"># reshaping to long format</span></span>
+<span id="cb72-11"><a href="08_multivar.html#cb72-11" tabindex="-1"></a>EU_2020_long <span class="ot">&lt;-</span> <span class="fu">reshape</span>(data_test, </span>
+<span id="cb72-12"><a href="08_multivar.html#cb72-12" tabindex="-1"></a>                       <span class="co">#our variables</span></span>
+<span id="cb72-13"><a href="08_multivar.html#cb72-13" tabindex="-1"></a>                      <span class="at">varying=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb72-14"><a href="08_multivar.html#cb72-14" tabindex="-1"></a>                      <span class="at">direction=</span><span class="st">&quot;long&quot;</span>, </span>
+<span id="cb72-15"><a href="08_multivar.html#cb72-15" tabindex="-1"></a>                      <span class="co">#geographic variable</span></span>
+<span id="cb72-16"><a href="08_multivar.html#cb72-16" tabindex="-1"></a>                      <span class="at">idvar=</span><span class="st">&quot;geo&quot;</span>, </span>
+<span id="cb72-17"><a href="08_multivar.html#cb72-17" tabindex="-1"></a>                      <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
+<span id="cb72-18"><a href="08_multivar.html#cb72-18" tabindex="-1"></a></span>
+<span id="cb72-19"><a href="08_multivar.html#cb72-19" tabindex="-1"></a><span class="co"># normalization and aggregation using AMPI</span></span>
+<span id="cb72-20"><a href="08_multivar.html#cb72-20" tabindex="-1"></a>CI <span class="ot">&lt;-</span> <span class="fu">ci_ampi</span>(EU_2020_long, </span>
+<span id="cb72-21"><a href="08_multivar.html#cb72-21" tabindex="-1"></a>              <span class="co">#our variables</span></span>
+<span id="cb72-22"><a href="08_multivar.html#cb72-22" tabindex="-1"></a>              <span class="at">indic_col=</span><span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>),</span>
+<span id="cb72-23"><a href="08_multivar.html#cb72-23" tabindex="-1"></a>              <span class="co">#goalposts</span></span>
+<span id="cb72-24"><a href="08_multivar.html#cb72-24" tabindex="-1"></a>              <span class="at">gp=</span><span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">100</span>), </span>
+<span id="cb72-25"><a href="08_multivar.html#cb72-25" tabindex="-1"></a>              <span class="co">#time variable</span></span>
+<span id="cb72-26"><a href="08_multivar.html#cb72-26" tabindex="-1"></a>              <span class="at">time=</span>EU_2020_long<span class="sc">$</span>time,</span>
+<span id="cb72-27"><a href="08_multivar.html#cb72-27" tabindex="-1"></a>              <span class="co">#both variables are positive</span></span>
+<span id="cb72-28"><a href="08_multivar.html#cb72-28" tabindex="-1"></a>              <span class="at">polarity=</span> <span class="fu">c</span>(<span class="st">&quot;POS&quot;</span>, <span class="st">&quot;POS&quot;</span>),</span>
+<span id="cb72-29"><a href="08_multivar.html#cb72-29" tabindex="-1"></a>              <span class="co">#index is positive</span></span>
+<span id="cb72-30"><a href="08_multivar.html#cb72-30" tabindex="-1"></a>              <span class="at">penalty=</span><span class="st">&quot;POS&quot;</span>)</span>
+<span id="cb72-31"><a href="08_multivar.html#cb72-31" tabindex="-1"></a></span>
+<span id="cb72-32"><a href="08_multivar.html#cb72-32" tabindex="-1"></a><span class="co"># Table containing the Sustainable Employment Index scores</span></span>
+<span id="cb72-33"><a href="08_multivar.html#cb72-33" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">data.frame</span>(<span class="fu">t</span>(CI<span class="sc">$</span>ci_ampi_est)), <span class="at">caption =</span> <span class="st">&quot;AMPI time series&quot;</span>)</span></code></pre></div>
+<p>In the example above, we usa a dataset present in the same Compind
+package <span class="citation">(<a href="#ref-compind">Fusco, Vidoli, and Sahoo 2018</a>)</span>. We reshape data to long format, allowing us to have
+a dataset with one variable per column. We then use the function
+<code>ci_ampi</code> which standardize the data and compite the score at the same
+time. In this function we set the dataset, the variables of interest,
+the values of the corresponding variables to be used as a reference
+(goalposts), the time variable, the polarity of the variables and the
+penality corresponding to the final indicator.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+</div>
+<div id="exercises-5" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Exercises<a href="08_multivar.html#exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://federicoroscioli.shinyapps.io/exercises/">R playground</a>,
+section 6 - PCA and Clustering</p></li>
+<li><p><a href="https://federicoroscioli.shinyapps.io/exercises/">R playground</a>,
+section 8 - Classification And Regression Trees</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<!-- # Spatial Analysis -->
+<!-- To be done... -->
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="final-remarks" class="section level1 unnumbered hasAnchor">
+<h1>Final Remarks<a href="08_multivar.html#final-remarks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>At this point I expect that you are familiar with the <em>Rish</em> language
+and its dynamics. This manual covered some basic data analysis methods,
+but there is much more to do and to learn. Now it is your time to
+explore new packages, new ways of writing code, and new statistical
+techniques.</p>
+<p>Be curious and have fun!</p>
+<p><em>Federico Roscioli</em></p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="bibliography" class="section level1 unnumbered hasAnchor">
+<h1>Bibliography<a href="08_multivar.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Abdi, Hervé, and Lynne J. Williams. 2010. <span>“Principal Component Analysis: Principal Component Analysis.”</span> <em>Wiley Interdisciplinary Reviews: Computational Statistics</em> 2 (4): 433–59. <a href="https://doi.org/10.1002/wics.101">https://doi.org/10.1002/wics.101</a>.
+</div>
+<div class="csl-entry">
+Anderson, Sean C. 2022. <span>“An Introduction to Reshape2.”</span> <a href="https://seananderson.ca/2013/10/19/reshape/">https://seananderson.ca/2013/10/19/reshape/</a>.
+</div>
+<div class="csl-entry">
+Bratsas, Charalampos, Anastasia Foudouli, and Kleanthis Koupidis. 2020. <span>“Package <span>‘</span>Gginference<span>’</span>.”</span> <a href="https://cran.r-project.org/web/packages/gginference/gginference.pdf">https://cran.r-project.org/web/packages/gginference/gginference.pdf</a>.
+</div>
+<div class="csl-entry">
+Chang, Winston. 2018. <em>R Graphics Cookbook: Practical Recipes for Visualizing Data</em>. Second edition. Beijing ; Boston: O’Reilly. <a href="https://r-graphics.org">https://r-graphics.org</a>.
+</div>
+<div class="csl-entry">
+Cobham, Alex, Lukas Schlögl, and Andy Sumner. 2016. <span>“Inequality and the Tails: The Palma Proposition and Ratio.”</span> <em>Global Policy</em> 7 (1): 25–36. <a href="https://doi.org/10.1111/1758-5899.12320">https://doi.org/10.1111/1758-5899.12320</a>.
+</div>
+<div class="csl-entry">
+Damodaran, Aswath. n.d. <span>“Statistical Distributions.”</span> <a href="http://people.stern.nyu.edu/adamodar/New_Home_Page/StatFile/statdistns.htm">http://people.stern.nyu.edu/adamodar/New_Home_Page/StatFile/statdistns.htm</a>.
+</div>
+<div class="csl-entry">
+Davis, Brittany. 2021. <span>“When Correlation Is Better Than Causation.”</span> <a href="https://towardsdatascience.com/when-correlation-is-better-than-causation-1cbfa2708fbb">https://towardsdatascience.com/when-correlation-is-better-than-causation-1cbfa2708fbb</a>.
+</div>
+<div class="csl-entry">
+De Muro, Pasquale, Matteo Mazziotta, and Adriano Pareto. 2011. <span>“Composite Indices of Development and Poverty: An Application to MDGs.”</span> <em>Social Indicators Research</em> 104: 1–18.
+</div>
+<div class="csl-entry">
+Dragulescu, Adrian, and Cole Arendt. 2020. <span>“Package <span>‘Xlsx’</span>.”</span> <a href="https://cran.r-project.org/web/packages/xlsx/xlsx.pdf">https://cran.r-project.org/web/packages/xlsx/xlsx.pdf</a>.
+</div>
+<div class="csl-entry">
+Emerson, John W., Walton A. Green, Barret Schloerke, Jason Crowley, Dianne Cook, Heike Hofmann, and Hadley Wickham. 2012. <span>“The Generalized Pairs Plot.”</span> <em>Journal of Computational and Graphical Statistics</em> 22 (1): 79–91. <a href="https://doi.org/10.1080/10618600.2012.694762">https://doi.org/10.1080/10618600.2012.694762</a>.
+</div>
+<div class="csl-entry">
+Frost, Jim. n.d. <span>“Normal Distribution in Statistics.”</span> <a href="https://statisticsbyjim.com/basics/normal-distribution/">https://statisticsbyjim.com/basics/normal-distribution/</a>.
+</div>
+<div class="csl-entry">
+Fusco, Elisa, Francesco Vidoli, and Biresh K. Sahoo. 2018. <span>“Spatial Heterogeneity in Composite Indicator: A Methodological Proposal.”</span> <em>Omega</em> 77: 1–14.
+</div>
+<div class="csl-entry">
+Hlavac, Marek. 2022. <span>“Stargazer: Beautiful LATEX, HTML and ASCII Tables from r Statistical Output.”</span> <em>The Comprehensive R Archive Network</em>. <a href="https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf">https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf</a>.
+</div>
+<div class="csl-entry">
+Iacus, Stefano M., and Guido Masarotto. 2020. <span>“Package <span>‘labstatR’</span>.”</span> <em>The Comprehensive R Archive Network</em>. <a href="https://cran.r-project.org/web/packages/labstatR/labstatR.pdf">https://cran.r-project.org/web/packages/labstatR/labstatR.pdf</a>.
+</div>
+<div class="csl-entry">
+Imbens, Guido W, and Donald B Rubin. 2015. <em>Causal Inference in Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.
+</div>
+<div class="csl-entry">
+James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2021. <em>An Introduction to Statistical Learning: With Applications in r</em>. Second edition. Springer Texts in Statistics. Springer.
+</div>
+<div class="csl-entry">
+Jolliffe, Ian T., and Jorge Cadima. 2016. <span>“Principal Component Analysis: A Review and Recent Developments.”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> 374 (2065): 20150202. <a href="https://doi.org/10.1098/rsta.2015.0202">https://doi.org/10.1098/rsta.2015.0202</a>.
+</div>
+<div class="csl-entry">
+Kaplan, Jacob. 2022. <span>“fastDummies.”</span> <a href="https://jacobkap.github.io/fastDummies/">https://jacobkap.github.io/fastDummies/</a>.
+</div>
+<div class="csl-entry">
+Kassambara, Alboukadel, and Fabian Mundt. n.d. <span>“Factoextra : Extract and Visualize the Results of Multivariate Data Analyses.”</span> <a href="https://rpkgs.datanovia.com/factoextra/index.html">https://rpkgs.datanovia.com/factoextra/index.html</a>.
+</div>
+<div class="csl-entry">
+Koehrsen, Will. 2019. <span>“Data Scientists: Your Variable Names Are Awful. Here’s How to Fix Them.”</span> <a href="https://towardsdatascience.com/data-scientists-your-variable-names-are-awful-heres-how-to-fix-them-89053d2855be">https://towardsdatascience.com/data-scientists-your-variable-names-are-awful-heres-how-to-fix-them-89053d2855be</a>.
+</div>
+<div class="csl-entry">
+Laerd Statistics. n.d. <span>“Measures of Central Tendency.”</span> <a href="https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php">https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php</a>.
+</div>
+<div class="csl-entry">
+Lane, David M., David Scott, Mikki Hebl, Rudy Guerra, Dan Osherson, and Heidi Zimmer. 2003. <em>Introduction to Statistics</em>. <a href="https://onlinestatbook.com/Online_Statistics_Education.pdf">https://onlinestatbook.com/Online_Statistics_Education.pdf</a>.
+</div>
+<div class="csl-entry">
+Lee. 2019. <span>“P-Values Explained by Data Scientist.”</span> <a href="https://towardsdatascience.com/p-values-explained-by-data-scientist-f40a746cfc8">https://towardsdatascience.com/p-values-explained-by-data-scientist-f40a746cfc8</a>.
+</div>
+<div class="csl-entry">
+Lee, James. 2018. <span>“R Decision Trees Tutorial.”</span> <em>Datacamp</em>. <a href="https://www.datacamp.com/tutorial/decision-trees-R">https://www.datacamp.com/tutorial/decision-trees-R</a>.
+</div>
+<div class="csl-entry">
+Madhavan, Archana. 2019. <span>“Correlation Vs Causation: Understand the Difference for Your Product.”</span> <a href="https://amplitude.com/blog/causation-correlation">https://amplitude.com/blog/causation-correlation</a>.
+</div>
+<div class="csl-entry">
+Mahjoobi, J., and A. Etemad-Shahidi. 2008. <span>“An Alternative Approach for the Prediction of Significant Wave Heights Based on Classification and Regression Trees.”</span> <em>Applied Ocean Research</em> 30 (3): 172–77. <a href="https://doi.org/10.1016/j.apor.2008.11.001">https://doi.org/10.1016/j.apor.2008.11.001</a>.
+</div>
+<div class="csl-entry">
+Manikandan, S. 2011. <span>“Measures of Central Tendency: Median and Mode.”</span> <em>Journal of Pharmacology and Pharmacotherapeutics</em> 2 (3): 214. <a href="https://doi.org/10.4103/0976-500X.83300">https://doi.org/10.4103/0976-500X.83300</a>.
+</div>
+<div class="csl-entry">
+Mazziotta, Matteo, and Adriano Pareto. 2016. <span>“On a Generalized Non-Compensatory Composite Index for Measuring Socio-Economic Phenomena.”</span> <em>Social Indicators Research</em> 127: 983–1003.
+</div>
+<div class="csl-entry">
+———. 2020. <em>Gli Indici Sintetici</em>. 1st ed. Giappichelli.
+</div>
+<div class="csl-entry">
+OECD, and JRC. 2008. <em>Handbook on Constructing Composite Indicators: Methodology and User Guide</em>. OECD publishing.
+</div>
+<div class="csl-entry">
+Otoiu, Adrian, Adriano Pareto, Elena Grimaccia, Matteo Mazziotta, and Silvia Terzi. 2021. <em>Open Issues in Composite Indicators. A Starting Point and a Reference on Some State-of-the-Art Issues</em>. Roma TrE-Press. <a href="https://doi.org/10.13134/979-12-5977-001-1">https://doi.org/10.13134/979-12-5977-001-1</a>.
+</div>
+<div class="csl-entry">
+R Core Team. 2022. <span>“R Language Definition.”</span> <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Operators">https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Operators</a>.
+</div>
+<div class="csl-entry">
+Signorelli, Andri. 2021. <span>“DescTools: Tools for Descriptive Statistics.”</span> <a href="https://andrisignorell.github.io/DescTools/index.html">https://andrisignorell.github.io/DescTools/index.html</a>.
+</div>
+<div class="csl-entry">
+Sovansky Winter, Erin. 2022. <span>“Chapter 4: Apply Functions.”</span> In. <a href="https://ademos.people.uic.edu/Chapter4.html">https://ademos.people.uic.edu/Chapter4.html</a>.
+</div>
+<div class="csl-entry">
+Syakur, M A, B K Khotimah, E M S Rochman, and B D Satoto. 2018. <span>“Integration k-Means Clustering Method and Elbow Method for Identification of the Best Customer Profile Cluster.”</span> <em>IOP Conference Series: Materials Science and Engineering</em> 336 (April): 012017. <a href="https://doi.org/10.1088/1757-899X/336/1/012017">https://doi.org/10.1088/1757-899X/336/1/012017</a>.
+</div>
+<div class="csl-entry">
+Temkin, Nancy R., Richard Holubkov, Joan E. Machamer, H. Richard Winn, and Sureyya S. Dikmen. 1995. <span>“Classification and Regression Trees (CART) for Prediction of Function at 1 Year Following Head Trauma.”</span> <em>Journal of Neurosurgery</em> 82 (5): 764–71. <a href="https://doi.org/10.3171/jns.1995.82.5.0764">https://doi.org/10.3171/jns.1995.82.5.0764</a>.
+</div>
+<div class="csl-entry">
+Therneau, Terry M., and Elizabeth J. Atkinson. 2022. <span>“An Introduction to Recursive Partitioning Using the RPART Routines.”</span> <a href="https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf">https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf</a>.
+</div>
+<div class="csl-entry">
+Torres-Reyna, Oscar. 2014. <span>“Using Stargazer to Report Regression Output and Descriptive Statistics in r.”</span> <a href="https://www.princeton.edu/~otorres/NiceOutputR.pdf">https://www.princeton.edu/~otorres/NiceOutputR.pdf</a>.
+</div>
+<div class="csl-entry">
+Wei, Taiyun, and Viliam Simko. 2021. <span>“An Introduction to Corrplot Package.”</span> <em>The Comprehensive R Archive Network</em>. <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html">https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10). <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
+</div>
+<div class="csl-entry">
+———. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org/reference/">https://ggplot2.tidyverse.org/reference/</a>.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, and Jennifer Bryan. 2022. <span>“Readxl: Read Excel Files.”</span> <a href="https://readxl.tidyverse.org">https://readxl.tidyverse.org</a>.
+</div>
+<div class="csl-entry">
+Williams, Graham J. 2011. <em>Data Mining with Rattle and r: The Art of Excavating Data for Knowledge Discovery</em>. Use r! Springer.
+</div>
+<div class="csl-entry">
+Wilson, Mark. 2014. <span>“Hilarious Graphs Prove That Correlation Isn<span>’</span>t Causation.”</span> <a href="https://www.fastcompany.com/3030529/hilarious-graphs-prove-that-correlation-isnt-causation">https://www.fastcompany.com/3030529/hilarious-graphs-prove-that-correlation-isnt-causation</a>.
+</div>
+<div class="csl-entry">
+Winter, J. C. F. de. 2013. <span>“Using the Student’s t-Test with Extremely Small Sample Sizes.”</span> <a href="https://doi.org/10.7275/E4R6-DJ05">https://doi.org/10.7275/E4R6-DJ05</a>.
+</div>
+<div class="csl-entry">
+Yarberry, William. 2021. <span>“Lubridate: Date and Time Processing.”</span> In <em><span>CRAN</span> Recipes</em>, 109–60. Apress. <a href="https://doi.org/10.1007/978-1-4842-6876-6_3">https://doi.org/10.1007/978-1-4842-6876-6_3</a>.
+</div>
+<div class="csl-entry">
+Ziliak, Stephen T. 2008. <span>“Retrospectives: Guinnessometrics: The Economic Foundation of <span>“</span>Student’s<span>”</span> <span><em>t</em></span>.”</span> <em>Journal of Economic Perspectives</em> 22 (4): 199–216. <a href="https://doi.org/10.1257/jep.22.4.199">https://doi.org/10.1257/jep.22.4.199</a>.
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>Bibliography<a href="08_multivar.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-abdi2010" class="csl-entry">
+Abdi, Hervé, and Lynne J. Williams. 2010. <span>“Principal Component Analysis: Principal Component Analysis.”</span> <em>Wiley Interdisciplinary Reviews: Computational Statistics</em> 2 (4): 433–59. <a href="https://doi.org/10.1002/wics.101">https://doi.org/10.1002/wics.101</a>.
+</div>
+<div id="ref-de2011composite" class="csl-entry">
+De Muro, Pasquale, Matteo Mazziotta, and Adriano Pareto. 2011. <span>“Composite Indices of Development and Poverty: An Application to MDGs.”</span> <em>Social Indicators Research</em> 104: 1–18.
+</div>
+<div id="ref-compind" class="csl-entry">
+Fusco, Elisa, Francesco Vidoli, and Biresh K. Sahoo. 2018. <span>“Spatial Heterogeneity in Composite Indicator: A Methodological Proposal.”</span> <em>Omega</em> 77: 1–14.
+</div>
+<div id="ref-jolliffe2016" class="csl-entry">
+Jolliffe, Ian T., and Jorge Cadima. 2016. <span>“Principal Component Analysis: A Review and Recent Developments.”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> 374 (2065): 20150202. <a href="https://doi.org/10.1098/rsta.2015.0202">https://doi.org/10.1098/rsta.2015.0202</a>.
+</div>
+<div id="ref-kassambara" class="csl-entry">
+Kassambara, Alboukadel, and Fabian Mundt. n.d. <span>“Factoextra : Extract and Visualize the Results of Multivariate Data Analyses.”</span> <a href="https://rpkgs.datanovia.com/factoextra/index.html">https://rpkgs.datanovia.com/factoextra/index.html</a>.
+</div>
+<div id="ref-lee2018" class="csl-entry">
+Lee, James. 2018. <span>“R Decision Trees Tutorial.”</span> <em>Datacamp</em>. <a href="https://www.datacamp.com/tutorial/decision-trees-R">https://www.datacamp.com/tutorial/decision-trees-R</a>.
+</div>
+<div id="ref-mazziotta2016generalized" class="csl-entry">
+Mazziotta, Matteo, and Adriano Pareto. 2016. <span>“On a Generalized Non-Compensatory Composite Index for Measuring Socio-Economic Phenomena.”</span> <em>Social Indicators Research</em> 127: 983–1003.
+</div>
+<div id="ref-mazziotta2020" class="csl-entry">
+———. 2020. <em>Gli Indici Sintetici</em>. 1st ed. Giappichelli.
+</div>
+<div id="ref-joint2008handbook" class="csl-entry">
+OECD, and JRC. 2008. <em>Handbook on Constructing Composite Indicators: Methodology and User Guide</em>. OECD publishing.
+</div>
+<div id="ref-syakur2018" class="csl-entry">
+Syakur, M A, B K Khotimah, E M S Rochman, and B D Satoto. 2018. <span>“Integration k-Means Clustering Method and Elbow Method for Identification of the Best Customer Profile Cluster.”</span> <em>IOP Conference Series: Materials Science and Engineering</em> 336 (April): 012017. <a href="https://doi.org/10.1088/1757-899X/336/1/012017">https://doi.org/10.1088/1757-899X/336/1/012017</a>.
+</div>
+<div id="ref-temkin1995" class="csl-entry">
+Temkin, Nancy R., Richard Holubkov, Joan E. Machamer, H. Richard Winn, and Sureyya S. Dikmen. 1995. <span>“Classification and Regression Trees (CART) for Prediction of Function at 1 Year Following Head Trauma.”</span> <em>Journal of Neurosurgery</em> 82 (5): 764–71. <a href="https://doi.org/10.3171/jns.1995.82.5.0764">https://doi.org/10.3171/jns.1995.82.5.0764</a>.
+</div>
+<div id="ref-therneau2022" class="csl-entry">
+Therneau, Terry M., and Elizabeth J. Atkinson. 2022. <span>“An Introduction to Recursive Partitioning Using the RPART Routines.”</span> <a href="https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf">https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf</a>.
+</div>
+<div id="ref-williams2011" class="csl-entry">
+Williams, Graham J. 2011. <em>Data Mining with Rattle and r: The Art of Excavating Data for Knowledge Discovery</em>. Use r! Springer.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="07_bivar.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"toc_depth": 1,
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

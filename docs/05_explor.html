@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Exploratory Data Analysis | Introduction to Data Analysis with R</title>
+  <meta name="description" content="5 Exploratory Data Analysis | Introduction to Data Analysis with R" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Exploratory Data Analysis | Introduction to Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Exploratory Data Analysis | Introduction to Data Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Federico Roscioli" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="04_advanced.html"/>
+<link rel="next" href="06_hypo.html"/>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="01_intro.html"><a href="01_intro.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="1" data-path="01_intro.html"><a href="01_intro.html#installation"><i class="fa fa-check"></i><b>1</b> Installation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01_intro.html"><a href="01_intro.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
+<li class="chapter" data-level="1.2" data-path="01_intro.html"><a href="01_intro.html#visualization-suggestions"><i class="fa fa-check"></i><b>1.2</b> Visualization suggestions</a></li>
+<li class="chapter" data-level="1.3" data-path="01_intro.html"><a href="01_intro.html#the-workspace"><i class="fa fa-check"></i><b>1.3</b> The workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02_abc.html"><a href="02_abc.html"><i class="fa fa-check"></i><b>2</b> A, B, C</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02_abc.html"><a href="02_abc.html#the-first-code"><i class="fa fa-check"></i><b>2.1</b> The first code</a></li>
+<li class="chapter" data-level="2.2" data-path="02_abc.html"><a href="02_abc.html#indexing"><i class="fa fa-check"></i><b>2.2</b> Indexing</a></li>
+<li class="chapter" data-level="2.3" data-path="02_abc.html"><a href="02_abc.html#the-first-function"><i class="fa fa-check"></i><b>2.3</b> The first function</a></li>
+<li class="chapter" data-level="2.4" data-path="02_abc.html"><a href="02_abc.html#dataset-exploration"><i class="fa fa-check"></i><b>2.4</b> Dataset Exploration</a></li>
+<li class="chapter" data-level="2.5" data-path="02_abc.html"><a href="02_abc.html#subsetting"><i class="fa fa-check"></i><b>2.5</b> Subsetting</a></li>
+<li class="chapter" data-level="2.6" data-path="02_abc.html"><a href="02_abc.html#importing-and-exporting-data"><i class="fa fa-check"></i><b>2.6</b> Importing and exporting data</a></li>
+<li class="chapter" data-level="2.7" data-path="02_abc.html"><a href="02_abc.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03_dataclean.html"><a href="03_dataclean.html"><i class="fa fa-check"></i><b>3</b> Data Cleaning</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03_dataclean.html"><a href="03_dataclean.html#variable-names"><i class="fa fa-check"></i><b>3.1</b> Variable Names</a></li>
+<li class="chapter" data-level="3.2" data-path="03_dataclean.html"><a href="03_dataclean.html#variable-types"><i class="fa fa-check"></i><b>3.2</b> Variable Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03_dataclean.html"><a href="03_dataclean.html#factor-variables"><i class="fa fa-check"></i><b>3.2.1</b> Factor variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03_dataclean.html"><a href="03_dataclean.html#dates-and-times"><i class="fa fa-check"></i><b>3.2.2</b> Dates and times</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03_dataclean.html"><a href="03_dataclean.html#row-names"><i class="fa fa-check"></i><b>3.3</b> Row Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04_advanced.html"><a href="04_advanced.html"><i class="fa fa-check"></i><b>4</b> Advanced Data Manipulation and Plotting</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04_advanced.html"><a href="04_advanced.html#ifelse"><i class="fa fa-check"></i><b>4.1</b> Ifelse</a></li>
+<li class="chapter" data-level="4.2" data-path="04_advanced.html"><a href="04_advanced.html#the-apply-family"><i class="fa fa-check"></i><b>4.2</b> The Apply family</a></li>
+<li class="chapter" data-level="4.3" data-path="04_advanced.html"><a href="04_advanced.html#dplyr"><i class="fa fa-check"></i><b>4.3</b> Dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="04_advanced.html"><a href="04_advanced.html#merging-datasets"><i class="fa fa-check"></i><b>4.4</b> Merging datasets</a></li>
+<li class="chapter" data-level="4.5" data-path="04_advanced.html"><a href="04_advanced.html#melting-vs-transposing"><i class="fa fa-check"></i><b>4.5</b> Melting vs Transposing</a></li>
+<li class="chapter" data-level="4.6" data-path="04_advanced.html"><a href="04_advanced.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
+<li class="chapter" data-level="4.7" data-path="04_advanced.html"><a href="04_advanced.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="chapter" data-level="5" data-path="05_explor.html"><a href="05_explor.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05_explor.html"><a href="05_explor.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
+<li class="chapter" data-level="5.2" data-path="05_explor.html"><a href="05_explor.html#variability-measures"><i class="fa fa-check"></i><b>5.2</b> Variability Measures</a></li>
+<li class="chapter" data-level="5.3" data-path="05_explor.html"><a href="05_explor.html#inequality-measures"><i class="fa fa-check"></i><b>5.3</b> Inequality Measures</a></li>
+<li class="chapter" data-level="5.4" data-path="05_explor.html"><a href="05_explor.html#data-visualization"><i class="fa fa-check"></i><b>5.4</b> Data visualization</a></li>
+<li class="chapter" data-level="5.5" data-path="05_explor.html"><a href="05_explor.html#scaling-data"><i class="fa fa-check"></i><b>5.5</b> Scaling data</a></li>
+<li class="chapter" data-level="5.6" data-path="05_explor.html"><a href="05_explor.html#probability-sampling"><i class="fa fa-check"></i><b>5.6</b> Probability Sampling</a></li>
+<li class="chapter" data-level="5.7" data-path="05_explor.html"><a href="05_explor.html#exercises-2"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06_hypo.html"><a href="06_hypo.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06_hypo.html"><a href="06_hypo.html#probability-distributions"><i class="fa fa-check"></i><b>6.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="6.2" data-path="06_hypo.html"><a href="06_hypo.html#shapiro-wilk-test"><i class="fa fa-check"></i><b>6.2</b> Shapiro-Wilk Test</a></li>
+<li class="chapter" data-level="6.3" data-path="06_hypo.html"><a href="06_hypo.html#one-sample-t-test"><i class="fa fa-check"></i><b>6.3</b> One-Sample T-Test</a></li>
+<li class="chapter" data-level="6.4" data-path="06_hypo.html"><a href="06_hypo.html#unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>6.4</b> Unpaired Two Sample T-Test</a></li>
+<li class="chapter" data-level="6.5" data-path="06_hypo.html"><a href="06_hypo.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>6.5</b> Mann Whitney U Test</a></li>
+<li class="chapter" data-level="6.6" data-path="06_hypo.html"><a href="06_hypo.html#paired-sample-t-test"><i class="fa fa-check"></i><b>6.6</b> Paired Sample T-Test</a></li>
+<li class="chapter" data-level="6.7" data-path="06_hypo.html"><a href="06_hypo.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="07_bivar.html"><a href="07_bivar.html"><i class="fa fa-check"></i><b>7</b> Bivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07_bivar.html"><a href="07_bivar.html#correlation"><i class="fa fa-check"></i><b>7.1</b> Correlation</a></li>
+<li class="chapter" data-level="7.2" data-path="07_bivar.html"><a href="07_bivar.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="07_bivar.html"><a href="07_bivar.html#logistic-regressions"><i class="fa fa-check"></i><b>7.3</b> Logistic Regressions</a></li>
+<li class="chapter" data-level="7.4" data-path="07_bivar.html"><a href="07_bivar.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="08_multivar.html"><a href="08_multivar.html"><i class="fa fa-check"></i><b>8</b> Multivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="08_multivar.html"><a href="08_multivar.html#cluster-analysis"><i class="fa fa-check"></i><b>8.1</b> Cluster Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="08_multivar.html"><a href="08_multivar.html#hierarchical-clustering"><i class="fa fa-check"></i><b>8.1.1</b> Hierarchical Clustering</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08_multivar.html"><a href="08_multivar.html#k-means-clustering"><i class="fa fa-check"></i><b>8.1.2</b> K-Means clustering</a></li>
+<li class="chapter" data-level="8.1.3" data-path="08_multivar.html"><a href="08_multivar.html#the-silhouette-plot"><i class="fa fa-check"></i><b>8.1.3</b> The silhouette plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="08_multivar.html"><a href="08_multivar.html#heatmap"><i class="fa fa-check"></i><b>8.2</b> Heatmap</a></li>
+<li class="chapter" data-level="8.3" data-path="08_multivar.html"><a href="08_multivar.html#principal-component-analysis"><i class="fa fa-check"></i><b>8.3</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="08_multivar.html"><a href="08_multivar.html#classification-and-regression-trees"><i class="fa fa-check"></i><b>8.4</b> Classification And Regression Trees</a></li>
+<li class="chapter" data-level="8.5" data-path="08_multivar.html"><a href="08_multivar.html#composite-indicators"><i class="fa fa-check"></i><b>8.5</b> Composite Indicators</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="08_multivar.html"><a href="08_multivar.html#mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.1</b> Mazziotta-Pareto Index</a></li>
+<li class="chapter" data-level="8.5.2" data-path="08_multivar.html"><a href="08_multivar.html#adjusted-mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted Mazziotta-Pareto Index</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="08_multivar.html"><a href="08_multivar.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="08_multivar.html"><a href="08_multivar.html#final-remarks"><i class="fa fa-check"></i>Final Remarks</a></li>
+<li class="chapter" data-level="" data-path="08_multivar.html"><a href="08_multivar.html#bibliography"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-data-analysis" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Exploratory Data Analysis<a href="05_explor.html#exploratory-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>From this point forward, we will stop focusing on R, and we will finally
+start acting as statisticians. We will perform various level of data
+analysis by applying different methodologies. Of course, R will be our
+tool, our facilitator, but it will be no more at the center of the
+stage. We will fully concentrate on the statistical methods, their
+application and interpretation.</p>
+<p>Following the six steps of data analysis. This section explores the
+steps from 4 to 6, given that the first two are out of the scope of this
+book and the third has been treated in the previous section.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
+<img src="images/Schermata%202022-03-28%20alle%2010.36.15.png" alt="The six steps of data analysis." width="80%"  />
+<p class="caption">
+Figure 5.1: The six steps of data analysis.
+</p>
+</div>
+<p>Exploratory data analysis is usually performed when we have our first
+contact with <u>clean</u> new data. Of course, the first
+impression is not always the right one, but if we give it a proper
+chance can save us a lot of work and some headaches later on. During
+this phase we will perform some summary statistics (central tendency and
+variability measures), basic plotting, inequality measures, and
+correlations. Exploratory analysis differs from the <a href="02_abc.html#dataset-exploration">dataset
+exploration</a> we performed in Chapter 1, because the latter focuses on
+the shape of the data (type, dimensions, etc) while the former focuses
+on the content.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<div id="central-tendency-measures" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Central Tendency Measures<a href="05_explor.html#central-tendency-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A measure of central tendency is a single value that attempts to
+describe a set of data by identifying the central position within that
+set of data. The mean, median and mode are all valid measures of central
+tendency, but under different conditions, some measures of central
+tendency become more appropriate to use than others <span class="citation">(<a href="#ref-lane2003">Lane et al. 2003</a>; <a href="#ref-manikandan2011">Manikandan 2011</a>; <a href="#ref-laerdstatistics">Laerd Statistics, n.d.</a>)</span>.</p>
+<hr />
+<p>The <strong>arithmetic</strong> <strong>mean</strong> (or <strong>average</strong>) is the most popular and
+well known measure of central tendency. The mean is equal to the sum of
+all values divided by the number of observations (Equation
+<a href="05_explor.html#eq:mean">(5.1)</a>).</p>
+<p><span class="math display" id="eq:mean">\[\begin{equation}
+\bar x = \frac{\sum{x}}{n}
+\tag{5.1}
+\end{equation}\]</span></p>
+<p>One of its important properties is that it minimizes error in the
+prediction of any value in your data set, given a big enough sample size
+(more details on this property will be discussed in [The Normal
+Distribution] chapter). Another important property of the mean is that
+it includes every value in your data set as part of the calculation.
+This implies, also, that it is sensitive to the presence of outliers or
+skewed distributions (i.e., the frequency distribution for our data is
+skewed). In those cases the median would be a better indicator of
+central location.</p>
+<hr />
+<p>The <strong>geometric mean</strong> is defined as the <span class="math inline">\(n^{th}\)</span> root of the product of
+<span class="math inline">\(n\)</span> values (Equation <a href="05_explor.html#eq:geomean">(5.2)</a>).</p>
+<p><span class="math display" id="eq:geomean">\[\begin{equation}
+\bar x_{g} = \sqrt[n^{th}]{x_1*x_2*...*x_n}
+\tag{5.2}
+\end{equation}\]</span></p>
+<p>The geometric mean cannot be used if the values considered are lower
+or equal to zero. It is often used for a set of numbers whose values are
+meant to be multiplied together or are exponential in nature, such as a
+set of growth figures: values of the human population, or interest rates
+of a financial investment over time.</p>
+<hr />
+<p>The <strong>median</strong> is the middle score for a set of data that has been
+arranged in order of magnitude. This means, also, that the median is
+equal to the value corresponding to the 50th percentile of he
+distribution. If the number of observations is even, then the median is
+the simple average of the middle two numbers.</p>
+<hr />
+<p>The <strong>mode</strong> is the most frequent score in our data set. On a histogram
+it represents the highest point (we will see more about it later in this
+chapter). You can, therefore, sometimes consider the mode as being the
+most popular option. This implies that the mode is not always a unique
+value, in fact (particularly in continuous data) we can have bi-modal,
+tri-modal, or multi-modal distributions. Moreover, the mode will not
+provide us with a very good measure of central tendency when the most
+common mark is far away from the rest of the data.</p>
+<hr />
+<p>The <strong>middle value</strong> is a less used measure. It represents the value
+exactly at the center between the minimum and the maximum values
+(Equation <a href="05_explor.html#eq:mv">(5.3)</a>), regardless of the distribution of the data Thus it is
+sensitive to outliers.</p>
+<p><span class="math display" id="eq:mv">\[\begin{equation}
+\frac{max-min}{2}
+\tag{5.3}
+\end{equation}\]</span></p>
+<hr />
+<p>The function <code>summary()</code> gives us a brief overview of the minimum,
+maximum, first and third quantile, median and mean of each variable, or
+of a single variable. Of course these measures can be also computed
+independently using dedicated functions.</p>
+<p>The following code computes summary statistics, arithmetic mean,
+geometric mean (there is not a dedicated function for it), median, mode
+(the function from <code>DescTools</code> allows us to retrieve also multi-modal
+values)<span class="citation">(<a href="#ref-signorelli2021">Signorelli 2021</a>)</span>, and middle value. For more options about all
+the functions below, please, look in the help.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="05_explor.html#cb29-1" tabindex="-1"></a><span class="co"># to do statistical summaries of the whole dataset or of a single variable</span></span>
+<span id="cb29-2"><a href="05_explor.html#cb29-2" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span>
+<span id="cb29-3"><a href="05_explor.html#cb29-3" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb29-4"><a href="05_explor.html#cb29-4" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="05_explor.html#cb29-5" tabindex="-1"></a><span class="co"># arithmetic mean</span></span>
+<span id="cb29-6"><a href="05_explor.html#cb29-6" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb29-7"><a href="05_explor.html#cb29-7" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="05_explor.html#cb29-8" tabindex="-1"></a><span class="co"># geometric mean</span></span>
+<span id="cb29-9"><a href="05_explor.html#cb29-9" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(mtcars<span class="sc">$</span>mpg)))  </span>
+<span id="cb29-10"><a href="05_explor.html#cb29-10" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="05_explor.html#cb29-11" tabindex="-1"></a><span class="co"># median</span></span>
+<span id="cb29-12"><a href="05_explor.html#cb29-12" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb29-13"><a href="05_explor.html#cb29-13" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="05_explor.html#cb29-14" tabindex="-1"></a><span class="co"># mode</span></span>
+<span id="cb29-15"><a href="05_explor.html#cb29-15" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb29-16"><a href="05_explor.html#cb29-16" tabindex="-1"></a><span class="fu">Mode</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb29-17"><a href="05_explor.html#cb29-17" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="05_explor.html#cb29-18" tabindex="-1"></a><span class="co">#middle value</span></span>
+<span id="cb29-19"><a href="05_explor.html#cb29-19" tabindex="-1"></a>(<span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)<span class="sc">-</span><span class="fu">min</span>(mtcars<span class="sc">$</span>mpg))<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="variability-measures" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Variability Measures<a href="05_explor.html#variability-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The terms variability, spread, and dispersion are synonyms, and refer to
+how disperse a distribution is. These measures complete the information
+given by central tendency measures, in order to better understand the
+data we are analyzing. The example below gives us an idea of how unequal
+distributions may have the same central tendency measures, and thus,
+considering only them would lead to mistaken evaluations.</p>
+<table style="width:57%;">
+<caption>Central tendency measures of the samples a and b.</caption>
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">distributions</th>
+<th align="center">mean</th>
+<th align="center">median</th>
+<th align="center">mode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">a</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">b</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
+<img src="_main_files/figure-html/unnamed-chunk-39-1.png" alt="From left: Histograms of the samples a and b." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-39-2.png" alt="From left: Histograms of the samples a and b." width="50%"  />
+<p class="caption">
+Figure 5.2: From left: Histograms of the samples a and b.
+</p>
+</div>
+<hr />
+<p>The <strong>range</strong> is the simplest measure of variability to calculate, and
+one you have probably encountered many times in your life. The range is
+the maximum value minus the minimum value (Equation <a href="05_explor.html#eq:range">(5.4)</a>).</p>
+<p><span class="math display" id="eq:range">\[\begin{equation}
+range=max-min
+\tag{5.4}
+\end{equation}\]</span></p>
+<hr />
+<p>The <strong>interquartile range</strong> (IQR) is the range of the central 50% of the
+values in a distribution (Equation <a href="05_explor.html#eq:iqrange">(5.5)</a>).</p>
+<p><span class="math display" id="eq:iqrange">\[\begin{equation}
+IQR=75^{th} percentile - 25^{th} percentile
+\tag{5.5}
+\end{equation}\]</span></p>
+<hr />
+<p>But variability can also be defined in terms of how close the values in
+the distribution are to the middle of the distribution. Using the mean
+as the measure for referencing to the middle of the distribution, the
+<strong>variance</strong> is defined as the average squared difference of the scores
+from the mean (Equation <a href="05_explor.html#eq:var">(5.6)</a>).</p>
+<p><span class="math display" id="eq:var">\[\begin{equation}
+\sigma^2=\frac{\sum{(X-\bar x)^2}}{N}
+\tag{5.6}
+\end{equation}\]</span></p>
+<hr />
+<p>The <strong>standard deviation</strong> is simply the square root of the variance
+(Equation <a href="05_explor.html#eq:sd">(5.7)</a>). It is an especially useful measure of variability when
+the distribution is normal or approximately normal (see [The Normal
+Distribution]) because the proportion of the distribution within a given
+number of standard deviations from the mean can be calculated.</p>
+<p><span class="math display" id="eq:sd">\[\begin{equation}
+\sigma=\sqrt{\sigma^2}
+\tag{5.7}
+\end{equation}\]</span></p>
+<hr />
+<p>The <strong>coefficient of variation</strong> (CV) represents the ratio of the
+standard deviation to the mean (Equation <a href="05_explor.html#eq:cv">(5.8)</a>), and it is a useful
+statistic for comparing the degree of variation of data relative to
+different unit of measures. In fact, the CV is the only variability
+measure (of those mentioned here) that is standardized, thus does not
+depend on its unit of measure.</p>
+<p><span class="math display" id="eq:cv">\[\begin{equation}
+CV=\frac{\sigma}{\bar{x}}
+\tag{5.8}
+\end{equation}\]</span></p>
+<hr />
+<p>The following code computes the above mentioned variability measures for
+the consumption variable of the mtcars dataset. In the last lines you
+can find also the code to compile a frequency table with the function
+<code>table()</code>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="05_explor.html#cb30-1" tabindex="-1"></a><span class="co"># range</span></span>
+<span id="cb30-2"><a href="05_explor.html#cb30-2" tabindex="-1"></a><span class="fu">max</span>(mtcars<span class="sc">$</span>mpg) <span class="sc">-</span> <span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-3"><a href="05_explor.html#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="05_explor.html#cb30-4" tabindex="-1"></a><span class="co"># quantile distribution</span></span>
+<span id="cb30-5"><a href="05_explor.html#cb30-5" tabindex="-1"></a><span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-6"><a href="05_explor.html#cb30-6" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="05_explor.html#cb30-7" tabindex="-1"></a><span class="co"># interquantile range</span></span>
+<span id="cb30-8"><a href="05_explor.html#cb30-8" tabindex="-1"></a><span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg, <span class="at">probs =</span> .<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">quantile</span>(mtcars<span class="sc">$</span>mpg, <span class="at">probs =</span> .<span class="dv">25</span>)</span>
+<span id="cb30-9"><a href="05_explor.html#cb30-9" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="05_explor.html#cb30-10" tabindex="-1"></a><span class="co"># variance</span></span>
+<span id="cb30-11"><a href="05_explor.html#cb30-11" tabindex="-1"></a><span class="fu">var</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-12"><a href="05_explor.html#cb30-12" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="05_explor.html#cb30-13" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb30-14"><a href="05_explor.html#cb30-14" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-15"><a href="05_explor.html#cb30-15" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="05_explor.html#cb30-16" tabindex="-1"></a><span class="co"># coefficent of variation</span></span>
+<span id="cb30-17"><a href="05_explor.html#cb30-17" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)<span class="sc">/</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb30-18"><a href="05_explor.html#cb30-18" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="05_explor.html#cb30-19" tabindex="-1"></a><span class="co"># frequency tables</span></span>
+<span id="cb30-20"><a href="05_explor.html#cb30-20" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb30-21"><a href="05_explor.html#cb30-21" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>am)</span></code></pre></div>
+<p>Below a simple code that allows to create a dataframe, which is also a
+way to create a summary table. The <code>data.frame()</code> function has to be
+filled column wise, specifying the column/variable name and then the
+content. You can play with it in order to create a personalized table.
+The <code>stargazer()</code> function, instead presents the same statistics as the
+<code>summary()</code> function, but in a cooler style <span class="citation">(<a href="#ref-torres-reyna2014">Torres-Reyna 2014</a>; <a href="#ref-hlavac2022">Hlavac 2022</a>)</span>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="05_explor.html#cb31-1" tabindex="-1"></a><span class="co"># create a table storing your values</span></span>
+<span id="cb31-2"><a href="05_explor.html#cb31-2" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">obs =</span> <span class="fu">c</span>(<span class="st">&quot;Miles per Gallon&quot;</span>, <span class="st">&quot;Number of Cylinders&quot;</span>),</span>
+<span id="cb31-3"><a href="05_explor.html#cb31-3" tabindex="-1"></a>           <span class="at">mean =</span> <span class="fu">c</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">mean</span>(mtcars<span class="sc">$</span>cyl)),</span>
+<span id="cb31-4"><a href="05_explor.html#cb31-4" tabindex="-1"></a>           <span class="at">median =</span> <span class="fu">c</span>(<span class="fu">median</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">median</span>(mtcars<span class="sc">$</span>cyl)),</span>
+<span id="cb31-5"><a href="05_explor.html#cb31-5" tabindex="-1"></a>           <span class="at">sd =</span> <span class="fu">c</span>(<span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg), <span class="fu">sd</span>(mtcars<span class="sc">$</span>cyl))</span>
+<span id="cb31-6"><a href="05_explor.html#cb31-6" tabindex="-1"></a>           )</span>
+<span id="cb31-7"><a href="05_explor.html#cb31-7" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="05_explor.html#cb31-8" tabindex="-1"></a><span class="co"># create a table storing basic summary statistics</span></span>
+<span id="cb31-9"><a href="05_explor.html#cb31-9" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb31-10"><a href="05_explor.html#cb31-10" tabindex="-1"></a><span class="fu">stargazer</span>(mtcars, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>, <span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="inequality-measures" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Inequality Measures<a href="05_explor.html#inequality-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another set of analysis methods that are related to variability are
+inequality measures. Inequality can be defined as: “a scalar numerical
+representation of the interpersonal differences in income (for example)
+within a given population.” The use of the word “scalar” implies that
+all the different features of inequality are compressed into a single
+number or a single point on a scale.</p>
+<p>But inequality of what? The strict statistical rule says that it must be
+a quantitative variable transferable among the population of interest,
+such as income, apples, cars, etc… However, in economics, inequality
+measurements are used also for other items, like carbon emissions.</p>
+<hr />
+<p>The <strong>Gini</strong> coefficient, or Gini Index, is the most widely used measure
+of inequality in policy-related discussions. It is a measure of
+statistical dispersion most prominently used as a measure of inequality
+of income distribution or inequality of wealth distribution. It is
+defined as a ratio with values between 0 and 1. Thus, a low Gini
+coefficient indicates more equal income or wealth distribution, while a
+high Gini coefficient indicates more unequal distribution. Zero
+corresponds to perfect equality (everyone having exactly the same
+income) and 1 corresponds to perfect inequality (where one person has
+all the income, while everyone else has zero income). <em>Note that the
+Gini coefficient requires that no one have a negative net income or
+wealth.</em></p>
+<p>In geometrical terms, the Gini coefficient can be thought of as the
+ratio of the area that lies between the line of perfect equality (the
+diagonal) and the Lorenz curve over the total area under the line of
+equality (see Figure 7). Here the formula used to compute the Gini
+coefficient:</p>
+<p><span class="math display" id="eq:gini">\[\begin{equation}
+G(x)=1-\frac{2}{N-1}\sum^{N-1}_{i=1}{q_i}
+\tag{5.9}
+\end{equation}\]</span></p>
+<p>where <em>N</em> is the population size, and <em>q</em> is the cumulative relative
+income.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<img src="images/gini.png" alt="Graphical representation of the Gini index." width="50%"  />
+<p class="caption">
+Figure 5.3: Graphical representation of the Gini index.
+</p>
+</div>
+<p>Run the code below and calculate the Gini coefficient for both the x and
+y objects. You can either use the function from the package <code>DescTools</code>
+<span class="citation">(<a href="#ref-signorelli2021">Signorelli 2021</a>)</span>, or the function from the package <code>labstatR</code>
+<span class="citation">(<a href="#ref-iacus2020">Iacus and Masarotto 2020</a>)</span> (remember that R is case-sensitive!). Did you expect this
+value of Gini?</p>
+<p>Try to understand how the function <code>rep()</code> works using the help.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="05_explor.html#cb32-1" tabindex="-1"></a><span class="co"># generate vector (of incomes)</span></span>
+<span id="cb32-2"><a href="05_explor.html#cb32-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">541</span>, <span class="dv">1463</span>, <span class="dv">2445</span>, <span class="dv">3438</span>, <span class="dv">4437</span>, <span class="dv">5401</span>, <span class="dv">6392</span>, <span class="dv">8304</span>, <span class="dv">11904</span>, <span class="dv">22261</span>)</span>
+<span id="cb32-3"><a href="05_explor.html#cb32-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1000</span>, <span class="dv">10</span>))</span>
+<span id="cb32-4"><a href="05_explor.html#cb32-4" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">541</span>, <span class="dv">1463</span>, <span class="dv">2445</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">3438</span>, <span class="dv">11904</span>, <span class="dv">22261</span>)</span>
+<span id="cb32-5"><a href="05_explor.html#cb32-5" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="05_explor.html#cb32-6" tabindex="-1"></a><span class="co"># compute Gini coefficient</span></span>
+<span id="cb32-7"><a href="05_explor.html#cb32-7" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb32-8"><a href="05_explor.html#cb32-8" tabindex="-1"></a><span class="fu">Gini</span>(x)</span>
+<span id="cb32-9"><a href="05_explor.html#cb32-9" tabindex="-1"></a><span class="fu">Gini</span>(y)</span>
+<span id="cb32-10"><a href="05_explor.html#cb32-10" tabindex="-1"></a><span class="fu">Gini</span>(z)</span>
+<span id="cb32-11"><a href="05_explor.html#cb32-11" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb32-12"><a href="05_explor.html#cb32-12" tabindex="-1"></a><span class="fu">library</span>(labstatR)</span>
+<span id="cb32-13"><a href="05_explor.html#cb32-13" tabindex="-1"></a><span class="fu">gini</span>(x)</span></code></pre></div>
+<p>As mentioned, the Gini Index is nowadays a recognized standard,
+nevertheless it has some limitations. In fact, Gini is more sensitive to
+changes in the middle of the distribution, than to the tails. In
+economics, when we study inequality, we are often more interested in the
+tails behavior (namely the top and bottom 10% of the distribution).</p>
+<hr />
+<p>The <strong>Palma Ratio</strong> is a particular specification within a family of
+inequality measures known as inter-decile ratios <span class="citation">(<a href="#ref-cobham2016">Cobham, Schlögl, and Sumner 2016</a>)</span>. More
+specifically, it is the ratio of national income shares of the top 10%
+of households to the bottom 40%. It, thus, tells us how many times the
+income of the top 10% of the population is higher than that of the
+bottom 40% (Equation <a href="05_explor.html#eq:palma">(5.10)</a>).</p>
+<p><span class="math display" id="eq:palma">\[\begin{equation}
+Palma = \frac {top10}{bottom40}
+\tag{5.10}
+\end{equation}\]</span></p>
+<p>The code below computes the Palma Ratio for the <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span>
+distributions created previously. This has to be done manually, by
+computing the top 10% income and the bottom 40% income with the
+cumulative frequencies computed by the function <code>gini()</code> of the package
+<code>labstatR</code> <span class="citation">(<a href="#ref-iacus2020">Iacus and Masarotto 2020</a>)</span>. Confront the Gini Index and the Palma Ratio, do
+you find different results? Why?</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="05_explor.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(labstatR)</span>
+<span id="cb33-2"><a href="05_explor.html#cb33-2" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
+<span id="cb33-3"><a href="05_explor.html#cb33-3" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">gini</span>(x)<span class="sc">$</span>Q</span>
+<span id="cb33-4"><a href="05_explor.html#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="05_explor.html#cb33-5" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
+<span id="cb33-6"><a href="05_explor.html#cb33-6" tabindex="-1"></a>(<span class="fu">quantile</span>(q, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
+<span id="cb33-7"><a href="05_explor.html#cb33-7" tabindex="-1"></a>  <span class="fu">quantile</span>(q, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span>
+<span id="cb33-8"><a href="05_explor.html#cb33-8" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="05_explor.html#cb33-9" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
+<span id="cb33-10"><a href="05_explor.html#cb33-10" tabindex="-1"></a>q2 <span class="ot">&lt;-</span> <span class="fu">gini</span>(y)<span class="sc">$</span>Q</span>
+<span id="cb33-11"><a href="05_explor.html#cb33-11" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="05_explor.html#cb33-12" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
+<span id="cb33-13"><a href="05_explor.html#cb33-13" tabindex="-1"></a>(<span class="fu">quantile</span>(q2, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q2, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
+<span id="cb33-14"><a href="05_explor.html#cb33-14" tabindex="-1"></a>  <span class="fu">quantile</span>(q2, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span>
+<span id="cb33-15"><a href="05_explor.html#cb33-15" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="05_explor.html#cb33-16" tabindex="-1"></a><span class="co"># extracting the cumulative frequencies from the function gini by labstatR</span></span>
+<span id="cb33-17"><a href="05_explor.html#cb33-17" tabindex="-1"></a>q3 <span class="ot">&lt;-</span> <span class="fu">gini</span>(z)<span class="sc">$</span>Q</span>
+<span id="cb33-18"><a href="05_explor.html#cb33-18" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="05_explor.html#cb33-19" tabindex="-1"></a><span class="co"># computing the Palma Ratio on the cumulative frequencies</span></span>
+<span id="cb33-20"><a href="05_explor.html#cb33-20" tabindex="-1"></a>(<span class="fu">quantile</span>(q3, <span class="at">probs =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="dv">3</span>)<span class="sc">-</span><span class="fu">quantile</span>(q3, <span class="at">probs =</span> .<span class="dv">9</span>, <span class="at">type=</span><span class="dv">3</span>))<span class="sc">/</span></span>
+<span id="cb33-21"><a href="05_explor.html#cb33-21" tabindex="-1"></a>  <span class="fu">quantile</span>(q3, <span class="at">probs =</span> .<span class="dv">4</span>, <span class="at">type=</span><span class="dv">3</span>)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="data-visualization" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Data visualization<a href="05_explor.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Visualizing data is another way to explore the data, or better, a
+complement to the quantitative exploratory analysis carried out above.
+In fact, as we saw in the example in Figure 6, a simple histogram can
+tell us whether the arithmetic mean can give us a realistic
+representation of the data, or if more analysis is needed. In this
+section we will not see the beautiful graphs for which R is recognized
+worldwide (for those I invite you to explore <a href="04_advanced.html#ggplot2">Ggplot2</a>), but fast and
+dirty graphs have their potential too, at least for the exploratory
+analysis phase.</p>
+<hr />
+<p>A <strong>histogram</strong> is a plot that allows the inspection of the data for its
+underlying distribution (e.g., normal distribution), outliers, skewness,
+etc. If the bars of the histogram are equally spaced bars, the height of
+the bin reflects the frequency of each value of the distribution.</p>
+<hr />
+<p>A <strong>box plot</strong>, also called a “box and whisker plot”, is a way to show
+the spread and centers of a data set. A box plot is a way to show a five
+number summary in a chart. The main part of the chart (the “box”) shows
+where the middle portion of the data is: the interquartile range. At the
+ends of the box, you” find the first quartile (the 25% mark) and the
+third quartile (the 75% mark). The far bottom of the chart is the
+minimum (the smallest number in the set) and the far top is the maximum
+(the largest number in the set). Finally, the median
+<u>(</u><strong>not the mean!</strong><u>)</u> is represented by an
+horizontal bar in the center of the box.</p>
+<hr />
+<p>A <strong>scatter plot</strong> is a bi-dimensional plot in which the dots represent
+values for two different numeric variables in the Cartesian space. The
+position of each dot indicates each individual data point with respect
+to the two variables selected. Scatter plots are used to observe
+relationships between two numeric variables (we will deepen their use
+later in this chapter).</p>
+<div class="figure"><span style="display:block;" id="fig:fig1"></span>
+<img src="_main_files/figure-html/fig1-1.png" alt="Plot examples. From top-left clowise: Histogram; Density plot; Scatterplot; Boxplot." width="50%"  /><img src="_main_files/figure-html/fig1-2.png" alt="Plot examples. From top-left clowise: Histogram; Density plot; Scatterplot; Boxplot." width="50%"  /><img src="_main_files/figure-html/fig1-3.png" alt="Plot examples. From top-left clowise: Histogram; Density plot; Scatterplot; Boxplot." width="50%"  /><img src="_main_files/figure-html/fig1-4.png" alt="Plot examples. From top-left clowise: Histogram; Density plot; Scatterplot; Boxplot." width="50%"  />
+<p class="caption">
+Figure 5.4: Plot examples. From top-left clowise: Histogram; Density plot; Scatterplot; Boxplot.
+</p>
+</div>
+<p>The code provided for this part may look a bit more complex than what we
+have seen so far. We first draw an histogram and a density plot (which
+is a linear representation of the same distribution). Then, we draw some
+scatter plots, we add some “stilish” (but still basic) arguments and a
+linear regression line. Note that the formula used in the <code>abline()</code>
+function is something that we will explore better in <a href="07_bivar.html#linear-regression">Linear
+Regression</a>, for now only notice that <code>y ~ x + z + e</code> stands for
+<code>y = x + z + e</code> in a classic linear expression algebra.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> We then
+subset consumption (mpg) data for automatic and manual cars from the
+<code>mtcars</code> dataset in order to study the differences among them with a box
+plot. We can see how manual cars (1 in the plot) present higher miles
+per gallon (thus lower consumption) than automatic cars (0 in the plot),
+and the two distributions overlaps only on their tails. In the following
+graph, we appreciate how a continuous variable (horse power) is
+distributed among cars grouped by a discrete variable (cylinders). In
+this way, we are studying a relationship between variable of mixed
+types. Note that, in order to tell R that the variable is discrete, we
+used the function <code>as.factor()</code> (more details on it in <a href="03_dataclean.html#factor-variables">Factor
+variables</a>). Moreover, we specified the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axes labels using
+the <code>xlab</code> and <code>ylab</code> arguments.</p>
+<p>Try the code, personalize it, and check in the help for supplementary
+options.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="05_explor.html#cb34-1" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb34-2"><a href="05_explor.html#cb34-2" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb34-3"><a href="05_explor.html#cb34-3" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="05_explor.html#cb34-4" tabindex="-1"></a><span class="co"># density plot</span></span>
+<span id="cb34-5"><a href="05_explor.html#cb34-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(mtcars<span class="sc">$</span>mpg), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb34-6"><a href="05_explor.html#cb34-6" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="05_explor.html#cb34-7" tabindex="-1"></a><span class="co"># scatterplot of cyl vs hp</span></span>
+<span id="cb34-8"><a href="05_explor.html#cb34-8" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>cyl, mtcars<span class="sc">$</span>hp)</span>
+<span id="cb34-9"><a href="05_explor.html#cb34-9" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="05_explor.html#cb34-10" tabindex="-1"></a><span class="co"># why do we get an error here?</span></span>
+<span id="cb34-11"><a href="05_explor.html#cb34-11" tabindex="-1"></a><span class="fu">plot</span>(mpg, hp)</span>
+<span id="cb34-12"><a href="05_explor.html#cb34-12" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="05_explor.html#cb34-13" tabindex="-1"></a><span class="co"># stylish scatterplot</span></span>
+<span id="cb34-14"><a href="05_explor.html#cb34-14" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>hp,</span>
+<span id="cb34-15"><a href="05_explor.html#cb34-15" tabindex="-1"></a>     mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb34-16"><a href="05_explor.html#cb34-16" tabindex="-1"></a>     <span class="co"># adding titles and axes names</span></span>
+<span id="cb34-17"><a href="05_explor.html#cb34-17" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Miles per Gallon&quot;</span>,</span>
+<span id="cb34-18"><a href="05_explor.html#cb34-18" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Horse Power&quot;</span>,</span>
+<span id="cb34-19"><a href="05_explor.html#cb34-19" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Is consumption related to Horse Power?&quot;</span>)</span>
+<span id="cb34-20"><a href="05_explor.html#cb34-20" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="05_explor.html#cb34-21" tabindex="-1"></a><span class="co"># adding a regression line on the scatterplot</span></span>
+<span id="cb34-22"><a href="05_explor.html#cb34-22" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars), <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb34-23"><a href="05_explor.html#cb34-23" tabindex="-1"></a></span>
+<span id="cb34-24"><a href="05_explor.html#cb34-24" tabindex="-1"></a><span class="co"># subset automatic cars consumption</span></span>
+<span id="cb34-25"><a href="05_explor.html#cb34-25" tabindex="-1"></a>mpg.at <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">0</span>]</span>
+<span id="cb34-26"><a href="05_explor.html#cb34-26" tabindex="-1"></a><span class="co"># and manual cars consumption</span></span>
+<span id="cb34-27"><a href="05_explor.html#cb34-27" tabindex="-1"></a>mpg.mt <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb34-28"><a href="05_explor.html#cb34-28" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="05_explor.html#cb34-29" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb34-30"><a href="05_explor.html#cb34-30" tabindex="-1"></a><span class="fu">boxplot</span>(mpg.mt, mpg.at)</span>
+<span id="cb34-31"><a href="05_explor.html#cb34-31" tabindex="-1"></a></span>
+<span id="cb34-32"><a href="05_explor.html#cb34-32" tabindex="-1"></a><span class="co"># boxplot with a categorical variable</span></span>
+<span id="cb34-33"><a href="05_explor.html#cb34-33" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl), mtcars<span class="sc">$</span>hp, </span>
+<span id="cb34-34"><a href="05_explor.html#cb34-34" tabindex="-1"></a>     <span class="co"># adding axes names</span></span>
+<span id="cb34-35"><a href="05_explor.html#cb34-35" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Cylinders&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Horse Power&quot;</span>)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="scaling-data" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Scaling data<a href="05_explor.html#scaling-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Scaling, or standardizing, data is a useful technical trick that
+statisticians and economists use in order to better use data. Some of
+the most common situations where scaling is required are visualization,
+interpretation, but most of all comparison.</p>
+<hr />
+<p><strong>Log scaling</strong> is typically used for plotting and regression analysis.
+It is a way of displaying numerical data over a very wide range of
+values in a compact way. In fact, typically, when log scaling is needed,
+the largest numbers in the data are hundreds or even thousands of times
+larger than the smallest numbers. As an example, often exponential
+growth curves are displayed on a log scale, otherwise they would
+increase too quickly to fit within a small graph and allow a complete
+analysis of its variation. R has the function <code>log()</code>to do that.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="05_explor.html#cb35-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb35-2"><a href="05_explor.html#cb35-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">100</span>,<span class="dv">4000</span>,<span class="dv">7</span>,<span class="dv">1000</span>,<span class="dv">350000</span>,<span class="dv">25000</span>)</span>
+<span id="cb35-3"><a href="05_explor.html#cb35-3" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="05_explor.html#cb35-4" tabindex="-1"></a><span class="co"># plotting data</span></span>
+<span id="cb35-5"><a href="05_explor.html#cb35-5" tabindex="-1"></a><span class="fu">plot</span>(x)</span>
+<span id="cb35-6"><a href="05_explor.html#cb35-6" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="05_explor.html#cb35-7" tabindex="-1"></a><span class="co"># log scaling</span></span>
+<span id="cb35-8"><a href="05_explor.html#cb35-8" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb35-9"><a href="05_explor.html#cb35-9" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="05_explor.html#cb35-10" tabindex="-1"></a><span class="co"># plotting scaled data</span></span>
+<span id="cb35-11"><a href="05_explor.html#cb35-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(scaled_x))</span></code></pre></div>
+<hr />
+<p><strong>Ranking</strong> replaces the value assumed by each unit, with the order
+number (rank) by which the unit is placed on the list according to a
+specific indicator. If two or more units assume the same value, then
+they will give the average rank of the positions that they would have
+had in case of different values. The transformation into ranks purifies
+the indicators from the unit of measure, but it does not preserve the
+relative distance between the different units.</p>
+<p>The basic form of the <code>rank()</code> function produces a vector that contains
+the rank of the values in the vector that was evaluated such that the
+lowest value would have a rank of 1 and the second-lowest value would
+have a rank of 2.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="05_explor.html#cb36-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb36-2"><a href="05_explor.html#cb36-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb36-3"><a href="05_explor.html#cb36-3" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="05_explor.html#cb36-4" tabindex="-1"></a><span class="co"># scale ranking data</span></span>
+<span id="cb36-5"><a href="05_explor.html#cb36-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">rank</span>(x)</span></code></pre></div>
+<hr />
+<p>Relative indices with respect to the range (<strong>Min-Max</strong>) purifies the
+data from their unit of measure such that the features are within a
+specific range (i.e. <span class="math inline">\(0, 1\)</span>)(Equation <a href="05_explor.html#eq:MM">(5.11)</a>). Min-Max scaling is important when we want
+to retain the distance between the data points.</p>
+<p><span class="math display" id="eq:MM">\[\begin{equation}
+r_{ij}=\frac{x_{ij}-\min_ix_{ij}}{\max_ix_{ij}-\min_ix_{ij}}
+\tag{5.11}
+\end{equation}\]</span></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="05_explor.html#cb37-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb37-2"><a href="05_explor.html#cb37-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb37-3"><a href="05_explor.html#cb37-3" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="05_explor.html#cb37-4" tabindex="-1"></a><span class="co"># min-max scaling data</span></span>
+<span id="cb37-5"><a href="05_explor.html#cb37-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> (x<span class="sc">-</span><span class="fu">min</span>(x))<span class="sc">/</span>(<span class="fu">max</span>(x)<span class="sc">-</span><span class="fu">min</span>(x))</span></code></pre></div>
+<hr />
+<p>The point of <strong>z-score standardization</strong> is to change your data so that
+it can be described as a normal distribution (Equation <a href="05_explor.html#eq:zscore">(5.12)</a>). Normal distribution, or
+Gaussian distribution, is a specific statistical distribution where
+equal observations fall above and below the mean, the mean and the
+median are the same, and there are more observations closer to the mean
+(for more details see [The Normal Distribution]).</p>
+<p><span class="math display" id="eq:zscore">\[\begin{equation}
+z_{ij}=\frac{x_{ij}-\bar x_j}{\sigma_j}
+\tag{5.12}
+\end{equation}\]</span></p>
+<p>The <code>scale()</code> function, with default settings, will calculate the mean
+and standard deviation of the entire vector, then normalize each element
+by those values by subtracting the mean and dividing by the standard
+deviation (equation 5.6). The resulting distribution will have mean
+equal to 0 and standard deviation equal to 1.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="05_explor.html#cb38-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb38-2"><a href="05_explor.html#cb38-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb38-3"><a href="05_explor.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="05_explor.html#cb38-4" tabindex="-1"></a><span class="co"># z-score scaling data</span></span>
+<span id="cb38-5"><a href="05_explor.html#cb38-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> <span class="fu">scale</span>(x)</span>
+<span id="cb38-6"><a href="05_explor.html#cb38-6" tabindex="-1"></a><span class="fu">mean</span>(scaled_x)</span>
+<span id="cb38-7"><a href="05_explor.html#cb38-7" tabindex="-1"></a><span class="fu">sd</span>(scaled_x)</span></code></pre></div>
+<hr />
+<p>In <strong>index numbers</strong>, the value assumed by each unit is divided by a
+reference value belonging to the same distribution or calculated on it
+(generally the mean or maximum)(Equation <a href="05_explor.html#eq:in">(5.13)</a>). This normalization allows
+to delete the unit of measure and to keep the relative distance among
+the units. If the denominator is the maximum than we obtain values less
+or equal to 100.</p>
+<p><span class="math display" id="eq:in">\[\begin{equation}
+I_{ij}=\frac{x_{ij}}{x^*_{oj}}*100
+\tag{5.13}
+\end{equation}\]</span></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="05_explor.html#cb39-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb39-2"><a href="05_explor.html#cb39-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb39-3"><a href="05_explor.html#cb39-3" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="05_explor.html#cb39-4" tabindex="-1"></a><span class="co"># indexing with mean</span></span>
+<span id="cb39-5"><a href="05_explor.html#cb39-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">mean</span>(x)</span>
+<span id="cb39-6"><a href="05_explor.html#cb39-6" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="05_explor.html#cb39-7" tabindex="-1"></a><span class="co"># indexing with maximum</span></span>
+<span id="cb39-8"><a href="05_explor.html#cb39-8" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">max</span>(x)</span></code></pre></div>
+<hr />
+<p>In the <strong>percentage</strong> transformation the value of each unit is divided
+by the sum of the values (Equation <a href="05_explor.html#eq:perc">(5.14)</a>). The sum of the normalized
+values are equal to 100.</p>
+<p><span class="math display" id="eq:perc">\[\begin{equation}
+p_{ij}=\frac{x_{ij}}{\sum^n_{i=1}x_{ij}}*100
+\tag{5.14}
+\end{equation}\]</span></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="05_explor.html#cb40-1" tabindex="-1"></a><span class="co"># creating data</span></span>
+<span id="cb40-2"><a href="05_explor.html#cb40-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">35</span>,<span class="dv">25</span>)</span>
+<span id="cb40-3"><a href="05_explor.html#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="05_explor.html#cb40-4" tabindex="-1"></a><span class="co"># percentage indexing</span></span>
+<span id="cb40-5"><a href="05_explor.html#cb40-5" tabindex="-1"></a>scaled_x <span class="ot">&lt;-</span> x<span class="sc">/</span><span class="fu">sum</span>(x)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="probability-sampling" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Probability Sampling<a href="05_explor.html#probability-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sampling allows statisticians to draw conclusions about a whole by
+examining a part. It enables us to estimate characteristics of a
+population by directly observing a portion of the entire population.
+Researchers are not interested in the sample itself, but in what can be
+learned from the survey—and how this information can be applied to the
+entire population.</p>
+<hr />
+<p><strong>Simple Random sampling</strong> is a powerful tool, we can use it to random
+subset data, or generate random distributions with precise
+characteristics. Each member of a population has an equal chance of
+being included in the sample. Also, each combination of members of the
+population has an equal chance of composing the sample. Those two
+properties are what defines simple random sampling. Simple random
+sampling can be done <em>with or without replacement</em>. A sample with
+replacement means that there is a possibility that the sampled
+observation may be selected twice or more. Usually, the simple random
+sampling approach is conducted without replacement because it is more
+convenient and gives more precise results.</p>
+<p>Simple random sampling is the easiest method of sampling and it is the
+most commonly used. Advantages of this technique are that it does not
+require any additional information on the sampled unit, nor on the
+context (i.e. the geographic area, gender, age, etc…). Also, since
+simple random sampling is a simple method and the theory behind it is
+well established, standard formulas exist to determine the sample size,
+the estimates and so on, and these formulas are easy to use.</p>
+<p>On the other hand, by making no use of context information this method
+may sometimes result less efficient in equally representing some strata
+of the population, particularly for smaller samples. Finally, if we are
+planning a survey and not just sampling already collected data, simple
+random sampling may result an expensive and unfeasible method for large
+populations because all elements must be identified and labeled prior to
+sampling. It can also be expensive if personal interviewers are required
+since the sample may be geographically spread out across the population.</p>
+<p>We can calculate the probability of a given observation being selected.
+Since we know the sample size (<span class="math inline">\(n\)</span>) and the total population (<span class="math inline">\(N\)</span>),
+calculating the probability of being included in the sample becomes a
+simple matter of division (Equation <a href="05_explor.html#eq:srs">(5.15)</a>).</p>
+<p><span class="math display" id="eq:srs">\[\begin{equation}
+p=\frac{n}{N}*100
+\tag{5.15}
+\end{equation}\]</span></p>
+<p>In R we will use the <code>sample()</code> function. This function requires us to
+specify the total population to be sampled (i.e. a vector between 1 and
+1 million), comma, the sample size we are interested in, comma, if we
+want replacement to happen (<code>TRUE</code>) or not (<code>FALSE</code>).</p>
+<p>In order to have a reproducible code (this is one of the main reasons
+for using R as our working tools), we want to be able to select the same
+random sample over and over. It may sound complex, but it is not. If we
+are not able to select the same random sample today and tomorrow, our
+analysis will change slightly every time we run the code. In order to
+solve this problem, we will use the <code>set.seed()</code> function at the
+beginning of our work. In fact by setting the seed, we tell R which set
+of random number generator to use. <strong>Please be aware that different
+versions of the Random Number Generator will select different samples
+given the same seed. If you collaborate with other people, specify the
+same version of it</strong> (see the code below)<strong>.</strong></p>
+<p>In the code below, run the first line multiple times and you will see
+different samples drawn. If instead, you run the set.seed line plus the
+sampling, you will have always the same sample. The last line of code,
+gives us an example of how to randomly select 4 rows out of the mtcars
+dataset (32 rows) using a combination of the indexing system and the
+<code>sample()</code> function. In fact, between square brackets there are: a
+vector of row numbers (generated by the <code>sample()</code> function), comma
+nothing (which means that we want to keep all the columns of the
+dataset). You can run just the sample function first to see the
+resulting vector (<code>sample(1:32, 4, replace=FALSE)</code>), after this run the
+whole line (<code>samp_data &lt;- mtcars[sample(1:32, 4, replace=FALSE),]</code>). The
+code subsets the mtcars lines randomly sampled.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="05_explor.html#cb41-1" tabindex="-1"></a><span class="co"># random sampling 4 numbers out of the series from 1 to 32</span></span>
+<span id="cb41-2"><a href="05_explor.html#cb41-2" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb41-3"><a href="05_explor.html#cb41-3" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="05_explor.html#cb41-4" tabindex="-1"></a><span class="co"># set seed allows us to reproduce the random operations we do locally</span></span>
+<span id="cb41-5"><a href="05_explor.html#cb41-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb41-6"><a href="05_explor.html#cb41-6" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb41-7"><a href="05_explor.html#cb41-7" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="05_explor.html#cb41-8" tabindex="-1"></a><span class="co"># specifying the Random Number Generator version, allows everyone to have the same sample. </span></span>
+<span id="cb41-9"><a href="05_explor.html#cb41-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>, <span class="at">kind =</span> <span class="st">&quot;Mersenne-Twister&quot;</span>, <span class="at">normal.kind =</span>  <span class="st">&quot;Inversion&quot;</span>)</span>
+<span id="cb41-10"><a href="05_explor.html#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="05_explor.html#cb41-11" tabindex="-1"></a><span class="co"># sampling the random observations selected</span></span>
+<span id="cb41-12"><a href="05_explor.html#cb41-12" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb41-13"><a href="05_explor.html#cb41-13" tabindex="-1"></a>samp_data <span class="ot">&lt;-</span> mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">FALSE</span>),]</span></code></pre></div>
+<hr />
+<p>In <strong>stratified sampling</strong>, the population is divided into homogeneous,
+mutually exclusive groups called strata, and then independent samples
+are selected from each stratum. Why do we need to create strata? There
+are many reasons, the main one being that it can make the sampling
+strategy more efficient. In fact, it was mentioned earlier that we need
+a larger sample to get a more accurate estimation of a characteristic
+that varies greatly from one unit to the other than for a characteristic
+that does not. For example, if every person in a population had the same
+salary, then a sample of one individual would be enough to get a precise
+estimate of the average salary.</p>
+<p>This is the idea behind the efficiency gain obtained with
+stratification. If we create strata within which units share similar
+characteristics (e.g., income) and are considerably different from units
+in other strata (e.g., occupation, type of dwelling) then we would only
+need a small sample from each stratum to get a precise estimate of total
+income for that stratum. Then we could combine these estimates to get a
+precise estimate of total income for the whole population. If we were to
+use a simple random sampling approach in the whole population without
+stratification, the sample would need to be larger than the total of all
+stratum samples to get an estimate of total income with the same level
+of precision.</p>
+<p>Any of the sampling methods mentioned in this section (and others that
+exist) can be used to sample within each stratum. The sampling method
+and size can vary from one stratum to another, since each stratum
+becomes an independent population. When simple random sampling is used
+to select the sample within each stratum, the sample design is called
+<strong>stratified simple random sampling</strong>. A population can be stratified by
+any variable that is available for all units on the sampling frame prior
+to sampling (i.e., age, gender, province of residence, income, etc.).</p>
+<p>The code below applies a Stratified Simple Random Sampling to the Star
+Wars dataset. Using the <code>Dplyr</code> package <span class="citation">(<a href="#ref-wickham2022">Wickham and Bryan 2022</a>)</span>, we are able to
+stratify the data by one variable (eye color), and sample randomly 40%
+of the available population in each stratum (function <code>sample_frac()</code>),
+or 2 observations per stratum (function <code>sample_n()</code>).</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="05_explor.html#cb42-1" tabindex="-1"></a><span class="co"># loading the package and data</span></span>
+<span id="cb42-2"><a href="05_explor.html#cb42-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb42-3"><a href="05_explor.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="05_explor.html#cb42-4" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="05_explor.html#cb42-5" tabindex="-1"></a>        <span class="co"># stratifying by eye color</span></span>
+<span id="cb42-6"><a href="05_explor.html#cb42-6" tabindex="-1"></a>        <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb42-7"><a href="05_explor.html#cb42-7" tabindex="-1"></a>        <span class="co"># setting the sample size</span></span>
+<span id="cb42-8"><a href="05_explor.html#cb42-8" tabindex="-1"></a>        <span class="fu">sample_frac</span>(.<span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a href="05_explor.html#cb42-9" tabindex="-1"></a>        ungroup</span>
+<span id="cb42-10"><a href="05_explor.html#cb42-10" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="05_explor.html#cb42-11" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb42-12"><a href="05_explor.html#cb42-12" tabindex="-1"></a>        <span class="co"># stratifying by eye color</span></span>
+<span id="cb42-13"><a href="05_explor.html#cb42-13" tabindex="-1"></a>        <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb42-14"><a href="05_explor.html#cb42-14" tabindex="-1"></a>        <span class="co"># setting the sample size</span></span>
+<span id="cb42-15"><a href="05_explor.html#cb42-15" tabindex="-1"></a>        <span class="fu">sample_n</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-16"><a href="05_explor.html#cb42-16" tabindex="-1"></a>        ungroup</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="exercises-2" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Exercises<a href="05_explor.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://federicoroscioli.shinyapps.io/exercises/">R playground</a>,
+Exploratory data analysis</li>
+</ul>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+<h3>Bibliography<a href="08_multivar.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-cobham2016" class="csl-entry">
+Cobham, Alex, Lukas Schlögl, and Andy Sumner. 2016. <span>“Inequality and the Tails: The Palma Proposition and Ratio.”</span> <em>Global Policy</em> 7 (1): 25–36. <a href="https://doi.org/10.1111/1758-5899.12320">https://doi.org/10.1111/1758-5899.12320</a>.
+</div>
+<div id="ref-hlavac2022" class="csl-entry">
+Hlavac, Marek. 2022. <span>“Stargazer: Beautiful LATEX, HTML and ASCII Tables from r Statistical Output.”</span> <em>The Comprehensive R Archive Network</em>. <a href="https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf">https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf</a>.
+</div>
+<div id="ref-iacus2020" class="csl-entry">
+Iacus, Stefano M., and Guido Masarotto. 2020. <span>“Package <span>‘labstatR’</span>.”</span> <em>The Comprehensive R Archive Network</em>. <a href="https://cran.r-project.org/web/packages/labstatR/labstatR.pdf">https://cran.r-project.org/web/packages/labstatR/labstatR.pdf</a>.
+</div>
+<div id="ref-laerdstatistics" class="csl-entry">
+Laerd Statistics. n.d. <span>“Measures of Central Tendency.”</span> <a href="https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php">https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php</a>.
+</div>
+<div id="ref-lane2003" class="csl-entry">
+Lane, David M., David Scott, Mikki Hebl, Rudy Guerra, Dan Osherson, and Heidi Zimmer. 2003. <em>Introduction to Statistics</em>. <a href="https://onlinestatbook.com/Online_Statistics_Education.pdf">https://onlinestatbook.com/Online_Statistics_Education.pdf</a>.
+</div>
+<div id="ref-manikandan2011" class="csl-entry">
+Manikandan, S. 2011. <span>“Measures of Central Tendency: Median and Mode.”</span> <em>Journal of Pharmacology and Pharmacotherapeutics</em> 2 (3): 214. <a href="https://doi.org/10.4103/0976-500X.83300">https://doi.org/10.4103/0976-500X.83300</a>.
+</div>
+<div id="ref-signorelli2021" class="csl-entry">
+Signorelli, Andri. 2021. <span>“DescTools: Tools for Descriptive Statistics.”</span> <a href="https://andrisignorell.github.io/DescTools/index.html">https://andrisignorell.github.io/DescTools/index.html</a>.
+</div>
+<div id="ref-torres-reyna2014" class="csl-entry">
+Torres-Reyna, Oscar. 2014. <span>“Using Stargazer to Report Regression Output and Descriptive Statistics in r.”</span> <a href="https://www.princeton.edu/~otorres/NiceOutputR.pdf">https://www.princeton.edu/~otorres/NiceOutputR.pdf</a>.
+</div>
+<div id="ref-wickham2022" class="csl-entry">
+Wickham, Hadley, and Jennifer Bryan. 2022. <span>“Readxl: Read Excel Files.”</span> <a href="https://readxl.tidyverse.org">https://readxl.tidyverse.org</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>In order to type the symbol ~ (tilde) it is needed a different
+combination of keys according to the operating system and the
+keyboards.<a href="05_explor.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="04_advanced.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="06_hypo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"toc_depth": 1,
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

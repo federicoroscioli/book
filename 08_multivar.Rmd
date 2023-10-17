@@ -65,8 +65,6 @@ you should use scaled dummies.
 
  
 
- 
-
 ### Hierarchical Clustering
 
 Hierarchical methods usually produce a graphical output known as a
@@ -149,8 +147,6 @@ dominated by variables with large values.*
 
  
 
- 
-
 ### K-Means clustering
 
 K-means clustering is a simple and elegant approach for partitioning a
@@ -182,8 +178,6 @@ kc <- kmeans(swiss, centers=3)
 library(factoextra) 
 fviz_cluster(list(data=swiss, cluster=kc$cluster))
 ```
-
- 
 
  
 
@@ -653,12 +647,6 @@ methodologies are out of the scope of this book.
 
 ## Composite Indicators
 
- 
-
- 
-
- 
-
 A composite indicator is formed when individual indicators are combined
 into a single index, based on an underlying model of the
 multidimensional concept that is being measured. The indicators that
@@ -683,8 +671,6 @@ region is 10 points below the average). The only caveat we can find is
 the lack of a unit of measure for the final indicator and thus the
 impossibility to have a meaningful single value for the world
 aggregation.
-
- 
 
  
 
@@ -771,10 +757,6 @@ and its polarity. We normalize the data using the function
 respect to the phenomeon of interest, and the method to use (see the
 help for the available methods). We finally compute our MPI using the
 function `ci_mpi` by specifying its penality.
-
- 
-
- 
 
  
 
@@ -913,8 +895,6 @@ penality corresponding to the final indicator.
 <!-- # Spatial Analysis -->
 
 <!-- To be done... -->
-
-\newpage
 
 # Final Remarks {.unnumbered}
 

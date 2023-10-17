@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Hypothesis Testing | Introduction to Data Analysis with R</title>
+  <meta name="description" content="6 Hypothesis Testing | Introduction to Data Analysis with R" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Hypothesis Testing | Introduction to Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Hypothesis Testing | Introduction to Data Analysis with R" />
+  
+  
+  
+
+<meta name="author" content="Federico Roscioli" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="05_explor.html"/>
+<link rel="next" href="07_bivar.html"/>
+<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="01_intro.html"><a href="01_intro.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Section 1 - The R code</b></span></li>
+<li class="chapter" data-level="1" data-path="01_intro.html"><a href="01_intro.html#installation"><i class="fa fa-check"></i><b>1</b> Installation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01_intro.html"><a href="01_intro.html#introductory-activities"><i class="fa fa-check"></i><b>1.1</b> Introductory activities</a></li>
+<li class="chapter" data-level="1.2" data-path="01_intro.html"><a href="01_intro.html#visualization-suggestions"><i class="fa fa-check"></i><b>1.2</b> Visualization suggestions</a></li>
+<li class="chapter" data-level="1.3" data-path="01_intro.html"><a href="01_intro.html#the-workspace"><i class="fa fa-check"></i><b>1.3</b> The workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02_abc.html"><a href="02_abc.html"><i class="fa fa-check"></i><b>2</b> A, B, C</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02_abc.html"><a href="02_abc.html#the-first-code"><i class="fa fa-check"></i><b>2.1</b> The first code</a></li>
+<li class="chapter" data-level="2.2" data-path="02_abc.html"><a href="02_abc.html#indexing"><i class="fa fa-check"></i><b>2.2</b> Indexing</a></li>
+<li class="chapter" data-level="2.3" data-path="02_abc.html"><a href="02_abc.html#the-first-function"><i class="fa fa-check"></i><b>2.3</b> The first function</a></li>
+<li class="chapter" data-level="2.4" data-path="02_abc.html"><a href="02_abc.html#dataset-exploration"><i class="fa fa-check"></i><b>2.4</b> Dataset Exploration</a></li>
+<li class="chapter" data-level="2.5" data-path="02_abc.html"><a href="02_abc.html#subsetting"><i class="fa fa-check"></i><b>2.5</b> Subsetting</a></li>
+<li class="chapter" data-level="2.6" data-path="02_abc.html"><a href="02_abc.html#importing-and-exporting-data"><i class="fa fa-check"></i><b>2.6</b> Importing and exporting data</a></li>
+<li class="chapter" data-level="2.7" data-path="02_abc.html"><a href="02_abc.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03_dataclean.html"><a href="03_dataclean.html"><i class="fa fa-check"></i><b>3</b> Data Cleaning</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03_dataclean.html"><a href="03_dataclean.html#variable-names"><i class="fa fa-check"></i><b>3.1</b> Variable Names</a></li>
+<li class="chapter" data-level="3.2" data-path="03_dataclean.html"><a href="03_dataclean.html#variable-types"><i class="fa fa-check"></i><b>3.2</b> Variable Types</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03_dataclean.html"><a href="03_dataclean.html#factor-variables"><i class="fa fa-check"></i><b>3.2.1</b> Factor variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03_dataclean.html"><a href="03_dataclean.html#dates-and-times"><i class="fa fa-check"></i><b>3.2.2</b> Dates and times</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03_dataclean.html"><a href="03_dataclean.html#row-names"><i class="fa fa-check"></i><b>3.3</b> Row Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04_advanced.html"><a href="04_advanced.html"><i class="fa fa-check"></i><b>4</b> Advanced Data Manipulation and Plotting</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04_advanced.html"><a href="04_advanced.html#ifelse"><i class="fa fa-check"></i><b>4.1</b> Ifelse</a></li>
+<li class="chapter" data-level="4.2" data-path="04_advanced.html"><a href="04_advanced.html#the-apply-family"><i class="fa fa-check"></i><b>4.2</b> The Apply family</a></li>
+<li class="chapter" data-level="4.3" data-path="04_advanced.html"><a href="04_advanced.html#dplyr"><i class="fa fa-check"></i><b>4.3</b> Dplyr</a></li>
+<li class="chapter" data-level="4.4" data-path="04_advanced.html"><a href="04_advanced.html#merging-datasets"><i class="fa fa-check"></i><b>4.4</b> Merging datasets</a></li>
+<li class="chapter" data-level="4.5" data-path="04_advanced.html"><a href="04_advanced.html#melting-vs-transposing"><i class="fa fa-check"></i><b>4.5</b> Melting vs Transposing</a></li>
+<li class="chapter" data-level="4.6" data-path="04_advanced.html"><a href="04_advanced.html#ggplot2"><i class="fa fa-check"></i><b>4.6</b> Ggplot2</a></li>
+<li class="chapter" data-level="4.7" data-path="04_advanced.html"><a href="04_advanced.html#exercises-1"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Section 2 - Statistical Analysis</b></span></li>
+<li class="chapter" data-level="5" data-path="05_explor.html"><a href="05_explor.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05_explor.html"><a href="05_explor.html#central-tendency-measures"><i class="fa fa-check"></i><b>5.1</b> Central Tendency Measures</a></li>
+<li class="chapter" data-level="5.2" data-path="05_explor.html"><a href="05_explor.html#variability-measures"><i class="fa fa-check"></i><b>5.2</b> Variability Measures</a></li>
+<li class="chapter" data-level="5.3" data-path="05_explor.html"><a href="05_explor.html#inequality-measures"><i class="fa fa-check"></i><b>5.3</b> Inequality Measures</a></li>
+<li class="chapter" data-level="5.4" data-path="05_explor.html"><a href="05_explor.html#data-visualization"><i class="fa fa-check"></i><b>5.4</b> Data visualization</a></li>
+<li class="chapter" data-level="5.5" data-path="05_explor.html"><a href="05_explor.html#scaling-data"><i class="fa fa-check"></i><b>5.5</b> Scaling data</a></li>
+<li class="chapter" data-level="5.6" data-path="05_explor.html"><a href="05_explor.html#probability-sampling"><i class="fa fa-check"></i><b>5.6</b> Probability Sampling</a></li>
+<li class="chapter" data-level="5.7" data-path="05_explor.html"><a href="05_explor.html#exercises-2"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06_hypo.html"><a href="06_hypo.html"><i class="fa fa-check"></i><b>6</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06_hypo.html"><a href="06_hypo.html#probability-distributions"><i class="fa fa-check"></i><b>6.1</b> Probability Distributions</a></li>
+<li class="chapter" data-level="6.2" data-path="06_hypo.html"><a href="06_hypo.html#shapiro-wilk-test"><i class="fa fa-check"></i><b>6.2</b> Shapiro-Wilk Test</a></li>
+<li class="chapter" data-level="6.3" data-path="06_hypo.html"><a href="06_hypo.html#one-sample-t-test"><i class="fa fa-check"></i><b>6.3</b> One-Sample T-Test</a></li>
+<li class="chapter" data-level="6.4" data-path="06_hypo.html"><a href="06_hypo.html#unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>6.4</b> Unpaired Two Sample T-Test</a></li>
+<li class="chapter" data-level="6.5" data-path="06_hypo.html"><a href="06_hypo.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>6.5</b> Mann Whitney U Test</a></li>
+<li class="chapter" data-level="6.6" data-path="06_hypo.html"><a href="06_hypo.html#paired-sample-t-test"><i class="fa fa-check"></i><b>6.6</b> Paired Sample T-Test</a></li>
+<li class="chapter" data-level="6.7" data-path="06_hypo.html"><a href="06_hypo.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="07_bivar.html"><a href="07_bivar.html"><i class="fa fa-check"></i><b>7</b> Bivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07_bivar.html"><a href="07_bivar.html#correlation"><i class="fa fa-check"></i><b>7.1</b> Correlation</a></li>
+<li class="chapter" data-level="7.2" data-path="07_bivar.html"><a href="07_bivar.html#linear-regression"><i class="fa fa-check"></i><b>7.2</b> Linear Regression</a></li>
+<li class="chapter" data-level="7.3" data-path="07_bivar.html"><a href="07_bivar.html#logistic-regressions"><i class="fa fa-check"></i><b>7.3</b> Logistic Regressions</a></li>
+<li class="chapter" data-level="7.4" data-path="07_bivar.html"><a href="07_bivar.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="08_multivar.html"><a href="08_multivar.html"><i class="fa fa-check"></i><b>8</b> Multivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="08_multivar.html"><a href="08_multivar.html#cluster-analysis"><i class="fa fa-check"></i><b>8.1</b> Cluster Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="08_multivar.html"><a href="08_multivar.html#hierarchical-clustering"><i class="fa fa-check"></i><b>8.1.1</b> Hierarchical Clustering</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08_multivar.html"><a href="08_multivar.html#k-means-clustering"><i class="fa fa-check"></i><b>8.1.2</b> K-Means clustering</a></li>
+<li class="chapter" data-level="8.1.3" data-path="08_multivar.html"><a href="08_multivar.html#the-silhouette-plot"><i class="fa fa-check"></i><b>8.1.3</b> The silhouette plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="08_multivar.html"><a href="08_multivar.html#heatmap"><i class="fa fa-check"></i><b>8.2</b> Heatmap</a></li>
+<li class="chapter" data-level="8.3" data-path="08_multivar.html"><a href="08_multivar.html#principal-component-analysis"><i class="fa fa-check"></i><b>8.3</b> Principal Component Analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="08_multivar.html"><a href="08_multivar.html#classification-and-regression-trees"><i class="fa fa-check"></i><b>8.4</b> Classification And Regression Trees</a></li>
+<li class="chapter" data-level="8.5" data-path="08_multivar.html"><a href="08_multivar.html#composite-indicators"><i class="fa fa-check"></i><b>8.5</b> Composite Indicators</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="08_multivar.html"><a href="08_multivar.html#mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.1</b> Mazziotta-Pareto Index</a></li>
+<li class="chapter" data-level="8.5.2" data-path="08_multivar.html"><a href="08_multivar.html#adjusted-mazziotta-pareto-index"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted Mazziotta-Pareto Index</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="08_multivar.html"><a href="08_multivar.html#exercises-5"><i class="fa fa-check"></i><b>8.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="08_multivar.html"><a href="08_multivar.html#final-remarks"><i class="fa fa-check"></i>Final Remarks</a></li>
+<li class="chapter" data-level="" data-path="08_multivar.html"><a href="08_multivar.html#bibliography"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hypothesis-testing" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Hypothesis Testing<a href="06_hypo.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Hypothesis testing is a vital process in inferential statistics where
+the goal is to use <strong>sample data</strong> to draw conclusions about an entire
+population. A hypothesis test evaluates two mutually exclusive
+statements about a population to determine which statement is best
+supported by the sample data. These two statements are called the null
+hypothesis and the alternative hypothesis.</p>
+<p>Why do we need a test? As mentioned, almost always in statistics, we are
+dealing with a sample instead of the full population. There are huge
+benefits when working with samples because it is usually impossible to
+collect data from an entire population. However, the trade off for
+working with a manageable sample is that we need to account for the
+<strong>sampling error</strong>. The sampling error is the gap between the sample
+statistic and the population parameter. Unfortunately, the value of the
+population parameter is not only unknown but usually unknowable.
+<strong>Hypothesis tests provide a rigorous statistical framework to draw
+conclusions about an entire population based on a representative
+sample.</strong></p>
+<p>As an example, given a sample mean of 350USD and a hypothetical
+population mean of 300USD, we can estimate how much is the probability
+that the population mean of 300USD is true (<strong>p-value</strong>), thus the
+sampling error, by using the <strong>T distribution</strong> (which is similar to the
+Normal Distribution, but with fattier tails). We will follow these four
+steps:</p>
+<ol style="list-style-type: decimal">
+<li>First, we define the null (<span class="math inline">\(\bar i_n = \bar i_N\)</span>) and alternative
+hypotheses (<span class="math inline">\(\bar i_n \neq \bar i_N\)</span>). Much of the emphasis in
+classical statistics focuses on testing a single <strong>null
+hypothesis</strong>, such as <em>H<sub>0</sub>:</em> <em>the average income between two groups
+is the same</em>. Of course, we would probably like to discover that
+there is a difference between the average income in the two groups.
+But for reasons that will become clear, we construct a null
+hypothesis corresponding to <strong>no difference</strong>.</li>
+<li>Next, we construct a test statistic that summarizes the strength of
+evidence against the null hypothesis.</li>
+<li>We then compute a <strong>p-value</strong> that quantifies the probability of
+having obtained a comparable or more extreme value of the test
+statistic under the <span class="math inline">\(H_0\)</span> <span class="citation">(<a href="#ref-lee2019">Lee 2019</a>)</span>.</li>
+<li>Finally, based on a predefined significance level that we want to
+reach (<strong>alpha</strong>), we will decide whether to reject or not <span class="math inline">\(H_0\)</span>
+that the population mean is 300.</li>
+</ol>
+<p>Hypothesis tests are not 100% accurate because they use a random sample
+to draw conclusions about entire populations. When we perform a
+hypothesis test, there are two types of errors related to drawing an
+incorrect conclusion.</p>
+<ul>
+<li><p>Type I error: rejects a null hypothesis that is true (a false
+positive).</p></li>
+<li><p>Type II error: fails to reject a null hypothesis that is false (a
+false negative).</p></li>
+</ul>
+<p>A <strong>significance level</strong>, also known as alpha, is an evidentiary
+standard that a researcher sets before the study. It defines how
+strongly the sample evidence must contradict the null hypothesis before
+we can reject the null hypothesis for the entire population. The
+strength of the evidence is defined by the probability of rejecting a
+null hypothesis that is true <span class="citation">(<a href="#ref-frost">Frost, n.d.</a>)</span>. In other words, it is the
+probability that you say there is an effect when there is no effect. In
+practical terms, <span class="math inline">\(alpha=1-pvalue\)</span>. For instance, a p-value lower than
+0.05 signifies 95% chances of detecting a difference between the two
+values. Higher significance levels require stronger sample evidence to
+be able to reject the null hypothesis. For example, to be statistically
+significant at the 0.01 requires more substantial evidences than the
+0.05 significance level.</p>
+<p>As mentioned, the significance level is set by the researcher. However
+there are some standard values that are conventionally applied in
+different scientific context, and we will follow these conventions.</p>
+<table>
+<caption>Significal levels by convention</caption>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\alpha\)</span></th>
+<th><span class="math inline">\(p-value\)</span></th>
+<th>symbol</th>
+<th>scientific field</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>80%</td>
+<td>&lt;0.2</td>
+<td></td>
+<td>social science</td>
+</tr>
+<tr class="even">
+<td>90%</td>
+<td>&lt;0.1</td>
+<td>*</td>
+<td>social science</td>
+</tr>
+<tr class="odd">
+<td>95%</td>
+<td>&lt;0.05</td>
+<td>**</td>
+<td>all</td>
+</tr>
+<tr class="even">
+<td>99%</td>
+<td>&lt;0.01</td>
+<td>***</td>
+<td>all</td>
+</tr>
+<tr class="odd">
+<td>99.9%</td>
+<td>&lt;0.001</td>
+<td></td>
+<td>physics</td>
+</tr>
+</tbody>
+</table>
+<p>Following we will see different type of tests, and their implementation
+using R. My suggestion, when working with really small numbers (such as
+the p-values), is to suppress the scientific notation in order to have a
+clearer sense of the coefficient scale. Use the following code.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="06_hypo.html#cb43-1" tabindex="-1"></a><span class="co">#suppress scientific notation</span></span>
+<span id="cb43-2"><a href="06_hypo.html#cb43-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<div id="probability-distributions" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Probability Distributions<a href="06_hypo.html#probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All <strong>probability distributions</strong> can be classified as discrete
+probability distributions or as continuous probability distributions,
+depending on whether they define probabilities associated with discrete
+variables or continuous variables. With a discrete probability
+distribution, each possible value of the discrete random variable can be
+associated with a non-zero probability. Two of the most famous
+distributions associated with categorical data are the Binomial and the
+Poisson Distributions.</p>
+<p>If a random variable is a continuous variable, its probability
+distribution is called a continuous probability distribution. This
+distribution differs from a discrete probability distribution because
+the probability that a continuous random variable will assume a
+particular value is zero, and the function that shows the density of the
+values of our data is called Probability Density Function, sometimes
+abbreviated pdf. Basically, this function represents the outline of the
+histogram. The probability that a random variable assumes a value
+between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is equal to the area under the density function
+bounded by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> <span class="citation">(<a href="#ref-damodaran">Damodaran, n.d.</a>)</span>.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
+<img src="_main_files/figure-html/unnamed-chunk-55-1.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-55-2.png" alt="From left: A density distribution as outline of the hisogram; The probability that the random variable $X$ is higher than or equal to 1.5." width="50%"  />
+<p class="caption">
+Figure 6.1: From left: A density distribution as outline of the hisogram; The probability that the random variable <span class="math inline">\(X\)</span> is higher than or equal to 1.5.
+</p>
+</div>
+<p>In Figure 9, the shaded area in the graph represents the probability
+that the random variable <span class="math inline">\(X\)</span> is higher than or equal to <span class="math inline">\(1.5\)</span>. This is a
+cumulative probability, also called <strong>p-value</strong> (please, remember this
+definition, as this will be key in order to understand all the remaining
+of this chapter). However, the probability that <span class="math inline">\(X\)</span> is exactly equal to
+<span class="math inline">\(1.5\)</span> would be zero.</p>
+<hr />
+<p>The <strong>normal distribution</strong>, also known as the Gaussian distribution, is
+the most important probability distribution in statistics for
+independent, continuous, random variables. Most people recognize its
+familiar bell-shaped curve in statistical reports (Figure 9).</p>
+<p><em>The normal distribution is a continuous probability distribution that
+is symmetrical around its mean, most of the observations cluster around
+the central peak, and the probabilities for values further away from the
+mean taper off equally in both directions.</em></p>
+<p>Extreme values in both tails of the distribution are similarly unlikely.
+While the normal distribution is symmetrical, not all symmetrical
+distributions are normal. It is the most important probability
+distribution in statistics because it accurately describes the
+distribution of values for many natural phenomena <span class="citation">(<a href="#ref-frost">Frost, n.d.</a>)</span>. As with any
+probability distribution, the parameters for the normal distribution
+define its shape and probabilities entirely. The normal distribution has
+two parameters, the <strong>mean</strong> and <strong>standard deviation</strong>.</p>
+<p>Despite the different shapes, all forms of the normal distribution have
+the following characteristic properties.</p>
+<ul>
+<li><p>They’re all symmetric bell curves. The Gaussian distribution cannot
+be skewed.</p></li>
+<li><p>The mean, median, and mode are all equal.</p></li>
+<li><p>One half of the population is less than the mean, and the other half
+is greater than the mean.</p></li>
+<li><p>The <strong>Empirical Rule</strong> allows you to determine the proportion of
+values that fall within certain distances from the mean.</p></li>
+</ul>
+<p>When we have normally distributed data, the standard deviation becomes
+particularly valuable. In fact, we can use it to determine the
+proportion of the values that fall within a specified number of standard
+deviations from the mean. For example, in a normal distribution, 68% of
+the observations fall within +/- 1 standard deviation from the mean
+(Figure 10). This property is part of the Empirical Rule, which
+describes the percentage of the data that fall within specific numbers
+of standard deviations from the mean for bell-shaped curves. For this
+reason, in statistics, when dealing with large-enough dataset, the
+normal distribution is assumed, even if it is not perfect.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<img src="images/Senza%20titolo.png" alt="The Empirical Rule." width="80%"  />
+<p class="caption">
+Figure 6.2: The Empirical Rule.
+</p>
+</div>
+<hr />
+<p>The <strong>standard normal distribution</strong> is a special case of the normal
+distribution where the mean is 0 and the standard deviation is 1. This
+distribution is also known as the Z-distribution. A value on the
+standard normal distribution is known as a standard score, or a Z-score.
+A standard score represents the number of standard deviations above or
+below the mean that a specific observation falls. A standard normal
+distribution is also the result of the z-score standardization process
+(see <a href="05_explor.html#scaling-data">Scaling data</a>)<span class="citation">(<a href="#ref-frost">Frost, n.d.</a>)</span>. So, if we have to compare the means of the
+distributions of two elements (the weight of apple and pears), by
+standardizing we can do it (Figure 11).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<img src="_main_files/figure-html/unnamed-chunk-57-1.png" alt="The comparison between Apples and Pears standardized." width="50%"  />
+<p class="caption">
+Figure 6.3: The comparison between Apples and Pears standardized.
+</p>
+</div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="shapiro-wilk-test" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Shapiro-Wilk Test<a href="06_hypo.html#shapiro-wilk-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Shapiro-Wilk Test is a way to tell if a random sample comes from a
+normal distribution. The test gives us a W value and a p-value. The null
+hypothesis is that our population is normally distributed. Thus, if we
+get a significant p-value (&lt;0.1), we will have to reject <span class="math inline">\(H_0\)</span>, and we
+will consider the distribution as no normal. The test has limitations,
+most importantly it has a bias by sample size. The larger the sample,
+the more likely we will get a statistically significant result.</p>
+<p>Why is it important to know if a random sample comes from a normal
+distribution? Because, if this hypothesis does not hold, we are not able
+to use the characteristics of the t-distribution in order to make some
+inference and, instead of using a T-Test, we will have to use a Wilcoxon
+Rank Sum test or Mann-Whitney test.</p>
+<p>In order to perform a Shapiro-Wilk Test in R, we need to use the
+following code.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="06_hypo.html#cb44-1" tabindex="-1"></a><span class="co"># Shapiro Test of normality</span></span>
+<span id="cb44-2"><a href="06_hypo.html#cb44-2" tabindex="-1"></a><span class="co"># H0: the variable is normally distributed</span></span>
+<span id="cb44-3"><a href="06_hypo.html#cb44-3" tabindex="-1"></a><span class="co"># Ha: the variable is not normally distributed</span></span>
+<span id="cb44-4"><a href="06_hypo.html#cb44-4" tabindex="-1"></a><span class="fu">shapiro.test</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb44-5"><a href="06_hypo.html#cb44-5" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<p> </p>
+<p> </p>
+</div>
+<div id="one-sample-t-test" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> One-Sample T-Test<a href="06_hypo.html#one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One-Sample T-Test is used to compare the mean of one sample to a
+theoretical/hypothetical mean (as in our previous example). We can apply
+the test according to one of the three different type of hypotheses
+available, depending on our research question:</p>
+<ul>
+<li>The null hypothesis (<span class="math inline">\(H_0\)</span>) is that the sample mean is equal to the
+known mean, and the alternative (<span class="math inline">\(H_a\)</span>) is that they are not
+(argument “two.sided”).</li>
+<li>The null hypothesis (<span class="math inline">\(H_0\)</span>) is that the sample mean is lower-equal
+to the known mean, and the alternative (<span class="math inline">\(H_a\)</span>) is that it is bigger
+(argument “greater”).</li>
+<li>The null hypothesis (<span class="math inline">\(H_0\)</span>) is that the sample mean is bigger-equal
+to the known mean, and the alternative (<span class="math inline">\(H_a\)</span>) is that it is smaller
+(argument “less”).</li>
+</ul>
+<p>In the code below, given an average consumption of 20.1 miles per
+gallon, we want to test if the cars’ consumption is on average lower
+than 22 miles per gallon (<span class="math inline">\(H_a\)</span>). And this is in fact true, because we
+retrieve a significant p-value (&lt;0.05), thus we reject <span class="math inline">\(H_0\)</span>. By using
+the package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas2020">Bratsas, Foudouli, and Koupidis 2020</a>)</span>, we can also plot this test.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="06_hypo.html#cb45-1" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb45-2"><a href="06_hypo.html#cb45-2" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="06_hypo.html#cb45-3" tabindex="-1"></a><span class="co"># H0: cars consumption is on average 22 mpg or higher</span></span>
+<span id="cb45-4"><a href="06_hypo.html#cb45-4" tabindex="-1"></a><span class="co"># Ha: cars consumption is on average lower than 22 mpg</span></span>
+<span id="cb45-5"><a href="06_hypo.html#cb45-5" tabindex="-1"></a><span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span>
+<span id="cb45-6"><a href="06_hypo.html#cb45-6" tabindex="-1"></a><span class="co">#We reject H0. The average car consumption is significantly lower than 22 mpg.</span></span>
+<span id="cb45-7"><a href="06_hypo.html#cb45-7" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="06_hypo.html#cb45-8" tabindex="-1"></a><span class="co"># plot the t-test </span></span>
+<span id="cb45-9"><a href="06_hypo.html#cb45-9" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
+<span id="cb45-10"><a href="06_hypo.html#cb45-10" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
+<img src="_main_files/figure-html/unnamed-chunk-60-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
+<p class="caption">
+Figure 6.4: Single Sample T-Test as plotted by gginference package.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
+<img src="images/Schermata%202022-03-29%20alle%2016.14.37.png" alt="Single Sample T-Test output example." width="50%"  />
+<p class="caption">
+Figure 6.5: Single Sample T-Test output example.
+</p>
+</div>
+<p>The output of the test in R gives us many information. The most
+important are: the data that we are using (<code>mtcars$mpg</code>), the t
+statistics (if it is lower than 2, we have a significant p-value), the
+p-value, the alternative hypothesis (<span class="math inline">\(H_a\)</span>), the 95% confidence interval
+(so the boundaries of 95% of the possible averages), and the sample
+estimate of the mean.</p>
+<p> </p>
+<p> </p>
+</div>
+<div id="unpaired-two-sample-t-test" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Unpaired Two Sample T-Test<a href="06_hypo.html#unpaired-two-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the most common tests in statistics is the Unpaired Two Sample
+T-Test, used to determine whether the means of two groups are equal to
+each other <span class="citation">(<a href="#ref-ziliak2008">Ziliak 2008</a>)</span>. The assumption for the test is that both
+groups are sampled from normal distributions with equal variances. The
+null hypothesis (<span class="math inline">\(H_0\)</span>) is that the two means are equal, and the
+alternative (<span class="math inline">\(H_a\)</span>) is that they are not.</p>
+<p>As an example, we can compare the average income between two group of
+100 people. First, we explore some descriptive statistics about the two
+groups in order to have an idea. And we see that the difference between
+the two groups is only 0.69. Note, that we set the seed because we
+generate our data randomly from an Normal distribution using the
+function <code>rnorm()</code>.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="06_hypo.html#cb46-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb46-2"><a href="06_hypo.html#cb46-2" tabindex="-1"></a>income_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">20</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
+<span id="cb46-3"><a href="06_hypo.html#cb46-3" tabindex="-1"></a>income_b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="fl">18.8</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb46-4"><a href="06_hypo.html#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="06_hypo.html#cb46-5" tabindex="-1"></a><span class="fu">boxplot</span>(income_a, income_b)</span>
+<span id="cb46-6"><a href="06_hypo.html#cb46-6" tabindex="-1"></a><span class="fu">mean</span>(income_a)<span class="sc">-</span><span class="fu">mean</span>(income_b)</span></code></pre></div>
+<p>Before proceeding with the test, we should verify the assumption of
+normality by doing a Shapiro-Wilk Test as explained before. However, as
+the data are normally distributed by construction, we will skip this
+step.</p>
+<p>We will then state our hypotheses, and run the Unpaired Two Sample
+T-Test. The R function is the same as for the One-Sample T-Test, but
+specifying different arguments. We can again plot our test using the
+package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas2020">Bratsas, Foudouli, and Koupidis 2020</a>)</span>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="06_hypo.html#cb47-1" tabindex="-1"></a><span class="co"># H0: the two groups have the same income on average</span></span>
+<span id="cb47-2"><a href="06_hypo.html#cb47-2" tabindex="-1"></a><span class="co"># Ha: the two groups have the different income on average</span></span>
+<span id="cb47-3"><a href="06_hypo.html#cb47-3" tabindex="-1"></a><span class="fu">t.test</span>(income_a, income_b) <span class="co"># reject H0</span></span>
+<span id="cb47-4"><a href="06_hypo.html#cb47-4" tabindex="-1"></a><span class="co"># We accept Ha. There is a SIGNIFICANT mean income difference (0.67)</span></span>
+<span id="cb47-5"><a href="06_hypo.html#cb47-5" tabindex="-1"></a><span class="co"># between the two groups.</span></span>
+<span id="cb47-6"><a href="06_hypo.html#cb47-6" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="06_hypo.html#cb47-7" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
+<span id="cb47-8"><a href="06_hypo.html#cb47-8" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(income_a, income_b))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
+<img src="_main_files/figure-html/unnamed-chunk-64-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
+<p class="caption">
+Figure 6.6: Single Sample T-Test as plotted by gginference package.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<img src="images/Schermata%202022-03-29%20alle%2016.36.10.png" alt="Two sample T-test output example." width="50%"  />
+<p class="caption">
+Figure 6.7: Two sample T-test output example.
+</p>
+</div>
+<p>As for the One-Sample T-Test, R gives us a set of information about the
+test. The most important are: the data that we are using, the t
+statistics (if it is lower than 2, we have a significant p-value), the
+p-value, the alternative hypothesis (<span class="math inline">\(H_a\)</span>), the 95% confidence interval
+(so the boundaries of 95% of the possible difference between the
+averages of the two groups), and the sample estimates of the mean. Note
+that we will have to compute the difference between the two averages “by
+hand”, in case we needed.</p>
+<p>If we want to extract the coefficients, the p-value or any other
+information given by the t-test in order to build a table, we must
+assign the test to an object first, and then extract the data. In the
+code below we run the Unpaired Two Sample T-Test for manual and
+automatic on the average consumption and weight of the cars. We then
+create a table with the average difference and the p-value of both
+tests. <em>Note that the t-test formula is written in a different way than
+in the code chunk above, however the meaning of the two expressions is
+the same.</em></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="06_hypo.html#cb48-1" tabindex="-1"></a><span class="co"># create a table</span></span>
+<span id="cb48-2"><a href="06_hypo.html#cb48-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
+<span id="cb48-3"><a href="06_hypo.html#cb48-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">t.test</span>(wt <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
+<span id="cb48-4"><a href="06_hypo.html#cb48-4" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="06_hypo.html#cb48-5" tabindex="-1"></a>taboft <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;coef&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;difference&quot;</span>, <span class="st">&quot;p-value&quot;</span>),</span>
+<span id="cb48-6"><a href="06_hypo.html#cb48-6" tabindex="-1"></a>                     <span class="st">&quot;mpg&quot;</span><span class="ot">=</span> <span class="fu">c</span>(t<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>t<span class="sc">$</span>estimate[<span class="dv">2</span>], t<span class="sc">$</span>p.value),</span>
+<span id="cb48-7"><a href="06_hypo.html#cb48-7" tabindex="-1"></a>                     <span class="st">&quot;wt&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(s<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>s<span class="sc">$</span>estimate[<span class="dv">2</span>], s<span class="sc">$</span>p.value))</span>
+<span id="cb48-8"><a href="06_hypo.html#cb48-8" tabindex="-1"></a>taboft</span></code></pre></div>
+<p> </p>
+<p> </p>
+</div>
+<div id="mann-whitney-u-test" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Mann Whitney U Test<a href="06_hypo.html#mann-whitney-u-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the case the variable we want to compare are not normally distributed
+(aka: the Shapiro test gives us a significant p-value), we can run a
+Mann Whitney U Test, also known as Wilcoxon Rank Sum test <span class="citation">(<a href="#ref-dewinter">Winter 2013</a>)</span>.
+It is used to test whether two samples are likely to derive from the
+same population (i.e., that the two populations have the same shape).
+Some scholars interpret this test as comparing the medians between the
+two populations. Recall that the Unpaired Two Sample T-Test compares the
+means between independent groups. In contrast, the research hypotheses
+for this test are stated as follows:</p>
+<p><span class="math inline">\(H_0\)</span>: The two populations are equal versus</p>
+<p><span class="math inline">\(H_a\)</span>: The two populations are not equal.</p>
+<p>The procedure for the test involves pooling the observations from the
+two samples into one combined sample, keeping track of which sample each
+observation comes from, and then ranking lowest to highest.</p>
+<p>In order to run it, the only thing we need to change is the name of the
+formula of the test, as written in the code below.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="06_hypo.html#cb49-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(mpg.at, mpg.mt)</span></code></pre></div>
+<p> </p>
+<p> </p>
+</div>
+<div id="paired-sample-t-test" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Paired Sample T-Test<a href="06_hypo.html#paired-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Paired Sample T-Test is a statistical procedure used to determine
+whether the mean difference between two sets of observations is zero.
+Common applications of the Paired Sample T-Test include case-control
+studies or repeated-measures designs (time series). In fact, each
+subject or entity must be measured twice, resulting in <strong>pairs</strong> <strong>of
+observations</strong>. As an example, suppose we are interested in evaluating
+the effectiveness of a company training program. We would measure the
+performance of a sample of employees before and after completing the
+program, and analyze the differences using a Paired Sample T-Test to see
+its impact.</p>
+<p>The code below generates a dataset with some before and after values. We
+then compute the difference between the two measures and run a
+Shapiro-Wilk Test on them in order to verify the normality of the data
+distribution. Finally, we can run the proper Paired Sample T-Test on our
+data (or a Paired Mann Whitney U Test, if data are not normally
+distributed).</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="06_hypo.html#cb50-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;before&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">200.1</span>, <span class="fl">190.9</span>, <span class="fl">192.7</span>, <span class="dv">213</span>, <span class="fl">241.4</span>, <span class="fl">196.9</span>, </span>
+<span id="cb50-2"><a href="06_hypo.html#cb50-2" tabindex="-1"></a>                              <span class="fl">172.2</span>, <span class="fl">185.5</span>, <span class="fl">205.2</span>, <span class="fl">193.7</span>),</span>
+<span id="cb50-3"><a href="06_hypo.html#cb50-3" tabindex="-1"></a>                 <span class="st">&quot;after&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">392.9</span>, <span class="fl">393.2</span>, <span class="fl">345.1</span>, <span class="dv">393</span>, <span class="dv">434</span>, <span class="fl">427.9</span>, <span class="dv">422</span>, </span>
+<span id="cb50-4"><a href="06_hypo.html#cb50-4" tabindex="-1"></a>                             <span class="fl">383.9</span>, <span class="fl">392.3</span>, <span class="fl">352.2</span>))</span>
+<span id="cb50-5"><a href="06_hypo.html#cb50-5" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="06_hypo.html#cb50-6" tabindex="-1"></a><span class="co"># compute the difference</span></span>
+<span id="cb50-7"><a href="06_hypo.html#cb50-7" tabindex="-1"></a>df<span class="sc">$</span>difference <span class="ot">&lt;-</span> df<span class="sc">$</span>before <span class="sc">-</span> df<span class="sc">$</span>after</span>
+<span id="cb50-8"><a href="06_hypo.html#cb50-8" tabindex="-1"></a><span class="co"># H0: the variables are normally distributed</span></span>
+<span id="cb50-9"><a href="06_hypo.html#cb50-9" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>difference) <span class="co"># accept H0</span></span>
+<span id="cb50-10"><a href="06_hypo.html#cb50-10" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>difference)</span>
+<span id="cb50-11"><a href="06_hypo.html#cb50-11" tabindex="-1"></a></span>
+<span id="cb50-12"><a href="06_hypo.html#cb50-12" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>before, df<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
+<div id="exercises-3" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Exercises<a href="06_hypo.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+<h3>Bibliography<a href="08_multivar.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-bratsas2020" class="csl-entry">
+Bratsas, Charalampos, Anastasia Foudouli, and Kleanthis Koupidis. 2020. <span>“Package <span>‘</span>Gginference<span>’</span>.”</span> <a href="https://cran.r-project.org/web/packages/gginference/gginference.pdf">https://cran.r-project.org/web/packages/gginference/gginference.pdf</a>.
+</div>
+<div id="ref-damodaran" class="csl-entry">
+Damodaran, Aswath. n.d. <span>“Statistical Distributions.”</span> <a href="http://people.stern.nyu.edu/adamodar/New_Home_Page/StatFile/statdistns.htm">http://people.stern.nyu.edu/adamodar/New_Home_Page/StatFile/statdistns.htm</a>.
+</div>
+<div id="ref-frost" class="csl-entry">
+Frost, Jim. n.d. <span>“Normal Distribution in Statistics.”</span> <a href="https://statisticsbyjim.com/basics/normal-distribution/">https://statisticsbyjim.com/basics/normal-distribution/</a>.
+</div>
+<div id="ref-lee2019" class="csl-entry">
+Lee. 2019. <span>“P-Values Explained by Data Scientist.”</span> <a href="https://towardsdatascience.com/p-values-explained-by-data-scientist-f40a746cfc8">https://towardsdatascience.com/p-values-explained-by-data-scientist-f40a746cfc8</a>.
+</div>
+<div id="ref-dewinter" class="csl-entry">
+Winter, J. C. F. de. 2013. <span>“Using the Student’s t-Test with Extremely Small Sample Sizes.”</span> <a href="https://doi.org/10.7275/E4R6-DJ05">https://doi.org/10.7275/E4R6-DJ05</a>.
+</div>
+<div id="ref-ziliak2008" class="csl-entry">
+Ziliak, Stephen T. 2008. <span>“Retrospectives: Guinnessometrics: The Economic Foundation of <span>“</span>Student’s<span>”</span> <span><em>t</em></span>.”</span> <em>Journal of Economic Perspectives</em> 22 (4): 199–216. <a href="https://doi.org/10.1257/jep.22.4.199">https://doi.org/10.1257/jep.22.4.199</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="05_explor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="07_bivar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"toc_depth": 1,
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
