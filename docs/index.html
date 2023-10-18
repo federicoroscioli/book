@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Introduction to Data Analysis with R</title>
-  <meta name="description" content="Introduction to Data Analysis with R" />
+  <meta name="description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Introduction to Data Analysis with R" />
   <meta property="og:type" content="book" />
-  
-  
+  <meta property="og:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
+  <meta property="og:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Introduction to Data Analysis with R" />
   
-  
-  
+  <meta name="twitter:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
+  <meta name="twitter:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
 
 <meta name="author" content="Federico Roscioli" />
 
@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/fav_icon.jpg" type="image/x-icon" />
 
 <link rel="next" href="introduction.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -48,6 +48,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -268,7 +269,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Introduction to Data Analysis with R</h1>
 <p class="author"><em>Federico Roscioli</em></p>
-<p class="date"><em>17 October, 2023</em></p>
+<p class="date"><em>18 October, 2023</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -293,16 +294,27 @@ version of the solution”, I hope you will appreciate it. In fact, with
 R, it is possible to do the same thing in 1000 different ways, and by
 looking at the internet you can have a confirmation of it.</p>
 <hr />
-<p>This website is free to use, and is licensed under the GNU General Public
-License 2.0. If you’d like a pdf copy of the book, you can download it <a href="https://github.com/federicoroscioli/book/blob/2b55c0f10dac709bf83a6edc26c7175128c34cd3/docs/_main.pdf">here</a>.</p>
+<p>This website is free to use, and is licensed under the GNU General
+Public License 2.0. If you’d like a pdf copy of the book, you can
+download it
+<a href="https://github.com/federicoroscioli/book/blob/2b55c0f10dac709bf83a6edc26c7175128c34cd3/docs/_main.pdf">here</a>.</p>
 <div id="author" class="section level2 unnumbered hasAnchor">
 <h2>Author<a href="index.html#author" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Federico Roscioli</strong> is a PhD Student in Economics and Finance at the University of Rome Tor Vergata. He has an international experience as a consultant for various International Organizations and Research Institutes and a background as freelance photojournalist. His research interests include: development issues, environmental sustainability, poverty, social protection, food security and nutrition.
-<a href="https://www.federicoroscioli.com/">www.federicoroscioli.com</a></p>
+<p><strong>Federico Roscioli</strong> is a PhD Student in Economics and Finance at the
+University of Rome Tor Vergata. He has an international experience as a
+consultant for various International Organizations and Research
+Institutes and a background as freelance photojournalist. His research
+interests include: development issues, environmental sustainability,
+poverty, social protection, food security and nutrition.</p>
+<p><a href="https://www.federicoroscioli.com/">www.federicoroscioli.com</a></p>
 </div>
 <div id="acknowledgements" class="section level2 unnumbered hasAnchor">
 <h2>Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This book was written following the teachings of Matteo Mazziotta (ISTAT).</p>
+This book was written following the teachings of Matteo Mazziotta (ISTAT).
+<!-- ```{js, echo = FALSE} -->
+<!-- title=document.getElementById('header'); -->
+<!-- title.innerHTML = '<img src="images/IMG_1312.jpeg" alt="Test Image" width="200">' + title.innerHTML -->
+<!-- ``` -->
 <div style="page-break-after: always;"></div>
 
 </div>
@@ -328,20 +340,20 @@ License 2.0. If you’d like a pdf copy of the book, you can download it <a href
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
-"twitter": true,
-"linkedin": false,
+"twitter": false,
+"linkedin": true,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
+"whatsapp": true,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
-"size": 2
+"family": "serif",
+"size": 1
 },
 "edit": {
 "link": null,

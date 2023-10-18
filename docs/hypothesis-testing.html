@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Hypothesis Testing | Introduction to Data Analysis with R</title>
-  <meta name="description" content="6 Hypothesis Testing | Introduction to Data Analysis with R" />
+  <meta name="description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Hypothesis Testing | Introduction to Data Analysis with R" />
   <meta property="og:type" content="book" />
-  
-  
+  <meta property="og:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
+  <meta property="og:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="6 Hypothesis Testing | Introduction to Data Analysis with R" />
   
-  
-  
+  <meta name="twitter:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
+  <meta name="twitter:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
 
 <meta name="author" content="Federico Roscioli" />
 
@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/fav_icon.jpg" type="image/x-icon" />
 <link rel="prev" href="exploratory-data-analysis.html"/>
 <link rel="next" href="bivariate-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -48,6 +48,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -381,8 +382,10 @@ different scientific context, and we will follow these conventions.</p>
 using R. My suggestion, when working with really small numbers (such as
 the p-values), is to suppress the scientific notation in order to have a
 clearer sense of the coefficient scale. Use the following code.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="hypothesis-testing.html#cb43-1" tabindex="-1"></a><span class="co">#suppress scientific notation</span></span>
 <span id="cb43-2"><a href="hypothesis-testing.html#cb43-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">9999</span>)</span></code></pre></div>
+</details>
 <p> </p>
 <p> 
  </p>
@@ -499,11 +502,13 @@ inference and, instead of using a T-Test, we will have to use a Wilcoxon
 Rank Sum test or Mann-Whitney test.</p>
 <p>In order to perform a Shapiro-Wilk Test in R, we need to use the
 following code.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="hypothesis-testing.html#cb44-1" tabindex="-1"></a><span class="co"># Shapiro Test of normality</span></span>
 <span id="cb44-2"><a href="hypothesis-testing.html#cb44-2" tabindex="-1"></a><span class="co"># H0: the variable is normally distributed</span></span>
 <span id="cb44-3"><a href="hypothesis-testing.html#cb44-3" tabindex="-1"></a><span class="co"># Ha: the variable is not normally distributed</span></span>
 <span id="cb44-4"><a href="hypothesis-testing.html#cb44-4" tabindex="-1"></a><span class="fu">shapiro.test</span>(mtcars<span class="sc">$</span>mpg)</span>
 <span id="cb44-5"><a href="hypothesis-testing.html#cb44-5" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+</details>
 <p> </p>
 <p> 
  </p>
@@ -530,6 +535,7 @@ gallon, we want to test if the cars’ consumption is on average lower
 than 22 miles per gallon (<span class="math inline">\(H_a\)</span>). And this is in fact true, because we
 retrieve a significant p-value (&lt;0.05), thus we reject <span class="math inline">\(H_0\)</span>. By using
 the package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas2020">Bratsas, Foudouli, and Koupidis 2020</a>)</span>, we can also plot this test.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="hypothesis-testing.html#cb45-1" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
 <span id="cb45-2"><a href="hypothesis-testing.html#cb45-2" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="hypothesis-testing.html#cb45-3" tabindex="-1"></a><span class="co"># H0: cars consumption is on average 22 mpg or higher</span></span>
@@ -540,6 +546,7 @@ the package <code>gginfernece</code> <span class="citation">(<a href="#ref-brats
 <span id="cb45-8"><a href="hypothesis-testing.html#cb45-8" tabindex="-1"></a><span class="co"># plot the t-test </span></span>
 <span id="cb45-9"><a href="hypothesis-testing.html#cb45-9" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
 <span id="cb45-10"><a href="hypothesis-testing.html#cb45-10" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(mtcars<span class="sc">$</span>mpg, <span class="at">mu =</span> <span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>))</span></code></pre></div>
+</details>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
 <img src="_main_files/figure-html/unnamed-chunk-56-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
 <p class="caption">
@@ -576,12 +583,14 @@ groups in order to have an idea. And we see that the difference between
 the two groups is only 0.69. Note, that we set the seed because we
 generate our data randomly from an Normal distribution using the
 function <code>rnorm()</code>.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="hypothesis-testing.html#cb46-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb46-2"><a href="hypothesis-testing.html#cb46-2" tabindex="-1"></a>income_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">20</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
 <span id="cb46-3"><a href="hypothesis-testing.html#cb46-3" tabindex="-1"></a>income_b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="fl">18.8</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
 <span id="cb46-4"><a href="hypothesis-testing.html#cb46-4" tabindex="-1"></a></span>
 <span id="cb46-5"><a href="hypothesis-testing.html#cb46-5" tabindex="-1"></a><span class="fu">boxplot</span>(income_a, income_b)</span>
 <span id="cb46-6"><a href="hypothesis-testing.html#cb46-6" tabindex="-1"></a><span class="fu">mean</span>(income_a)<span class="sc">-</span><span class="fu">mean</span>(income_b)</span></code></pre></div>
+</details>
 <p>Before proceeding with the test, we should verify the assumption of
 normality by doing a Shapiro-Wilk Test as explained before. However, as
 the data are normally distributed by construction, we will skip this
@@ -590,6 +599,7 @@ step.</p>
 T-Test. The R function is the same as for the One-Sample T-Test, but
 specifying different arguments. We can again plot our test using the
 package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas2020">Bratsas, Foudouli, and Koupidis 2020</a>)</span>.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="hypothesis-testing.html#cb47-1" tabindex="-1"></a><span class="co"># H0: the two groups have the same income on average</span></span>
 <span id="cb47-2"><a href="hypothesis-testing.html#cb47-2" tabindex="-1"></a><span class="co"># Ha: the two groups have the different income on average</span></span>
 <span id="cb47-3"><a href="hypothesis-testing.html#cb47-3" tabindex="-1"></a><span class="fu">t.test</span>(income_a, income_b) <span class="co"># reject H0</span></span>
@@ -598,6 +608,7 @@ package <code>gginfernece</code> <span class="citation">(<a href="#ref-bratsas20
 <span id="cb47-6"><a href="hypothesis-testing.html#cb47-6" tabindex="-1"></a></span>
 <span id="cb47-7"><a href="hypothesis-testing.html#cb47-7" tabindex="-1"></a><span class="fu">library</span>(gginference)</span>
 <span id="cb47-8"><a href="hypothesis-testing.html#cb47-8" tabindex="-1"></a><span class="fu">ggttest</span>(<span class="fu">t.test</span>(income_a, income_b))</span></code></pre></div>
+</details>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
 <img src="_main_files/figure-html/unnamed-chunk-60-1.png" alt="Single Sample T-Test as plotted by gginference package." width="50%"  />
 <p class="caption">
@@ -627,6 +638,7 @@ create a table with the average difference and the p-value of both
 tests. <em>Note that the t-test formula is written in a different way than
 in the code chunk above, however the meaning of the two expressions is
 the same.</em></p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="hypothesis-testing.html#cb48-1" tabindex="-1"></a><span class="co"># create a table</span></span>
 <span id="cb48-2"><a href="hypothesis-testing.html#cb48-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
 <span id="cb48-3"><a href="hypothesis-testing.html#cb48-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">t.test</span>(wt <span class="sc">~</span> am, <span class="at">data=</span>mtcars)</span>
@@ -635,6 +647,7 @@ the same.</em></p>
 <span id="cb48-6"><a href="hypothesis-testing.html#cb48-6" tabindex="-1"></a>                     <span class="st">&quot;mpg&quot;</span><span class="ot">=</span> <span class="fu">c</span>(t<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>t<span class="sc">$</span>estimate[<span class="dv">2</span>], t<span class="sc">$</span>p.value),</span>
 <span id="cb48-7"><a href="hypothesis-testing.html#cb48-7" tabindex="-1"></a>                     <span class="st">&quot;wt&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(s<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">-</span>s<span class="sc">$</span>estimate[<span class="dv">2</span>], s<span class="sc">$</span>p.value))</span>
 <span id="cb48-8"><a href="hypothesis-testing.html#cb48-8" tabindex="-1"></a>taboft</span></code></pre></div>
+</details>
 <p> </p>
 <p> 
  </p>
@@ -657,7 +670,9 @@ two samples into one combined sample, keeping track of which sample each
 observation comes from, and then ranking lowest to highest.</p>
 <p>In order to run it, the only thing we need to change is the name of the
 formula of the test, as written in the code below.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="hypothesis-testing.html#cb49-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(mpg.at, mpg.mt)</span></code></pre></div>
+</details>
 <p> </p>
 <p> 
  </p>
@@ -680,6 +695,7 @@ Shapiro-Wilk Test on them in order to verify the normality of the data
 distribution. Finally, we can run the proper Paired Sample T-Test on our
 data (or a Paired Mann Whitney U Test, if data are not normally
 distributed).</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="hypothesis-testing.html#cb50-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;before&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">200.1</span>, <span class="fl">190.9</span>, <span class="fl">192.7</span>, <span class="dv">213</span>, <span class="fl">241.4</span>, <span class="fl">196.9</span>, </span>
 <span id="cb50-2"><a href="hypothesis-testing.html#cb50-2" tabindex="-1"></a>                              <span class="fl">172.2</span>, <span class="fl">185.5</span>, <span class="fl">205.2</span>, <span class="fl">193.7</span>),</span>
 <span id="cb50-3"><a href="hypothesis-testing.html#cb50-3" tabindex="-1"></a>                 <span class="st">&quot;after&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">392.9</span>, <span class="fl">393.2</span>, <span class="fl">345.1</span>, <span class="dv">393</span>, <span class="dv">434</span>, <span class="fl">427.9</span>, <span class="dv">422</span>, </span>
@@ -692,6 +708,7 @@ distributed).</p>
 <span id="cb50-10"><a href="hypothesis-testing.html#cb50-10" tabindex="-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>difference)</span>
 <span id="cb50-11"><a href="hypothesis-testing.html#cb50-11" tabindex="-1"></a></span>
 <span id="cb50-12"><a href="hypothesis-testing.html#cb50-12" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>before, df<span class="sc">$</span>after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -744,20 +761,20 @@ Ziliak, Stephen T. 2008. <span>“Retrospectives: Guinnessometrics: The Economic
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
-"twitter": true,
-"linkedin": false,
+"twitter": false,
+"linkedin": true,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
+"whatsapp": true,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
-"size": 2
+"family": "serif",
+"size": 1
 },
 "edit": {
 "link": null,

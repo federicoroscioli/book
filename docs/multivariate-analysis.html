@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Multivariate Analysis | Introduction to Data Analysis with R</title>
-  <meta name="description" content="8 Multivariate Analysis | Introduction to Data Analysis with R" />
+  <meta name="description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Multivariate Analysis | Introduction to Data Analysis with R" />
   <meta property="og:type" content="book" />
-  
-  
+  <meta property="og:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
+  <meta property="og:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="8 Multivariate Analysis | Introduction to Data Analysis with R" />
   
-  
-  
+  <meta name="twitter:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
+  <meta name="twitter:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
 
 <meta name="author" content="Federico Roscioli" />
 
@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/fav_icon.jpg" type="image/x-icon" />
 <link rel="prev" href="bivariate-analysis.html"/>
 <link rel="next" href="final-remarks.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -48,6 +48,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -362,6 +363,7 @@ properly run the hierarchical cluster analysis (function <code>hclust()</code>)
 specifying the method for complete linkage. Finally we plot the
 dendogram. <em>It is important that each row of the dataset has a name
 assigned (see <a href="data-cleaning.html#row-names">Row Names</a>)</em>.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="multivariate-analysis.html#cb60-1" tabindex="-1"></a><span class="co"># Euclidean distance</span></span>
 <span id="cb60-2"><a href="multivariate-analysis.html#cb60-2" tabindex="-1"></a>dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(swiss, <span class="at">method=</span><span class="st">&quot;euclidean&quot;</span>)</span>
 <span id="cb60-3"><a href="multivariate-analysis.html#cb60-3" tabindex="-1"></a><span class="co"># Hierarchical Clustering with hclust</span></span>
@@ -369,6 +371,7 @@ assigned (see <a href="data-cleaning.html#row-names">Row Names</a>)</em>.</p>
 <span id="cb60-5"><a href="multivariate-analysis.html#cb60-5" tabindex="-1"></a><span class="co"># Plot the result</span></span>
 <span id="cb60-6"><a href="multivariate-analysis.html#cb60-6" tabindex="-1"></a><span class="fu">plot</span>(hc, <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">cex=</span>.<span class="dv">5</span>)</span>
 <span id="cb60-7"><a href="multivariate-analysis.html#cb60-7" tabindex="-1"></a><span class="fu">rect.hclust</span>(hc, <span class="at">k=</span><span class="dv">3</span>, <span class="at">border=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:fig2"></span>
 <img src="_main_files/figure-html/fig2-1.png" alt="Dendogram plot." width="100%"  />
 <p class="caption">
@@ -424,11 +427,15 @@ package factoextra <span class="citation">(<a href="#ref-kassambara">Kassambara 
 clusters from K-means the function automatically reduces the
 dimensionality of the data via PCA and selects the first two
 components.</em></p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="multivariate-analysis.html#cb61-1" tabindex="-1"></a><span class="co"># calculate the k-means for the preferred number of clusters</span></span>
 <span id="cb61-2"><a href="multivariate-analysis.html#cb61-2" tabindex="-1"></a>kc <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(swiss, <span class="at">centers=</span><span class="dv">3</span>)</span>
 <span id="cb61-3"><a href="multivariate-analysis.html#cb61-3" tabindex="-1"></a><span class="fu">library</span>(factoextra) </span></code></pre></div>
+</details>
 <pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="multivariate-analysis.html#cb63-1" tabindex="-1"></a><span class="fu">fviz_cluster</span>(<span class="fu">list</span>(<span class="at">data=</span>swiss, <span class="at">cluster=</span>kc<span class="sc">$</span>cluster))</span></code></pre></div>
+</details>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig3"></span>
 <img src="_main_files/figure-html/fig3-1.png" alt="K-means clustering." width="80%"  />
 <p class="caption">
@@ -453,10 +460,12 @@ selection</u>.</p>
 <p>In the case of the <code>swiss</code> dataset, the silhouette plot suggests the
 presence of only two clusters both using hierarchical clustering and
 K-Means. As we have seen previously this is not properly true.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="multivariate-analysis.html#cb64-1" tabindex="-1"></a><span class="co">#silhouette method</span></span>
 <span id="cb64-2"><a href="multivariate-analysis.html#cb64-2" tabindex="-1"></a><span class="fu">library</span>(factoextra) </span>
 <span id="cb64-3"><a href="multivariate-analysis.html#cb64-3" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(swiss, <span class="at">FUN =</span> hcut)</span>
 <span id="cb64-4"><a href="multivariate-analysis.html#cb64-4" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(swiss, <span class="at">FUN =</span> kmeans)</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:fig4"></span>
 <img src="_main_files/figure-html/fig4-1.png" alt="From left: Hierarchical clustering silhouette plot; K-means clustering silhouette plot." width="50%"  /><img src="_main_files/figure-html/fig4-2.png" alt="From left: Hierarchical clustering silhouette plot; K-means clustering silhouette plot." width="50%"  />
 <p class="caption">
@@ -487,9 +496,11 @@ the range.</p>
 <p>In the heatmap you can see that V. of Geneve is a proper outlier in
 terms of Education and share of people involved in the agricultural
 sector. For more advanced Heatmaps, please <a href="https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/">visit this link.</a></p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="multivariate-analysis.html#cb65-1" tabindex="-1"></a><span class="co">#heatmap</span></span>
 <span id="cb65-2"><a href="multivariate-analysis.html#cb65-2" tabindex="-1"></a>dataMatrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(swiss)</span>
 <span id="cb65-3"><a href="multivariate-analysis.html#cb65-3" tabindex="-1"></a><span class="fu">heatmap</span>(dataMatrix, <span class="at">cexCol=</span>.<span class="dv">8</span>)</span></code></pre></div>
+</details>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
 <img src="_main_files/figure-html/unnamed-chunk-75-1.png" alt="Heatmap." width="80%"  />
 <p class="caption">
@@ -562,8 +573,10 @@ correlation between the different variables that compose the dataset. We
 do so because we know the PCA works best when we have correlated
 variables that can be “grouped” within the same principal component by
 the algorithm.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="multivariate-analysis.html#cb66-1" tabindex="-1"></a><span class="co"># Correlation Matrix</span></span>
 <span id="cb66-2"><a href="multivariate-analysis.html#cb66-2" tabindex="-1"></a><span class="fu">cor</span>(swiss)</span></code></pre></div>
+</details>
 <p>The next step is to properly run the PCA’s algorithm and assign it to an
 object. If the values are not on the same scale, it is better to set the
 argument scale equal to TRUE. This argument sets the PCA to work on the
@@ -578,6 +591,7 @@ much of the variance is explained by each component <span class="citation">(<a h
 higher are the first components, the more accurate our PCA will be. In
 this case, the first two components retain 73.1% of the total
 variability within the data.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="multivariate-analysis.html#cb67-1" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
 <span id="cb67-2"><a href="multivariate-analysis.html#cb67-2" tabindex="-1"></a><span class="co">#running the PCA</span></span>
 <span id="cb67-3"><a href="multivariate-analysis.html#cb67-3" tabindex="-1"></a>pca_swiss <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(swiss, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
@@ -585,6 +599,7 @@ variability within the data.</p>
 <span id="cb67-5"><a href="multivariate-analysis.html#cb67-5" tabindex="-1"></a></span>
 <span id="cb67-6"><a href="multivariate-analysis.html#cb67-6" tabindex="-1"></a><span class="co">#visualizing the PCA</span></span>
 <span id="cb67-7"><a href="multivariate-analysis.html#cb67-7" tabindex="-1"></a><span class="fu">fviz_eig</span>(pca_swiss)</span></code></pre></div>
+</details>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
 <img src="_main_files/figure-html/unnamed-chunk-78-1.png" alt="Screeplot." width="80%"  />
 <p class="caption">
@@ -606,6 +621,7 @@ education level and lowest fertility and share of catholic people.</p>
 <p>The biplot overlays the previous two graphs allowing a more immediate
 interpretation. However if we have many variables and observations, this
 plot can be do messy to be analyzed.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="multivariate-analysis.html#cb68-1" tabindex="-1"></a><span class="co"># Graph of variables</span></span>
 <span id="cb68-2"><a href="multivariate-analysis.html#cb68-2" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(</span>
 <span id="cb68-3"><a href="multivariate-analysis.html#cb68-3" tabindex="-1"></a>        pca_swiss,</span>
@@ -622,6 +638,7 @@ plot can be do messy to be analyzed.</p>
 <span id="cb68-14"><a href="multivariate-analysis.html#cb68-14" tabindex="-1"></a></span>
 <span id="cb68-15"><a href="multivariate-analysis.html#cb68-15" tabindex="-1"></a><span class="co"># Biplot of individuals and variables</span></span>
 <span id="cb68-16"><a href="multivariate-analysis.html#cb68-16" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca_swiss, <span class="at">repel =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
 <img src="_main_files/figure-html/unnamed-chunk-79-1.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-79-2.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-79-3.png" alt="From top-left clockwise: Graph of variables, positive correlated variables point to the same side of the plot; Graph of individuals, individuals with a similar profile are grouped together; Biplot of individuals and variables." width="50%"  />
 <p class="caption">
@@ -633,11 +650,13 @@ does, we can compare the rotation of the axis before and after the pca
 looking at the pairs plot. In the pair graph after the PCA we expect to
 see no relationship between all the principal component, as this is the
 aim of the PCA algorithm.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multivariate-analysis.html#cb69-1" tabindex="-1"></a><span class="co"># Pairs before PCA</span></span>
 <span id="cb69-2"><a href="multivariate-analysis.html#cb69-2" tabindex="-1"></a><span class="fu">pairs</span>(swiss, <span class="at">panel=</span>panel.smooth, <span class="at">col=</span><span class="st">&quot;#6da7a7&quot;</span>)</span>
 <span id="cb69-3"><a href="multivariate-analysis.html#cb69-3" tabindex="-1"></a></span>
 <span id="cb69-4"><a href="multivariate-analysis.html#cb69-4" tabindex="-1"></a><span class="co"># Pair after PCA</span></span>
 <span id="cb69-5"><a href="multivariate-analysis.html#cb69-5" tabindex="-1"></a><span class="fu">pairs</span>(pca_swiss<span class="sc">$</span>x, <span class="at">panel=</span>panel.smooth, <span class="at">col=</span><span class="st">&quot;#6da7a7&quot;</span>)</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
 <img src="_main_files/figure-html/unnamed-chunk-80-1.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  /><img src="_main_files/figure-html/unnamed-chunk-80-2.png" alt="From top: Pairs graph before PCA; Pairs graph after PCA." width="576"  />
 <p class="caption">
@@ -754,6 +773,7 @@ predicted class for this node. As we see here, in this case, pruning
 using the automatic method retrieved a poor tree with only one split,
 whether the manually pruned tree is richer and allows us to interpret
 the result.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="multivariate-analysis.html#cb70-1" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
 <span id="cb70-2"><a href="multivariate-analysis.html#cb70-2" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
 <span id="cb70-3"><a href="multivariate-analysis.html#cb70-3" tabindex="-1"></a><span class="fu">library</span>(rattle)</span>
@@ -793,6 +813,7 @@ the result.</p>
 <span id="cb70-37"><a href="multivariate-analysis.html#cb70-37" tabindex="-1"></a><span class="co"># plotting the tree</span></span>
 <span id="cb70-38"><a href="multivariate-analysis.html#cb70-38" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(fit2, <span class="at">caption =</span> <span class="st">&quot;Classification Tree for Titanic pruned manually&quot;</span>)</span>
 <span id="cb70-39"><a href="multivariate-analysis.html#cb70-39" tabindex="-1"></a><span class="fu">fancyRpartPlot</span>(fit3, <span class="at">caption =</span> <span class="st">&quot;Classification Tree for Titanic pruned automatically&quot;</span>)</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
 <img src="_main_files/figure-html/unnamed-chunk-83-1.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-83-2.png" alt="From left: Complexity vs X-val Relative Error; The automatically pruned CART." width="50%"  />
 <p class="caption">
@@ -897,6 +918,7 @@ i.e., increasing values of the index correspond to negative variations
 of the phenomenon (e.g., poverty), then <span class="math inline">\(MPI^+\)</span> is used. In any cases,
 an unbalance among indicators will have a negative effect on the value
 of the index.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="multivariate-analysis.html#cb71-1" tabindex="-1"></a><span class="fu">library</span>(Compind)</span>
 <span id="cb71-2"><a href="multivariate-analysis.html#cb71-2" tabindex="-1"></a><span class="co"># loading data</span></span>
 <span id="cb71-3"><a href="multivariate-analysis.html#cb71-3" tabindex="-1"></a><span class="fu">data</span>(EU_NUTS1)</span>
@@ -925,6 +947,7 @@ of the index.</p>
 <span id="cb71-26"><a href="multivariate-analysis.html#cb71-26" tabindex="-1"></a><span class="co"># Table containing Bottom 5 Unsustainable Transport Index (aka most sustainable)</span></span>
 <span id="cb71-27"><a href="multivariate-analysis.html#cb71-27" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">data.frame</span>(<span class="at">AMPI=</span><span class="fu">sort</span>(<span class="fu">tail</span>(<span class="fu">sort</span>(CI<span class="sc">$</span>ci_mpi_est, <span class="at">decreasing =</span> T),<span class="dv">5</span>))), </span>
 <span id="cb71-28"><a href="multivariate-analysis.html#cb71-28" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Bottom 5 unsustainable Index&quot;</span>)</span></code></pre></div>
+</details>
 <p>In the example above, we usa a dataset present in the same Compind
 package <span class="citation">(<a href="#ref-compind">Fusco, Vidoli, and Sahoo 2018</a>)</span>. We first input the rownames (this is needed to have
 the names of the countries in our final table), we then state the index
@@ -996,6 +1019,7 @@ purpose is to favor the units that, mean being equal, have a greater
 balance among the different indicators. Therefore, AMPI is characterized
 by the combination of a ‘mean effect’ (<span class="math inline">\(M_{r_i}\)</span>) and a ‘penalty effect’
 (<span class="math inline">\(S_{r_i}*cv_i\)</span>) where each unit stands in relation to the ‘goalposts’.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="multivariate-analysis.html#cb72-1" tabindex="-1"></a><span class="co"># loading data</span></span>
 <span id="cb72-2"><a href="multivariate-analysis.html#cb72-2" tabindex="-1"></a><span class="fu">data</span>(EU_2020)</span>
 <span id="cb72-3"><a href="multivariate-analysis.html#cb72-3" tabindex="-1"></a></span>
@@ -1029,6 +1053,7 @@ by the combination of a ‘mean effect’ (<span class="math inline">\(M_{r_i}\)
 <span id="cb72-31"><a href="multivariate-analysis.html#cb72-31" tabindex="-1"></a></span>
 <span id="cb72-32"><a href="multivariate-analysis.html#cb72-32" tabindex="-1"></a><span class="co"># Table containing the Sustainable Employment Index scores</span></span>
 <span id="cb72-33"><a href="multivariate-analysis.html#cb72-33" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">data.frame</span>(<span class="fu">t</span>(CI<span class="sc">$</span>ci_ampi_est)), <span class="at">caption =</span> <span class="st">&quot;AMPI time series&quot;</span>)</span></code></pre></div>
+</details>
 <p>In the example above, we usa a dataset present in the same Compind
 package <span class="citation">(<a href="#ref-compind">Fusco, Vidoli, and Sahoo 2018</a>)</span>. We reshape data to long format, allowing us to have
 a dataset with one variable per column. We then use the function
@@ -1118,20 +1143,20 @@ Williams, Graham J. 2011. <em>Data Mining with Rattle and r: The Art of Excavati
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
-"twitter": true,
-"linkedin": false,
+"twitter": false,
+"linkedin": true,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
+"whatsapp": true,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
-"size": 2
+"family": "serif",
+"size": 1
 },
 "edit": {
 "link": null,

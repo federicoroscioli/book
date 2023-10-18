@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Advanced Data Manipulation and Plotting | Introduction to Data Analysis with R</title>
-  <meta name="description" content="4 Advanced Data Manipulation and Plotting | Introduction to Data Analysis with R" />
+  <meta name="description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Advanced Data Manipulation and Plotting | Introduction to Data Analysis with R" />
   <meta property="og:type" content="book" />
-  
-  
+  <meta property="og:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
+  <meta property="og:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 Advanced Data Manipulation and Plotting | Introduction to Data Analysis with R" />
   
-  
-  
+  <meta name="twitter:description" content="This book allow the students to manage the basic concepts in order to be able to explore and analyze data using R." />
+  <meta name="twitter:image" content="https://www.federicoroscioli.com/images/IMG_1312.jpeg" />
 
 <meta name="author" content="Federico Roscioli" />
 
@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/fav_icon.jpg" type="image/x-icon" />
 <link rel="prev" href="data-cleaning.html"/>
 <link rel="next" href="exploratory-data-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -48,6 +48,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -294,6 +295,7 @@ correct some values according to our conditions.</p>
 <p>Within the <code>ifelse()</code> function we are required to specify the
 condition(s), comma, the value to give if the condition(s) is true,
 comma, the value to give if the condition(s) is false.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="advanced-data-manipulation-and-plotting.html#cb18-1" tabindex="-1"></a><span class="co"># creating a new var conditionally</span></span>
 <span id="cb18-2"><a href="advanced-data-manipulation-and-plotting.html#cb18-2" tabindex="-1"></a>mtcars<span class="sc">$</span>newvar <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
 <span id="cb18-3"><a href="advanced-data-manipulation-and-plotting.html#cb18-3" tabindex="-1"></a></span>
@@ -308,6 +310,7 @@ comma, the value to give if the condition(s) is false.</p>
 <span id="cb18-12"><a href="advanced-data-manipulation-and-plotting.html#cb18-12" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>cyl<span class="sc">&gt;</span><span class="dv">5</span>, <span class="cn">NA</span>, mtcars<span class="sc">$</span>mpg)</span>
 <span id="cb18-13"><a href="advanced-data-manipulation-and-plotting.html#cb18-13" tabindex="-1"></a><span class="co">#this is the same as</span></span>
 <span id="cb18-14"><a href="advanced-data-manipulation-and-plotting.html#cb18-14" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>cyl<span class="sc">&gt;</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+</details>
 <p>In the case in which we have a categorical variable with multiple
 categories (i.e. the color of the car), and/or we want to create dummies
 for multiple categorical variables at once (i.e. the variables: red,
@@ -316,8 +319,10 @@ green, blue, etc), I suggest to use the package
 you can specify multiple columns using <code>c()</code>. The argument
 <code>remove_selected_columns</code> removes the original categorical variable
 after the transformation.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="advanced-data-manipulation-and-plotting.html#cb19-1" tabindex="-1"></a><span class="fu">library</span>(fastDummies)</span>
 <span id="cb19-2"><a href="advanced-data-manipulation-and-plotting.html#cb19-2" tabindex="-1"></a><span class="fu">dummy_cols</span>(mtcars, <span class="at">select_columns =</span> <span class="st">&quot;cyl&quot;</span>, <span class="at">remove_selected_columns =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -332,6 +337,7 @@ the data! So we can create our own summary of the data.</p>
 <p>Within the <code>apply()</code> function we have to impute the data we want to
 manipulate, comma, if we want it to apply the function row-wise (1) or
 column-wise (2), comma, the function we want to apply to the data.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="advanced-data-manipulation-and-plotting.html#cb20-1" tabindex="-1"></a><span class="do">############## apply</span></span>
 <span id="cb20-2"><a href="advanced-data-manipulation-and-plotting.html#cb20-2" tabindex="-1"></a><span class="co"># calculate the mean per each column</span></span>
 <span id="cb20-3"><a href="advanced-data-manipulation-and-plotting.html#cb20-3" tabindex="-1"></a><span class="fu">apply</span>(mtcars, <span class="dv">2</span>, mean)</span>
@@ -348,6 +354,7 @@ column-wise (2), comma, the function we want to apply to the data.</p>
 <span id="cb20-14"><a href="advanced-data-manipulation-and-plotting.html#cb20-14" tabindex="-1"></a>)</span>
 <span id="cb20-15"><a href="advanced-data-manipulation-and-plotting.html#cb20-15" tabindex="-1"></a><span class="fu">colnames</span>(Stat)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;s.d.&quot;</span>, <span class="st">&quot;Mean Automatic&quot;</span>, <span class="st">&quot;Mean Manual&quot;</span>)</span>
 <span id="cb20-16"><a href="advanced-data-manipulation-and-plotting.html#cb20-16" tabindex="-1"></a><span class="fu">round</span>(Stat,<span class="dv">2</span>)</span></code></pre></div>
+</details>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -371,6 +378,7 @@ select only some columns from the original data; finally for each
 species, we compute the number of characters and their average mass, and
 we filter only the groups with more than one character and an average
 mass above 50.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="advanced-data-manipulation-and-plotting.html#cb21-1" tabindex="-1"></a><span class="co"># loading the package and data</span></span>
 <span id="cb21-2"><a href="advanced-data-manipulation-and-plotting.html#cb21-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb21-3"><a href="advanced-data-manipulation-and-plotting.html#cb21-3" tabindex="-1"></a><span class="fu">data</span>(starwars)</span>
@@ -392,6 +400,7 @@ mass above 50.</p>
 <span id="cb21-19"><a href="advanced-data-manipulation-and-plotting.html#cb21-19" tabindex="-1"></a>                  <span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb21-20"><a href="advanced-data-manipulation-and-plotting.html#cb21-20" tabindex="-1"></a>        <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>, </span>
 <span id="cb21-21"><a href="advanced-data-manipulation-and-plotting.html#cb21-21" tabindex="-1"></a>               mass <span class="sc">&gt;</span> <span class="dv">50</span>)</span></code></pre></div>
+</details>
 <p>So, using <code>dplyr</code>, with one command, we can ask R to group the data by a
 categorical variable (<code>group_by()</code>), subset the data according to our
 conditions (<code>filter()</code>), select only few variables to be retrieved
@@ -428,6 +437,7 @@ a dataset with <span class="math inline">\(m*n\)</span> number of rows.</p></li>
 <p>Within the <code>merge()</code> function we are asked to specify the dataset <span class="math inline">\(x\)</span>,
 comma the dataset $y$, comma, the name of the <span class="math inline">\(id\)</span> variable, comma,
 additional arguments depending on which merge we are interested in.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="advanced-data-manipulation-and-plotting.html#cb22-1" tabindex="-1"></a><span class="co">#Outer join: </span></span>
 <span id="cb22-2"><a href="advanced-data-manipulation-and-plotting.html#cb22-2" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="st">&quot;CustomerId&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb22-3"><a href="advanced-data-manipulation-and-plotting.html#cb22-3" tabindex="-1"></a></span>
@@ -439,6 +449,7 @@ additional arguments depending on which merge we are interested in.</p>
 <span id="cb22-9"><a href="advanced-data-manipulation-and-plotting.html#cb22-9" tabindex="-1"></a></span>
 <span id="cb22-10"><a href="advanced-data-manipulation-and-plotting.html#cb22-10" tabindex="-1"></a><span class="co">#Cross join: </span></span>
 <span id="cb22-11"><a href="advanced-data-manipulation-and-plotting.html#cb22-11" tabindex="-1"></a><span class="fu">merge</span>(<span class="at">x =</span> df1, <span class="at">y =</span> df2, <span class="at">by =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+</details>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -463,6 +474,7 @@ belongs to the package <code>reshape2</code><span class="citation">(<a href="#re
 The <code>melt()</code> function requires us to specify the data we want to melt,
 comma, the name of the variable(s) we want to retain as they are. We
 will see in the following chapter how to use melted data.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="advanced-data-manipulation-and-plotting.html#cb23-1" tabindex="-1"></a><span class="co"># creating data</span></span>
 <span id="cb23-2"><a href="advanced-data-manipulation-and-plotting.html#cb23-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
 <span id="cb23-3"><a href="advanced-data-manipulation-and-plotting.html#cb23-3" tabindex="-1"></a>                     <span class="at">surname =</span> <span class="fu">c</span>(<span class="st">&quot;Wilson&quot;</span>, <span class="st">&quot;Jones&quot;</span>, <span class="st">&quot;Smith&quot;</span>),</span>
@@ -478,6 +490,7 @@ will see in the following chapter how to use melted data.</p>
 <span id="cb23-13"><a href="advanced-data-manipulation-and-plotting.html#cb23-13" tabindex="-1"></a></span>
 <span id="cb23-14"><a href="advanced-data-manipulation-and-plotting.html#cb23-14" tabindex="-1"></a><span class="co"># for two id variables</span></span>
 <span id="cb23-15"><a href="advanced-data-manipulation-and-plotting.html#cb23-15" tabindex="-1"></a><span class="fu">melt</span>(people, <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;surname&quot;</span>))</span></code></pre></div>
+</details>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -501,6 +514,7 @@ scatter plot, <code>geom_smooth()</code> for a regression line, <code>geom_bar()
 <code>geom_col()</code> for a bar chart, just to mention a few of them (for a
 description of the meaning of the above mentioned graph refer to the
 <a href="exploratory-data-analysis.html#data-visualization">Data visualization</a> chapter).</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="advanced-data-manipulation-and-plotting.html#cb24-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb24-2"><a href="advanced-data-manipulation-and-plotting.html#cb24-2" tabindex="-1"></a><span class="co"># No Plot Yet!</span></span>
 <span id="cb24-3"><a href="advanced-data-manipulation-and-plotting.html#cb24-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp))</span>
@@ -512,12 +526,14 @@ description of the meaning of the above mentioned graph refer to the
 <span id="cb24-9"><a href="advanced-data-manipulation-and-plotting.html#cb24-9" tabindex="-1"></a><span class="co"># we can assign our graph to an object</span></span>
 <span id="cb24-10"><a href="advanced-data-manipulation-and-plotting.html#cb24-10" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
 <span id="cb24-11"><a href="advanced-data-manipulation-and-plotting.html#cb24-11" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+</details>
 <p>We can add more and more layers to the graph, and personalize all the
 things we want. The code below generates two types of regression lines
 (more details in [<a href="bivariate-analysis.html#linear-regression">Linear Regression</a>]), and divides data in plots
 according to a variable (<code>facets_grid()</code>). <em>As you can see, I tend not
 to assign my plot to an object, unless it is strictly necessary. This is
 my way of working, but you are free to do as you prefer.</em></p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="advanced-data-manipulation-and-plotting.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb25-2"><a href="advanced-data-manipulation-and-plotting.html#cb25-2" tabindex="-1"></a><span class="co"># Adding More Layers: regression line</span></span>
 <span id="cb25-3"><a href="advanced-data-manipulation-and-plotting.html#cb25-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span> </span>
@@ -533,6 +549,7 @@ my way of working, but you are free to do as you prefer.</em></p>
 <span id="cb25-13"><a href="advanced-data-manipulation-and-plotting.html#cb25-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb25-14"><a href="advanced-data-manipulation-and-plotting.html#cb25-14" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb25-15"><a href="advanced-data-manipulation-and-plotting.html#cb25-15" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> cyl)</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
 <img src="_main_files/figure-html/unnamed-chunk-33-1.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-33-2.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-33-3.png" alt="From top-left clockwise: Regression line GAM; Linear regression line; Facets." width="50%"  />
 <p class="caption">
@@ -544,6 +561,7 @@ scope of plotting multidimensional phenomenons. In this case, we have a
 dataset with some students and we want to plot their scores, but we want
 to be able to clearly see a trend for each one of them? A solution could
 be the paired (specifying <code>position = 'dodge'</code>) bar chart below.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="advanced-data-manipulation-and-plotting.html#cb26-1" tabindex="-1"></a><span class="co"># creating data</span></span>
 <span id="cb26-2"><a href="advanced-data-manipulation-and-plotting.html#cb26-2" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Greg&quot;</span>),</span>
 <span id="cb26-3"><a href="advanced-data-manipulation-and-plotting.html#cb26-3" tabindex="-1"></a>                     <span class="at">surname =</span> <span class="fu">c</span>(<span class="st">&quot;Wilson&quot;</span>, <span class="st">&quot;Jones&quot;</span>, <span class="st">&quot;Smith&quot;</span>),</span>
@@ -557,6 +575,7 @@ be the paired (specifying <code>position = 'dodge'</code>) bar chart below.</p>
 <span id="cb26-11"><a href="advanced-data-manipulation-and-plotting.html#cb26-11" tabindex="-1"></a><span class="co"># plotting</span></span>
 <span id="cb26-12"><a href="advanced-data-manipulation-and-plotting.html#cb26-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> melted_people, <span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value, <span class="at">fill =</span> variable)) <span class="sc">+</span></span>
 <span id="cb26-13"><a href="advanced-data-manipulation-and-plotting.html#cb26-13" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>)</span></code></pre></div>
+</details>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
 <img src="_main_files/figure-html/unnamed-chunk-34-1.png" alt="Paired barchart." width="80%"  />
 <p class="caption">
@@ -568,6 +587,7 @@ The <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.p
 also at the <a href="https://www.r-graph-gallery.com">R Graph Gallery</a> which
 includes advanced graphs that are done using <code>ggplot2</code> or similar
 packages, and provides the code for replicating each one of them.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="advanced-data-manipulation-and-plotting.html#cb27-1" tabindex="-1"></a><span class="co"># labeled points</span></span>
 <span id="cb27-2"><a href="advanced-data-manipulation-and-plotting.html#cb27-2" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg, <span class="at">size =</span> wt)) <span class="sc">+</span></span>
 <span id="cb27-3"><a href="advanced-data-manipulation-and-plotting.html#cb27-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(cyl)), <span class="at">alpha=</span>.<span class="dv">7</span>) <span class="sc">+</span></span>
@@ -581,6 +601,7 @@ packages, and provides the code for replicating each one of them.</p>
 <span id="cb27-11"><a href="advanced-data-manipulation-and-plotting.html#cb27-11" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Type of spray&quot;</span>) <span class="sc">+</span></span>
 <span id="cb27-12"><a href="advanced-data-manipulation-and-plotting.html#cb27-12" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Insect count&quot;</span>) <span class="sc">+</span></span>
 <span id="cb27-13"><a href="advanced-data-manipulation-and-plotting.html#cb27-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+</details>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-35"></span>
 <img src="_main_files/figure-html/unnamed-chunk-35-1.png" alt="From top-left clockwise: Labeled scatterplot; Violin plot." width="50%"  /><img src="_main_files/figure-html/unnamed-chunk-35-2.png" alt="From top-left clockwise: Labeled scatterplot; Violin plot." width="50%"  />
 <p class="caption">
@@ -592,6 +613,7 @@ data, but we need to plot the main trend excluding them. Below some
 different versions of ggplot code that put a limit to the y axes (but it
 could be done for the x axes too using <code>xlim()</code> instead of <code>ylim()</code>).
 Try the code and see the difference.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="advanced-data-manipulation-and-plotting.html#cb28-1" tabindex="-1"></a><span class="co"># creating data</span></span>
 <span id="cb28-2"><a href="advanced-data-manipulation-and-plotting.html#cb28-2" tabindex="-1"></a>testdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, </span>
 <span id="cb28-3"><a href="advanced-data-manipulation-and-plotting.html#cb28-3" tabindex="-1"></a>                      <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
@@ -610,6 +632,7 @@ Try the code and see the difference.</p>
 <span id="cb28-16"><a href="advanced-data-manipulation-and-plotting.html#cb28-16" tabindex="-1"></a><span class="fu">ggplot</span>(testdat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
 <span id="cb28-17"><a href="advanced-data-manipulation-and-plotting.html#cb28-17" tabindex="-1"></a>        <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb28-18"><a href="advanced-data-manipulation-and-plotting.html#cb28-18" tabindex="-1"></a>        <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span></code></pre></div>
+</details>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -670,20 +693,20 @@ Wickham, Hadley, and Jennifer Bryan. 2022. <span>“Readxl: Read Excel Files.”
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
-"twitter": true,
-"linkedin": false,
+"twitter": false,
+"linkedin": true,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
+"whatsapp": true,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
-"size": 2
+"family": "serif",
+"size": 1
 },
 "edit": {
 "link": null,
